@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Skill(run)",
+      "Skill(run:*)",
+      "Bash(timeout 30 bash -c 'until curl -sf http://localhost:8081 >/dev/null; do sleep 1; done')",
+      "Bash(node /private/tmp/claude-501/-Users-asadishfaq-Downloads-lovable-project-lumovy/65cdd4b5-89b2-4788-aa32-46aa45414686/scratchpad/shot.mjs)",
+      "Bash(npm init *)",
+      "Bash(npm i *)",
+      "Bash(npx playwright *)",
+      "Bash(pkill -f \"vite dev\")",
+      "Read(//Users/asadishfaq/Library/Caches/ms-playwright/**)",
+      "Bash(npx --yes playwright install chromium)",
+      "Bash(curl -sf -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless --disable-gpu --hide-scrollbars --window-size=1440,900 --virtual-time-budget=3500 --screenshot=/private/tmp/claude-501/-Users-asadishfaq-Downloads-lovable-project-lumovy/65cdd4b5-89b2-4788-aa32-46aa45414686/scratchpad/hero.png http://localhost:8080/)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,900 --virtual-time-budget=4000 --user-data-dir=/tmp/chrome-shot-profile --screenshot=/private/tmp/claude-501/-Users-asadishfaq-Downloads-lovable-project-lumovy/65cdd4b5-89b2-4788-aa32-46aa45414686/scratchpad/hero.png http://localhost:8080/)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,4200 --virtual-time-budget=5000 --user-data-dir=/tmp/cshot --screenshot=/private/tmp/claude-501/-Users-asadishfaq-Downloads-lovable-project-lumovy/65cdd4b5-89b2-4788-aa32-46aa45414686/scratchpad/full.png http://localhost:8080/)",
+      "Bash(pkill -f \"vite dev\" 2>/dev/null; rm -rf /tmp/cshot 2>/dev/null; echo done)",
+      "Bash(rm -rf /tmp/cdp-profile)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --no-sandbox --hide-scrollbars --window-size=1440,900 --virtual-time-budget=4000 --user-data-dir=/tmp/cdp-profile --screenshot=/private/tmp/claude-501/-Users-asadishfaq-Downloads-lovable-project-lumovy/65cdd4b5-89b2-4788-aa32-46aa45414686/scratchpad/nav.png http://localhost:8080/)",
+      "Bash(rm -rf /tmp/cdp-profile2)",
+      "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --disable-gpu --no-sandbox --user-data-dir=/tmp/cdp-profile2 --dump-dom http://localhost:8080/)",
+      "Bash(pkill -f \"cdp-profile3\")",
+      "Bash(sips -g pixelWidth -g pixelHeight /private/tmp/claude-501/-Users-asadishfaq-Downloads-lovable-project-lumovy/65cdd4b5-89b2-4788-aa32-46aa45414686/scratchpad/services.png)",
+      "Bash(rm -rf /tmp/cdp-* 2>/dev/null; echo cleaned)",
+      "Bash(npx wrangler *)"
+    ],
+    "additionalDirectories": [
+      "/private/tmp/cshot",
+      "/tmp"
+    ]
+  }
+}
