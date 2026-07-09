@@ -399,21 +399,22 @@ const HERO_SLIDES = [
   {
     eyebrow: "Microsoft Solutions Partner",
     headline: "Modernize mission-critical systems. Ship measurable business outcomes.",
-    subhead: "Lumovy is the force amplifier that propels modern businesses to success in the AI era.",
+    subhead:
+      "From legacy modernization to AI-powered innovation, Lumovy helps enterprises reduce complexity, accelerate delivery, and create measurable business value.",
     cta: "See Client Outcomes",
     href: "#case-studies",
   },
   {
     eyebrow: "Agentic AI",
-    headline: "Agentic AI That Actually Ships — Grounded in Your Data.",
+    headline: "AI That Works the Way Your Business Works.",
     subhead:
-      "Agents embedded directly in Dynamics 365 Finance, Commerce, and Customer Engagement. Never autonomous by default — built to earn trust fast.",
+      "Purpose-built AI agents that integrate with Dynamics 365, understand your business data, and help teams automate work, accelerate decisions, and deliver measurable outcomes — with humans always in control.",
     cta: "Explore the Lumovy AI Factory",
     href: "#services",
   },
   {
     eyebrow: "Rapid Implementation Playbook",
-    headline: "Our 100-day Rapid Implementation Playbook.",
+    headline: "From Strategy to Value in 100 Days.",
     subhead:
       "How Majid Al Futtaim's Sava went from zero infrastructure to full ERP-enabled store operations in under 100 days.",
     cta: "Read the MAF Case Study",
@@ -421,7 +422,7 @@ const HERO_SLIDES = [
   },
   {
     eyebrow: "Microsoft Credentials",
-    headline: "A Direct Line to Microsoft. Built to Move Fast.",
+    headline: "Microsoft Expertise That Accelerates Transformation.",
     subhead:
       "Top-rated global solutions partner and FastTrack portfolio partner, early co-creator for consumer use cases — with a direct working relationship into Microsoft's product teams, not a reseller relationship once removed.",
     cta: "See Our Microsoft Credentials",
@@ -727,19 +728,19 @@ function Solutions() {
       name: "D365 for Hypermarkets",
       image: retailImg,
       blurb:
-        "A pre-configured Dynamics 365 environment tailored for grocery and hypermarket launches: plug-and-play in-store app bundle, prebuilt retail reports, AI-assisted testing, and 24/7 hypercare for the initial launch window.",
+        "Accelerate your retail transformation with a pre-configured Dynamics 365 solution for grocery and hypermarket businesses — reducing implementation time, lowering deployment risk, and delivering value faster.",
     },
     {
       name: "Innovative Hospitality Solution (IHS)",
       image: hospitalityImg,
       blurb:
-        "An all-in-one platform on D365 Commerce & Finance unifying back-office, inventory, kitchen, and guest engagement, with dynamic event-based menus and pricing, and Real-Time COGS for stadiums, venues, and multi-outlet hospitality.",
+        "A modern hospitality platform that connects people, operations, and data — so every guest experience is exceptional.",
     },
     {
       name: "Clarity RFID Connector",
       image: engineeringImg,
       blurb:
-        "An Azure Logic Apps-based integration between RFID hardware and D365 F&O delivering real-time stock visibility and automated data capture for warehouse and retail floor operations.",
+        "Improve inventory accuracy, reduce manual effort, and gain real-time visibility across your supply chain with seamless RFID integration.",
     },
     {
       name: "B2B in a Box",
