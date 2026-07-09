@@ -508,23 +508,27 @@ function HeroSlider() {
         </div>
       </div>
 
-      {/* Stable trust stats below the slider — center aligned */}
-      <div className="mt-12 flex flex-wrap justify-center gap-x-10 gap-y-6 text-center">
-        {[
-          ["SOC 2", "Type II"],
-          ["ISO 27001", "Certified"],
-          ["NDA", "Ready in 24h"],
-          ["Global", "Delivery"],
-        ].map(([a, b]) => (
-          <div key={a}>
-            <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/45">{a}</div>
-            <div className="mt-1 text-sm font-medium text-white/80">{b}</div>
-          </div>
-        ))}
-      </div>
-
       {/* expose active slide + setter to the section-level timer bar */}
       <HeroDots active={active} paused={paused} onSelect={goTo} />
+    </div>
+  );
+}
+
+/* Stable trust stats — fixed, centered, never animate, own row below the grid */
+function HeroTrustStats() {
+  return (
+    <div className="relative z-10 flex flex-wrap justify-center gap-x-12 gap-y-6 border-t border-white/10 px-6 pb-14 pt-10 text-center">
+      {[
+        ["SOC 2", "Type II"],
+        ["ISO 27001", "Certified"],
+        ["NDA", "Ready in 24h"],
+        ["Global", "Delivery"],
+      ].map(([a, b]) => (
+        <div key={a}>
+          <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/45">{a}</div>
+          <div className="mt-1 text-sm font-medium text-white/80">{b}</div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -541,11 +545,11 @@ function HeroDots({
 }) {
   return (
     <div
-      className="pointer-events-none absolute inset-x-0 bottom-5 z-20 flex justify-center"
+      className="relative z-10 flex justify-center pt-6"
       role="tablist"
       aria-label="Hero slides"
     >
-      <div className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-1.5 backdrop-blur-md">
+      <div className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-1.5 backdrop-blur-md">
         {HERO_SLIDES.map((s, i) => (
           <button
             key={s.eyebrow}
@@ -583,7 +587,7 @@ function Hero() {
       <div aria-hidden className="hero-orbs" />
       <div aria-hidden className="hero-grid" />
       <div aria-hidden className="hero-grain" />
-      <div className="container-enterprise relative z-10 grid gap-14 py-24 lg:grid-cols-12 lg:gap-10 lg:py-36">
+      <div className="container-enterprise relative z-10 grid gap-14 pb-10 pt-24 lg:grid-cols-12 lg:gap-10 lg:pt-32">
         <HeroSlider />
         <aside className="lg:col-span-5">
           <div className="glass-panel rounded-3xl p-7">
@@ -620,6 +624,9 @@ function Hero() {
             </a>
           </div>
         </aside>
+      </div>
+      <div className="container-enterprise">
+        <HeroTrustStats />
       </div>
     </section>
   );
@@ -659,12 +666,12 @@ function TrustedBy() {
 /* METRICS */
 function MetricsBand() {
   const metrics = [
-    ["240+", "Enterprise projects delivered"],
-    ["32", "Countries served"],
-    ["98%", "Client retention rate"],
-    ["$1.4B+", "Client revenue influenced"],
-    ["11 wks", "Avg. time to production"],
-    ["24/7", "Global delivery coverage"],
+    ["300+", "Consultants globally"],
+    ["230+", "Projects delivered in 4 years"],
+    ["7", "Countries with delivery presence"],
+    ["89%", "Of technical workforce with active Dynamics 365 experience"],
+    ["120+", "D365 version upgrades delivered"],
+    ["12,000", "Automated tests executed daily"],
   ];
   return (
     <section className="relative overflow-hidden bg-[var(--navy-deep)] py-20 text-white">
@@ -700,22 +707,62 @@ function MetricsBand() {
   );
 }
 
-/* SOLUTIONS */
+/* PRODUCTS & ACCELERATORS */
 function Solutions() {
-  const solutions = [
+  const products = [
     {
-      name: "Enterprise Business Solutions",
-      image: implementationImg,
+      name: "D365 for Hypermarkets",
+      image: retailImg,
       blurb:
-        "Commerce, finance, supply chain, and customer experience on Dynamics 365 — unified across the enterprise.",
-      points: ["Commerce & Finance", "Supply Chain", "Customer Experience"],
+        "A pre-configured Dynamics 365 environment tailored for grocery and hypermarket launches: plug-and-play in-store app bundle, prebuilt retail reports, AI-assisted testing, and 24/7 hypercare for the initial launch window.",
     },
     {
-      name: "Products & Accelerators",
+      name: "Innovative Hospitality Solution (IHS)",
+      image: hospitalityImg,
+      blurb:
+        "An all-in-one platform on D365 Commerce & Finance unifying back-office, inventory, kitchen, and guest engagement, with dynamic event-based menus and pricing, and Real-Time COGS for stadiums, venues, and multi-outlet hospitality.",
+    },
+    {
+      name: "Clarity RFID Connector",
       image: engineeringImg,
       blurb:
-        "Ready-to-deploy IP that shortens time-to-value — pre-built for regulated, high-volume operations.",
-      points: ["Inventory Intelligence", "Swift Commerce App"],
+        "An Azure Logic Apps-based integration between RFID hardware and D365 F&O delivering real-time stock visibility and automated data capture for warehouse and retail floor operations.",
+    },
+    {
+      name: "B2B in a Box",
+      image: consultingImg,
+      blurb:
+        "From quote to cash on Dynamics 365 Commerce — storefront, guided selling, and order-to-fulfilment in one deployable bundle instead of a from-scratch build.",
+    },
+    {
+      name: "Consumer Swift Commerce",
+      image: implementationImg,
+      blurb:
+        "A white-label, headless React Native commerce app integrated with the D365 Commerce Scale Unit for fast, low-maintenance mobile launches.",
+    },
+    {
+      name: "D365 Licensing Auditor",
+      image: supportImg,
+      blurb:
+        "A licensing optimization framework that reviews security-role and license mapping, identifies unused or over-licensed roles, and produces a compliance-ready remediation plan.",
+    },
+    {
+      name: "Data Archival & Purging Accelerator",
+      image: engineeringImg,
+      blurb:
+        "A policy-driven archival framework for D365 Finance and Supply Chain data that has delivered 30–50% database size reduction and 30–40% query performance improvement on completed engagements.",
+    },
+    {
+      name: "PerfLens365",
+      image: consultingImg,
+      blurb:
+        "A closed-loop performance engineering toolkit spanning load validation, continuous monitoring, and architectural diagnostics across D365 F&O, Commerce, POS, CE, Power Platform, and Azure.",
+    },
+    {
+      name: "In-Store Mobility Suite",
+      image: retailImg,
+      blurb:
+        "A unified set of Power Apps mobile applications integrated with D365 F&O for shelf labeling, stock write-offs, warehouse ordering, and cycle counts directly from handheld devices.",
     },
   ];
   return (
@@ -723,45 +770,52 @@ function Solutions() {
       <div aria-hidden className="mesh-blobs-light opacity-50" />
       <div className="container-enterprise relative">
         <div className="max-w-2xl">
-          <p className="eyebrow">Solutions</p>
+          <p className="eyebrow">Products &amp; Accelerators</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Built for how your enterprise runs.
+            Pre-built IP that shortens time-to-value.
           </h2>
         </div>
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          {solutions.map((s) => (
-            <article
-              key={s.name}
-              className="group card-lift grid overflow-hidden rounded-3xl border border-border bg-white sm:grid-cols-2"
-            >
-              {/* Image on the side (distinct from Services' image-on-top) */}
-              <div className="relative min-h-[220px] overflow-hidden">
-                <img
-                  src={s.image}
-                  alt={s.name}
-                  loading="lazy"
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/50 to-transparent sm:bg-gradient-to-r" />
-              </div>
-              {/* Content */}
-              <div className="flex flex-col p-7">
-                <h3 className="text-xl font-semibold leading-snug text-[var(--navy-deep)]">{s.name}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{s.blurb}</p>
-                <ul className="mt-5 space-y-2">
-                  {s.points.map((p) => (
-                    <li key={p} className="flex items-center gap-2 text-sm font-medium text-[var(--navy-deep)]">
-                      <span className="h-1.5 w-1.5 rounded-full bg-[var(--royal)]" />
-                      {p}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-auto pt-6">
-                  <LearnMore label="Explore solutions" />
+      </div>
+
+      {/* Horizontal swipe track — same pattern as Services */}
+      <div
+        className="container-enterprise relative mt-12"
+        style={{
+          ["--svc-card" as string]: "calc((min(1272px, 100vw - 3rem) - 3 * 1.5rem) / 4)",
+          ["--svc-bleed" as string]: "max(0px, calc((100vw - 1320px) / 2 + 1.5rem))",
+        }}
+      >
+        <div
+          className="scroll-hide snap-x snap-mandatory -mx-6 -my-6 overflow-x-auto px-6 py-6"
+          style={{ marginRight: "calc(-1 * var(--svc-bleed))" }}
+        >
+          <div className="flex gap-6 pr-6">
+            {products.map((p) => (
+              <article
+                key={p.name}
+                style={{ width: "var(--svc-card)" }}
+                className="group card-lift flex min-w-[260px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white"
+              >
+                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    loading="lazy"
+                    width={1024}
+                    height={640}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
-              </div>
-            </article>
-          ))}
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="text-lg font-semibold leading-snug text-[var(--navy-deep)]">{p.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">{p.blurb}</p>
+                  <div className="mt-auto pt-6">
+                    <LearnMore label="Learn more" />
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -772,44 +826,60 @@ function Solutions() {
 function Services() {
   const services = [
     {
-      icon: Wrench,
+      name: "Advisory",
+      image: consultingImg,
+      approach:
+        "Business transformation starts before implementation. We assess processes, identify gaps, and design a roadmap that aligns technology investments with measurable business outcomes.",
+      outcome: "Transformation roadmap with clear business priorities before implementation begins.",
+    },
+    {
       name: "Implementation",
       image: implementationImg,
-      accent: "bg-[var(--royal)]",
-      approach: "End-to-end Dynamics 365 rollouts, Success by Design.",
-      outcome: "Go-live in 12–16 weeks, zero critical incidents.",
+      approach:
+        "End-to-end Dynamics 365 implementation using Lumovy's configure-first, MVP-driven delivery model — from discovery and data migration to integrations and go-live, with Microsoft FastTrack and Success by Design at every stage.",
+      outcome: "Majid Al Futtaim's Sava brand live on ERP-enabled operations in under 100 days.",
     },
     {
-      icon: Compass,
-      name: "Consulting",
-      image: consultingImg,
-      accent: "bg-emerald-500",
-      approach: "Transformation strategy anchored to CFO-grade business cases.",
-      outcome: "Fundable roadmap in 6–8 weeks.",
-    },
-    {
-      icon: Cog,
-      name: "Engineering",
-      image: engineeringImg,
-      accent: "bg-violet-500",
-      approach: "Data, quality engineering, and AI/Copilot on Azure.",
-      outcome: "2–3x release velocity, audit-ready quality gates.",
-    },
-    {
-      icon: Rocket,
-      name: "AI & Copilot",
-      image: consultingImg,
-      accent: "bg-cyan-500",
-      approach: "Copilot rollouts and custom AI agents on Azure OpenAI.",
-      outcome: "Faster workflows with governed, secure AI.",
-    },
-    {
-      icon: LifeBuoy,
-      name: "Support",
+      name: "Managed Support & Expansion",
       image: supportImg,
-      accent: "bg-amber-500",
-      approach: "24/7 managed services and AMS for Dynamics 365 and Azure.",
-      outcome: "99%+ SLA adherence, 30% faster resolution.",
+      approach:
+        "24×7 managed support for Dynamics 365 and Azure with SLA-driven service, proactive monitoring, continuous optimization, and release management delivered through a global delivery model.",
+      outcome: "120+ Dynamics 365 upgrades delivered with enterprise-grade SLA compliance.",
+    },
+    {
+      name: "Integrations & Modernization",
+      image: engineeringImg,
+      approach:
+        "Simplify your operations and accelerate digital transformation with Azure-native integrations, cloud applications, and Power Platform solutions.",
+      outcome: "Unified enterprise integrations powered by Azure and Microsoft Power Platform.",
+    },
+    {
+      name: "Enterprise Agentic AI Solutions",
+      image: consultingImg,
+      approach:
+        "Deploy production-ready AI agents inside your Microsoft ecosystem using Lumovy's AI Factory, combining Microsoft Copilot, proprietary industry agents, and custom AI solutions with built-in governance.",
+      outcome: "Production-ready enterprise AI delivered in as little as 20–60 days.",
+    },
+    {
+      name: "Legacy Migration",
+      image: implementationImg,
+      approach:
+        "Transition from any legacy ERP to Dynamics 365 with a proven migration framework that minimizes business disruption while optimizing licensing, data, and customizations.",
+      outcome: "Accelerate migration by up to 30% without business disruption.",
+    },
+    {
+      name: "Quality Engineering Factory",
+      image: engineeringImg,
+      approach:
+        "Deliver every release with confidence through AI-embedded automated testing, performance engineering, and continuous quality assurance across your entire ecosystem.",
+      outcome: "80% reduction in manual testing and up to 6× faster validation cycles.",
+    },
+    {
+      name: "Global Capability Centers",
+      image: supportImg,
+      approach:
+        "From cost center to value creator. We build GCCs that move beyond labour arbitrage into strategic delivery and innovation hubs that own outcomes and drive growth, not just headcount.",
+      outcome: "Deploy specialized talent in under 3 weeks with 100% demand fulfillment.",
     },
   ];
   return (
@@ -818,7 +888,7 @@ function Services() {
         <div>
           <p className="eyebrow">Services</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Outcome-led delivery, end to end.
+            One partner, from strategy to continuous optimization.
           </h2>
         </div>
       </div>
@@ -880,37 +950,32 @@ function Services() {
 function Industries() {
   const items = [
     {
-      icon: Store,
-      name: "Retail & Commerce",
+      name: "Retail & Omnichannel Commerce",
       image: retailImg,
-      challenges: "Omnichannel orchestration at scale, across regions.",
-      outcomes: "Higher conversion and inventory efficiency.",
-      logos: [
-        { src: mattressFirmLogo, alt: "Mattress Firm", sizeClass: "h-14" },
-        { src: janieJackLogo, alt: "Janie and Jack" },
-      ],
+      headline: "Commerce Without Boundaries",
+      subhead:
+        "Connect digital and physical retail with unified operations, intelligent fulfillment, and personalized customer experiences powered by Microsoft.",
     },
     {
-      icon: Store,
-      name: "Hypermarket",
+      name: "Modern Grocery & Hypermarkets",
       image: engineeringImg,
-      challenges: "High-volume checkout and multi-format inventory.",
-      outcomes: "Faster throughput and fewer stockouts.",
-      logos: [
-        { src: mafLogo, alt: "Majid Al Futtaim" },
-        { src: gilbarcoLogo, alt: "Gilbarco Veeder-Root" },
-      ],
+      headline: "The Future of Food Retail Starts Here",
+      subhead:
+        "Enable AI-powered store operations, optimized supply chains, and intelligent merchandising for modern grocery and discount retail.",
     },
     {
-      icon: Hotel,
-      name: "Hospitality",
+      name: "Hospitality, Entertainment & Sports",
       image: hospitalityImg,
-      challenges: "Guest, property, and loyalty on fragmented systems.",
-      outcomes: "Higher RevPAR and faster check-in.",
-      logos: [
-        { src: mafLogo, alt: "Majid Al Futtaim" },
-        { src: gilbarcoLogo, alt: "Gilbarco Veeder-Root" },
-      ],
+      headline: "Every Guest Interaction Matters",
+      subhead:
+        "Deliver frictionless dining, concessions, and venue experiences that maximize operational efficiency and revenue.",
+    },
+    {
+      name: "Public Sector",
+      image: consultingImg,
+      headline: "Digital Services Built on Trust",
+      subhead:
+        "Modernize government operations with secure, compliant platforms that improve service delivery and operational resilience.",
     },
   ];
   return (
@@ -929,56 +994,32 @@ function Industries() {
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {items.map((i) => {
-            return (
-              <article key={i.name} className="group card-lift flex flex-col overflow-hidden rounded-3xl border border-border bg-white">
-                <div className="relative aspect-[21/9] w-full overflow-hidden">
-                  <img
-                    src={i.image}
-                    alt={i.name}
-                    loading="lazy"
-                    width={1024}
-                    height={439}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/40 to-transparent" />
-                  <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-[var(--navy-deep)] shadow-sm backdrop-blur">
-                    {i.name}
-                  </span>
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {items.map((i) => (
+            <article key={i.name} className="group card-lift flex flex-col overflow-hidden rounded-3xl border border-border bg-white">
+              <div className="relative aspect-[21/9] w-full overflow-hidden">
+                <img
+                  src={i.image}
+                  alt={i.name}
+                  loading="lazy"
+                  width={1024}
+                  height={439}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/40 to-transparent" />
+                <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-[var(--navy-deep)] shadow-sm backdrop-blur">
+                  {i.name}
+                </span>
+              </div>
+              <div className="flex flex-1 flex-col px-6 pb-6 pt-7">
+                <h3 className="text-xl font-semibold leading-snug text-[var(--navy-deep)]">{i.headline}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{i.subhead}</p>
+                <div className="mt-auto pt-6">
+                  <LearnMore label="Explore industry" />
                 </div>
-                <div className="flex flex-1 flex-col px-6 pb-6 pt-7">
-                  <dl className="space-y-4">
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-widest text-[var(--blue-gray)]">Challenges</dt>
-                      <dd className="mt-1 text-sm text-[var(--navy-deep)]">{i.challenges}</dd>
-                    </div>
-                    <div>
-                      <dt className="text-[11px] font-semibold uppercase tracking-widest text-[var(--success)]">Outcomes</dt>
-                      <dd className="mt-1 text-sm text-[var(--navy-deep)]">{i.outcomes}</dd>
-                    </div>
-                  </dl>
-                  <div className="mt-6">
-                    <LearnMore label="Explore package" />
-                  </div>
-                  <div className="mt-8 flex h-16 items-center gap-6 border-t border-border pt-6">
-                    {i.logos.map((l) => (
-                      <img
-                        key={l.alt}
-                        src={l.src}
-                        alt={l.alt}
-                        loading="lazy"
-                        className={
-                          "w-auto max-h-full max-w-[130px] object-contain opacity-75 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0 " +
-                          (("sizeClass" in l && l.sizeClass) || "h-10")
-                        }
-                      />
-                    ))}
-                  </div>
-                </div>
-              </article>
-            );
-          })}
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -989,40 +1030,45 @@ function Industries() {
 function WhyLumovy() {
   const pillars = [
     {
-      icon: Users,
-      t: "Senior-only teams",
-      d: "80% of consultants have 8+ years of experience.",
-      proofs: ["12 Microsoft MVPs", "40+ MCT trainers", "180+ senior consultants"],
+      icon: Award,
+      t: "Microsoft Credentials & Designations",
+      d: "A direct line to Microsoft — Solutions Partner across Business Applications and Data & AI, and a FastTrack Portfolio Partner.",
+      proofs: [
+        "Business Applications",
+        "Data & AI (Azure)",
+        "FastTrack Portfolio Partner",
+        "FDE agentic-AI co-creator",
+        "12 MVPs · 40+ MCTs",
+        "300+ certifications",
+      ],
     },
     {
-      icon: Award,
-      t: "Microsoft Solutions Partner",
-      d: "Designated across Business Applications, Data & AI, and Infrastructure.",
-      proofs: ["Business Applications", "Data & AI · Azure", "Success by Design certified"],
+      icon: Layers,
+      t: "Configure-first, MVP-based delivery",
+      d: "Capability-focused solution modeling aligned to product squads for faster value realization.",
+      proofs: ["Configure First approach", "Faster go-live", "Squad-aligned modeling"],
     },
     {
       icon: BadgeCheck,
-      t: "Certified engineers",
-      d: "Every consultant holds a role-based Microsoft certification.",
-      proofs: ["300+ MB/PL/AZ certs", "MB-700 Solution Architects", "PL-600 Power Platform"],
-    },
-    {
-      icon: Shield,
-      t: "Security by design",
-      d: "Regulated-industry controls from architecture to release.",
-      proofs: ["SOC 2 Type II", "ISO 27001 · ISO 9001", "GDPR · HIPAA workflows"],
-    },
-    {
-      icon: Gauge,
-      t: "Outcome contracts",
-      d: "SOWs anchored to business KPIs, not hours billed.",
-      proofs: ["98% on-time delivery", "Fixed-fee available", "Quarterly business review"],
+      t: "Platform-agnostic Quality Engineering",
+      d: "A dedicated QE discipline with tool-agnostic automation across the leading frameworks.",
+      proofs: [
+        "50+ Quality Engineers",
+        "40+ automation engineers",
+        "Leapwork · Playwright · Tosca · Selenium · RSAT",
+      ],
     },
     {
       icon: Globe2,
-      t: "Global delivery",
-      d: "Follow-the-sun teams across the Americas, EMEA, and APAC.",
-      proofs: ["4 delivery centers", "32 countries served", "24/7 coverage"],
+      t: "Cost-efficient global delivery",
+      d: "Round-the-clock delivery across seven countries with a balanced offshore/onshore mix.",
+      proofs: ["India · Pakistan · UAE · UK", "Spain · Canada · USA", "79% offshore / 21% onshore"],
+    },
+    {
+      icon: Shield,
+      t: "End-to-end ownership",
+      d: "Ownership is not one value among several — it is the foundation the rest of the delivery model is built on.",
+      proofs: ["Outcome accountability", "Named delivery principal"],
     },
   ];
   return (
@@ -1071,45 +1117,69 @@ function WhyLumovy() {
 function CaseStudies() {
   const cases = [
     {
-      sector: "Global Retail Group · Confidential",
-      title: "Unified commerce across 32 markets on Dynamics 365.",
-      challenge: "Six regional platforms, inconsistent promotions across brands.",
+      sector: "Majid Al Futtaim (Sava)",
+      title: "Cloud-First Grocery & Discount Launch in Under 100 Days",
+      challenge:
+        "No existing systems or operational infrastructure; complex ambient/chilled/frozen inventory handling; tight deadlines for store opening.",
       results: [
-        ["+14%", "Conversion lift"],
-        ["-22%", "Stockouts"],
-        ["11 wks", "Time to first market"],
-      ],
-      logos: [
-        { src: mafLogo, alt: "Majid Al Futtaim" },
-        { src: mattressFirmLogo, alt: "Mattress Firm" },
+        ["100 days", "To full ERP-enabled store operations"],
+        ["130+", "Business processes, 14 modules"],
+        ["1,600+", "SKUs; 160 weekly offers"],
       ],
     },
     {
-      sector: "Specialty Retailer · Fortune 500",
-      title: "D365 Commerce + Copilot at 900+ stores.",
-      challenge: "Manual operations, 21-day promotion cycles, margin leak.",
+      sector: "Cavender's",
+      title: "Unified, AI-Powered Customer Experience",
+      challenge:
+        "Disconnected voice, email, and knowledge systems; no automated case routing; no unified 360° view.",
       results: [
-        ["63%", "Faster promotion cycle"],
-        ["$18M", "Margin protected"],
-        ["PCI", "SOC 2 audited"],
-      ],
-      logos: [
-        { src: janieJackLogo, alt: "Janie and Jack" },
-        { src: fedexLogo, alt: "FedEx" },
+        ["+75%", "Agent efficiency"],
+        ["-60%", "Case processing time"],
+        ["-50%", "Manual effort"],
       ],
     },
     {
-      sector: "Global Logistics · Confidential",
-      title: "Azure data platform for real-time fleet visibility.",
-      challenge: "Legacy ERP, 14-month time-to-market per service line.",
+      sector: "U.S. Omnichannel Specialty Retailer",
+      title: "Intelligent, Omnichannel Order Fulfillment",
+      challenge:
+        "Fragmented fulfillment and limited inventory visibility; rising order volumes and multi-store complexity.",
       results: [
-        ["78%", "Time-to-market reduction"],
-        ["$42M", "Annual run-cost saved"],
-        ["0", "Critical incidents post cutover"],
+        ["99%", "Order fulfillment efficiency"],
+        ["<1%", "Order cancellations"],
+        ["25%", "Upsell via BOPIS"],
       ],
-      logos: [
-        { src: fedexLogo, alt: "FedEx" },
-        { src: gilbarcoLogo, alt: "Gilbarco Veeder-Root" },
+    },
+    {
+      sector: "Utah DABS",
+      title: "From Underutilization to Optimization on Dynamics 365",
+      challenge:
+        "Manual, spreadsheet-based reconciliation; audit gaps; outdated bailment-inventory costing logic.",
+      results: [
+        ["Audit-ready", "Bailment valuation & COGS"],
+        ["Lower", "Safety stock via forecasting"],
+        ["Faster", "Financial close"],
+      ],
+    },
+    {
+      sector: "Monumental",
+      title: "Enabling Frictionless Commerce at a Next-Generation Venue",
+      challenge:
+        "Integration gaps between checkout technologies; no end-to-end alignment across apps, POS, and back office; stability risk during live events.",
+      results: [
+        ["Real-time", "Core integration"],
+        ["Event-grade", "High-traffic resilience"],
+        ["Multi-year", "Sustained engineering"],
+      ],
+    },
+    {
+      sector: "Mattress Firm",
+      title: "One-Stop End-to-End Test Automation",
+      challenge:
+        "Long manual test cycles; fragmented automation across tools; complex D365 integrations; defect leakage during UAT and go-live.",
+      results: [
+        ["87%", "Manual-effort savings"],
+        ["65%", "Cycle-time reduction"],
+        ["+60%", "New capabilities per release"],
       ],
     },
   ];
@@ -1121,11 +1191,11 @@ function CaseStudies() {
           <div className="max-w-2xl">
             <p className="eyebrow">Case studies</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Anonymized engagements. Auditable outcomes.
+              Real engagements. Auditable outcomes.
             </h2>
           </div>
           <a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
-            Request full references
+            Request Full References
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>
@@ -1138,24 +1208,13 @@ function CaseStudies() {
               <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border pt-6">
                 {c.results.map(([v, l]) => (
                   <div key={l}>
-                    <div className="text-xl font-bold text-[var(--navy-deep)]">{v}</div>
+                    <div className="text-lg font-bold text-[var(--navy-deep)]">{v}</div>
                     <div className="mt-1 text-[11px] font-medium leading-tight text-[var(--blue-gray)]">{l}</div>
                   </div>
                 ))}
               </div>
               <div className="mt-6">
-                <LearnMore label="Read the engagement" />
-              </div>
-              <div className="mt-6 flex items-center gap-5 border-t border-border pt-5">
-                {c.logos.map((l) => (
-                  <img
-                    key={l.alt}
-                    src={l.src}
-                    alt={l.alt}
-                    loading="lazy"
-                    className="h-9 w-auto max-w-[110px] object-contain opacity-70 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
-                  />
-                ))}
+                <LearnMore label="Read the Engagement" />
               </div>
             </article>
           ))}
@@ -1371,11 +1430,11 @@ function Testimonials() {
 /* FRAMEWORK */
 function Framework() {
   const steps = [
-    { no: "01", when: "Weeks 1–3", title: "Discovery & blueprint", desc: "Business case and delivery plan, signed off by your committee.", icon: Compass },
-    { no: "02", when: "Weeks 4–12", title: "Build in sprints", desc: "Two-week sprints with executive-ready demos.", icon: Layers },
-    { no: "03", when: "Weeks 13–16", title: "End-to-end validation", desc: "UAT, security, and performance testing.", icon: BadgeCheck },
-    { no: "04", when: "Go-live", title: "Cutover + hypercare", desc: "60-day hypercare with a dedicated principal.", icon: Rocket },
-    { no: "05", when: "Ongoing", title: "Managed services", desc: "24/7 AMS with monthly executive scorecards.", icon: LifeBuoy },
+    { no: "01", when: "Initiate", title: "MVP Blueprinting", desc: "Solution blueprint workshop, team formation, scope and roadmap definition.", icon: Compass },
+    { no: "02", when: "Design & Build", title: "Rapid MVP Implementation", desc: "Capability-focused, configure-first build in iterative sprints with business demos and review at every cycle.", icon: Layers },
+    { no: "03", when: "Test", title: "Quality Engineering Factory", desc: "Platform-agnostic functional, integration, and performance testing; UAT with business users.", icon: BadgeCheck },
+    { no: "04", when: "Deploy", title: "Cutover & Hypercare", desc: "Phased, low-risk cutover with a dedicated hypercare period led by a named delivery principal.", icon: Rocket },
+    { no: "05", when: "Operate", title: "Managed Operations & Release Trains", desc: "24×7 support with SLA-based response times and structured release-train management.", icon: LifeBuoy },
   ];
   return (
     <section className="relative overflow-hidden border-b border-border bg-[var(--blue-light)]/40 py-28">
@@ -1572,16 +1631,16 @@ function Contact() {
             </div>
             <dl className="mt-8 space-y-3 text-sm">
               <div className="flex items-center gap-3 text-[var(--navy-deep)]">
-                <Phone className="h-4 w-4 text-[var(--royal)]" />
-                <span>+1 (415) 555-0140 · Mon–Fri, 08:00–20:00 ET</span>
-              </div>
-              <div className="flex items-center gap-3 text-[var(--navy-deep)]">
                 <Mail className="h-4 w-4 text-[var(--royal)]" />
-                <a href="mailto:hello@lumovy.com">hello@lumovy.com</a>
+                <a href="mailto:info@lumovy.com">info@lumovy.com</a>
               </div>
               <div className="flex items-center gap-3 text-[var(--navy-deep)]">
                 <Globe2 className="h-4 w-4 text-[var(--royal)]" />
-                <span>Delivery centers: New York · London · Dubai · Bangalore</span>
+                <a href="https://www.lumovy.com">www.lumovy.com</a>
+              </div>
+              <div className="flex items-start gap-3 text-[var(--navy-deep)]">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--royal)]" />
+                <span>United States · Canada · United Kingdom · Spain · UAE (Dubai) · India · Pakistan</span>
               </div>
             </dl>
           </div>
@@ -1691,12 +1750,17 @@ function LearnMore({ label = "Learn more", href = "#contact" }: { label?: string
 /* FAQ */
 function FAQ() {
   const items = [
-    ["What engagement models do you offer?", "Fixed-outcome SOWs, dedicated squads, and staff augmentation. Most enterprise clients choose outcome-based SOWs with quarterly business reviews."],
-    ["How quickly can we start?", "Kickoff within 2–4 weeks of signed SOW. NDA and security review typically complete in under 5 business days."],
-    ["Which regions and time zones do you cover?", "Delivery centers in the Americas, EMEA, GCC, and APAC. All engagements include overlap hours with your primary time zone."],
-    ["Are you procurement-approved for enterprises?", "Yes. We are onboarded across Ariba, Coupa, SAP Fieldglass, and Workday. Standard MSA, DPA, and insurance certificates on request."],
-    ["What security certifications do you hold?", "SOC 2 Type II, ISO 27001. Regulated-industry practices for HIPAA, PCI DSS, and GDPR."],
-    ["Do you sign mutual NDAs?", "Yes — mutual NDA turnaround is under 24 hours in most cases."],
+    ["Why choose Lumovy over a traditional implementation partner?", "We combine strategic advisory, implementation, managed services, quality engineering, AI, and modernization under one Microsoft-focused practice. This allows clients to work with a single partner from strategy through continuous optimization."],
+    ["What industries does Lumovy specialize in?", "Our primary focus includes Retail & Omnichannel Commerce, Modern Grocery & Hypermarkets, Hospitality, Sports & Entertainment, Consumer Goods, Public Sector, and complex enterprise operations running on Microsoft technologies."],
+    ["Which Microsoft technologies do you specialize in?", "We deliver solutions across Dynamics 365, Power Platform, Azure, Microsoft Copilot, Fabric, AI, and enterprise integrations, backed by Microsoft's Success by Design methodology and FastTrack engagement where applicable."],
+    ["How quickly can Lumovy deliver a Dynamics 365 implementation?", "Delivery timelines depend on business complexity. Using our Configure-First, MVP-based methodology, many organizations realize value significantly faster than traditional phased implementations while maintaining governance and quality."],
+    ["Can you modernize our existing Dynamics AX or legacy ERP environment?", "Yes. We help organizations migrate from legacy ERP platforms to Dynamics 365 using phased modernization strategies that reduce operational disruption, preserve business continuity, and optimize licensing investments."],
+    ["Can Lumovy integrate Dynamics 365 with our existing systems?", "Absolutely. We design and implement enterprise integrations connecting ERP, CRM, eCommerce, POS, warehouse, payment platforms, ISVs, and legacy applications using Azure Integration Services and modern APIs."],
+    ["Do you support highly customized Dynamics 365 environments?", "Yes. Our teams support standard Microsoft capabilities, custom extensions, ISV solutions, legacy customizations, and complex enterprise integrations while following Microsoft's recommended extensibility practices."],
+    ["What happens after go-live?", "Our relationship doesn't end at deployment. We provide 24×7 managed support, proactive monitoring, continuous optimization, release management, performance tuning, and platform expansion as business needs evolve."],
+    ["How do you ensure implementation quality?", "Quality engineering is embedded throughout every project, not treated as a final phase. We combine automation, performance engineering, regression testing, and continuous validation to reduce release risk and improve deployment confidence."],
+    ["How does Lumovy approach AI?", "We focus on practical enterprise AI. Our AI Factory helps organizations deploy Microsoft Copilot, industry-specific agents, and custom AI solutions with governance, security, and human approval built into every workflow."],
+    ["How do you minimize project risk?", "Every engagement begins with business process assessment, architecture validation, governance planning, and Microsoft-aligned delivery practices. Our Configure-First philosophy minimizes unnecessary customization while improving upgradeability and long-term platform health."],
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
@@ -1827,16 +1891,16 @@ function Footer() {
             <a href="https://www.linkedin.com/company/lumovy" className="inline-flex items-center gap-1.5 hover:text-[var(--royal)]">
               <Linkedin className="h-4 w-4" /> LinkedIn
             </a>
-            <a href="mailto:hello@lumovy.com" className="inline-flex items-center gap-1.5 hover:text-[var(--royal)]">
-              <Mail className="h-4 w-4" /> hello@lumovy.com
+            <a href="mailto:info@lumovy.com" className="inline-flex items-center gap-1.5 hover:text-[var(--royal)]">
+              <Mail className="h-4 w-4" /> info@lumovy.com
             </a>
-            <a href="tel:+14155550140" className="inline-flex items-center gap-1.5 hover:text-[var(--royal)]">
-              <Phone className="h-4 w-4" /> +1 (415) 555-0140
+            <a href="https://www.lumovy.com" className="inline-flex items-center gap-1.5 hover:text-[var(--royal)]">
+              <Globe2 className="h-4 w-4" /> www.lumovy.com
             </a>
           </div>
           <div className="text-xs text-[var(--blue-gray)] md:text-center">
             <span className="inline-flex items-center gap-1.5">
-              <MapPin className="h-3.5 w-3.5" /> New York · London · Dubai · Bangalore
+              <MapPin className="h-3.5 w-3.5" /> US · Canada · UK · Spain · UAE · India · Pakistan
             </span>
           </div>
           <div className="flex flex-wrap gap-4 text-xs text-[var(--blue-gray)] md:justify-end">
