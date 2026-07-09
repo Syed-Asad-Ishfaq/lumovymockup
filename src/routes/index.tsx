@@ -443,13 +443,30 @@ const HERO_SLIDE_MS = 6500;
 function HeroSlider() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
+  const [phase, setPhase] = useState<"in" | "out">("in");
 
+  // Auto-advance: fade the current slide OUT, then swap to the next and fade IN.
   useEffect(() => {
     if (paused) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const t = setTimeout(() => setActive((i) => (i + 1) % HERO_SLIDES.length), HERO_SLIDE_MS);
+    const t = setTimeout(() => setPhase("out"), HERO_SLIDE_MS - 400);
     return () => clearTimeout(t);
   }, [active, paused]);
+
+  // When the OUT animation finishes, advance to the next slide and fade IN.
+  const handleAnimEnd = () => {
+    if (phase === "out") {
+      setActive((i) => (i + 1) % HERO_SLIDES.length);
+      setPhase("in");
+    }
+  };
+
+  // Manual jump (dot click): quick out then in on the chosen slide.
+  const goTo = (i: number) => {
+    if (i === active) return;
+    setActive(i);
+    setPhase("in");
+  };
 
   const slide = HERO_SLIDES[active];
 
@@ -459,8 +476,12 @@ function HeroSlider() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Slide content — keyed so it re-animates on every change */}
-      <div key={active} className="animate-fade-up">
+      {/* Slide content — cross-fades in and out between slides */}
+      <div
+        key={active + phase}
+        onAnimationEnd={handleAnimEnd}
+        className={phase === "out" ? "hero-content-out" : "hero-content-in"}
+      >
         <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 backdrop-blur-sm">
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--cyan-soft)] animate-soft-pulse" />
@@ -479,7 +500,7 @@ function HeroSlider() {
         <div className="mt-9 flex flex-wrap items-center gap-3">
           <a
             href={slide.href}
-            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/30"
+            className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
           >
             {slide.cta}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -487,8 +508,44 @@ function HeroSlider() {
         </div>
       </div>
 
-      {/* Slide controls: progress/timer bars that double as clickable dots */}
-      <div className="mt-10 flex items-center gap-2" role="tablist" aria-label="Hero slides">
+      {/* Stable trust stats below the slider — center aligned */}
+      <div className="mt-12 flex flex-wrap justify-center gap-x-10 gap-y-6 text-center">
+        {[
+          ["SOC 2", "Type II"],
+          ["ISO 27001", "Certified"],
+          ["NDA", "Ready in 24h"],
+          ["Global", "Delivery"],
+        ].map(([a, b]) => (
+          <div key={a}>
+            <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/45">{a}</div>
+            <div className="mt-1 text-sm font-medium text-white/80">{b}</div>
+          </div>
+        ))}
+      </div>
+
+      {/* expose active slide + setter to the section-level timer bar */}
+      <HeroDots active={active} paused={paused} onSelect={goTo} />
+    </div>
+  );
+}
+
+/* Tiny, glassy slide indicator — pinned centered at the hero's bottom */
+function HeroDots({
+  active,
+  paused,
+  onSelect,
+}: {
+  active: number;
+  paused: boolean;
+  onSelect: (i: number) => void;
+}) {
+  return (
+    <div
+      className="pointer-events-none absolute inset-x-0 bottom-5 z-20 flex justify-center"
+      role="tablist"
+      aria-label="Hero slides"
+    >
+      <div className="pointer-events-auto flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2 py-1.5 backdrop-blur-md">
         {HERO_SLIDES.map((s, i) => (
           <button
             key={s.eyebrow}
@@ -496,38 +553,23 @@ function HeroSlider() {
             role="tab"
             aria-selected={i === active}
             aria-label={s.eyebrow}
-            onClick={() => setActive(i)}
-            className="group relative h-1 flex-1 overflow-hidden rounded-full bg-white/15"
+            onClick={() => onSelect(i)}
+            className="group relative h-0.5 w-6 overflow-hidden rounded-full bg-white/20"
           >
             <span
               className={
-                "absolute inset-y-0 left-0 rounded-full bg-[var(--cyan-soft)] " +
+                "absolute inset-y-0 left-0 rounded-full bg-white/70 " +
                 (i < active ? "w-full" : i === active ? "hero-timer-fill" : "w-0")
               }
               style={
                 i === active && !paused
                   ? { animationDuration: `${HERO_SLIDE_MS}ms` }
                   : i === active
-                    ? { width: "35%" }
+                    ? { width: "40%" }
                     : undefined
               }
             />
           </button>
-        ))}
-      </div>
-
-      {/* Stable trust stats below the slider */}
-      <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
-        {[
-          ["SOC 2", "Type II"],
-          ["ISO 27001", "Certified"],
-          ["NDA", "Ready in 24h"],
-          ["Global", "Delivery"],
-        ].map(([a, b]) => (
-          <div key={a} className="border-l border-white/15 pl-3.5">
-            <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/50">{a}</div>
-            <div className="mt-1 text-sm font-medium text-white/90">{b}</div>
-          </div>
         ))}
       </div>
     </div>

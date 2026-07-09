@@ -226,6 +226,22 @@
   animation: hero-timer linear forwards;
 }
 
+/* Hero slide content — gentle fade + rise on enter, fade + drop on exit */
+@keyframes hero-content-in {
+  0% { opacity: 0; transform: translateY(14px); filter: blur(4px); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+@keyframes hero-content-out {
+  0% { opacity: 1; transform: translateY(0); filter: blur(0); }
+  100% { opacity: 0; transform: translateY(-12px); filter: blur(4px); }
+}
+.hero-content-in {
+  animation: hero-content-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-content-out {
+  animation: hero-content-out 0.4s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
 @utility animate-fade-up {
   animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
