@@ -217,6 +217,15 @@
   100% { background-position: 60px 60px; }
 }
 
+/* Hero autoslider timer bar — fills across the active slide's duration */
+@keyframes hero-timer {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+.hero-timer-fill {
+  animation: hero-timer linear forwards;
+}
+
 @utility animate-fade-up {
   animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

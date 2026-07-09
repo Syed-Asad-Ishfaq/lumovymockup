@@ -396,6 +396,144 @@ function MobileMenuItem({ item, onNavigate }: { item: NavMain; onNavigate: () =>
 }
 
 /* HERO */
+const HERO_SLIDES = [
+  {
+    eyebrow: "Microsoft Solutions Partner",
+    headline: "Modernize mission-critical systems. Ship measurable business outcomes.",
+    subhead: "Lumovy is the force amplifier that propels modern businesses to success in the AI era.",
+    cta: "See Client Outcomes",
+    href: "#case-studies",
+  },
+  {
+    eyebrow: "Agentic AI",
+    headline: "Agentic AI That Actually Ships — Grounded in Your Data.",
+    subhead:
+      "Agents embedded directly in Dynamics 365 Finance, Commerce, and Customer Engagement. Never autonomous by default — built to earn trust fast.",
+    cta: "Explore the Lumovy AI Factory",
+    href: "#services",
+  },
+  {
+    eyebrow: "Rapid Implementation Playbook",
+    headline: "Our 100-day Rapid Implementation Playbook.",
+    subhead:
+      "How Majid Al Futtaim's Sava went from zero infrastructure to full ERP-enabled store operations in under 100 days.",
+    cta: "Read the MAF Case Study",
+    href: "#case-studies",
+  },
+  {
+    eyebrow: "Microsoft Credentials",
+    headline: "A Direct Line to Microsoft. Built to Move Fast.",
+    subhead:
+      "Top-rated global solutions partner and FastTrack portfolio partner, early co-creator for consumer use cases — with a direct working relationship into Microsoft's product teams, not a reseller relationship once removed.",
+    cta: "See Our Microsoft Credentials",
+    href: "#why",
+  },
+  {
+    eyebrow: "Quality & Trust",
+    headline: "20,000+ automated tests powered daily, across the globe.",
+    subhead:
+      "From a high-velocity test automation factory to enterprise QA ownership — reimagine quality architecture with our acclaimed Quality Engineering practice.",
+    cta: "Explore Quality Engineering",
+    href: "#services",
+  },
+];
+
+const HERO_SLIDE_MS = 6500;
+
+function HeroSlider() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const t = setTimeout(() => setActive((i) => (i + 1) % HERO_SLIDES.length), HERO_SLIDE_MS);
+    return () => clearTimeout(t);
+  }, [active, paused]);
+
+  const slide = HERO_SLIDES[active];
+
+  return (
+    <div
+      className="flex flex-col lg:col-span-7"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      {/* Slide content — keyed so it re-animates on every change */}
+      <div key={active} className="animate-fade-up">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 backdrop-blur-sm">
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--cyan-soft)] animate-soft-pulse" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--cyan-soft)]" />
+          </span>
+          <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
+            {slide.eyebrow}
+          </span>
+        </div>
+        <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.02em] text-white sm:text-5xl lg:text-[56px] lg:leading-[1.06]">
+          {slide.headline}
+        </h1>
+        <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-white/60">
+          {slide.subhead}
+        </p>
+        <div className="mt-9 flex flex-wrap items-center gap-3">
+          <a
+            href={slide.href}
+            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/30"
+          >
+            {slide.cta}
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </div>
+
+      {/* Slide controls: progress/timer bars that double as clickable dots */}
+      <div className="mt-10 flex items-center gap-2" role="tablist" aria-label="Hero slides">
+        {HERO_SLIDES.map((s, i) => (
+          <button
+            key={s.eyebrow}
+            type="button"
+            role="tab"
+            aria-selected={i === active}
+            aria-label={s.eyebrow}
+            onClick={() => setActive(i)}
+            className="group relative h-1 flex-1 overflow-hidden rounded-full bg-white/15"
+          >
+            <span
+              className={
+                "absolute inset-y-0 left-0 rounded-full bg-[var(--cyan-soft)] " +
+                (i < active ? "w-full" : i === active ? "hero-timer-fill" : "w-0")
+              }
+              style={
+                i === active && !paused
+                  ? { animationDuration: `${HERO_SLIDE_MS}ms` }
+                  : i === active
+                    ? { width: "35%" }
+                    : undefined
+              }
+            />
+          </button>
+        ))}
+      </div>
+
+      {/* Stable trust stats below the slider */}
+      <div className="mt-10 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
+        {[
+          ["SOC 2", "Type II"],
+          ["ISO 27001", "Certified"],
+          ["NDA", "Ready in 24h"],
+          ["Global", "Delivery"],
+        ].map(([a, b]) => (
+          <div key={a} className="border-l border-white/15 pl-3.5">
+            <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/50">{a}</div>
+            <div className="mt-1 text-sm font-medium text-white/90">{b}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <section className="hero-dark relative overflow-hidden">
@@ -404,51 +542,7 @@ function Hero() {
       <div aria-hidden className="hero-grid" />
       <div aria-hidden className="hero-grain" />
       <div className="container-enterprise relative z-10 grid gap-14 py-24 lg:grid-cols-12 lg:gap-10 lg:py-36">
-        <div className="lg:col-span-7 animate-fade-up">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 backdrop-blur-sm">
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--cyan-soft)] animate-soft-pulse" />
-              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--cyan-soft)]" />
-            </span>
-            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
-              Microsoft Solutions Partner
-            </span>
-          </div>
-          <h1 className="mt-8 text-5xl font-semibold leading-[1.04] tracking-[-0.02em] text-white sm:text-6xl lg:text-[76px]">
-            Modernize
-            <br />
-            mission-critical
-            <br />
-            <span className="bg-gradient-to-r from-white via-[var(--cyan-soft)] to-[var(--azure)] bg-clip-text text-transparent">
-              systems.
-            </span>
-          </h1>
-          <p className="mt-7 max-w-md text-lg font-light leading-relaxed text-white/60">
-            The Microsoft Solutions Partner for Dynamics&nbsp;365, Azure, and Power Platform.
-          </p>
-          <div className="mt-10 flex flex-wrap items-center gap-3">
-            <a
-              href="#case-studies"
-              className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
-            >
-              See client outcomes
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
-          </div>
-          <div className="mt-14 grid grid-cols-2 gap-x-8 gap-y-6 sm:grid-cols-4">
-            {[
-              ["SOC 2", "Type II"],
-              ["ISO 27001", "Certified"],
-              ["NDA", "Ready in 24h"],
-              ["Global", "Delivery"],
-            ].map(([a, b]) => (
-              <div key={a} className="border-l border-white/15 pl-3.5">
-                <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/50">{a}</div>
-                <div className="mt-1 text-sm font-medium text-white/90">{b}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+        <HeroSlider />
         <aside className="lg:col-span-5">
           <div className="glass-panel rounded-3xl p-7">
             <div className="flex items-center gap-2">
