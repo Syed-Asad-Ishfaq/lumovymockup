@@ -105,22 +105,30 @@ type NavMain = { label: string; groups?: NavGroup[]; href?: string };
 
 const NAV_MENU: NavMain[] = [
   {
-    label: "Solutions",
+    label: "Products & Accelerators",
     groups: [
       {
-        heading: "Enterprise Business Solutions",
+        heading: "Retail & Commerce",
         items: [
-          { label: "Commerce", href: "#services" },
-          { label: "Finance", href: "#services" },
-          { label: "Supply Chain", href: "#services" },
-          { label: "Customer Experience", href: "#services" },
+          { label: "D365 for Hypermarkets", href: "#solutions" },
+          { label: "B2B in a Box", href: "#solutions" },
+          { label: "Consumer Swift Commerce", href: "#solutions" },
+          { label: "In-Store Mobility Suite", href: "#solutions" },
         ],
       },
       {
-        heading: "Products & Accelerators",
+        heading: "Hospitality & Operations",
         items: [
-          { label: "Inventory Intelligence", href: "#services" },
-          { label: "Consumer Swift Commerce App", href: "#services" },
+          { label: "Innovative Hospitality Solution (IHS)", href: "#solutions" },
+          { label: "Clarity RFID Connector", href: "#solutions" },
+        ],
+      },
+      {
+        heading: "Platform & Performance",
+        items: [
+          { label: "D365 Licensing Auditor", href: "#solutions" },
+          { label: "Data Archival & Purging Accelerator", href: "#solutions" },
+          { label: "PerfLens365", href: "#solutions" },
         ],
       },
     ],
@@ -128,23 +136,29 @@ const NAV_MENU: NavMain[] = [
   {
     label: "Services",
     groups: [
-      { heading: "Consulting", items: [{ label: "Digital Transformation", href: "#services" }] },
       {
-        heading: "Implementation",
+        heading: "Advisory & Delivery",
         items: [
-          { label: "Dynamics 365 Implementation", href: "#services" },
-          { label: "Integrations", href: "#services" },
+          { label: "Advisory", href: "#services" },
+          { label: "Implementation", href: "#services" },
+          { label: "Legacy Migration", href: "#services" },
         ],
       },
       {
-        heading: "Engineering",
+        heading: "Engineering & AI",
         items: [
-          { label: "Data & Analytics", href: "#services" },
-          { label: "Quality Engineering", href: "#services" },
+          { label: "Integrations & Modernization", href: "#services" },
+          { label: "Enterprise Agentic AI Solutions", href: "#services" },
+          { label: "Quality Engineering Factory", href: "#services" },
         ],
       },
-      { heading: "AI", items: [{ label: "AI & Copilot", href: "#services" }] },
-      { heading: "Support", items: [{ label: "Managed Services & Support", href: "#services" }] },
+      {
+        heading: "Run & Scale",
+        items: [
+          { label: "Managed Support & Expansion", href: "#services" },
+          { label: "Global Capability Centers", href: "#services" },
+        ],
+      },
     ],
   },
   {
@@ -153,9 +167,10 @@ const NAV_MENU: NavMain[] = [
       {
         heading: "Industries",
         items: [
-          { label: "Retail", href: "#industries" },
-          { label: "Hypermarket", href: "#industries" },
-          { label: "Hospitality", href: "#industries" },
+          { label: "Retail & Omnichannel Commerce", href: "#industries" },
+          { label: "Modern Grocery & Hypermarkets", href: "#industries" },
+          { label: "Hospitality, Entertainment & Sports", href: "#industries" },
+          { label: "Public Sector", href: "#industries" },
         ],
       },
     ],
@@ -166,8 +181,8 @@ const NAV_MENU: NavMain[] = [
       {
         heading: "Insights",
         items: [
-          { label: "Blogs", href: "#insights" },
           { label: "Case Studies", href: "#case-studies" },
+          { label: "Blogs", href: "#insights" },
           { label: "Whitepapers", href: "#insights" },
           { label: "News", href: "#insights" },
         ],
