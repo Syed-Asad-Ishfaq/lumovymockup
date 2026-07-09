@@ -88,7 +88,6 @@ function Index() {
       <Testimonials />
       <Framework />
       <Procurement />
-      <Comparison />
       <Contact />
       <FAQ />
       <FinalCTA />
@@ -440,7 +439,7 @@ const HERO_SLIDES = [
 
 const HERO_SLIDE_MS = 6500;
 
-function HeroSlider() {
+function useHeroSlider() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [phase, setPhase] = useState<"in" | "out">("in");
@@ -453,7 +452,6 @@ function HeroSlider() {
     return () => clearTimeout(t);
   }, [active, paused]);
 
-  // When the OUT animation finishes, advance to the next slide and fade IN.
   const handleAnimEnd = () => {
     if (phase === "out") {
       setActive((i) => (i + 1) % HERO_SLIDES.length);
@@ -461,13 +459,26 @@ function HeroSlider() {
     }
   };
 
-  // Manual jump (dot click): quick out then in on the chosen slide.
   const goTo = (i: number) => {
     if (i === active) return;
     setActive(i);
     setPhase("in");
   };
 
+  return { active, paused, phase, setPaused, handleAnimEnd, goTo };
+}
+
+function HeroSlider({
+  active,
+  phase,
+  setPaused,
+  handleAnimEnd,
+}: {
+  active: number;
+  phase: "in" | "out";
+  setPaused: (v: boolean) => void;
+  handleAnimEnd: () => void;
+}) {
   const slide = HERO_SLIDES[active];
 
   return (
@@ -507,9 +518,6 @@ function HeroSlider() {
           </a>
         </div>
       </div>
-
-      {/* expose active slide + setter to the section-level timer bar */}
-      <HeroDots active={active} paused={paused} onSelect={goTo} />
     </div>
   );
 }
@@ -581,14 +589,15 @@ function HeroDots({
 }
 
 function Hero() {
+  const { active, paused, phase, setPaused, handleAnimEnd, goTo } = useHeroSlider();
   return (
     <section className="hero-dark relative overflow-hidden">
       <div aria-hidden className="hero-beam" />
       <div aria-hidden className="hero-orbs" />
       <div aria-hidden className="hero-grid" />
       <div aria-hidden className="hero-grain" />
-      <div className="container-enterprise relative z-10 grid gap-14 pb-10 pt-24 lg:grid-cols-12 lg:gap-10 lg:pt-32">
-        <HeroSlider />
+      <div className="container-enterprise relative z-10 grid gap-14 pt-24 lg:grid-cols-12 lg:gap-10 lg:pt-32">
+        <HeroSlider active={active} phase={phase} setPaused={setPaused} handleAnimEnd={handleAnimEnd} />
         <aside className="lg:col-span-5">
           <div className="glass-panel rounded-3xl p-7">
             <div className="flex items-center gap-2">
@@ -624,6 +633,10 @@ function Hero() {
             </a>
           </div>
         </aside>
+      </div>
+      {/* Slide indicator — centered across the full hero width */}
+      <div className="relative z-10 pb-2 pt-6">
+        <HeroDots active={active} paused={paused} onSelect={goTo} />
       </div>
       <div className="container-enterprise">
         <HeroTrustStats />
