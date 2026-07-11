@@ -673,19 +673,13 @@ function MetricsBand() {
     <section className="relative overflow-hidden bg-[var(--navy-deep)] py-20 text-white">
       <div aria-hidden className="mesh-blobs opacity-50" />
       <div className="container-enterprise relative">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
-              Outcomes at scale
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Measured impact, not vanity metrics.
-            </h2>
-          </div>
-          <a href="#case-studies" className="inline-flex items-center gap-2 text-sm font-semibold text-white/90 hover:text-white">
-            Review methodology
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
+            Outcomes at scale
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Measured impact, not vanity metrics.
+          </h2>
         </div>
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {metrics.map(([v, l]) => (
