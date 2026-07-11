@@ -125,8 +125,7 @@ const NAV_MENU: NavMain[] = [
       {
         heading: "Platform & Performance",
         items: [
-          { label: "D365 Licensing Auditor", href: "#solutions" },
-          { label: "Data Archival & Purging Accelerator", href: "#solutions" },
+          { label: "Optim365", href: "#solutions" },
           { label: "PerfLens365", href: "#solutions" },
         ],
       },
@@ -400,7 +399,7 @@ const HERO_SLIDES = [
     eyebrow: "Microsoft Solutions Partner",
     headline: "Modernize mission-critical systems. Ship measurable business outcomes.",
     subhead:
-      "From legacy modernization to AI-powered innovation, Lumovy helps enterprises reduce complexity, accelerate delivery, and create measurable business value.",
+      "From legacy modernization to AI powered innovation, Lumovy helps enterprises reduce complexity, accelerate delivery, and create measurable business value.",
     cta: "See Client Outcomes",
     href: "#case-studies",
   },
@@ -421,20 +420,20 @@ const HERO_SLIDES = [
     href: "#case-studies",
   },
   {
-    eyebrow: "Microsoft Credentials",
-    headline: "Microsoft Expertise That Accelerates Transformation.",
-    subhead:
-      "Top-rated global solutions partner and FastTrack portfolio partner, early co-creator for consumer use cases — with a direct working relationship into Microsoft's product teams, not a reseller relationship once removed.",
-    cta: "See Our Microsoft Credentials",
-    href: "#why",
-  },
-  {
     eyebrow: "Quality & Trust",
     headline: "20,000+ automated tests powered daily, across the globe.",
     subhead:
       "From a high-velocity test automation factory to enterprise QA ownership — reimagine quality architecture with our acclaimed Quality Engineering practice.",
     cta: "Explore Quality Engineering",
     href: "#services",
+  },
+  {
+    eyebrow: "Microsoft Credentials",
+    headline: "Microsoft Expertise That Accelerates Transformation.",
+    subhead:
+      "Top-rated global solutions partner and FastTrack portfolio partner, early co-creator for consumer and AI use cases — with a direct working relationship into Microsoft's product teams, not a reseller relationship once removed.",
+    cta: "See Our Microsoft Credentials",
+    href: "#why",
   },
 ];
 
@@ -488,56 +487,41 @@ function HeroSlider({
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Slide content — cross-fades in and out between slides */}
-      <div
-        key={active + phase}
-        onAnimationEnd={handleAnimEnd}
-        className={phase === "out" ? "hero-content-out" : "hero-content-in"}
-      >
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 backdrop-blur-sm">
-          <span className="relative flex h-1.5 w-1.5">
-            <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--cyan-soft)] animate-soft-pulse" />
-            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--cyan-soft)]" />
-          </span>
-          <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
-            {slide.eyebrow}
-          </span>
-        </div>
-        <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.02em] text-white sm:text-5xl lg:text-[56px] lg:leading-[1.06]">
-          {slide.headline}
-        </h1>
-        <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-white/60">
-          {slide.subhead}
-        </p>
-        <div className="mt-9 flex flex-wrap items-center gap-3">
-          <a
-            href={slide.href}
-            className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
-          >
-            {slide.cta}
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
+      {/* Fixed-height wrapper so slide changes never reflow the page.
+          Sized to fit the tallest slide (headline + longest subhead). */}
+      <div className="relative min-h-[440px] sm:min-h-[420px] lg:min-h-[460px]">
+        {/* Slide content — cross-fades in and out between slides */}
+        <div
+          key={active + phase}
+          onAnimationEnd={handleAnimEnd}
+          className={phase === "out" ? "hero-content-out" : "hero-content-in"}
+        >
+          <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 backdrop-blur-sm">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full rounded-full bg-[var(--cyan-soft)] animate-soft-pulse" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--cyan-soft)]" />
+            </span>
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/70">
+              {slide.eyebrow}
+            </span>
+          </div>
+          <h1 className="mt-8 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-[-0.02em] text-white sm:text-5xl lg:text-[56px] lg:leading-[1.06]">
+            {slide.headline}
+          </h1>
+          <p className="mt-6 max-w-xl text-lg font-light leading-relaxed text-white/60">
+            {slide.subhead}
+          </p>
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href={slide.href}
+              className="group inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/10"
+            >
+              {slide.cta}
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
-
-/* Stable trust stats — fixed, centered, never animate, own row below the grid */
-function HeroTrustStats() {
-  return (
-    <div className="relative z-10 flex flex-wrap justify-center gap-x-12 gap-y-6 border-t border-white/10 px-6 pb-14 pt-10 text-center">
-      {[
-        ["SOC 2", "Type II"],
-        ["ISO 27001", "Certified"],
-        ["NDA", "Ready in 24h"],
-        ["Global", "Delivery"],
-      ].map(([a, b]) => (
-        <div key={a}>
-          <div className="text-[11px] font-medium uppercase tracking-[0.14em] text-white/45">{a}</div>
-          <div className="mt-1 text-sm font-medium text-white/80">{b}</div>
-        </div>
-      ))}
     </div>
   );
 }
@@ -635,12 +619,10 @@ function Hero() {
           </div>
         </aside>
       </div>
-      {/* Slide indicator — centered across the full hero width */}
-      <div className="relative z-10 pb-2 pt-6">
+      {/* Slide indicator — centered across the full hero width, fixed spot at
+          the bottom of the hero (does not move with slide content). */}
+      <div className="relative z-10 pb-12 pt-8">
         <HeroDots active={active} paused={paused} onSelect={goTo} />
-      </div>
-      <div className="container-enterprise">
-        <HeroTrustStats />
       </div>
     </section>
   );
@@ -680,12 +662,12 @@ function TrustedBy() {
 /* METRICS */
 function MetricsBand() {
   const metrics = [
+    ["320+", "Completed projects"],
     ["300+", "Consultants globally"],
-    ["230+", "Projects delivered in 4 years"],
-    ["7", "Countries with delivery presence"],
-    ["89%", "Of technical workforce with active Dynamics 365 experience"],
-    ["120+", "D365 version upgrades delivered"],
-    ["12,000", "Automated tests executed daily"],
+    ["50+", "Active customers"],
+    ["100 days", "Avg. time to go live"],
+    ["99.5%", "Uptime maintained"],
+    ["24/7", "Global delivery coverage"],
   ];
   return (
     <section className="relative overflow-hidden bg-[var(--navy-deep)] py-20 text-white">
@@ -755,16 +737,10 @@ function Solutions() {
         "A white-label, headless React Native commerce app integrated with the D365 Commerce Scale Unit for fast, low-maintenance mobile launches.",
     },
     {
-      name: "D365 Licensing Auditor",
+      name: "Optim365",
       image: supportImg,
       blurb:
-        "A licensing optimization framework that reviews security-role and license mapping, identifies unused or over-licensed roles, and produces a compliance-ready remediation plan.",
-    },
-    {
-      name: "Data Archival & Purging Accelerator",
-      image: engineeringImg,
-      blurb:
-        "A policy-driven archival framework for D365 Finance and Supply Chain data that has delivered 30–50% database size reduction and 30–40% query performance improvement on completed engagements.",
+        "A framework designed for Dynamics 365 to optimize licensing, govern enterprise data, improve system performance, and reduce operating costs.",
     },
     {
       name: "PerfLens365",
@@ -786,7 +762,7 @@ function Solutions() {
         <div className="max-w-2xl">
           <p className="eyebrow">Products &amp; Accelerators</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Pre-built IP that shortens time-to-value.
+            Pre-built accelerators that shorten time-to-value.
           </h2>
         </div>
       </div>
@@ -885,7 +861,7 @@ function Services() {
       name: "Quality Engineering Factory",
       image: engineeringImg,
       approach:
-        "Deliver every release with confidence through AI-embedded automated testing, performance engineering, and continuous quality assurance across your entire ecosystem.",
+        "Deliver every release with confidence through AI embedded automated testing, performance engineering, and continuous quality assurance across your entire ecosystem.",
       outcome: "80% reduction in manual testing and up to 6× faster validation cycles.",
     },
     {
@@ -971,11 +947,18 @@ function Industries() {
         "Connect digital and physical retail with unified operations, intelligent fulfillment, and personalized customer experiences powered by Microsoft.",
     },
     {
+      name: "Manufacturing & Supply Chain",
+      image: implementationImg,
+      headline: "Precision from Plant to Shelf",
+      subhead:
+        "Align production, inventory, and supplier networks with intelligent planning, real-time visibility, and AI-driven forecasting.",
+    },
+    {
       name: "Modern Grocery & Hypermarkets",
       image: engineeringImg,
       headline: "The Future of Food Retail Starts Here",
       subhead:
-        "Enable AI-powered store operations, optimized supply chains, and intelligent merchandising for modern grocery and discount retail.",
+        "Enable AI powered store operations, optimized supply chains, and intelligent merchandising for modern grocery and discount retail.",
     },
     {
       name: "Hospitality, Entertainment & Sports",
@@ -1044,45 +1027,40 @@ function Industries() {
 function WhyLumovy() {
   const pillars = [
     {
-      icon: Award,
-      t: "Microsoft Credentials & Designations",
-      d: "A direct line to Microsoft — Solutions Partner across Business Applications and Data & AI, and a FastTrack Portfolio Partner.",
-      proofs: [
-        "Business Applications",
-        "Data & AI (Azure)",
-        "FastTrack Portfolio Partner",
-        "FDE agentic-AI co-creator",
-        "12 MVPs · 40+ MCTs",
-        "300+ certifications",
-      ],
+      icon: Shield,
+      t: "End-to-End Ownership",
+      d: "We do not manage tasks. We own outcomes. Dedicated delivery leadership stays accountable for platform success, adoption, value realisation, and long-term operational health.",
+      proofs: ["Outcome accountability", "Executive oversight", "Named delivery principal"],
+    },
+    {
+      icon: LifeBuoy,
+      t: "Program Recovery Specialists",
+      d: "We rescue distressed and stalled transformations. When programmes are delayed, over budget, low on adoption, or struggling with complexity, we restore structure, governance, and momentum.",
+      proofs: ["Recovery programmes", "Governance reset", "Adoption acceleration"],
+    },
+    {
+      icon: Rocket,
+      t: "Unlocking Platform Potential",
+      d: "The implementation is only the beginning. We help organisations move beyond deployment to optimise processes, elevate user experience, and extract the full value of their Microsoft investment.",
+      proofs: ["Platform optimisation", "User adoption", "Experience elevation"],
     },
     {
       icon: Layers,
-      t: "Configure-first, MVP-based delivery",
-      d: "Capability-focused solution modeling aligned to product squads for faster value realization.",
-      proofs: ["Configure First approach", "Faster go-live", "Squad-aligned modeling"],
+      t: "Faster Time-to-Value by Design",
+      d: "Configure-first. MVP-led. Our model uses proven accelerators and capability-led solution modelling to minimise customisation, reduce risk, and deliver capabilities through incremental value releases.",
+      proofs: ["Configure-First", "MVP-Based Delivery", "Capability-Led Design", "Faster Go-Live", "Reduced Risk"],
     },
     {
-      icon: BadgeCheck,
-      t: "Platform-agnostic Quality Engineering",
-      d: "A dedicated QE discipline with tool-agnostic automation across the leading frameworks.",
-      proofs: [
-        "50+ Quality Engineers",
-        "40+ automation engineers",
-        "Leapwork · Playwright · Tosca · Selenium · RSAT",
-      ],
+      icon: Award,
+      t: "Microsoft-Aligned Innovation",
+      d: "Built on Microsoft. Proven through execution. Deep expertise across Dynamics 365, Azure, Data & AI, Agentic AI, and Quality Engineering — in close alignment with Microsoft's ecosystem and roadmap.",
+      proofs: ["Microsoft Solutions Partner", "FastTrack Portfolio Partner", "Agentic AI Innovation"],
     },
     {
       icon: Globe2,
-      t: "Cost-efficient global delivery",
-      d: "Round-the-clock delivery across seven countries with a balanced offshore/onshore mix.",
-      proofs: ["India · Pakistan · UAE · UK", "Spain · Canada · USA", "79% offshore / 21% onshore"],
-    },
-    {
-      icon: Shield,
-      t: "End-to-end ownership",
-      d: "Ownership is not one value among several — it is the foundation the rest of the delivery model is built on.",
-      proofs: ["Outcome accountability", "Named delivery principal"],
+      t: "Global Scale. Industry Depth.",
+      d: "Global delivery. Local accountability. Delivery centres across seven countries combine flexible global teams, 24×7 execution, and deep industry expertise to deliver complex transformation with speed and ownership.",
+      proofs: ["7 Global Locations", "24×7 Delivery", "Retail & Commerce", "Grocery & Hypermarkets", "Hospitality & Venues", "Enterprise Agentic AI"],
     },
   ];
   return (
@@ -1091,7 +1069,7 @@ function WhyLumovy() {
         <div className="max-w-3xl">
           <p className="eyebrow">Why Lumovy</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Proof over promises.
+            Trusted when transformation needs to be rescued, accelerated, or elevated.
           </h2>
         </div>
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -1132,6 +1110,7 @@ function CaseStudies() {
   const cases = [
     {
       sector: "Majid Al Futtaim (Sava)",
+      logo: mafLogo,
       title: "Cloud-First Grocery & Discount Launch in Under 100 Days",
       challenge:
         "No existing systems or operational infrastructure; complex ambient/chilled/frozen inventory handling; tight deadlines for store opening.",
@@ -1143,7 +1122,8 @@ function CaseStudies() {
     },
     {
       sector: "Cavender's",
-      title: "Unified, AI-Powered Customer Experience",
+      logo: janieJackLogo,
+      title: "Unified, AI Powered Customer Experience",
       challenge:
         "Disconnected voice, email, and knowledge systems; no automated case routing; no unified 360° view.",
       results: [
@@ -1154,6 +1134,7 @@ function CaseStudies() {
     },
     {
       sector: "U.S. Omnichannel Specialty Retailer",
+      logo: mattressFirmLogo,
       title: "Intelligent, Omnichannel Order Fulfillment",
       challenge:
         "Fragmented fulfillment and limited inventory visibility; rising order volumes and multi-store complexity.",
@@ -1165,6 +1146,7 @@ function CaseStudies() {
     },
     {
       sector: "Utah DABS",
+      logo: gilbarcoLogo,
       title: "From Underutilization to Optimization on Dynamics 365",
       challenge:
         "Manual, spreadsheet-based reconciliation; audit gaps; outdated bailment-inventory costing logic.",
@@ -1176,6 +1158,7 @@ function CaseStudies() {
     },
     {
       sector: "Monumental",
+      logo: fedexLogo,
       title: "Enabling Frictionless Commerce at a Next-Generation Venue",
       challenge:
         "Integration gaps between checkout technologies; no end-to-end alignment across apps, POS, and back office; stability risk during live events.",
@@ -1187,6 +1170,7 @@ function CaseStudies() {
     },
     {
       sector: "Mattress Firm",
+      logo: mattressFirmLogo,
       title: "One-Stop End-to-End Test Automation",
       challenge:
         "Long manual test cycles; fragmented automation across tools; complex D365 integrations; defect leakage during UAT and go-live.",
@@ -1216,8 +1200,15 @@ function CaseStudies() {
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {cases.map((c) => (
             <article key={c.title} className="group card-lift flex flex-col rounded-3xl border border-border bg-white p-8">
-              <div className="text-[11px] font-semibold uppercase tracking-widest text-[var(--royal)]">{c.sector}</div>
-              <h3 className="mt-3 text-xl font-semibold leading-snug text-[var(--navy-deep)]">{c.title}</h3>
+              <div className="flex h-10 items-center">
+                <img
+                  src={c.logo}
+                  alt={c.sector}
+                  loading="lazy"
+                  className="max-h-9 w-auto max-w-[150px] object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                />
+              </div>
+              <h3 className="mt-4 text-xl font-semibold leading-snug text-[var(--navy-deep)]">{c.title}</h3>
               <p className="mt-4 text-sm leading-relaxed text-[var(--blue-gray)]">{c.challenge}</p>
               <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border pt-6">
                 {c.results.map(([v, l]) => (
@@ -1444,11 +1435,11 @@ function Testimonials() {
 /* FRAMEWORK */
 function Framework() {
   const steps = [
-    { no: "01", when: "Initiate", title: "MVP Blueprinting", desc: "Solution blueprint workshop, team formation, scope and roadmap definition.", icon: Compass },
-    { no: "02", when: "Design & Build", title: "Rapid MVP Implementation", desc: "Capability-focused, configure-first build in iterative sprints with business demos and review at every cycle.", icon: Layers },
-    { no: "03", when: "Test", title: "Quality Engineering Factory", desc: "Platform-agnostic functional, integration, and performance testing; UAT with business users.", icon: BadgeCheck },
-    { no: "04", when: "Deploy", title: "Cutover & Hypercare", desc: "Phased, low-risk cutover with a dedicated hypercare period led by a named delivery principal.", icon: Rocket },
-    { no: "05", when: "Operate", title: "Managed Operations & Release Trains", desc: "24×7 support with SLA-based response times and structured release-train management.", icon: LifeBuoy },
+    { no: "01", when: "Assess", title: "Business Value Assessment", desc: "Assess business priorities, process maturity, digital readiness, and automation opportunities, and define a transformation roadmap with measurable outcomes.", icon: Compass },
+    { no: "02", when: "Initiate", title: "Solution Blueprinting", desc: "Define business processes, solution architecture, governance, intelligent workflows, implementation scope, and success metrics through collaborative workshops.", icon: Layers },
+    { no: "03", when: "Build & Validate", title: "Iterative Solution Delivery", desc: "Configure-first implementation with agile sprints, embedded intelligence, quality engineering, business validation, and continuous stakeholder feedback.", icon: BadgeCheck },
+    { no: "04", when: "Deploy & Adopt", title: "Enterprise Rollout & Hypercare", desc: "Execute a phased deployment with guided adoption, change management, hypercare, and operational readiness for enterprise-scale success.", icon: Rocket },
+    { no: "05", when: "Operate & Optimize", title: "Continuous Value Realization", desc: "Optimize platform performance through managed operations, governance, release management, intelligent automation enhancements, and continuous innovation.", icon: LifeBuoy },
   ];
   return (
     <section className="relative overflow-hidden border-b border-border bg-[var(--blue-light)]/40 py-28">
@@ -1456,12 +1447,12 @@ function Framework() {
       <div className="container-enterprise relative">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <p className="eyebrow">Lumovy Framework · How we engage</p>
+            <p className="eyebrow">Lumovy Delivery Framework</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              A go-live you can put on a board calendar.
+              Human led, AI accelerated.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--blue-gray)]">
-              Five stages, one accountable principal, evidence at every gate.
+              Five stages from assessment to continuous value realization.
             </p>
           </div>
           <div className="hidden gap-2 md:flex">
