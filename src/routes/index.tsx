@@ -407,7 +407,7 @@ const HERO_SLIDES = [
     eyebrow: "Agentic AI",
     headline: "AI That Works the Way Your Business Works.",
     subhead:
-      "Purpose-built AI agents that integrate with Dynamics 365, understand your business data, and help teams automate work, accelerate decisions, and deliver measurable outcomes — with humans always in control.",
+      "Purpose-built AI agents that integrate with Dynamics 365, understand your business data, and help teams automate work, accelerate decisions, and deliver measurable outcomes, with humans always in control.",
     cta: "Explore the Lumovy AI Factory",
     href: "#services",
   },
@@ -423,7 +423,7 @@ const HERO_SLIDES = [
     eyebrow: "Quality & Trust",
     headline: "20,000+ automated tests powered daily, across the globe.",
     subhead:
-      "From a high-velocity test automation factory to enterprise QA ownership — reimagine quality architecture with our acclaimed Quality Engineering practice.",
+      "From a high-velocity test automation factory to enterprise QA ownership, reimagine quality architecture with our acclaimed Quality Engineering practice.",
     cta: "Explore Quality Engineering",
     href: "#services",
   },
@@ -431,7 +431,7 @@ const HERO_SLIDES = [
     eyebrow: "Microsoft Credentials",
     headline: "Microsoft Expertise That Accelerates Transformation.",
     subhead:
-      "Top-rated global solutions partner and FastTrack portfolio partner, early co-creator for consumer and AI use cases — with a direct working relationship into Microsoft's product teams, not a reseller relationship once removed.",
+      "Top-rated global solutions partner and FastTrack portfolio partner, early co-creator for consumer and AI use cases, with a direct working relationship into Microsoft's product teams, not a reseller relationship once removed.",
     cta: "See Our Microsoft Credentials",
     href: "#why",
   },
@@ -593,7 +593,7 @@ function Hero() {
             </div>
             <h3 className="mt-3 text-xl font-semibold text-white">30-min executive briefing</h3>
             <p className="mt-2 text-sm leading-relaxed text-white/60">
-              A discovery call with a Lumovy engagement principal — no decks, just an outcome-oriented
+              A discovery call with a Lumovy engagement principal, no decks, just an outcome-oriented
               point of view for your industry.
             </p>
             <ul className="mt-5 space-y-2.5">
@@ -704,13 +704,13 @@ function Solutions() {
       name: "D365 for Hypermarkets",
       image: retailImg,
       blurb:
-        "Accelerate your retail transformation with a pre-configured Dynamics 365 solution for grocery and hypermarket businesses — reducing implementation time, lowering deployment risk, and delivering value faster.",
+        "Accelerate your retail transformation with a pre-configured Dynamics 365 solution for grocery and hypermarket businesses, reducing implementation time, lowering deployment risk, and delivering value faster.",
     },
     {
       name: "Innovative Hospitality Solution (IHS)",
       image: hospitalityImg,
       blurb:
-        "A modern hospitality platform that connects people, operations, and data — so every guest experience is exceptional.",
+        "A modern hospitality platform that connects people, operations, and data, so every guest experience is exceptional.",
     },
     {
       name: "Clarity RFID Connector",
@@ -722,7 +722,7 @@ function Solutions() {
       name: "B2B in a Box",
       image: consultingImg,
       blurb:
-        "From quote to cash on Dynamics 365 Commerce — storefront, guided selling, and order-to-fulfilment in one deployable bundle instead of a from-scratch build.",
+        "From quote to cash on Dynamics 365 Commerce: storefront, guided selling, and order-to-fulfilment in one deployable bundle instead of a from-scratch build.",
     },
     {
       name: "Consumer Swift Commerce",
@@ -820,7 +820,7 @@ function Services() {
       name: "Implementation",
       image: implementationImg,
       approach:
-        "End-to-end Dynamics 365 implementation using Lumovy's configure-first, MVP-driven delivery model — from discovery and data migration to integrations and go-live, with Microsoft FastTrack and Success by Design at every stage.",
+        "End-to-end Dynamics 365 implementation using Lumovy's configure-first, MVP-driven delivery model, from discovery and data migration to integrations and go-live, with Microsoft FastTrack and Success by Design at every stage.",
       outcome: "Majid Al Futtaim's Sava brand live on ERP-enabled operations in under 100 days.",
     },
     {
@@ -1047,7 +1047,7 @@ function WhyLumovy() {
     {
       icon: Award,
       t: "Microsoft-Aligned Innovation",
-      d: "Built on Microsoft. Proven through execution. Deep expertise across Dynamics 365, Azure, Data & AI, Agentic AI, and Quality Engineering — in close alignment with Microsoft's ecosystem and roadmap.",
+      d: "Built on Microsoft. Proven through execution. Deep expertise across Dynamics 365, Azure, Data & AI, Agentic AI, and Quality Engineering, in close alignment with Microsoft's ecosystem and roadmap.",
       proofs: ["Microsoft Solutions Partner", "FastTrack Portfolio Partner", "Agentic AI Innovation"],
     },
     {
@@ -1610,7 +1610,7 @@ function Contact() {
               Route your request to the right team.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--blue-gray)]">
-              Tell us why you're reaching out — no ticket queues.
+              Tell us why you're reaching out, no ticket queues.
             </p>
             <div className="card-lift mt-8 rounded-3xl border border-border bg-white p-6">
               <div className="flex items-center gap-3">
