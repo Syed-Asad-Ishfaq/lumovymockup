@@ -945,7 +945,7 @@ function Industries() {
       image: implementationImg,
       headline: "Precision from Plant to Shelf",
       subhead:
-        "Align production, inventory, and supplier networks with intelligent planning, real-time visibility, and AI-driven forecasting.",
+        "Align production, inventory, and supplier networks with intelligent planning, real-time visibility, and AI driven forecasting.",
     },
     {
       name: "Modern Grocery & Hypermarkets",
