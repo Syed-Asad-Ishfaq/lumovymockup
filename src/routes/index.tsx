@@ -663,7 +663,7 @@ function TrustedBy() {
 function MetricsBand() {
   const metrics = [
     ["320+", "Completed projects"],
-    ["300+", "Consultants globally"],
+    ["300+", "Dynamics 365 consultants globally"],
     ["50+", "Active customers"],
     ["100 days", "Avg. time to go live"],
     ["99.5%", "Uptime maintained"],
@@ -756,7 +756,7 @@ function Solutions() {
         <div className="max-w-2xl">
           <p className="eyebrow">Products &amp; Accelerators</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Pre-built accelerators that shorten time-to-value.
+            Shortening time-to-value with pre-built accelerators.
           </h2>
         </div>
       </div>
