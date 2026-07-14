@@ -1129,6 +1129,7 @@ function CaseStudies() {
     {
       sector: "U.S. Omnichannel Specialty Retailer",
       logo: mattressFirmLogo,
+      logoClass: "max-h-14",
       title: "Intelligent, Omnichannel Order Fulfillment",
       challenge:
         "Fragmented fulfillment and limited inventory visibility; rising order volumes and multi-store complexity.",
@@ -1165,6 +1166,7 @@ function CaseStudies() {
     {
       sector: "Mattress Firm",
       logo: mattressFirmLogo,
+      logoClass: "max-h-14",
       title: "One-Stop End-to-End Test Automation",
       challenge:
         "Long manual test cycles; fragmented automation across tools; complex D365 integrations; defect leakage during UAT and go-live.",
@@ -1194,12 +1196,15 @@ function CaseStudies() {
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {cases.map((c) => (
             <article key={c.title} className="group card-lift flex flex-col rounded-3xl border border-border bg-white p-8">
-              <div className="flex h-10 items-center">
+              <div className="flex h-14 items-center">
                 <img
                   src={c.logo}
                   alt={c.sector}
                   loading="lazy"
-                  className="max-h-9 w-auto max-w-[150px] object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                  className={
+                    (c.logoClass ?? "max-h-9") +
+                    " w-auto max-w-[150px] object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+                  }
                 />
               </div>
               <h3 className="mt-4 text-xl font-semibold leading-snug text-[var(--navy-deep)]">{c.title}</h3>
