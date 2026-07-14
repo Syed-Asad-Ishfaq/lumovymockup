@@ -1129,7 +1129,6 @@ function CaseStudies() {
     {
       sector: "U.S. Omnichannel Specialty Retailer",
       logo: mattressFirmLogo,
-      logoClass: "max-h-14",
       title: "Intelligent, Omnichannel Order Fulfillment",
       challenge:
         "Fragmented fulfillment and limited inventory visibility; rising order volumes and multi-store complexity.",
@@ -1166,7 +1165,6 @@ function CaseStudies() {
     {
       sector: "Mattress Firm",
       logo: mattressFirmLogo,
-      logoClass: "max-h-14",
       title: "One-Stop End-to-End Test Automation",
       challenge:
         "Long manual test cycles; fragmented automation across tools; complex D365 integrations; defect leakage during UAT and go-live.",
