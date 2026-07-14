@@ -166,6 +166,7 @@ const NAV_MENU: NavMain[] = [
         heading: "Industries",
         items: [
           { label: "Retail & Omnichannel Commerce", href: "#industries" },
+          { label: "Manufacturing & Supply Chain", href: "#industries" },
           { label: "Modern Grocery & Hypermarkets", href: "#industries" },
           { label: "Hospitality, Entertainment & Sports", href: "#industries" },
           { label: "Public Sector", href: "#industries" },
