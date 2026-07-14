@@ -397,7 +397,7 @@ function MobileMenuItem({ item, onNavigate }: { item: NavMain; onNavigate: () =>
 const HERO_SLIDES = [
   {
     eyebrow: "Microsoft Solutions Partner",
-    headline: "Modernize mission-critical systems. Ship measurable business outcomes.",
+    headline: "Modernize mission-critical systems. Drive measurable business outcomes.",
     subhead:
       "From legacy modernization to AI driven innovation, Lumovy delivers Microsoft Dynamics 365 solutions that help enterprises move faster with less complexity.",
     cta: "See Client Outcomes",
@@ -405,25 +405,25 @@ const HERO_SLIDES = [
   },
   {
     eyebrow: "Agentic AI",
-    headline: "AI That Works the Way Your Business Works.",
+    headline: "AI Agents Designed Around the Way Your Business Runs Every Day.",
     subhead:
-      "Purpose-built AI agents that integrate with Dynamics 365, understand your business data, and help teams automate work, accelerate decisions, and deliver measurable outcomes, with humans always in control.",
+      "Purpose-built AI agents that connect with Dynamics 365 to automate processes while people stay in the loop.",
     cta: "Explore the Lumovy AI Factory",
     href: "#services",
   },
   {
     eyebrow: "Rapid Implementation Playbook",
-    headline: "From Strategy to Value in 100 Days.",
+    headline: "From Ideation to Value in 100 Days.",
     subhead:
-      "How Majid Al Futtaim's Sava went from zero infrastructure to full ERP-enabled store operations in under 100 days.",
+      "See how Majid Al Futtaim launched Sava from zero infrastructure to a full Dynamics 365 implementation in 100 days.",
     cta: "Read the MAF Case Study",
     href: "#case-studies",
   },
   {
     eyebrow: "Quality & Trust",
-    headline: "20,000+ automated tests powered daily, across the globe.",
+    headline: "20,000+ Automated Tests Run Every Single Day, Across the Entire Globe.",
     subhead:
-      "From a high-velocity test automation factory to enterprise QA ownership, reimagine quality architecture with our acclaimed Quality Engineering practice.",
+      "From fast test automation services to full QA ownership, our Quality Engineering team redesigns quality itself.",
     cta: "Explore Quality Engineering",
     href: "#services",
   },
@@ -431,7 +431,7 @@ const HERO_SLIDES = [
     eyebrow: "Microsoft Credentials",
     headline: "Microsoft Expertise That Accelerates Transformation.",
     subhead:
-      "Top-rated global solutions partner and FastTrack portfolio partner, early co-creator for consumer and AI use cases, with a direct working relationship into Microsoft's product teams, not a reseller relationship once removed.",
+      "A top-rated Microsoft Solutions Partner delivering Microsoft Dynamics 365 Consulting, working directly and closely with Microsoft's product teams to drive business transformation.",
     cta: "See Our Microsoft Credentials",
     href: "#why",
   },
