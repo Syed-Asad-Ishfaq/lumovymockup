@@ -399,7 +399,7 @@ const HERO_SLIDES = [
     eyebrow: "Microsoft Solutions Partner",
     headline: "Modernize mission-critical systems. Ship measurable business outcomes.",
     subhead:
-      "From legacy modernization to AI powered innovation, Lumovy helps enterprises reduce complexity, accelerate delivery, and create measurable business value.",
+      "From legacy modernization to AI driven innovation, Lumovy delivers Microsoft Dynamics 365 solutions that help enterprises move faster with less complexity.",
     cta: "See Client Outcomes",
     href: "#case-studies",
   },
