@@ -707,7 +707,7 @@ function Solutions() {
         "A Dynamics 365 solution pre-configured for grocery and hypermarket store operations.",
     },
     {
-      name: "Innovative Hospitality Solution (IHS)",
+      name: "Innovative Hospitality Solution",
       image: hospitalityImg,
       blurb:
         "Built on D365 Commerce and Finance, unifying hospitality operators' data and service.",
@@ -791,7 +791,7 @@ function Solutions() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-lg font-semibold leading-snug text-[var(--navy-deep)]">{p.name}</h3>
+                  <h3 className="truncate text-base font-semibold leading-snug text-[var(--navy-deep)]">{p.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">{p.blurb}</p>
                   <div className="mt-auto pt-6">
                     <LearnMore label="Learn more" />
