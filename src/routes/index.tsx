@@ -56,6 +56,10 @@ import stateOfUtahLogo from "@/assets/logos/state-of-utah.png";
 import steMichelleLogo from "@/assets/logos/ste-michelle.png";
 import syscoLogo from "@/assets/logos/sysco.png";
 import vermontLogo from "@/assets/logos/vermont-country-store.png";
+import svcShape1 from "@/assets/services/shape1.webp";
+import svcShape2 from "@/assets/services/shape2.webp";
+import svcShape3 from "@/assets/services/shape3.webp";
+import svcShape4 from "@/assets/services/shape4.webp";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -829,65 +833,8 @@ function Solutions() {
 }
 
 /* SERVICES */
-// Soft, blurred abstract blue "glow" mark per service — pure SVG with a
-// Gaussian-blur filter. Distinct shape per card, all in the brand blue.
-function ServiceGlow({ shape, id }: { shape: string; id: string }) {
-  const fid = `glow-${id}`;
-  const c = "var(--royal)";
-  return (
-    <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
-      <defs>
-        <radialGradient id={`${fid}-r`} cx="42%" cy="38%" r="70%">
-          <stop offset="0%" stopColor="#6f9bff" />
-          <stop offset="60%" stopColor={c} />
-          <stop offset="100%" stopColor="var(--navy)" />
-        </radialGradient>
-      </defs>
-      <g fill={`url(#${fid}-r)`}>
-        {shape === "spark" && (
-          // 4-point sparkle / star (AI)
-          <path d="M100 30 C110 78 122 90 170 100 C122 110 110 122 100 170 C90 122 78 110 30 100 C78 90 90 78 100 30 Z" />
-        )}
-        {shape === "ring" && (
-          // thick ring (engineering / build loop)
-          <path
-            fillRule="evenodd"
-            d="M100 32 A68 68 0 1 0 100 168 A68 68 0 1 0 100 32 Z M100 74 A26 26 0 1 1 100 126 A26 26 0 1 1 100 74 Z"
-          />
-        )}
-        {shape === "quad" && (
-          // four dots (integrations / grid)
-          <g>
-            <circle cx="72" cy="72" r="30" />
-            <circle cx="128" cy="72" r="30" />
-            <circle cx="72" cy="128" r="30" />
-            <circle cx="128" cy="128" r="30" />
-          </g>
-        )}
-        {shape === "cpu" && (
-          // rounded square with notch (AI chip / agent)
-          <path d="M60 45 h58 a14 14 0 0 1 14 14 v10 l-12 12 12 12 v40 a14 14 0 0 1 -14 14 h-58 a14 14 0 0 1 -14 -14 v-74 a14 14 0 0 1 14 -14 Z" />
-        )}
-        {shape === "refresh" && (
-          // swirl / migration arc
-          <path d="M100 34 a66 66 0 1 1 -52 25 l22 14 a40 40 0 1 0 30 -27 l14 -22 Z" />
-        )}
-        {shape === "shield" && (
-          // shield (quality / trust)
-          <path d="M100 32 L158 54 V104 C158 140 132 160 100 172 C68 160 42 140 42 104 V54 Z" />
-        )}
-        {shape === "boxes" && (
-          // stacked blocks (capability centers)
-          <g>
-            <rect x="52" y="52" width="44" height="44" rx="12" />
-            <rect x="104" y="52" width="44" height="44" rx="12" />
-            <rect x="78" y="104" width="44" height="44" rx="12" />
-          </g>
-        )}
-      </g>
-    </svg>
-  );
-}
+// The 4 provided abstract blue shapes, cycled across the service cards.
+const SERVICE_SHAPES = [svcShape1, svcShape2, svcShape3, svcShape4];
 
 function Services() {
   const services = [
@@ -967,9 +914,12 @@ function Services() {
               >
                 {/* Glow mark — fills the card, sits centered, blurs on hover */}
                 <div className="pointer-events-none absolute inset-0 grid place-items-center">
-                  <div className="h-48 w-48 transition-[filter,opacity] duration-500 ease-out group-hover:opacity-70 group-hover:blur-2xl">
-                    <ServiceGlow shape={s.shape} id={String(i)} />
-                  </div>
+                  <img
+                    src={SERVICE_SHAPES[i % SERVICE_SHAPES.length]}
+                    alt=""
+                    aria-hidden
+                    className="h-48 w-48 object-contain transition-[filter,opacity] duration-500 ease-out group-hover:opacity-70 group-hover:blur-2xl"
+                  />
                 </div>
 
                 {/* Content — anchored to bottom by default; on hover it slides
