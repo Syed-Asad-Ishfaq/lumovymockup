@@ -75,7 +75,7 @@ export const Route = createFileRoute("/")({
 const CLIENT_LOGOS = [
   { src: mafLogo, alt: "Majid Al Futtaim", sizeClass: "h-12" },
   { src: mattressFirmLogo, alt: "Mattress Firm", sizeClass: "h-9" },
-  { src: janieJackLogo, alt: "Janie and Jack", sizeClass: "h-14" },
+  { src: janieJackLogo, alt: "Janie and Jack", sizeClass: "h-9" },
   { src: bluecrestLogo, alt: "BlueCrest", sizeClass: "h-8" },
   { src: britaxLogo, alt: "Britax", sizeClass: "h-12" },
   { src: stateOfUtahLogo, alt: "State of Utah", sizeClass: "h-14" },
