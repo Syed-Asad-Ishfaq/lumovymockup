@@ -728,9 +728,8 @@ function MetricsBand() {
   return (
     // Tall wrapper: extra height (relative to viewport) is the scroll distance
     // consumed while pinned. ~55vh per card gives a comfortable reveal pace.
-    <div ref={pinRef} className="relative" style={{ height: `${100 + metrics.length * 55}vh` }}>
-      <section className="sticky top-0 flex h-screen items-center overflow-hidden bg-[var(--navy-deep)] text-white">
-        <div aria-hidden className="mesh-blobs opacity-50" />
+    <div ref={pinRef} className="relative bg-[#0c2856]" style={{ height: `${100 + metrics.length * 55}vh` }}>
+      <section className="sticky top-0 flex h-screen items-center overflow-hidden bg-[#0c2856] text-white">
         <div className="container-enterprise relative w-full">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
