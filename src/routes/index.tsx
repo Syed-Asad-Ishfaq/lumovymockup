@@ -39,14 +39,18 @@ import engineeringImg from "@/assets/services/engineering.jpg";
 import supportImg from "@/assets/services/support.jpg";
 import retailImg from "@/assets/industries/retail.jpg";
 import hospitalityImg from "@/assets/industries/hospitality.jpg";
-import gilbarcoLogo from "@/assets/logos/gilbarco.png";
 import mafLogo from "@/assets/logos/majid-al-futtaim.png";
 import mattressFirmLogo from "@/assets/logos/mattress-firm.png";
 import janieJackLogo from "@/assets/logos/janie-and-jack.png";
-import fedexLogo from "@/assets/logos/fedex.png";
 import cavendersLogo from "@/assets/logos/cavenders.png";
 import utahDabsLogo from "@/assets/logos/utah-dabs.png";
 import monumentalLogo from "@/assets/logos/monumental.png";
+import bluecrestLogo from "@/assets/logos/bluecrest.png";
+import britaxLogo from "@/assets/logos/britax.png";
+import stateOfUtahLogo from "@/assets/logos/state-of-utah.png";
+import steMichelleLogo from "@/assets/logos/ste-michelle.png";
+import syscoLogo from "@/assets/logos/sysco.png";
+import vermontLogo from "@/assets/logos/vermont-country-store.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -69,11 +73,15 @@ export const Route = createFileRoute("/")({
 });
 
 const CLIENT_LOGOS = [
-  { src: gilbarcoLogo, alt: "Gilbarco Veeder-Root", sizeClass: "h-10 md:h-12" },
   { src: mafLogo, alt: "Majid Al Futtaim", sizeClass: "h-10 md:h-12" },
-  { src: mattressFirmLogo, alt: "Mattress Firm", sizeClass: "h-20 md:h-24" },
+  { src: mattressFirmLogo, alt: "Mattress Firm", sizeClass: "h-16 md:h-20" },
   { src: janieJackLogo, alt: "Janie and Jack", sizeClass: "h-14 md:h-16" },
-  { src: fedexLogo, alt: "FedEx", sizeClass: "h-10 md:h-12" },
+  { src: bluecrestLogo, alt: "BlueCrest", sizeClass: "h-9 md:h-10" },
+  { src: britaxLogo, alt: "Britax", sizeClass: "h-9 md:h-11" },
+  { src: stateOfUtahLogo, alt: "State of Utah", sizeClass: "h-10 md:h-12" },
+  { src: steMichelleLogo, alt: "Ste Michelle Wine Estates", sizeClass: "h-11 md:h-14" },
+  { src: syscoLogo, alt: "Sysco", sizeClass: "h-8 md:h-10" },
+  { src: vermontLogo, alt: "The Vermont Country Store", sizeClass: "h-6 md:h-7" },
 ];
 
 function Index() {
@@ -1132,7 +1140,8 @@ function CaseStudies() {
     },
     {
       sector: "U.S. Omnichannel Specialty Retailer",
-      logo: mattressFirmLogo,
+      logo: cavendersLogo,
+      logoClass: "max-h-8",
       title: "Intelligent, Omnichannel Order Fulfillment",
       challenge:
         "Fulfillment was fragmented and inventory visibility was low. Rising order volumes strained their multi-store operations.",
