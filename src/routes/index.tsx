@@ -44,6 +44,9 @@ import mafLogo from "@/assets/logos/majid-al-futtaim.png";
 import mattressFirmLogo from "@/assets/logos/mattress-firm.png";
 import janieJackLogo from "@/assets/logos/janie-and-jack.png";
 import fedexLogo from "@/assets/logos/fedex.png";
+import cavendersLogo from "@/assets/logos/cavenders.png";
+import utahDabsLogo from "@/assets/logos/utah-dabs.png";
+import monumentalLogo from "@/assets/logos/monumental.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -1116,7 +1119,7 @@ function CaseStudies() {
     },
     {
       sector: "Cavender's",
-      logo: janieJackLogo,
+      logo: cavendersLogo,
       title: "Unified, AI Powered Customer Experience",
       challenge:
         "Voice, email, and knowledge systems ran separately. Agents had no automated routing or unified visibility.",
@@ -1140,7 +1143,8 @@ function CaseStudies() {
     },
     {
       sector: "Utah DABS",
-      logo: gilbarcoLogo,
+      logo: utahDabsLogo,
+      logoClass: "max-h-14",
       title: "From Underutilization to Optimization on Dynamics 365",
       challenge:
         "Manual, spreadsheet-based reconciliation left audit gaps. Their bailment-inventory costing logic was outdated and inefficient.",
@@ -1152,7 +1156,8 @@ function CaseStudies() {
     },
     {
       sector: "Monumental",
-      logo: fedexLogo,
+      logo: monumentalLogo,
+      logoClass: "max-h-14",
       title: "Enabling Frictionless Commerce at a Next-Generation Venue",
       challenge:
         "Checkout technologies were loosely integrated. This created stability risk across apps, POS, and back-office systems during events.",
