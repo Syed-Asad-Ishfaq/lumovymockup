@@ -398,41 +398,41 @@ function MobileMenuItem({ item, onNavigate }: { item: NavMain; onNavigate: () =>
 const HERO_SLIDES = [
   {
     eyebrow: "Microsoft Solutions Partner",
-    headline: "Modernize mission-critical systems. Drive measurable business outcomes.",
+    headline: "Modernize Mission-Critical Systems. Drive Measurable Outcomes.",
     subhead:
-      "From legacy modernization to AI driven innovation, Lumovy delivers Microsoft Dynamics 365 solutions that help enterprises move faster with less complexity.",
+      "Microsoft Dynamics 365 solutions built around your business, so you move faster, with less complexity.",
     cta: "See Client Outcomes",
     href: "#case-studies",
   },
   {
     eyebrow: "Agentic AI",
-    headline: "AI Agents Designed Around the Way Your Business Runs Every Day.",
+    headline: "AI Agents Built Around How Your Business Runs.",
     subhead:
-      "Purpose-built AI agents that connect with Dynamics 365 to automate processes while people stay in the loop.",
-    cta: "Explore the Lumovy AI Factory",
+      "Our AI agents connect with Dynamics 365 to automate your processes. Your team always stays in control.",
+    cta: "Explore Our AI Factory",
     href: "#services",
   },
   {
     eyebrow: "Rapid Implementation Playbook",
-    headline: "From Ideation to Value in 100 Days.",
+    headline: "From Idea to Value in 100 Days.",
     subhead:
-      "See how Majid Al Futtaim launched Sava from zero infrastructure to a full Dynamics 365 implementation in 100 days.",
+      "See how we helped Majid Al Futtaim launch Sava in just 100 days, from zero infrastructure to a full Dynamics 365 platform.",
     cta: "Read the MAF Case Study",
     href: "#case-studies",
   },
   {
     eyebrow: "Quality & Trust",
-    headline: "20,000+ Automated Tests Run Every Single Day, Across the Entire Globe.",
+    headline: "20,000+ Automated Tests, Run Every Day, Across the Globe.",
     subhead:
-      "From fast test automation services to full QA ownership, our Quality Engineering team redesigns quality itself.",
+      "Test automation and full QA ownership, end to end. Our Quality Engineering team redefines what quality means for you.",
     cta: "Explore Quality Engineering",
     href: "#services",
   },
   {
     eyebrow: "Microsoft Credentials",
-    headline: "Microsoft Expertise That Accelerates Transformation.",
+    headline: "Microsoft Expertise That Accelerates Your Transformation.",
     subhead:
-      "A top-rated Microsoft Solutions Partner delivering Microsoft Dynamics 365 Consulting, working directly and closely with Microsoft's product teams to drive business transformation.",
+      "A top-rated Microsoft Solutions Partner, working closely with Microsoft's product teams to drive your transformation.",
     cta: "See Our Microsoft Credentials",
     href: "#why",
   },
@@ -594,7 +594,7 @@ function Hero() {
             </div>
             <h3 className="mt-3 text-xl font-semibold text-white">30-min executive briefing</h3>
             <p className="mt-2 text-sm leading-relaxed text-white/60">
-              Talk directly with a Lumovy engagement principal about what matters for your industry.
+              Talk directly with one of our engagement principals about what matters to you.
             </p>
             <ul className="mt-5 space-y-2.5">
               {[
@@ -704,49 +704,49 @@ function Solutions() {
       name: "D365 for Hypermarkets",
       image: retailImg,
       blurb:
-        "A Dynamics 365 solution pre-configured for grocery and hypermarket store operations.",
+        "A Dynamics 365 solution we've pre-configured for your grocery and hypermarket store operations.",
     },
     {
       name: "Innovative Hospitality Solution",
       image: hospitalityImg,
       blurb:
-        "Built on D365 Commerce and Finance, unifying hospitality operators' data and service.",
+        "Built on D365 Commerce and Finance, unifying your hospitality data and service.",
     },
     {
       name: "Clarity RFID Connector",
       image: engineeringImg,
       blurb:
-        "Track inventory accurately and gain real-time visibility with our RFID connector.",
+        "Track your inventory accurately and gain real-time visibility with our RFID connector.",
     },
     {
       name: "B2B in a Box",
       image: consultingImg,
       blurb:
-        "A ready-made bundle for quote-to-cash on D365 Commerce, storefront to fulfilment.",
+        "A ready-made bundle that takes your quote-to-cash on D365 Commerce, from storefront to fulfillment.",
     },
     {
       name: "Consumer Swift Commerce",
       image: implementationImg,
       blurb:
-        "A white-label React Native app linked to D365 Commerce for fast mobile launches.",
+        "A white-label app linked to D365 Commerce, built so you can launch mobile fast.",
     },
     {
       name: "Optim365",
       image: supportImg,
       blurb:
-        "A framework for D365 that governs data, optimizes licensing, and boosts performance.",
+        "A framework that governs your data, optimizes your licensing, and boosts your D365 performance.",
     },
     {
       name: "PerfLens365",
       image: consultingImg,
       blurb:
-        "A performance toolkit spanning load testing, live monitoring, and D365 diagnostics.",
+        "A performance toolkit covering load testing, live monitoring, and diagnostics for your D365 platform.",
     },
     {
       name: "In-Store Mobility Suite",
       image: retailImg,
       blurb:
-        "A set of Power Apps applications linked to D365 F&O for managing labeling, stock counts, and orders.",
+        "A set of Power Apps linked to D365 F&O, so you can manage labeling, stock counts, and orders.",
     },
   ];
   return (
@@ -756,7 +756,7 @@ function Solutions() {
         <div className="max-w-2xl">
           <p className="eyebrow">Products &amp; Accelerators</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Shortening time-to-value with pre-built accelerators.
+            Pre-built accelerators that shorten your time-to-value.
           </h2>
         </div>
       </div>
@@ -813,56 +813,56 @@ function Services() {
       name: "Advisory",
       image: consultingImg,
       approach:
-        "We study your processes, uncover the gaps, and design a Business Process Transformation roadmap built around Business Process Automation for growth.",
+        "Your processes, studied to find the gaps, then turned into a clear roadmap for growth.",
       outcome: "A clear roadmap, aligned priorities.",
     },
     {
       name: "Implementation",
       image: implementationImg,
       approach:
-        "Full Dynamics 365 implementation, from discovery and migration to integrations and deployment.",
-      outcome: "Majid Al Futtaim's Sava brand live on ERP-enabled operations in under 100 days.",
+        "Your full Dynamics 365 implementation, handled from discovery to deployment.",
+      outcome: "Sava went live on Dynamics 365 in under 100 days.",
     },
     {
       name: "Managed Support & Expansion",
       image: supportImg,
       approach:
-        "24×7 Dynamics 365 managed services spanning Azure infrastructure, backed by SLAs and monitoring.",
+        "24/7 managed services for your Dynamics 365 and Azure infrastructure, backed by SLAs and monitoring.",
       outcome: "120+ upgrades, enterprise SLA compliance.",
     },
     {
       name: "Integrations & Modernization",
       image: engineeringImg,
       approach:
-        "Simplify operations and speed transformation with Azure and Power Platform tools.",
+        "Simpler operations, faster transformation, using Azure and Power Platform.",
       outcome: "Unified integrations powered by Azure.",
     },
     {
       name: "Enterprise Agentic AI Solutions",
       image: consultingImg,
       approach:
-        "Deploy production-ready AI agents for Enterprise Automation inside Microsoft with Copilot and custom solutions.",
-      outcome: "Enterprise AI live in 20–60 days.",
+        "AI agents built for your business, deployed using Copilot and custom solutions.",
+      outcome: "Enterprise AI live in 20-60 days.",
     },
     {
       name: "Legacy Migration",
       image: implementationImg,
       approach:
-        "Move from any legacy ERP to a modern Dynamics 365 ERP implementation with a proven, low-disruption framework.",
+        "A proven, low-disruption path from any legacy ERP to Dynamics 365.",
       outcome: "30% faster migration, full continuity.",
     },
     {
       name: "Quality Engineering Factory",
       image: engineeringImg,
       approach:
-        "Deliver every release with confidence through AI driven testing and quality checks.",
-      outcome: "6× faster validation, lighter testing.",
+        "Release with confidence, backed by AI driven testing and quality checks.",
+      outcome: "6x faster validation, lighter testing.",
     },
     {
       name: "Global Capability Centers",
       image: supportImg,
       approach:
-        "We build GCCs that grow into strategic, outcome-driven talent and innovation hubs.",
+        "A capability center built to grow into your hub for talent and innovation.",
       outcome: "Specialized talent deployed in 3 weeks.",
     },
   ];
@@ -872,7 +872,7 @@ function Services() {
         <div>
           <p className="eyebrow">Services</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            From planning to performance, one partner.
+            From Planning to Performance, We're Your One Partner.
           </h2>
         </div>
       </div>
@@ -938,35 +938,35 @@ function Industries() {
       image: retailImg,
       headline: "Unified Retail, Simplified",
       subhead:
-        "Connect digital and physical retail with unified operations, intelligent fulfilment, and personalized customer experiences powered by Microsoft.",
+        "Your digital and physical retail, connected. Unified operations, smart fulfillment, and personalized experiences, powered by Microsoft.",
     },
     {
       name: "Manufacturing & Supply Chain",
       image: implementationImg,
       headline: "Smarter Supply Chain Planning",
       subhead:
-        "Align production, inventory, and supplier networks with intelligent planning, real-time visibility, and AI driven forecasting.",
+        "Your production, inventory, and suppliers, aligned. Real-time visibility and smarter, AI driven forecasting, built in.",
     },
     {
       name: "Modern Grocery & Hypermarkets",
       image: engineeringImg,
       headline: "Smarter Grocery Retail",
       subhead:
-        "Enable AI powered store operations, optimized supply chains, and intelligent merchandising for modern grocery and discount retail.",
+        "Your store operations, supply chain, and merchandising, powered by AI, built for modern grocery and discount retail.",
     },
     {
       name: "Hospitality, Entertainment & Sports",
       image: hospitalityImg,
       headline: "Better Guest Experiences, Built In",
       subhead:
-        "Our Hospitality technology solutions deliver frictionless dining, concessions, and venue experiences that maximize operational efficiency and revenue.",
+        "Our technology gives your guests frictionless dining, concessions, and venue experiences. You gain efficiency and revenue.",
     },
     {
       name: "Public Sector",
       image: consultingImg,
       headline: "Government Services, Modernized",
       subhead:
-        "Our Government digital transformation and Public Sector digital services modernize operations with secure, compliant platforms that improve service delivery and operational resilience.",
+        "Your operations, modernized with secure, compliant platforms, for better service delivery and stronger resilience.",
     },
   ];
   return (
@@ -1023,38 +1023,38 @@ function WhyLumovy() {
     {
       icon: Shield,
       t: "End-to-End Ownership",
-      d: "We own outcomes. Dedicated delivery leadership stays accountable for platform success, adoption, and lasting value creation.",
+      d: "Your outcomes are ours to own. Our delivery leaders stay accountable for your platform's success and long-term value.",
       proofs: ["Outcome accountability", "Executive oversight", "Named delivery principal"],
     },
     {
       icon: LifeBuoy,
       t: "Program Recovery Specialists",
-      d: "We rescue distressed transformations. When programmes fall behind, exceed budget, or lose momentum, we restore structure, governance, and pace.",
+      d: "Struggling transformations, rescued. If your program falls behind or loses momentum, our team restores structure and pace.",
       proofs: ["Recovery programmes", "Governance reset", "Adoption acceleration"],
     },
     {
       icon: Rocket,
       t: "Unlocking Platform Potential",
-      d: "Implementation is just the start. We help organisations optimise processes, elevate experience, and unlock full platform value.",
+      d: "Implementation is just the start. Our team helps you optimize processes, elevate experience, and unlock your platform's full value.",
       proofs: ["Platform optimisation", "User adoption", "Experience elevation"],
     },
     {
       icon: Layers,
       t: "Faster Time-to-Value by Design",
-      d: "Configure-first, MVP-led. Our model uses proven accelerators and capability-led modelling to limit customisation, reduce risk, and deliver value quickly.",
+      d: "Configure-first, MVP-led delivery is where it starts. Our accelerators limit customization, reduce risk, and get you to value fast.",
       proofs: ["Configure-First", "MVP-Based Delivery", "Capability-Led Solution Design", "Faster Go-Live", "Reduced Risk & Customisation"],
     },
     {
       icon: Award,
       t: "Microsoft-Aligned Innovation",
-      d: "Built on Microsoft, proven through execution. As Microsoft Dynamics consultants, we modernise enterprises with expertise across Dynamics 365, Azure, Data, and AI.",
+      d: "Built on Microsoft, proven through execution. Your business, modernized with expertise across Dynamics 365, Azure, Data, and AI.",
       proofs: ["Microsoft Solutions Partner", "Microsoft FastTrack Portfolio Partner", "Agentic AI Innovation"],
     },
     {
       icon: Globe2,
       t: "Global Scale. Industry Depth.",
-      d: "Global delivery, local accountability. Centres across seven countries combine flexible teams, round-the-clock execution, and deep expertise for transformation.",
-      proofs: ["7 Global Delivery Locations", "24×7 Delivery Model", "Retail & Commerce", "Grocery & Hypermarkets", "Hospitality & Venues", "Enterprise Agentic AI"],
+      d: "Global delivery, local accountability. Our teams across seven countries bring round-the-clock execution and deep expertise to your transformation.",
+      proofs: ["7 Global Delivery Locations", "24x7 Delivery Model", "Retail & Commerce", "Grocery & Hypermarkets", "Hospitality & Venues", "Enterprise Agentic AI"],
     },
   ];
   return (
@@ -1063,7 +1063,7 @@ function WhyLumovy() {
         <div className="max-w-3xl">
           <p className="eyebrow">Why Lumovy</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Trusted to Rescue and Elevate Transformation.
+            Trusted to Rescue and Elevate Your Transformation.
           </h2>
         </div>
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -1107,7 +1107,7 @@ function CaseStudies() {
       logo: mafLogo,
       title: "Cloud-First Grocery & Discount Launch in Under 100 Days",
       challenge:
-        "No existing systems or operational infrastructure; complex ambient/chilled/frozen inventory handling; tight deadlines for store opening.",
+        "Sava was launching from scratch. They faced complex chilled and frozen inventory, and a tight store-opening deadline.",
       results: [
         ["100 days", "To full ERP-enabled store operations"],
         ["130+", "Business processes, 14 modules"],
@@ -1119,7 +1119,7 @@ function CaseStudies() {
       logo: janieJackLogo,
       title: "Unified, AI Powered Customer Experience",
       challenge:
-        "Disconnected voice, email, and knowledge systems; no automated case routing; no unified 360° view.",
+        "Voice, email, and knowledge systems ran separately. Agents had no automated routing or unified visibility.",
       results: [
         ["+75%", "Agent efficiency"],
         ["-60%", "Case processing time"],
@@ -1131,7 +1131,7 @@ function CaseStudies() {
       logo: mattressFirmLogo,
       title: "Intelligent, Omnichannel Order Fulfillment",
       challenge:
-        "Fragmented fulfillment and limited inventory visibility; rising order volumes and multi-store complexity.",
+        "Fulfillment was fragmented and inventory visibility was low. Rising order volumes strained their multi-store operations.",
       results: [
         ["99%", "Order fulfillment efficiency"],
         ["<1%", "Order cancellations"],
@@ -1143,7 +1143,7 @@ function CaseStudies() {
       logo: gilbarcoLogo,
       title: "From Underutilization to Optimization on Dynamics 365",
       challenge:
-        "Manual, spreadsheet-based reconciliation; audit gaps; outdated bailment-inventory costing logic.",
+        "Manual, spreadsheet-based reconciliation left audit gaps. Their bailment-inventory costing logic was outdated and inefficient.",
       results: [
         ["Audit-ready", "Bailment valuation & COGS"],
         ["Lower", "Safety stock via forecasting"],
@@ -1155,7 +1155,7 @@ function CaseStudies() {
       logo: fedexLogo,
       title: "Enabling Frictionless Commerce at a Next-Generation Venue",
       challenge:
-        "Integration gaps between checkout technologies; no end-to-end alignment across apps, POS, and back office; stability risk during live events.",
+        "Checkout technologies were loosely integrated. This created stability risk across apps, POS, and back-office systems during events.",
       results: [
         ["Real-time", "Core integration"],
         ["Event-grade", "High-traffic resilience"],
@@ -1167,7 +1167,7 @@ function CaseStudies() {
       logo: mattressFirmLogo,
       title: "One-Stop End-to-End Test Automation",
       challenge:
-        "Long manual test cycles; fragmented automation across tools; complex D365 integrations; defect leakage during UAT and go-live.",
+        "Manual test cycles ran long. Automation was fragmented, and integrations caused defect leakage.",
       results: [
         ["87%", "Manual-effort savings"],
         ["65%", "Cycle-time reduction"],
@@ -1183,7 +1183,7 @@ function CaseStudies() {
           <div className="max-w-2xl">
             <p className="eyebrow">Case studies</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Real engagements. Auditable outcomes. Names masked by policy.
+              Real engagements. Auditable outcomes we stand behind. Names masked by policy.
             </h2>
           </div>
           <a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
@@ -1446,7 +1446,7 @@ function Framework() {
           <div className="max-w-2xl">
             <p className="eyebrow">Lumovy Delivery Framework</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Human led, AI accelerated.
+              Human Led, AI Accelerated.
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--blue-gray)]">
               Five stages from assessment to continuous value realization.
@@ -1752,21 +1752,21 @@ function LearnMore({ label = "Learn more", href = "#contact" }: { label?: string
 /* FAQ */
 function FAQ() {
   const items = [
-    ["Why choose Lumovy over a traditional implementation partner?", "As a full-service Dynamics 365 implementation partner, we combine strategic advisory, Dynamics 365 consulting services, managed services, quality engineering, AI, and modernization under one Microsoft-focused practice. This allows clients to work with a single partner from strategy through continuous optimization."],
-    ["What industries does Lumovy specialize in?", "Our primary focus includes Retail & Omnichannel Commerce, Modern Grocery & Hypermarkets, Hospitality, Sports & Entertainment, Consumer Goods, Public Sector, and complex enterprise operations running on Microsoft technologies."],
-    ["Which Microsoft technologies do you specialize in?", "We deliver solutions across Dynamics 365, Dynamics 365 Business Central consulting, Power Platform, Azure, Microsoft Copilot, Fabric, AI, and enterprise integrations, backed by Microsoft's Success by Design methodology and FastTrack engagement where applicable."],
-    ["How quickly can Lumovy deliver a Dynamics 365 implementation?", "Delivery timelines depend on business complexity. Using our Configure-First, MVP-based methodology, many organizations realize value significantly faster than traditional phased implementations while maintaining governance and quality."],
-    ["Can you modernize our existing Dynamics AX or legacy ERP environment?", "Yes. We help organizations migrate from legacy ERP platforms to Dynamics 365 using phased modernization strategies that reduce operational disruption, preserve business continuity, and optimize licensing investments."],
-    ["Can Lumovy integrate Dynamics 365 with our existing systems?", "Absolutely. We design and implement enterprise integrations connecting ERP, CRM, eCommerce, POS, warehouse, payment platforms, ISVs, and legacy applications using Azure Integration Services and modern APIs."],
-    ["Do you support highly customized Dynamics 365 environments?", "Yes. Our teams support standard Microsoft capabilities, custom extensions, ISV solutions, legacy customizations, and complex enterprise integrations while following Microsoft's recommended extensibility practices."],
-    ["What happens after go-live?", "Our relationship doesn't end at deployment. We provide 24×7 managed support, proactive monitoring, continuous optimization, release management, performance tuning, and platform expansion as business needs evolve."],
-    ["How do you ensure implementation quality?", "Quality engineering is embedded throughout every project, not treated as a final phase. We combine automation, performance engineering, regression testing, and continuous validation to reduce release risk and improve deployment confidence."],
-    ["How does Lumovy approach AI?", "We focus on practical enterprise AI. Our AI Factory helps organizations deploy Microsoft Copilot, industry-specific agents, and custom AI solutions with governance, security, and human approval built into every workflow."],
-    ["Can your team work alongside our internal IT organization?", "Yes. Many clients retain strategic ownership while Lumovy provides specialist expertise, additional delivery capacity, or full end-to-end ownership depending on the engagement model."],
-    ["How do you minimize project risk?", "Every engagement begins with business process assessment, architecture validation, governance planning, and Microsoft-aligned delivery practices. Our Configure-First philosophy minimizes unnecessary customization while improving upgradeability and long-term platform health."],
-    ["What engagement models do you offer?", "We provide fixed-scope projects, staff augmentation, managed services, outcome-based delivery, Centers of Excellence, and hybrid engagement models tailored to enterprise requirements."],
-    ["Do you provide global delivery?", "Yes. Lumovy delivers through a global onshore, nearshore, and offshore model, enabling organizations to scale delivery while maintaining governance, quality, and cost efficiency."],
-    ["How do you measure success?", "We measure success by business outcomes not just project completion. Typical KPIs include implementation timelines, platform adoption, release quality, automation coverage, system availability, operational efficiency, and long-term business value."],
+    ["Why choose Lumovy over a traditional implementation partner?", "Strategic advisory, Dynamics 365 consulting, managed services, quality engineering, AI, and modernization, all under one Microsoft-focused practice. You work with a single partner from strategy through continuous optimization."],
+    ["What industries does Lumovy specialize in?", "Our focus includes Retail & Omnichannel Commerce, Modern Grocery & Hypermarkets, Hospitality, Sports & Entertainment, Consumer Goods, Public Sector, and complex enterprise operations running on Microsoft technologies."],
+    ["Which Microsoft technologies do you specialize in?", "Our solutions span Dynamics 365, Dynamics 365 Business Central, Power Platform, Azure, Microsoft Copilot, Fabric, and AI, backed by Microsoft's Success by Design methodology and FastTrack engagement where applicable."],
+    ["How quickly can Lumovy deliver a Dynamics 365 implementation?", "Your timeline depends on your business complexity. With our configure-first, MVP-based approach, you can realize value faster than with traditional phased implementations, while we maintain governance and quality."],
+    ["Can you modernize our existing Dynamics AX or legacy ERP environment?", "Yes. Your migration from legacy ERP platforms to Dynamics 365 uses phased strategies that reduce disruption, preserve continuity, and optimize licensing."],
+    ["Can Lumovy integrate Dynamics 365 with our existing systems?", "Absolutely. Our team designs and builds integrations connecting your ERP, CRM, eCommerce, POS, warehouse, and payment platforms, using Azure Integration Services and modern APIs."],
+    ["Do you support highly customized Dynamics 365 environments?", "Yes. Our team supports standard Microsoft capabilities, custom extensions, ISV solutions, and complex integrations, following Microsoft's recommended practices."],
+    ["What happens after go-live?", "Our relationship doesn't end at deployment. You get 24/7 managed support, proactive monitoring, continuous optimization, and platform expansion as your needs evolve."],
+    ["How do you ensure implementation quality?", "Quality engineering is embedded throughout your project, not just at the end, combining automation, performance testing, and continuous validation to reduce risk."],
+    ["How does Lumovy approach AI?", "Our focus is practical, enterprise AI. The Lumovy AI Factory helps you deploy Microsoft Copilot and custom agents, with governance and human approval built into every workflow."],
+    ["Can your team work alongside our internal IT organization?", "Yes. You can retain strategic ownership while we provide specialist expertise and extra delivery capacity, or take on full end-to-end ownership."],
+    ["How do you minimize project risk?", "Every engagement begins with a business process assessment, architecture review, and governance plan. Our configure-first approach limits customization and protects your platform's long-term health."],
+    ["What engagement models do you offer?", "Our engagement options include fixed-scope projects, staff augmentation, managed services, outcome-based delivery, Centers of Excellence, and hybrid models built around your needs."],
+    ["Do you provide global delivery?", "Yes. Our global onshore, nearshore, and offshore model lets you scale delivery while maintaining governance, quality, and cost efficiency."],
+    ["How do you measure success?", "Success is measured by your business outcomes, not just project completion. Typical KPIs include implementation timelines, platform adoption, release quality, and long-term value."],
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
