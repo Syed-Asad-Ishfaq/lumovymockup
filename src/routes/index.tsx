@@ -837,16 +837,13 @@ function ServiceGlow({ shape, id }: { shape: string; id: string }) {
   return (
     <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
       <defs>
-        <filter id={fid} x="-40%" y="-40%" width="180%" height="180%">
-          <feGaussianBlur stdDeviation="7" />
-        </filter>
         <radialGradient id={`${fid}-r`} cx="42%" cy="38%" r="70%">
           <stop offset="0%" stopColor="#6f9bff" />
           <stop offset="60%" stopColor={c} />
           <stop offset="100%" stopColor="var(--navy)" />
         </radialGradient>
       </defs>
-      <g filter={`url(#${fid})`} fill={`url(#${fid}-r)`}>
+      <g fill={`url(#${fid}-r)`}>
         {shape === "spark" && (
           // 4-point sparkle / star (AI)
           <path d="M100 30 C110 78 122 90 170 100 C122 110 110 122 100 170 C90 122 78 110 30 100 C78 90 90 78 100 30 Z" />
@@ -970,7 +967,7 @@ function Services() {
               >
                 {/* Big soft glow mark */}
                 <div className="mx-auto grid h-44 w-full place-items-center">
-                  <div className="h-40 w-40 transition-transform duration-500 group-hover:scale-105">
+                  <div className="h-40 w-40">
                     <ServiceGlow shape={s.shape} id={String(i)} />
                   </div>
                 </div>
