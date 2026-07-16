@@ -1053,7 +1053,7 @@ function WhyLumovy() {
     {
       icon: Globe2,
       t: "Global Scale. Industry Depth.",
-      d: "Global delivery, local accountability. Our teams across seven countries bring round-the-clock execution and deep expertise to your transformation.",
+      d: "Global delivery, local accountability. Teams across seven countries provide round-the-clock execution and deep transformation expertise.",
       proofs: ["7 Global Delivery Locations", "24x7 Delivery Model", "Retail & Commerce", "Grocery & Hypermarkets", "Hospitality & Venues", "Enterprise Agentic AI"],
     },
   ];
