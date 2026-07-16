@@ -696,16 +696,17 @@ function MetricsBand() {
     ["24/7", "Global delivery coverage"],
   ];
   const sectionRef = useRef<HTMLElement | null>(null);
-  // Cards revealed so far, latched (only grows) so scroll-up never re-animates.
-  const [shown, setShown] = useState(0);
+  // 0..1 scroll progress across the section. NOT latched — it follows the
+  // scroll both ways, so cards reveal on scroll-down and un-reveal on scroll-up.
+  const [progress, setProgress] = useState(0);
 
   // No pinning: the section keeps its normal compact height and the page
   // scrolls normally. As the section travels up through the viewport, its
-  // progress reveals the metric cards one-by-one, left to right.
+  // progress reveals the metric cards one-by-one (and reverses on scroll-up).
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
-      setShown(metrics.length);
+      setProgress(1);
       return;
     }
     let raf = 0;
@@ -715,11 +716,8 @@ function MetricsBand() {
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const vh = window.innerHeight;
-      // progress 0 → 1 as the section rises from entering the bottom of the
-      // viewport to sitting ~mid-screen.
       const p = (vh - rect.top) / (vh * 0.7);
-      const count = Math.round(Math.min(1, Math.max(0, p)) * metrics.length);
-      setShown((prev) => (count > prev ? count : prev));
+      setProgress(Math.min(1, Math.max(0, p)));
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -732,7 +730,7 @@ function MetricsBand() {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
     };
-  }, [metrics.length]);
+  }, []);
 
   return (
     <section ref={sectionRef} className="relative overflow-hidden bg-[var(--navy-deep)] py-20 text-white">
@@ -748,15 +746,18 @@ function MetricsBand() {
         </div>
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
           {metrics.map(([v, l], idx) => {
-            const on = idx < shown;
+            // each card reveals across its own slice of the progress
+            const start = idx / metrics.length;
+            const span = 1 / metrics.length;
+            const local = Math.min(1, Math.max(0, (progress - start) / span));
             return (
               <div
                 key={l}
                 className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm"
                 style={{
-                  opacity: on ? 1 : 0,
-                  transform: on ? "translateY(0)" : "translateY(24px)",
-                  transition: "opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.16,1,0.3,1)",
+                  opacity: local,
+                  transform: `translateY(${(1 - local) * 24}px)`,
+                  transition: "opacity 0.35s ease-out, transform 0.35s cubic-bezier(0.16,1,0.3,1)",
                 }}
               >
                 <div className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{v}</div>
