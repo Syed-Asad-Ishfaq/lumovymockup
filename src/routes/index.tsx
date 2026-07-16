@@ -925,9 +925,9 @@ function Services() {
 
                 {/* Content — anchored to bottom by default; on hover it slides
                     up and the details reveal, filling the card top-to-bottom. */}
-                <div className="relative transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                <div className="relative transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
                   <h3 className="text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
-                  <div className="max-h-0 translate-y-3 overflow-hidden opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:max-h-64 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:max-h-64 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <div className="max-h-0 translate-y-4 overflow-hidden opacity-0 transition-[max-height,transform,opacity] duration-[1100ms] delay-[80ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:max-h-64 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:max-h-64 group-focus-within:translate-y-0 group-focus-within:opacity-100">
                     <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
                     <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
                     <div className="pt-5">
