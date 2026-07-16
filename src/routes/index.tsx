@@ -73,15 +73,15 @@ export const Route = createFileRoute("/")({
 });
 
 const CLIENT_LOGOS = [
-  { src: mafLogo, alt: "Majid Al Futtaim", sizeClass: "h-10 md:h-12" },
-  { src: mattressFirmLogo, alt: "Mattress Firm", sizeClass: "h-16 md:h-20" },
-  { src: janieJackLogo, alt: "Janie and Jack", sizeClass: "h-14 md:h-16" },
-  { src: bluecrestLogo, alt: "BlueCrest", sizeClass: "h-9 md:h-10" },
-  { src: britaxLogo, alt: "Britax", sizeClass: "h-9 md:h-11" },
-  { src: stateOfUtahLogo, alt: "State of Utah", sizeClass: "h-10 md:h-12" },
-  { src: steMichelleLogo, alt: "Ste Michelle Wine Estates", sizeClass: "h-11 md:h-14" },
-  { src: syscoLogo, alt: "Sysco", sizeClass: "h-8 md:h-10" },
-  { src: vermontLogo, alt: "The Vermont Country Store", sizeClass: "h-6 md:h-7" },
+  { src: mafLogo, alt: "Majid Al Futtaim", sizeClass: "h-12" },
+  { src: mattressFirmLogo, alt: "Mattress Firm", sizeClass: "h-9" },
+  { src: janieJackLogo, alt: "Janie and Jack", sizeClass: "h-14" },
+  { src: bluecrestLogo, alt: "BlueCrest", sizeClass: "h-8" },
+  { src: britaxLogo, alt: "Britax", sizeClass: "h-12" },
+  { src: stateOfUtahLogo, alt: "State of Utah", sizeClass: "h-14" },
+  { src: steMichelleLogo, alt: "Ste Michelle Wine Estates", sizeClass: "h-14" },
+  { src: syscoLogo, alt: "Sysco", sizeClass: "h-9" },
+  { src: vermontLogo, alt: "The Vermont Country Store", sizeClass: "h-7" },
 ];
 
 function Index() {
@@ -641,27 +641,33 @@ function Hero() {
 
 /* TRUSTED */
 function TrustedBy() {
+  // Duplicate the list so the marquee loops seamlessly (-50% shift).
+  const track = [...CLIENT_LOGOS, ...CLIENT_LOGOS];
   return (
     <section className="border-b border-border bg-white py-16">
       <div className="container-enterprise">
         <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-[var(--blue-gray)]">
           Trusted by regulated enterprises worldwide
         </p>
-        <div className="mt-10 grid grid-cols-2 items-center gap-x-8 gap-y-10 border-y border-border py-10 sm:grid-cols-3 lg:grid-cols-5">
-          {CLIENT_LOGOS.map((l) => (
-            <div key={l.alt} className="group flex items-center justify-center">
+      </div>
+      <div className="group mt-10 overflow-hidden border-y border-border py-10">
+        <div className="marquee-track flex w-max items-center gap-16 group-hover:[animation-play-state:paused]">
+          {track.map((l, i) => (
+            <div key={l.alt + i} className="flex shrink-0 items-center justify-center">
               <img
                 src={l.src}
                 alt={l.alt}
                 loading="lazy"
                 className={
-                  "w-auto max-w-[180px] object-contain opacity-70 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0 " +
+                  "w-auto object-contain opacity-70 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 " +
                   l.sizeClass
                 }
               />
             </div>
           ))}
         </div>
+      </div>
+      <div className="container-enterprise">
         <p className="mt-6 text-center text-xs text-[var(--blue-gray)]">
           Additional engagements are covered by NDA. Client references available on qualified request.
         </p>
@@ -820,13 +826,6 @@ function Solutions() {
 /* SERVICES */
 function Services() {
   const services = [
-    {
-      name: "Advisory",
-      image: consultingImg,
-      approach:
-        "Your processes, studied to find the gaps, then turned into a clear roadmap for growth.",
-      outcome: "A clear roadmap, aligned priorities.",
-    },
     {
       name: "Implementation",
       image: implementationImg,

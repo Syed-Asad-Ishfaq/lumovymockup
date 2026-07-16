@@ -200,6 +200,12 @@
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+.marquee-track {
+  animation: marquee 45s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
