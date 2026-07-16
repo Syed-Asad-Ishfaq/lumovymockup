@@ -75,7 +75,7 @@ export const Route = createFileRoute("/")({
 const CLIENT_LOGOS = [
   { src: mafLogo, alt: "Majid Al Futtaim", sizeClass: "h-12" },
   { src: mattressFirmLogo, alt: "Mattress Firm", sizeClass: "h-9" },
-  { src: janieJackLogo, alt: "Janie and Jack", sizeClass: "h-9" },
+  { src: janieJackLogo, alt: "Janie and Jack", sizeClass: "h-7" },
   { src: bluecrestLogo, alt: "BlueCrest", sizeClass: "h-8" },
   { src: britaxLogo, alt: "Britax", sizeClass: "h-12" },
   { src: stateOfUtahLogo, alt: "State of Utah", sizeClass: "h-14" },
@@ -651,7 +651,7 @@ function TrustedBy() {
         </p>
       </div>
       <div className="group mt-10 overflow-hidden border-y border-border py-10">
-        <div className="marquee-track flex w-max items-center gap-16 group-hover:[animation-play-state:paused]">
+        <div className="marquee-track flex w-max items-center gap-28 group-hover:[animation-play-state:paused]">
           {track.map((l, i) => (
             <div key={l.alt + i} className="flex shrink-0 items-center justify-center">
               <img
