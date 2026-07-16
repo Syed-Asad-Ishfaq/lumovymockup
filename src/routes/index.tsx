@@ -963,18 +963,18 @@ function Services() {
               <article
                 key={s.name}
                 style={{ width: "var(--svc-card)" }}
-                className="group card-lift relative h-[440px] min-w-[300px] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-white"
+                className="group card-lift relative flex h-[340px] min-w-[300px] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-2xl border border-border bg-white p-8"
               >
                 {/* Glow mark — fills the card, sits centered, blurs on hover */}
                 <div className="pointer-events-none absolute inset-0 grid place-items-center">
-                  <div className="h-52 w-52 transition-[filter,opacity] duration-500 ease-out group-hover:opacity-70 group-hover:blur-2xl">
+                  <div className="h-48 w-48 transition-[filter,opacity] duration-500 ease-out group-hover:opacity-70 group-hover:blur-2xl">
                     <ServiceGlow shape={s.shape} id={String(i)} />
                   </div>
                 </div>
 
-                {/* Content — pinned to the bottom. Title always shows; details
-                    start hidden below and slide up on hover. */}
-                <div className="absolute inset-x-0 bottom-0 p-8">
+                {/* Content — anchored to bottom by default; on hover it slides
+                    up and the details reveal, filling the card top-to-bottom. */}
+                <div className="relative transition-transform duration-500 ease-out group-hover:-translate-y-1">
                   <h3 className="text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
                   <div className="max-h-0 translate-y-3 overflow-hidden opacity-0 transition-all duration-500 ease-out group-hover:max-h-64 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:max-h-64 group-focus-within:translate-y-0 group-focus-within:opacity-100">
                     <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
