@@ -836,7 +836,7 @@ function ServiceGlyph({ variant, accent }: { variant: number; accent: string }) 
   const paths = [
     "M0 62 C 60 62, 70 22, 130 22 S 200 62, 260 62 S 330 26, 400 26",
     "M0 30 C 70 30, 90 66, 160 66 S 250 26, 320 26 S 380 58, 400 58",
-    "M0 66 C 80 66, 100 24, 180 24 S 280 62, 360 62 400 40 400 40",
+    "M0 66 C 80 66, 100 24, 180 24 S 320 62, 400 40",
     "M0 24 C 90 24, 110 64, 200 64 S 320 28, 400 28",
   ];
   const d = paths[variant % paths.length];
