@@ -765,7 +765,7 @@ function Solutions() {
       <div
         className="container-enterprise relative mt-12"
         style={{
-          ["--svc-card" as string]: "calc((min(1272px, 100vw - 3rem) - 3 * 1.5rem) / 4)",
+          ["--svc-card" as string]: "calc((min(1272px, 100vw - 3rem) - 2 * 1.5rem) / 3)",
           ["--svc-bleed" as string]: "max(0px, calc((100vw - 1320px) / 2 + 1.5rem))",
         }}
       >
@@ -778,7 +778,7 @@ function Solutions() {
               <article
                 key={p.name}
                 style={{ width: "var(--svc-card)" }}
-                className="group card-lift flex min-w-[260px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white"
+                className="group card-lift flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white"
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
                   <img
@@ -887,7 +887,7 @@ function Services() {
         className="container-enterprise mt-12"
         style={{
           // one card = (container inner width − 3 gaps) / 4
-          ["--svc-card" as string]: "calc((min(1272px, 100vw - 3rem) - 3 * 1.5rem) / 4)",
+          ["--svc-card" as string]: "calc((min(1272px, 100vw - 3rem) - 2 * 1.5rem) / 3)",
           // distance from container's right edge out to the viewport edge
           ["--svc-bleed" as string]: "max(0px, calc((100vw - 1320px) / 2 + 1.5rem))",
         }}
@@ -901,7 +901,7 @@ function Services() {
               <article
                 key={s.name}
                 style={{ width: "var(--svc-card)" }}
-                className="group card-lift flex min-w-[240px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white"
+                className="group card-lift flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white"
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden">
                   <img
