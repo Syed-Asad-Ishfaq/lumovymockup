@@ -910,7 +910,7 @@ function Services() {
               <article
                 key={s.name}
                 style={{ width: "var(--svc-card)" }}
-                className="group relative flex h-[300px] min-w-[300px] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-2xl border border-border bg-white p-8"
+                className="group relative h-[300px] min-w-[300px] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-white"
               >
                 {/* Glow mark — sits in the upper area, away from the title;
                     blurs on hover. */}
@@ -923,14 +923,14 @@ function Services() {
                   />
                 </div>
 
-                {/* Content — the whole block sits at the bottom and is pushed
-                    down so only the title shows; on hover it slides up as one
-                    piece (pure transform = smooth, duration-accurate). The
-                    card's overflow-hidden clips the details below. */}
-                <div className="relative translate-y-[132px] transition-transform duration-[580ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0 group-focus-within:translate-y-0">
+                {/* Content — anchored so the TITLE sits at the card's bottom
+                    padding at rest, with the details extending below (clipped).
+                    On hover the whole block slides up by the details' height,
+                    then returns exactly to rest. */}
+                <div className="absolute inset-x-0 bottom-8 px-8 transition-transform duration-[580ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:-translate-y-[152px] group-focus-within:-translate-y-[152px]">
                   <h3 className="text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
-                  <div className="opacity-0 transition-opacity duration-[480ms] delay-100 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
-                    <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
+                  <div className="absolute inset-x-8 top-full pt-3 opacity-0 transition-opacity duration-[480ms] delay-100 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
+                    <p className="text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
                     <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
                     <div className="pt-5">
                       <LearnMore />
