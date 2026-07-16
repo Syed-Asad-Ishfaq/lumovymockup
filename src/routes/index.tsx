@@ -910,7 +910,7 @@ function Services() {
               <article
                 key={s.name}
                 style={{ width: "var(--svc-card)" }}
-                className="group card-lift relative flex h-[300px] min-w-[300px] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-2xl border border-border bg-white p-8"
+                className="group relative flex h-[300px] min-w-[300px] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-2xl border border-border bg-white p-8"
               >
                 {/* Glow mark — sits in the upper area, away from the title;
                     blurs on hover. */}
@@ -919,15 +919,15 @@ function Services() {
                     src={SERVICE_SHAPES[i % SERVICE_SHAPES.length]}
                     alt=""
                     aria-hidden
-                    className="h-40 w-40 object-contain transition-[filter,opacity] duration-500 ease-out group-hover:opacity-70 group-hover:blur-2xl"
+                    className="h-40 w-40 object-contain transition-[filter,opacity] duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:blur-2xl"
                   />
                 </div>
 
                 {/* Content — anchored to bottom by default; on hover it slides
                     up and the details reveal, filling the card top-to-bottom. */}
-                <div className="relative transition-transform duration-500 ease-out group-hover:-translate-y-1">
+                <div className="relative transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
                   <h3 className="text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
-                  <div className="max-h-0 translate-y-3 overflow-hidden opacity-0 transition-all duration-500 ease-out group-hover:max-h-64 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:max-h-64 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <div className="max-h-0 translate-y-3 overflow-hidden opacity-0 transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:max-h-64 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:max-h-64 group-focus-within:translate-y-0 group-focus-within:opacity-100">
                     <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
                     <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
                     <div className="pt-5">
