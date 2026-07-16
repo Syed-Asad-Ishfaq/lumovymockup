@@ -30,6 +30,11 @@ import {
   Cog,
   LifeBuoy,
   Layers,
+  Cpu,
+  Boxes,
+  Workflow,
+  ShieldCheck,
+  RefreshCw,
   X,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -824,55 +829,95 @@ function Solutions() {
 }
 
 /* SERVICES */
+// A flowing "route" illustration used at the top of each service card,
+// giving the section a distinct illustration-led look (vs the photo cards
+// in Products & Industries). Each card gets a different accent + path.
+function ServiceGlyph({ variant, accent }: { variant: number; accent: string }) {
+  const paths = [
+    "M0 62 C 60 62, 70 22, 130 22 S 200 62, 260 62 S 330 26, 400 26",
+    "M0 30 C 70 30, 90 66, 160 66 S 250 26, 320 26 S 380 58, 400 58",
+    "M0 66 C 80 66, 100 24, 180 24 S 280 62, 360 62 400 40 400 40",
+    "M0 24 C 90 24, 110 64, 200 64 S 320 28, 400 28",
+  ];
+  const d = paths[variant % paths.length];
+  const gid = `svc-grad-${variant}`;
+  return (
+    <svg viewBox="0 0 400 88" className="h-full w-full" preserveAspectRatio="xMidYMid meet" aria-hidden>
+      <defs>
+        <linearGradient id={gid} x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor={accent} stopOpacity="0.15" />
+          <stop offset="55%" stopColor={accent} stopOpacity="0.55" />
+          <stop offset="100%" stopColor={accent} stopOpacity="0.15" />
+        </linearGradient>
+      </defs>
+      {/* soft wide echo of the route */}
+      <path d={d} fill="none" stroke={`url(#${gid})`} strokeWidth="14" strokeLinecap="round" />
+      {/* crisp navy route */}
+      <path d={d} fill="none" stroke="var(--navy-deep)" strokeWidth="3" strokeLinecap="round" />
+      {/* stops along the route */}
+      <circle cx="0" cy={variant % 2 ? 30 : 62} r="5" fill="#fff" stroke="var(--navy-deep)" strokeWidth="3" />
+      <circle cx="200" cy={variant % 2 ? 66 : 62} r="4" fill="var(--navy-deep)" />
+      <circle cx="400" cy={variant % 2 ? 58 : 26} r="5" fill="#fff" stroke="var(--navy-deep)" strokeWidth="3" />
+    </svg>
+  );
+}
+
 function Services() {
   const services = [
     {
       name: "Implementation",
-      image: implementationImg,
-      approach:
-        "Your full Dynamics 365 implementation, handled from discovery to deployment.",
+      icon: Rocket,
+      eyebrow: "Deploy Fast",
+      accent: "var(--royal)",
+      approach: "Your full Dynamics 365 implementation, handled from discovery to deployment.",
       outcome: "Sava went live on Dynamics 365 in under 100 days.",
     },
     {
       name: "Managed Support & Expansion",
-      image: supportImg,
-      approach:
-        "24/7 managed services for your Dynamics 365 and Azure infrastructure, backed by SLAs and monitoring.",
+      icon: LifeBuoy,
+      eyebrow: "Always On",
+      accent: "var(--success)",
+      approach: "24/7 managed services for your Dynamics 365 and Azure infrastructure, backed by SLAs and monitoring.",
       outcome: "120+ upgrades, enterprise SLA compliance.",
     },
     {
       name: "Integrations & Modernization",
-      image: engineeringImg,
-      approach:
-        "Simpler operations, faster transformation, using Azure and Power Platform.",
+      icon: Workflow,
+      eyebrow: "Connect Everything",
+      accent: "var(--cyan-soft)",
+      approach: "Simpler operations, faster transformation, using Azure and Power Platform.",
       outcome: "Unified integrations powered by Azure.",
     },
     {
       name: "Enterprise Agentic AI Solutions",
-      image: consultingImg,
-      approach:
-        "AI agents built for your business, deployed using Copilot and custom solutions.",
+      icon: Cpu,
+      eyebrow: "Automate Work",
+      accent: "var(--royal)",
+      approach: "AI agents built for your business, deployed using Copilot and custom solutions.",
       outcome: "Enterprise AI live in 20-60 days.",
     },
     {
       name: "Legacy Migration",
-      image: implementationImg,
-      approach:
-        "A proven, low-disruption path from any legacy ERP to Dynamics 365.",
+      icon: RefreshCw,
+      eyebrow: "Modernize Safely",
+      accent: "var(--success)",
+      approach: "A proven, low-disruption path from any legacy ERP to Dynamics 365.",
       outcome: "30% faster migration, full continuity.",
     },
     {
       name: "Quality Engineering Factory",
-      image: engineeringImg,
-      approach:
-        "Release with confidence, backed by AI driven testing and quality checks.",
+      icon: ShieldCheck,
+      eyebrow: "Ship With Confidence",
+      accent: "var(--cyan-soft)",
+      approach: "Release with confidence, backed by AI driven testing and quality checks.",
       outcome: "6x faster validation, lighter testing.",
     },
     {
       name: "Global Capability Centers",
-      image: supportImg,
-      approach:
-        "A capability center built to grow into your hub for talent and innovation.",
+      icon: Boxes,
+      eyebrow: "Scale Talent",
+      accent: "var(--royal)",
+      approach: "A capability center built to grow into your hub for talent and innovation.",
       outcome: "Specialized talent deployed in 3 weeks.",
     },
   ];
@@ -887,18 +932,13 @@ function Services() {
         </div>
       </div>
 
-      {/* Horizontal swipe track. The container-enterprise wrapper fixes the
-          LEFT edge to the container (never bleeds left). The inner scroller
-          uses a negative right margin to bleed only to the right viewport
-          edge, so the 5th card peeks in the outer margin without moving the
-          four. Inner padding gives the hover-lift + shadow room on all sides
-          so nothing is cropped. */}
+      {/* Illustration-led cards on a horizontal swipe track. Left edge is
+          pinned to the container; a negative right margin bleeds the track
+          to the viewport edge so the next card peeks. */}
       <div
         className="container-enterprise mt-12"
         style={{
-          // one card = (container inner width − 3 gaps) / 4
           ["--svc-card" as string]: "calc((min(1272px, 100vw - 3rem) - 2 * 1.5rem) / 3)",
-          // distance from container's right edge out to the viewport edge
           ["--svc-bleed" as string]: "max(0px, calc((100vw - 1320px) / 2 + 1.5rem))",
         }}
       >
@@ -907,32 +947,38 @@ function Services() {
           style={{ marginRight: "calc(-1 * var(--svc-bleed))" }}
         >
           <div className="flex gap-6 pr-6">
-            {services.map((s) => (
-              <article
-                key={s.name}
-                style={{ width: "var(--svc-card)" }}
-                className="group card-lift flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white"
-              >
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
-                  <img
-                    src={s.image}
-                    alt={s.name}
-                    loading="lazy"
-                    width={1024}
-                    height={640}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
-                  <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
-                  <div className="mt-auto pt-6">
-                    <LearnMore />
+            {services.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <article
+                  key={s.name}
+                  style={{ width: "var(--svc-card)" }}
+                  className="group card-lift relative flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white"
+                >
+                  {/* Illustration header: flowing route + icon badge */}
+                  <div className="relative h-40 w-full overflow-hidden bg-gradient-to-b from-[var(--blue-light)]/70 to-white">
+                    <div className="absolute inset-0 px-6 py-6">
+                      <ServiceGlyph variant={i} accent={s.accent} />
+                    </div>
+                    <div
+                      className="absolute bottom-4 right-5 grid h-12 w-12 place-items-center rounded-2xl text-white shadow-lg transition-transform duration-300 group-hover:scale-110"
+                      style={{ backgroundColor: s.accent, boxShadow: `0 10px 24px -8px ${s.accent}` }}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))}
+                  <div className="flex flex-1 flex-col border-t border-border p-6">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--blue-gray)]">{s.eyebrow}</p>
+                    <h3 className="mt-1.5 text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
+                    <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
+                    <div className="mt-auto pt-6">
+                      <LearnMore />
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>
