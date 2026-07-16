@@ -914,12 +914,12 @@ function Services() {
               >
                 {/* Glow mark — sits in the upper area, away from the title;
                     blurs on hover. */}
-                <div className="pointer-events-none absolute inset-x-0 top-0 flex h-40 items-center justify-center">
+                <div className="pointer-events-none absolute inset-x-0 top-8 flex h-40 items-center justify-center">
                   <img
                     src={SERVICE_SHAPES[i % SERVICE_SHAPES.length]}
                     alt=""
                     aria-hidden
-                    className="h-44 w-44 object-contain transition-[filter,opacity] duration-500 ease-out group-hover:opacity-70 group-hover:blur-2xl"
+                    className="h-40 w-40 object-contain transition-[filter,opacity] duration-500 ease-out group-hover:opacity-70 group-hover:blur-2xl"
                   />
                 </div>
 
