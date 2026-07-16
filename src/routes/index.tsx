@@ -927,9 +927,9 @@ function Services() {
                     down so only the title shows; on hover it slides up as one
                     piece (pure transform = smooth, duration-accurate). The
                     card's overflow-hidden clips the details below. */}
-                <div className="relative translate-y-[132px] transition-transform duration-[900ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0 group-focus-within:translate-y-0">
+                <div className="relative translate-y-[132px] transition-transform duration-[750ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0 group-focus-within:translate-y-0">
                   <h3 className="text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
-                  <div className="opacity-0 transition-opacity duration-[700ms] delay-200 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
+                  <div className="opacity-0 transition-opacity duration-[600ms] delay-150 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
                     <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
                     <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
                     <div className="pt-5">
