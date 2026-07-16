@@ -979,12 +979,12 @@ function Services() {
                     padding at rest, with the details extending below (clipped).
                     On hover the whole block slides up by the details' height,
                     then returns exactly to rest. Text turns white over the blue. */}
-                <div className="absolute inset-x-0 bottom-8 px-8 transition-transform duration-[580ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:-translate-y-[152px] group-focus-within:-translate-y-[152px]">
+                <div className="absolute inset-x-0 bottom-8 px-8 transition-transform duration-[580ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:-translate-y-[176px] group-focus-within:-translate-y-[176px]">
                   <h3 className="text-xl font-semibold text-[var(--navy-deep)] transition-colors duration-[580ms] group-hover:text-white">{s.name}</h3>
                   <div className="absolute inset-x-8 top-full pt-3 opacity-0 transition-opacity duration-[480ms] delay-100 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
                     <p className="text-sm leading-relaxed text-[var(--blue-gray)] group-hover:text-white/85">{s.approach}</p>
                     <p className="mt-3 text-sm font-semibold text-[var(--success)] group-hover:text-[var(--cyan-soft)]">{s.outcome}</p>
-                    <div className="pt-5 group-hover:[&_a>span:first-child]:bg-white group-hover:[&_a>span:first-child]:text-[var(--royal)] group-hover:[&_a>span:last-child]:text-white">
+                    <div className="pt-8 group-hover:[&_a>span:first-child]:bg-white group-hover:[&_a>span:first-child]:text-[var(--royal)] group-hover:[&_a>span:last-child]:text-white">
                       <LearnMore />
                     </div>
                   </div>
