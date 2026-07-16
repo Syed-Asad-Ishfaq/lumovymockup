@@ -825,9 +825,9 @@ function Solutions() {
     <section id="solutions" className="relative overflow-hidden border-b border-border bg-[var(--blue-light)]/40 py-28">
       <div aria-hidden className="mesh-blobs-light opacity-50" />
       <div className="container-enterprise relative">
-        <div className="max-w-2xl">
+        <div className="max-w-none">
           <p className="eyebrow">Products &amp; Accelerators</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
             Pre-built accelerators that shorten your time-to-value.
           </h2>
         </div>
@@ -930,9 +930,9 @@ function Services() {
   return (
     <section id="services" className="border-b border-border bg-white py-28">
       <div className="container-enterprise">
-        <div className="max-w-2xl">
+        <div className="max-w-none">
           <p className="eyebrow">Services</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
             From Planning to Performance, We're Your One Partner.
           </h2>
         </div>
@@ -1122,9 +1122,9 @@ function WhyLumovy() {
   return (
     <section id="why" className="border-b border-border bg-white py-28">
       <div className="container-enterprise">
-        <div className="max-w-3xl">
+        <div className="max-w-none">
           <p className="eyebrow">Why Lumovy</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
             Trusted to Rescue and Elevate Your Transformation.
           </h2>
         </div>
