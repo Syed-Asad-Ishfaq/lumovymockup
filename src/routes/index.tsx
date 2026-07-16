@@ -829,54 +829,110 @@ function Solutions() {
 }
 
 /* SERVICES */
+// Soft, blurred abstract blue "glow" mark per service — pure SVG with a
+// Gaussian-blur filter. Distinct shape per card, all in the brand blue.
+function ServiceGlow({ shape, id }: { shape: string; id: string }) {
+  const fid = `glow-${id}`;
+  const c = "var(--royal)";
+  return (
+    <svg viewBox="0 0 200 200" className="h-full w-full" aria-hidden>
+      <defs>
+        <filter id={fid} x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="7" />
+        </filter>
+        <radialGradient id={`${fid}-r`} cx="42%" cy="38%" r="70%">
+          <stop offset="0%" stopColor="#6f9bff" />
+          <stop offset="60%" stopColor={c} />
+          <stop offset="100%" stopColor="var(--navy)" />
+        </radialGradient>
+      </defs>
+      <g filter={`url(#${fid})`} fill={`url(#${fid}-r)`}>
+        {shape === "spark" && (
+          // 4-point sparkle / star (AI)
+          <path d="M100 30 C110 78 122 90 170 100 C122 110 110 122 100 170 C90 122 78 110 30 100 C78 90 90 78 100 30 Z" />
+        )}
+        {shape === "ring" && (
+          // thick ring (engineering / build loop)
+          <path
+            fillRule="evenodd"
+            d="M100 32 A68 68 0 1 0 100 168 A68 68 0 1 0 100 32 Z M100 74 A26 26 0 1 1 100 126 A26 26 0 1 1 100 74 Z"
+          />
+        )}
+        {shape === "quad" && (
+          // four dots (integrations / grid)
+          <g>
+            <circle cx="72" cy="72" r="30" />
+            <circle cx="128" cy="72" r="30" />
+            <circle cx="72" cy="128" r="30" />
+            <circle cx="128" cy="128" r="30" />
+          </g>
+        )}
+        {shape === "cpu" && (
+          // rounded square with notch (AI chip / agent)
+          <path d="M60 45 h58 a14 14 0 0 1 14 14 v10 l-12 12 12 12 v40 a14 14 0 0 1 -14 14 h-58 a14 14 0 0 1 -14 -14 v-74 a14 14 0 0 1 14 -14 Z" />
+        )}
+        {shape === "refresh" && (
+          // swirl / migration arc
+          <path d="M100 34 a66 66 0 1 1 -52 25 l22 14 a40 40 0 1 0 30 -27 l14 -22 Z" />
+        )}
+        {shape === "shield" && (
+          // shield (quality / trust)
+          <path d="M100 32 L158 54 V104 C158 140 132 160 100 172 C68 160 42 140 42 104 V54 Z" />
+        )}
+        {shape === "boxes" && (
+          // stacked blocks (capability centers)
+          <g>
+            <rect x="52" y="52" width="44" height="44" rx="12" />
+            <rect x="104" y="52" width="44" height="44" rx="12" />
+            <rect x="78" y="104" width="44" height="44" rx="12" />
+          </g>
+        )}
+      </g>
+    </svg>
+  );
+}
+
 function Services() {
   const services = [
     {
       name: "Implementation",
-      icon: Rocket,
-      accent: "var(--royal)",
+      shape: "refresh",
       approach: "Your full Dynamics 365 implementation, handled from discovery to deployment.",
       outcome: "Sava went live on Dynamics 365 in under 100 days.",
     },
     {
       name: "Managed Support & Expansion",
-      icon: LifeBuoy,
-      accent: "var(--success)",
+      shape: "shield",
       approach: "24/7 managed services for your Dynamics 365 and Azure infrastructure, backed by SLAs and monitoring.",
       outcome: "120+ upgrades, enterprise SLA compliance.",
     },
     {
       name: "Integrations & Modernization",
-      icon: Workflow,
-      accent: "var(--cyan-soft)",
+      shape: "quad",
       approach: "Simpler operations, faster transformation, using Azure and Power Platform.",
       outcome: "Unified integrations powered by Azure.",
     },
     {
       name: "Enterprise Agentic AI Solutions",
-      icon: Cpu,
-      accent: "var(--royal)",
+      shape: "spark",
       approach: "AI agents built for your business, deployed using Copilot and custom solutions.",
       outcome: "Enterprise AI live in 20-60 days.",
     },
     {
       name: "Legacy Migration",
-      icon: RefreshCw,
-      accent: "var(--success)",
+      shape: "ring",
       approach: "A proven, low-disruption path from any legacy ERP to Dynamics 365.",
       outcome: "30% faster migration, full continuity.",
     },
     {
       name: "Quality Engineering Factory",
-      icon: ShieldCheck,
-      accent: "var(--cyan-soft)",
+      shape: "cpu",
       approach: "Release with confidence, backed by AI driven testing and quality checks.",
       outcome: "6x faster validation, lighter testing.",
     },
     {
       name: "Global Capability Centers",
-      icon: Boxes,
-      accent: "var(--royal)",
+      shape: "boxes",
       approach: "A capability center built to grow into your hub for talent and innovation.",
       outcome: "Specialized talent deployed in 3 weeks.",
     },
@@ -892,9 +948,8 @@ function Services() {
         </div>
       </div>
 
-      {/* Icon-led cards on a horizontal swipe track. Left edge is pinned to
-          the container; a negative right margin bleeds the track to the
-          viewport edge so the next card peeks. */}
+      {/* Glow-mark cards on a horizontal swipe track. Only the title shows by
+          default; hovering a card reveals the details + CTA. */}
       <div
         className="container-enterprise mt-12"
         style={{
@@ -907,35 +962,33 @@ function Services() {
           style={{ marginRight: "calc(-1 * var(--svc-bleed))" }}
         >
           <div className="flex gap-6 pr-6">
-            {services.map((s) => {
-              const Icon = s.icon;
-              return (
-                <article
-                  key={s.name}
-                  style={{ width: "var(--svc-card)" }}
-                  className="group card-lift relative flex min-w-[300px] shrink-0 snap-start flex-col rounded-2xl border border-border bg-white p-8"
-                >
-                  {/* Large relevant icon in a soft tinted rounded panel */}
-                  <div
-                    className="relative grid h-16 w-16 place-items-center rounded-2xl transition-transform duration-300 group-hover:-translate-y-0.5"
-                    style={{ backgroundColor: `color-mix(in srgb, ${s.accent} 12%, white)` }}
-                  >
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 rounded-2xl ring-1 ring-inset"
-                      style={{ boxShadow: `inset 0 0 0 1px color-mix(in srgb, ${s.accent} 22%, transparent)` }}
-                    />
-                    <Icon className="h-7 w-7" style={{ color: s.accent }} strokeWidth={1.75} />
+            {services.map((s, i) => (
+              <article
+                key={s.name}
+                style={{ width: "var(--svc-card)" }}
+                className="group card-lift relative flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white p-8"
+              >
+                {/* Big soft glow mark */}
+                <div className="mx-auto grid h-44 w-full place-items-center">
+                  <div className="h-40 w-40 transition-transform duration-500 group-hover:scale-105">
+                    <ServiceGlow shape={s.shape} id={String(i)} />
                   </div>
-                  <h3 className="mt-6 text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
-                  <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
-                  <div className="mt-auto pt-6">
-                    <LearnMore />
+                </div>
+
+                <h3 className="mt-2 text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
+
+                {/* Details revealed on hover */}
+                <div className="grid grid-rows-[0fr] transition-all duration-500 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
+                  <div className="overflow-hidden">
+                    <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
+                    <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
+                    <div className="pt-5">
+                      <LearnMore />
+                    </div>
                   </div>
-                </article>
-              );
-            })}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </div>
