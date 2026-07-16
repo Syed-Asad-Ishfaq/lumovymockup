@@ -963,20 +963,20 @@ function Services() {
               <article
                 key={s.name}
                 style={{ width: "var(--svc-card)" }}
-                className="group card-lift relative flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white p-8"
+                className="group card-lift relative h-[440px] min-w-[300px] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-white"
               >
-                {/* Big soft glow mark */}
-                <div className="mx-auto grid h-44 w-full place-items-center">
-                  <div className="h-40 w-40">
+                {/* Glow mark — fills the card, sits centered, blurs on hover */}
+                <div className="pointer-events-none absolute inset-0 grid place-items-center">
+                  <div className="h-52 w-52 transition-[filter,opacity] duration-500 ease-out group-hover:opacity-70 group-hover:blur-2xl">
                     <ServiceGlow shape={s.shape} id={String(i)} />
                   </div>
                 </div>
 
-                <h3 className="mt-2 text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
-
-                {/* Details revealed on hover */}
-                <div className="grid grid-rows-[0fr] transition-all duration-500 ease-out group-hover:grid-rows-[1fr] group-focus-within:grid-rows-[1fr]">
-                  <div className="overflow-hidden">
+                {/* Content — pinned to the bottom. Title always shows; details
+                    start hidden below and slide up on hover. */}
+                <div className="absolute inset-x-0 bottom-0 p-8">
+                  <h3 className="text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
+                  <div className="max-h-0 translate-y-3 overflow-hidden opacity-0 transition-all duration-500 ease-out group-hover:max-h-64 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:max-h-64 group-focus-within:translate-y-0 group-focus-within:opacity-100">
                     <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
                     <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
                     <div className="pt-5">
