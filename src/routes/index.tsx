@@ -984,10 +984,12 @@ function Services() {
                   <div className="absolute inset-x-8 top-full pt-3 opacity-0 transition-opacity duration-[480ms] delay-100 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
                     <p className="text-sm leading-relaxed text-[var(--blue-gray)] group-hover:text-white/85">{s.approach}</p>
                     <p className="mt-3 text-sm font-semibold text-[var(--success)] group-hover:text-[var(--cyan-soft)]">{s.outcome}</p>
-                    <div className="pt-8 group-hover:[&_a>span:first-child]:bg-white group-hover:[&_a>span:first-child]:text-[var(--royal)] group-hover:[&_a>span:last-child]:text-white">
-                      <LearnMore />
-                    </div>
                   </div>
+                </div>
+
+                {/* CTA — fixed at the card bottom, does not move; only fades in */}
+                <div className="absolute inset-x-0 bottom-8 px-8 opacity-0 transition-opacity duration-[480ms] delay-150 ease-out group-hover:opacity-100 group-focus-within:opacity-100 group-hover:[&_a>span:first-child]:bg-white group-hover:[&_a>span:first-child]:text-[var(--royal)] group-hover:[&_a>span:last-child]:text-white">
+                  <LearnMore />
                 </div>
               </article>
             ))}
