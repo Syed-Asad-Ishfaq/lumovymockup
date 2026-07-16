@@ -829,45 +829,11 @@ function Solutions() {
 }
 
 /* SERVICES */
-// A flowing "route" illustration used at the top of each service card,
-// giving the section a distinct illustration-led look (vs the photo cards
-// in Products & Industries). Each card gets a different accent + path.
-function ServiceGlyph({ variant, accent }: { variant: number; accent: string }) {
-  const paths = [
-    "M0 62 C 60 62, 70 22, 130 22 S 200 62, 260 62 S 330 26, 400 26",
-    "M0 30 C 70 30, 90 66, 160 66 S 250 26, 320 26 S 380 58, 400 58",
-    "M0 66 C 80 66, 100 24, 180 24 S 320 62, 400 40",
-    "M0 24 C 90 24, 110 64, 200 64 S 320 28, 400 28",
-  ];
-  const d = paths[variant % paths.length];
-  const gid = `svc-grad-${variant}`;
-  return (
-    <svg viewBox="0 0 400 88" className="h-full w-full" preserveAspectRatio="xMidYMid meet" aria-hidden>
-      <defs>
-        <linearGradient id={gid} x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor={accent} stopOpacity="0.15" />
-          <stop offset="55%" stopColor={accent} stopOpacity="0.55" />
-          <stop offset="100%" stopColor={accent} stopOpacity="0.15" />
-        </linearGradient>
-      </defs>
-      {/* soft wide echo of the route */}
-      <path d={d} fill="none" stroke={`url(#${gid})`} strokeWidth="14" strokeLinecap="round" />
-      {/* crisp navy route */}
-      <path d={d} fill="none" stroke="var(--navy-deep)" strokeWidth="3" strokeLinecap="round" />
-      {/* stops along the route */}
-      <circle cx="0" cy={variant % 2 ? 30 : 62} r="5" fill="#fff" stroke="var(--navy-deep)" strokeWidth="3" />
-      <circle cx="200" cy={variant % 2 ? 66 : 62} r="4" fill="var(--navy-deep)" />
-      <circle cx="400" cy={variant % 2 ? 58 : 26} r="5" fill="#fff" stroke="var(--navy-deep)" strokeWidth="3" />
-    </svg>
-  );
-}
-
 function Services() {
   const services = [
     {
       name: "Implementation",
       icon: Rocket,
-      eyebrow: "Deploy Fast",
       accent: "var(--royal)",
       approach: "Your full Dynamics 365 implementation, handled from discovery to deployment.",
       outcome: "Sava went live on Dynamics 365 in under 100 days.",
@@ -875,7 +841,6 @@ function Services() {
     {
       name: "Managed Support & Expansion",
       icon: LifeBuoy,
-      eyebrow: "Always On",
       accent: "var(--success)",
       approach: "24/7 managed services for your Dynamics 365 and Azure infrastructure, backed by SLAs and monitoring.",
       outcome: "120+ upgrades, enterprise SLA compliance.",
@@ -883,7 +848,6 @@ function Services() {
     {
       name: "Integrations & Modernization",
       icon: Workflow,
-      eyebrow: "Connect Everything",
       accent: "var(--cyan-soft)",
       approach: "Simpler operations, faster transformation, using Azure and Power Platform.",
       outcome: "Unified integrations powered by Azure.",
@@ -891,7 +855,6 @@ function Services() {
     {
       name: "Enterprise Agentic AI Solutions",
       icon: Cpu,
-      eyebrow: "Automate Work",
       accent: "var(--royal)",
       approach: "AI agents built for your business, deployed using Copilot and custom solutions.",
       outcome: "Enterprise AI live in 20-60 days.",
@@ -899,7 +862,6 @@ function Services() {
     {
       name: "Legacy Migration",
       icon: RefreshCw,
-      eyebrow: "Modernize Safely",
       accent: "var(--success)",
       approach: "A proven, low-disruption path from any legacy ERP to Dynamics 365.",
       outcome: "30% faster migration, full continuity.",
@@ -907,7 +869,6 @@ function Services() {
     {
       name: "Quality Engineering Factory",
       icon: ShieldCheck,
-      eyebrow: "Ship With Confidence",
       accent: "var(--cyan-soft)",
       approach: "Release with confidence, backed by AI driven testing and quality checks.",
       outcome: "6x faster validation, lighter testing.",
@@ -915,7 +876,6 @@ function Services() {
     {
       name: "Global Capability Centers",
       icon: Boxes,
-      eyebrow: "Scale Talent",
       accent: "var(--royal)",
       approach: "A capability center built to grow into your hub for talent and innovation.",
       outcome: "Specialized talent deployed in 3 weeks.",
@@ -932,9 +892,9 @@ function Services() {
         </div>
       </div>
 
-      {/* Illustration-led cards on a horizontal swipe track. Left edge is
-          pinned to the container; a negative right margin bleeds the track
-          to the viewport edge so the next card peeks. */}
+      {/* Icon-led cards on a horizontal swipe track. Left edge is pinned to
+          the container; a negative right margin bleeds the track to the
+          viewport edge so the next card peeks. */}
       <div
         className="container-enterprise mt-12"
         style={{
@@ -947,34 +907,31 @@ function Services() {
           style={{ marginRight: "calc(-1 * var(--svc-bleed))" }}
         >
           <div className="flex gap-6 pr-6">
-            {services.map((s, i) => {
+            {services.map((s) => {
               const Icon = s.icon;
               return (
                 <article
                   key={s.name}
                   style={{ width: "var(--svc-card)" }}
-                  className="group card-lift relative flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white"
+                  className="group card-lift relative flex min-w-[300px] shrink-0 snap-start flex-col rounded-2xl border border-border bg-white p-8"
                 >
-                  {/* Illustration header: flowing route + icon badge */}
-                  <div className="relative h-40 w-full overflow-hidden bg-gradient-to-b from-[var(--blue-light)]/70 to-white">
-                    <div className="absolute inset-0 px-6 py-6">
-                      <ServiceGlyph variant={i} accent={s.accent} />
-                    </div>
-                    <div
-                      className="absolute bottom-4 right-5 grid h-12 w-12 place-items-center rounded-2xl text-white shadow-lg transition-transform duration-300 group-hover:scale-110"
-                      style={{ backgroundColor: s.accent, boxShadow: `0 10px 24px -8px ${s.accent}` }}
-                    >
-                      <Icon className="h-5 w-5" />
-                    </div>
+                  {/* Large relevant icon in a soft tinted rounded panel */}
+                  <div
+                    className="relative grid h-16 w-16 place-items-center rounded-2xl transition-transform duration-300 group-hover:-translate-y-0.5"
+                    style={{ backgroundColor: `color-mix(in srgb, ${s.accent} 12%, white)` }}
+                  >
+                    <span
+                      aria-hidden
+                      className="absolute inset-0 rounded-2xl ring-1 ring-inset"
+                      style={{ boxShadow: `inset 0 0 0 1px color-mix(in srgb, ${s.accent} 22%, transparent)` }}
+                    />
+                    <Icon className="h-7 w-7" style={{ color: s.accent }} strokeWidth={1.75} />
                   </div>
-                  <div className="flex flex-1 flex-col border-t border-border p-6">
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--blue-gray)]">{s.eyebrow}</p>
-                    <h3 className="mt-1.5 text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
-                    <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
-                    <div className="mt-auto pt-6">
-                      <LearnMore />
-                    </div>
+                  <h3 className="mt-6 text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
+                  <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
+                  <div className="mt-auto pt-6">
+                    <LearnMore />
                   </div>
                 </article>
               );
