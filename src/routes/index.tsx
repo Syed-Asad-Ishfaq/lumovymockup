@@ -339,7 +339,7 @@ function MegaMenu({ groups }: { groups: NavGroup[] }) {
   const cols = Math.min(groups.length, 3);
   return (
     <div
-      className="animate-menu-in rounded-3xl border border-border bg-white shadow-fluent-lg"
+      className="animate-menu-in rounded-xl border border-border bg-white shadow-fluent-lg"
       style={{ minWidth: cols === 1 ? 280 : cols === 2 ? 480 : 640 }}
     >
       <div className="grid gap-6 p-6" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
@@ -601,7 +601,7 @@ function Hero() {
       <div className="container-enterprise relative z-10 grid gap-14 pt-24 lg:grid-cols-12 lg:gap-10 lg:pt-32">
         <HeroSlider active={active} phase={phase} setPaused={setPaused} handleAnimEnd={handleAnimEnd} />
         <aside className="lg:col-span-5">
-          <div className="glass-panel rounded-3xl p-7">
+          <div className="glass-panel rounded-xl p-7">
             <div className="flex items-center gap-2">
               <Calendar className="h-4 w-4 text-[var(--cyan-soft)]" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--cyan-soft)]">
@@ -750,7 +750,7 @@ function MetricsBand() {
               return (
                 <div
                   key={l}
-                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm"
+                  className="rounded-lg border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm"
                   style={{
                     opacity: local,
                     transform: `translateY(${(1 - local) * 28}px)`,
@@ -850,7 +850,7 @@ function Solutions() {
               <article
                 key={p.name}
                 style={{ width: "var(--svc-card)" }}
-                className="group card-lift flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white"
+                className="group card-lift flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-lg border border-border bg-white"
               >
                 <div className="relative aspect-[16/7] w-full overflow-hidden">
                   <img
@@ -956,7 +956,7 @@ function Services() {
               <article
                 key={s.name}
                 style={{ width: "var(--svc-card)" }}
-                className="group relative h-[300px] min-w-[300px] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-white"
+                className="group relative h-[300px] min-w-[300px] shrink-0 snap-start overflow-hidden rounded-lg border border-border bg-white"
               >
                 {/* Blue gradient fill fades in on hover */}
                 <div
@@ -1055,7 +1055,7 @@ function Industries() {
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {items.map((i) => (
-            <article key={i.name} className="group card-lift flex flex-col overflow-hidden rounded-3xl border border-border bg-white">
+            <article key={i.name} className="group card-lift flex flex-col overflow-hidden rounded-xl border border-border bg-white">
               <div className="relative aspect-[21/9] w-full overflow-hidden">
                 <img
                   src={i.image}
@@ -1138,7 +1138,7 @@ function WhyLumovy() {
           {pillars.map((p) => {
             const Icon = p.icon;
             return (
-              <div key={p.t} className="card-lift group relative overflow-hidden rounded-3xl border border-border bg-white p-8">
+              <div key={p.t} className="card-lift group relative overflow-hidden rounded-xl border border-border bg-white p-8">
                 <span className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-[var(--royal)] transition-transform duration-500 group-hover:scale-x-100" />
                 <div className="flex items-center gap-3">
                   <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[var(--blue-light)] text-[var(--royal)] ring-1 ring-inset ring-[var(--royal)]/20">
@@ -1265,7 +1265,7 @@ function CaseStudies() {
         </div>
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {cases.map((c) => (
-            <article key={c.title} className="group card-lift flex flex-col rounded-3xl border border-border bg-white p-8">
+            <article key={c.title} className="group card-lift flex flex-col rounded-xl border border-border bg-white p-8">
               <div className="flex h-14 items-center">
                 <img
                   src={c.logo}
@@ -1340,7 +1340,7 @@ const REFERENCES: RefItem[] = [
 
 function QuoteCard({ q }: { q: QuoteItem }) {
   return (
-    <figure className="flex h-full flex-col rounded-3xl border border-border bg-white p-8">
+    <figure className="flex h-full flex-col rounded-xl border border-border bg-white p-8">
       <svg className="h-6 w-6 text-[var(--royal)]" fill="currentColor" viewBox="0 0 24 24">
         <path d="M9 7H5a2 2 0 00-2 2v4a2 2 0 002 2h2v1a3 3 0 01-3 3v2a5 5 0 005-5V9a2 2 0 00-2-2zm10 0h-4a2 2 0 00-2 2v4a2 2 0 002 2h2v1a3 3 0 01-3 3v2a5 5 0 005-5V9a2 2 0 00-2-2z" />
       </svg>
@@ -1366,7 +1366,7 @@ function QuoteCard({ q }: { q: QuoteItem }) {
 
 function VideoCard({ v }: { v: VideoItem }) {
   return (
-    <button className="relative flex h-full w-full items-stretch overflow-hidden rounded-3xl border border-border bg-black text-left">
+    <button className="relative flex h-full w-full items-stretch overflow-hidden rounded-xl border border-border bg-black text-left">
       <div className="relative w-full">
         <img
           src={v.poster}
@@ -1538,7 +1538,7 @@ function Framework() {
                   className="snap-start"
                   style={{ animation: `fade-up 0.6s ${i * 90}ms both cubic-bezier(0.16,1,0.3,1)` }}
                 >
-                  <div className="relative flex h-full w-[300px] flex-col overflow-hidden rounded-3xl border border-border bg-white p-7 sm:w-[340px]">
+                  <div className="relative flex h-full w-[300px] flex-col overflow-hidden rounded-xl border border-border bg-white p-7 sm:w-[340px]">
                     <div className="flex items-center justify-between">
                       <span className="text-5xl font-bold tracking-tight text-[var(--navy-deep)]/10">{s.no}</span>
                       <div className="grid h-10 w-10 place-items-center rounded-2xl bg-[var(--royal)] text-white shadow-lg shadow-[var(--royal)]/25">
@@ -1602,7 +1602,7 @@ function Procurement() {
             {items.map((i) => {
               const Icon = i.icon;
               return (
-                <div key={i.t} className="scale-in-hover rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-colors hover:bg-white/[0.08]">
+                <div key={i.t} className="scale-in-hover rounded-lg border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-colors hover:bg-white/[0.08]">
                   <Icon className="h-5 w-5 text-[var(--cyan-soft)]" />
                   <div className="mt-3 text-sm font-semibold text-white">{i.t}</div>
                   <div className="mt-1 text-xs leading-relaxed text-white/70">{i.d}</div>
@@ -1635,7 +1635,7 @@ function Comparison() {
             Lumovy vs. traditional vendors
           </h2>
         </div>
-        <div className="mt-14 overflow-hidden rounded-3xl border border-border shadow-fluent-sm">
+        <div className="mt-14 overflow-hidden rounded-xl border border-border shadow-fluent-sm">
           <div className="grid grid-cols-3 border-b border-border bg-[var(--blue-light)]/40">
             <div className="p-5 text-xs font-semibold uppercase tracking-widest text-[var(--blue-gray)]">Dimension</div>
             <div className="p-5 text-xs font-semibold uppercase tracking-widest text-[var(--navy-deep)]">Lumovy</div>
@@ -1683,7 +1683,7 @@ function Contact() {
             <p className="mt-4 text-base leading-relaxed text-[var(--blue-gray)]">
               Tell us why you're reaching out, no ticket queues.
             </p>
-            <div className="card-lift mt-8 rounded-3xl border border-border bg-white p-6">
+            <div className="card-lift mt-8 rounded-xl border border-border bg-white p-6">
               <div className="flex items-center gap-3">
                 <Calendar className="h-5 w-5 text-[var(--royal)]" />
                 <div>
@@ -1714,7 +1714,7 @@ function Contact() {
               </div>
             </dl>
           </div>
-          <form className="card-lift rounded-3xl border border-border bg-white p-8 lg:col-span-7">
+          <form className="card-lift rounded-xl border border-border bg-white p-8 lg:col-span-7">
             <label className="text-xs font-semibold uppercase tracking-widest text-[var(--blue-gray)]">
               What are you looking for?
             </label>
@@ -1771,7 +1771,7 @@ function Contact() {
               <textarea
                 rows={4}
                 placeholder="Short description of the business outcome, timeline, and any procurement constraints."
-                className="mt-2 w-full rounded-2xl border border-border bg-white px-3.5 py-3 text-sm text-[var(--navy-deep)] outline-none placeholder:text-[var(--blue-gray)] focus:border-[var(--royal)]"
+                className="mt-2 w-full rounded-lg border border-border bg-white px-3.5 py-3 text-sm text-[var(--navy-deep)] outline-none placeholder:text-[var(--blue-gray)] focus:border-[var(--royal)]"
               />
             </div>
             <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
@@ -1797,7 +1797,7 @@ function Field({ label, placeholder, type = "text" }: { label: string; placehold
       <input
         type={type}
         placeholder={placeholder}
-        className="mt-2 w-full rounded-2xl border border-border bg-white px-3.5 py-3 text-sm text-[var(--navy-deep)] outline-none placeholder:text-[var(--blue-gray)] focus:border-[var(--royal)]"
+        className="mt-2 w-full rounded-lg border border-border bg-white px-3.5 py-3 text-sm text-[var(--navy-deep)] outline-none placeholder:text-[var(--blue-gray)] focus:border-[var(--royal)]"
       />
     </label>
   );
