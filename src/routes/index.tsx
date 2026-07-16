@@ -852,7 +852,7 @@ function Solutions() {
                 style={{ width: "var(--svc-card)" }}
                 className="group card-lift flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-border bg-white"
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
+                <div className="relative aspect-[16/7] w-full overflow-hidden">
                   <img
                     src={p.image}
                     alt={p.name}
