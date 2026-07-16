@@ -842,7 +842,7 @@ function Solutions() {
         }}
       >
         <div
-          className="scroll-hide snap-x snap-mandatory -mx-6 -my-6 overflow-x-auto px-6 py-6"
+          className="scroll-hide snap-x snap-mandatory -my-6 overflow-x-auto py-6"
           style={{ marginRight: "calc(-1 * var(--svc-bleed))" }}
         >
           <div className="flex gap-6 pr-6">
@@ -948,7 +948,7 @@ function Services() {
         }}
       >
         <div
-          className="scroll-hide snap-x snap-mandatory -mx-6 -my-6 overflow-x-auto px-6 py-6"
+          className="scroll-hide snap-x snap-mandatory -my-6 overflow-x-auto py-6"
           style={{ marginRight: "calc(-1 * var(--svc-bleed))" }}
         >
           <div className="flex gap-6 pr-6">
