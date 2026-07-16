@@ -756,7 +756,7 @@ function MetricsBand() {
                 className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm"
                 style={{
                   opacity: local,
-                  transform: `translateY(${(1 - local) * 24}px)`,
+                  transform: `translateX(${(1 - local) * 48}px)`,
                   transition: "opacity 0.35s ease-out, transform 0.35s cubic-bezier(0.16,1,0.3,1)",
                 }}
               >
