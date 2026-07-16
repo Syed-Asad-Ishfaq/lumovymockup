@@ -863,7 +863,7 @@ function Solutions() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="truncate text-base font-semibold leading-snug text-[var(--navy-deep)]">{p.name}</h3>
+                  <h3 className="truncate text-xl font-semibold leading-snug text-[var(--navy-deep)]">{p.name}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">{p.blurb}</p>
                   <div className="mt-auto pt-6">
                     <LearnMore label="Learn more" />
@@ -1565,7 +1565,6 @@ function Framework() {
 function Procurement() {
   const items = [
     { icon: FileCheck2, t: "NDA in 24 hours", d: "Mutual NDAs turned around within one business day." },
-    { icon: Shield, t: "Security compliance", d: "SOC 2, ISO 27001, HIPAA, PCI DSS on request." },
     { icon: Building2, t: "Vendor onboarding", d: "Ariba, Coupa, SAP, and Workday supported." },
     { icon: FileCheck2, t: "MSA & SOW ready", d: "Enterprise templates and DPA available." },
     { icon: LineChart, t: "Transparent invoicing", d: "Milestone or fixed-fee, Net-30 to Net-60." },
@@ -1867,7 +1866,7 @@ function FAQ() {
               }}
               className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold text-[var(--royal)] transition-all hover:-translate-y-0.5 hover:border-[var(--royal)]"
             >
-              {showAll ? "Show fewer" : `View all ${items.length} questions`}
+              {showAll ? "Show fewer" : "View more"}
               <ChevronDown className={"h-4 w-4 transition-transform " + (showAll ? "rotate-180" : "")} />
             </button>
           )}
