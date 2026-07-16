@@ -665,7 +665,7 @@ function MetricsBand() {
     ["320+", "Completed projects"],
     ["300+", "Dynamics 365 consultants globally"],
     ["50+", "Active customers"],
-    ["100 days", "Avg. time to go live"],
+    ["100 days", "Avg. go-live time"],
     ["99.5%", "Uptime maintained"],
     ["24/7", "Global delivery coverage"],
   ];
@@ -869,7 +869,7 @@ function Services() {
   return (
     <section id="services" className="border-b border-border bg-white py-28">
       <div className="container-enterprise">
-        <div>
+        <div className="max-w-2xl">
           <p className="eyebrow">Services</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
             From Planning to Performance, We're Your One Partner.
@@ -1183,7 +1183,7 @@ function CaseStudies() {
           <div className="max-w-2xl">
             <p className="eyebrow">Case studies</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Real engagements. Auditable outcomes we stand behind. Names masked by policy.
+              Real engagements. Auditable outcomes.
             </h2>
           </div>
           <a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
@@ -1209,8 +1209,8 @@ function CaseStudies() {
               <p className="mt-4 text-sm leading-relaxed text-[var(--blue-gray)]">{c.challenge}</p>
               <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border pt-6">
                 {c.results.map(([v, l]) => (
-                  <div key={l}>
-                    <div className="text-lg font-bold text-[var(--navy-deep)]">{v}</div>
+                  <div key={l} className="min-w-0">
+                    <div className="whitespace-nowrap text-[15px] font-bold leading-tight text-[var(--navy-deep)]">{v}</div>
                     <div className="mt-1 text-[11px] font-medium leading-tight text-[var(--blue-gray)]">{l}</div>
                   </div>
                 ))}
@@ -1448,9 +1448,6 @@ function Framework() {
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
               Human Led, AI Accelerated.
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-[var(--blue-gray)]">
-              Five stages from assessment to continuous value realization.
-            </p>
           </div>
           <div className="hidden gap-2 md:flex">
             <span className="rounded-full border border-border bg-white px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-[var(--blue-gray)]">
@@ -1526,7 +1523,7 @@ function Procurement() {
               Everything legal and security need to say yes.
             </p>
             <a href="#contact" className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:bg-white/90">
-              Request procurement pack
+              Book a Consultation
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
@@ -1769,6 +1766,9 @@ function FAQ() {
     ["How do you measure success?", "Success is measured by your business outcomes, not just project completion. Typical KPIs include implementation timelines, platform adoption, release quality, and long-term value."],
   ];
   const [open, setOpen] = useState<number | null>(0);
+  const [showAll, setShowAll] = useState(false);
+  const VISIBLE = 6;
+  const visibleItems = showAll ? items : items.slice(0, VISIBLE);
   return (
     <section id="insights" className="border-b border-border bg-white py-28">
       <div className="container-enterprise grid gap-10 lg:grid-cols-12">
@@ -1778,19 +1778,33 @@ function FAQ() {
             Questions we get first.
           </h2>
         </div>
-        <div className="divide-y divide-border lg:col-span-8">
-          {items.map(([q, a], idx) => (
-            <div key={q} className="py-5">
-              <button
-                onClick={() => setOpen(open === idx ? null : idx)}
-                className="flex w-full items-start justify-between gap-6 text-left"
-              >
-                <span className="text-base font-semibold text-[var(--navy-deep)]">{q}</span>
-                <ChevronDown className={"h-5 w-5 shrink-0 text-[var(--blue-gray)] transition-transform " + (open === idx ? "rotate-180" : "")} />
-              </button>
-              {open === idx && <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{a}</p>}
-            </div>
-          ))}
+        <div className="lg:col-span-8">
+          <div className="divide-y divide-border">
+            {visibleItems.map(([q, a], idx) => (
+              <div key={q} className="py-5">
+                <button
+                  onClick={() => setOpen(open === idx ? null : idx)}
+                  className="flex w-full items-start justify-between gap-6 text-left"
+                >
+                  <span className="text-base font-semibold text-[var(--navy-deep)]">{q}</span>
+                  <ChevronDown className={"h-5 w-5 shrink-0 text-[var(--blue-gray)] transition-transform " + (open === idx ? "rotate-180" : "")} />
+                </button>
+                {open === idx && <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{a}</p>}
+              </div>
+            ))}
+          </div>
+          {items.length > VISIBLE && (
+            <button
+              onClick={() => {
+                setShowAll((v) => !v);
+                if (showAll) setOpen(0);
+              }}
+              className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold text-[var(--royal)] transition-all hover:-translate-y-0.5 hover:border-[var(--royal)]"
+            >
+              {showAll ? "Show fewer" : `View all ${items.length} questions`}
+              <ChevronDown className={"h-4 w-4 transition-transform " + (showAll ? "rotate-180" : "")} />
+            </button>
+          )}
         </div>
       </div>
     </section>
