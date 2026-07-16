@@ -1921,12 +1921,35 @@ function FinalCTA() {
 
 /* FOOTER */
 function Footer() {
-  const cols: [string, string[]][] = [
-    ["Solutions", ["Commerce", "Finance", "Supply Chain", "Customer Experience", "Inventory Intelligence", "Consumer Swift Commerce"]],
-    ["Services", ["Consulting", "Implementation", "Engineering", "AI & Copilot", "Managed Services & Support"]],
-    ["Industries", ["Retail", "Hypermarket", "Hospitality"]],
-    ["Insights", ["Blogs", "Case Studies", "Whitepapers", "News"]],
-    ["Company", ["About", "Contact", "Careers", "Trust Center"]],
+  const cols: [string, string, string[]][] = [
+    ["Products & Accelerators", "#solutions", [
+      "D365 for Hypermarkets",
+      "Innovative Hospitality Solution",
+      "Clarity RFID Connector",
+      "B2B in a Box",
+      "Consumer Swift Commerce",
+      "Optim365",
+      "PerfLens365",
+      "In-Store Mobility Suite",
+    ]],
+    ["Services", "#services", [
+      "Implementation",
+      "Managed Support & Expansion",
+      "Integrations & Modernization",
+      "Enterprise Agentic AI Solutions",
+      "Legacy Migration",
+      "Quality Engineering Factory",
+      "Global Capability Centers",
+    ]],
+    ["Industries", "#industries", [
+      "Retail & Omnichannel Commerce",
+      "Manufacturing & Supply Chain",
+      "Modern Grocery & Hypermarkets",
+      "Hospitality, Entertainment & Sports",
+      "Public Sector",
+    ]],
+    ["Insights", "#insights", ["Case Studies", "Blogs", "Whitepapers", "News", "FAQ"]],
+    ["Company", "#contact", ["About", "Why Lumovy", "Delivery Framework", "Contact"]],
   ];
   return (
     <footer className="bg-white text-[var(--navy-deep)]">
@@ -1960,13 +1983,13 @@ function Footer() {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-8 lg:col-span-9 lg:grid-cols-5">
-            {cols.map(([h, items]) => (
+            {cols.map(([h, href, items]) => (
               <div key={h}>
                 <div className="text-xs font-semibold uppercase tracking-widest text-[var(--navy-deep)]">{h}</div>
                 <ul className="mt-4 space-y-2.5">
                   {items.map((i) => (
                     <li key={i}>
-                      <a href="#" className="text-sm text-[var(--blue-gray)] hover:text-[var(--royal)]">
+                      <a href={href} className="text-sm text-[var(--blue-gray)] hover:text-[var(--royal)]">
                         {i}
                       </a>
                     </li>
