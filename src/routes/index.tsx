@@ -958,6 +958,12 @@ function Services() {
                 style={{ width: "var(--svc-card)" }}
                 className="group relative h-[300px] min-w-[300px] shrink-0 snap-start overflow-hidden rounded-2xl border border-border bg-white"
               >
+                {/* Blue gradient fill fades in on hover */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--royal)] to-[var(--navy-deep)] opacity-0 transition-opacity duration-[580ms] ease-out group-hover:opacity-100"
+                />
+
                 {/* Glow mark — sits in the upper area, away from the title;
                     blurs on hover. */}
                 <div className="pointer-events-none absolute inset-x-0 top-8 flex h-40 items-center justify-center">
@@ -965,20 +971,20 @@ function Services() {
                     src={SERVICE_SHAPES[i % SERVICE_SHAPES.length]}
                     alt=""
                     aria-hidden
-                    className="h-40 w-40 object-contain transition-[filter,opacity] duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-70 group-hover:blur-2xl"
+                    className="h-40 w-40 object-contain transition-[filter,opacity] duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-40 group-hover:blur-2xl group-hover:brightness-200"
                   />
                 </div>
 
                 {/* Content — anchored so the TITLE sits at the card's bottom
                     padding at rest, with the details extending below (clipped).
                     On hover the whole block slides up by the details' height,
-                    then returns exactly to rest. */}
+                    then returns exactly to rest. Text turns white over the blue. */}
                 <div className="absolute inset-x-0 bottom-8 px-8 transition-transform duration-[580ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:-translate-y-[152px] group-focus-within:-translate-y-[152px]">
-                  <h3 className="text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
+                  <h3 className="text-xl font-semibold text-[var(--navy-deep)] transition-colors duration-[580ms] group-hover:text-white">{s.name}</h3>
                   <div className="absolute inset-x-8 top-full pt-3 opacity-0 transition-opacity duration-[480ms] delay-100 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
-                    <p className="text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
-                    <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
-                    <div className="pt-5">
+                    <p className="text-sm leading-relaxed text-[var(--blue-gray)] group-hover:text-white/85">{s.approach}</p>
+                    <p className="mt-3 text-sm font-semibold text-[var(--success)] group-hover:text-[var(--cyan-soft)]">{s.outcome}</p>
+                    <div className="pt-5 group-hover:[&_a>span:first-child]:bg-white group-hover:[&_a>span:first-child]:text-[var(--royal)] group-hover:[&_a>span:last-child]:text-white">
                       <LearnMore />
                     </div>
                   </div>
