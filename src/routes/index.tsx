@@ -961,7 +961,7 @@ function Services() {
                 {/* Blue gradient fill fades in on hover */}
                 <div
                   aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--royal)] to-[var(--navy-deep)] opacity-0 transition-opacity duration-[580ms] ease-out group-hover:opacity-100"
+                  className="pointer-events-none absolute inset-0 bg-[#003594] opacity-0 transition-opacity duration-[580ms] ease-out group-hover:opacity-100"
                 />
 
                 {/* Glow mark — sits in the upper area, away from the title;
