@@ -923,11 +923,13 @@ function Services() {
                   />
                 </div>
 
-                {/* Content — anchored to bottom by default; on hover it slides
-                    up and the details reveal, filling the card top-to-bottom. */}
-                <div className="relative transition-transform duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-1">
+                {/* Content — the whole block sits at the bottom and is pushed
+                    down so only the title shows; on hover it slides up as one
+                    piece (pure transform = smooth, duration-accurate). The
+                    card's overflow-hidden clips the details below. */}
+                <div className="relative translate-y-[132px] transition-transform duration-[900ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-0 group-focus-within:translate-y-0">
                   <h3 className="text-xl font-semibold text-[var(--navy-deep)]">{s.name}</h3>
-                  <div className="max-h-0 translate-y-4 overflow-hidden opacity-0 transition-[max-height,transform,opacity] duration-[1100ms] delay-[80ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:max-h-64 group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:max-h-64 group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                  <div className="opacity-0 transition-opacity duration-[700ms] delay-200 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
                     <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{s.approach}</p>
                     <p className="mt-3 text-sm font-semibold text-[var(--success)]">{s.outcome}</p>
                     <div className="pt-5">
