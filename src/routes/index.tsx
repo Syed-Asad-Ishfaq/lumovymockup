@@ -912,13 +912,14 @@ function Services() {
                 style={{ width: "var(--svc-card)" }}
                 className="group card-lift relative flex h-[300px] min-w-[300px] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-2xl border border-border bg-white p-8"
               >
-                {/* Glow mark — fills the card, sits centered, blurs on hover */}
-                <div className="pointer-events-none absolute inset-0 grid place-items-center">
+                {/* Glow mark — sits in the upper area, away from the title;
+                    blurs on hover. */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 flex h-40 items-center justify-center">
                   <img
                     src={SERVICE_SHAPES[i % SERVICE_SHAPES.length]}
                     alt=""
                     aria-hidden
-                    className="h-48 w-48 object-contain transition-[filter,opacity] duration-500 ease-out group-hover:opacity-70 group-hover:blur-2xl"
+                    className="h-44 w-44 object-contain transition-[filter,opacity] duration-500 ease-out group-hover:opacity-70 group-hover:blur-2xl"
                   />
                 </div>
 
