@@ -414,7 +414,7 @@ function MobileMenuItem({ item, onNavigate }: { item: NavMain; onNavigate: () =>
 const HERO_SLIDES = [
   {
     eyebrow: "Microsoft Solutions Partner",
-    headline: "Modernize Mission-Critical Systems. Drive Measurable Outcomes.",
+    headline: "Modernize Mission-Critical Systems. Drive Measurable Outcomes",
     subhead:
       "Microsoft Dynamics 365 solutions built around your business, so you move faster, with less complexity.",
     cta: "See Client Outcomes",
@@ -422,7 +422,7 @@ const HERO_SLIDES = [
   },
   {
     eyebrow: "Agentic AI",
-    headline: "AI Agents Built Around How Your Business Runs.",
+    headline: "AI Agents Built Around How Your Business Runs",
     subhead:
       "Our AI agents connect with Dynamics 365 to automate your processes. Your team always stays in control.",
     cta: "Explore Our AI Factory",
@@ -430,7 +430,7 @@ const HERO_SLIDES = [
   },
   {
     eyebrow: "Rapid Implementation Playbook",
-    headline: "From Idea to Value in 100 Days.",
+    headline: "From Idea to Value in 100 Days",
     subhead:
       "See how we helped Majid Al Futtaim launch Sava in just 100 days, from zero infrastructure to a full Dynamics 365 platform.",
     cta: "Read the MAF Case Study",
@@ -438,7 +438,7 @@ const HERO_SLIDES = [
   },
   {
     eyebrow: "Quality & Trust",
-    headline: "20,000+ Automated Tests, Run Every Day, Across the Globe.",
+    headline: "20,000+ Automated Tests, Run Every Day, Across the Globe",
     subhead:
       "Test automation and full QA ownership, end to end. Our Quality Engineering team redefines what quality means for you.",
     cta: "Explore Quality Engineering",
@@ -446,7 +446,7 @@ const HERO_SLIDES = [
   },
   {
     eyebrow: "Microsoft Credentials",
-    headline: "Microsoft Expertise That Accelerates Your Transformation.",
+    headline: "Microsoft Expertise That Accelerates Your Transformation",
     subhead:
       "A top-rated Microsoft Solutions Partner, working closely with Microsoft's product teams to drive your transformation.",
     cta: "See Our Microsoft Credentials",
@@ -737,7 +737,7 @@ function MetricsBand() {
               Outcomes at scale
             </p>
             <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Measured impact, not vanity metrics.
+              Measured impact, not vanity metrics
             </h2>
           </div>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
@@ -828,7 +828,7 @@ function Solutions() {
         <div className="max-w-none">
           <p className="eyebrow">Products &amp; Accelerators</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
-            Pre-built accelerators that shorten your time-to-value.
+            Pre-built accelerators that shorten your time-to-value
           </h2>
         </div>
       </div>
@@ -933,7 +933,7 @@ function Services() {
         <div className="max-w-none">
           <p className="eyebrow">Services</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
-            From Planning to Performance, We're Your One Partner.
+            From Planning to Performance, We're Your One Partner
           </h2>
         </div>
       </div>
@@ -1125,7 +1125,7 @@ function WhyLumovy() {
         <div className="max-w-none">
           <p className="eyebrow">Why Lumovy</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
-            Trusted to Rescue and Elevate Your Transformation.
+            Trusted to Rescue and Elevate Your Transformation
           </h2>
         </div>
         <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -1249,7 +1249,7 @@ function CaseStudies() {
           <div className="max-w-2xl">
             <p className="eyebrow">Case studies</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Real engagements. Auditable outcomes.
+              Real engagements. Auditable outcomes
             </h2>
           </div>
           <a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
@@ -1459,7 +1459,7 @@ function Testimonials() {
             <div className="max-w-2xl">
               <p className="eyebrow">Executive references</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-                What decision-makers say.
+                What decision-makers say
               </h2>
             </div>
           </div>
@@ -1512,7 +1512,7 @@ function Framework() {
           <div className="max-w-2xl">
             <p className="eyebrow">Lumovy Delivery Framework</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Human Led, AI Accelerated.
+              Human Led, AI Accelerated
             </h2>
           </div>
           <div className="hidden gap-2 md:flex">
@@ -1582,7 +1582,7 @@ function Procurement() {
               Procurement facts
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Built for procurement, not around it.
+              Built for procurement, not around it
             </h2>
             <p className="mt-5 text-base leading-relaxed text-white/70">
               Everything legal and security need to say yes.
@@ -1626,7 +1626,7 @@ function Comparison() {
         <div className="max-w-2xl">
           <p className="eyebrow">Why enterprise teams choose Lumovy</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Lumovy vs. traditional vendors.
+            Lumovy vs. traditional vendors
           </h2>
         </div>
         <div className="mt-14 overflow-hidden rounded-3xl border border-border shadow-fluent-sm">
@@ -1672,7 +1672,7 @@ function Contact() {
           <div className="lg:col-span-5">
             <p className="eyebrow">Contact</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Route your request to the right team.
+              Route your request to the right team
             </h2>
             <p className="mt-4 text-base leading-relaxed text-[var(--blue-gray)]">
               Tell us why you're reaching out, no ticket queues.
@@ -1840,7 +1840,7 @@ function FAQ() {
         <div className="lg:col-span-4">
           <p className="eyebrow">FAQ</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Questions we get first.
+            Questions we get first
           </h2>
         </div>
         <div className="lg:col-span-8">
@@ -1887,7 +1887,7 @@ function FinalCTA() {
       <div className="container-enterprise relative z-10 text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">Ready when you are</p>
         <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          From strategy to production.
+          From strategy to production
         </h2>
         <p className="mx-auto mt-5 max-w-2xl text-base text-white/70">
           Book a 30-minute executive briefing. No sales pitch.
