@@ -963,7 +963,7 @@ function Services() {
               <article
                 key={s.name}
                 style={{ width: "var(--svc-card)" }}
-                className="group card-lift relative flex h-[340px] min-w-[300px] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-2xl border border-border bg-white p-8"
+                className="group card-lift relative flex h-[300px] min-w-[300px] shrink-0 snap-start flex-col justify-end overflow-hidden rounded-2xl border border-border bg-white p-8"
               >
                 {/* Glow mark — fills the card, sits centered, blurs on hover */}
                 <div className="pointer-events-none absolute inset-0 grid place-items-center">
