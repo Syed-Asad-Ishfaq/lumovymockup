@@ -695,13 +695,13 @@ function MetricsBand() {
     ["99.5%", "Uptime maintained"],
     ["24/7", "Global delivery coverage"],
   ];
-  const pinRef = useRef<HTMLDivElement | null>(null);
-  const [progress, setProgress] = useState(0); // 0..1 while pinned
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [progress, setProgress] = useState(0); // 0..1 as the section crosses the viewport
 
-  // Scroll-driven reveal: the section pins to the viewport for a short scroll
-  // distance and the vertical scroll is turned into a 0..1 progress that
-  // reveals the metric cards one-by-one, left to right. The pinned panel is
-  // styled to look exactly like the original compact band.
+  // Scroll-progress reveal WITHOUT pinning: the section keeps its normal
+  // height. As it travels up through the viewport, we compute how far it has
+  // entered and reveal the metric cards one-by-one, left to right. No sticky,
+  // no tall wrapper — the page scrolls normally.
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
@@ -711,11 +711,14 @@ function MetricsBand() {
     let raf = 0;
     const update = () => {
       raf = 0;
-      const pin = pinRef.current;
-      if (!pin) return;
-      const scrollable = pin.offsetHeight - window.innerHeight;
-      const scrolled = Math.min(scrollable, Math.max(0, -pin.getBoundingClientRect().top));
-      setProgress(scrollable > 0 ? scrolled / scrollable : 1);
+      const el = sectionRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // 0 when the section's top first enters the bottom of the viewport,
+      // 1 by the time its top reaches ~25% up the viewport.
+      const p = (vh - rect.top) / (vh * 0.85);
+      setProgress(Math.min(1, Math.max(0, p)));
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -731,44 +734,40 @@ function MetricsBand() {
   }, []);
 
   return (
-    // Tall wrapper only provides the scroll distance for the reveal. ~45vh of
-    // scroll per card. The sticky panel inside looks like the original band.
-    <div ref={pinRef} className="relative bg-[var(--navy-deep)]" style={{ height: `${100 + metrics.length * 45}vh` }}>
-      <section className="sticky top-0 flex min-h-screen items-center overflow-hidden bg-[var(--navy-deep)] py-20 text-white">
-        <div aria-hidden className="mesh-blobs opacity-50" />
-        <div className="container-enterprise relative w-full">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
-              Outcomes at scale
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Measured impact, not vanity metrics.
-            </h2>
-          </div>
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {metrics.map(([v, l], idx) => {
-              const start = idx / metrics.length;
-              const span = 1 / metrics.length;
-              const local = Math.min(1, Math.max(0, (progress - start) / span));
-              return (
-                <div
-                  key={l}
-                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm"
-                  style={{
-                    opacity: local,
-                    transform: `translateY(${(1 - local) * 24}px)`,
-                    transition: "opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.16,1,0.3,1)",
-                  }}
-                >
-                  <div className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{v}</div>
-                  <div className="mt-2 text-xs font-medium leading-relaxed text-white/70">{l}</div>
-                </div>
-              );
-            })}
-          </div>
+    <section ref={sectionRef} className="relative overflow-hidden bg-[var(--navy-deep)] py-20 text-white">
+      <div aria-hidden className="mesh-blobs opacity-50" />
+      <div className="container-enterprise relative">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
+            Outcomes at scale
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Measured impact, not vanity metrics.
+          </h2>
         </div>
-      </section>
-    </div>
+        <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          {metrics.map(([v, l], idx) => {
+            const start = idx / metrics.length;
+            const span = 1 / metrics.length;
+            const local = Math.min(1, Math.max(0, (progress - start) / span));
+            return (
+              <div
+                key={l}
+                className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm"
+                style={{
+                  opacity: local,
+                  transform: `translateY(${(1 - local) * 24}px)`,
+                  transition: "opacity 0.4s ease-out, transform 0.4s cubic-bezier(0.16,1,0.3,1)",
+                }}
+              >
+                <div className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{v}</div>
+                <div className="mt-2 text-xs font-medium leading-relaxed text-white/70">{l}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }
 
