@@ -56,6 +56,7 @@ import stateOfUtahLogo from "@/assets/logos/state-of-utah.png";
 import steMichelleLogo from "@/assets/logos/ste-michelle.png";
 import syscoLogo from "@/assets/logos/sysco.png";
 import vermontLogo from "@/assets/logos/vermont-country-store.png";
+import lumovyLogo from "@/assets/lumovy-logo.png";
 import svcShape1 from "@/assets/services/shape1.webp";
 import svcShape2 from "@/assets/services/shape2.webp";
 import svcShape3 from "@/assets/services/shape3.webp";
@@ -237,13 +238,8 @@ function Nav() {
       onMouseLeave={() => setActive(null)}
     >
       <div className="container-enterprise flex h-16 items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
-          <div className="grid h-8 w-8 place-items-center rounded-xl bg-[var(--royal)] text-white">
-            <span className="text-sm font-bold tracking-tight">L</span>
-          </div>
-          <span className={"text-[15px] font-bold tracking-tight transition-colors " + (solid ? "text-[var(--navy-deep)]" : "text-white")}>
-            Lumovy
-          </span>
+        <a href="#" className="flex items-center">
+          <img src={lumovyLogo} alt="Lumovy Technology Solutions" className="h-9 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -1709,7 +1705,7 @@ function Contact() {
               </div>
               <div className="flex items-start gap-3 text-[var(--navy-deep)]">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[var(--royal)]" />
-                <span>United States · Canada · United Kingdom · Spain · UAE (Dubai) · India · Pakistan</span>
+                <span>North America · Europe · UAE · India · Pakistan</span>
               </div>
             </dl>
           </div>
@@ -1956,11 +1952,8 @@ function Footer() {
       <div className="container-enterprise py-16">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <a href="#" className="flex items-center gap-2">
-              <div className="grid h-8 w-8 place-items-center rounded-xl bg-[var(--navy)] text-white">
-                <span className="text-sm font-bold">L</span>
-              </div>
-              <span className="text-[15px] font-bold tracking-tight">Lumovy</span>
+            <a href="#" className="flex items-center">
+              <img src={lumovyLogo} alt="Lumovy Technology Solutions" className="h-10 w-auto" />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-[var(--blue-gray)]">
               Microsoft Solutions Partner delivering Dynamics 365, Azure, and Power Platform for
@@ -2013,7 +2006,7 @@ function Footer() {
           </div>
           <div className="text-xs text-[var(--blue-gray)] md:text-center">
             <span className="inline-flex items-center gap-1.5">
-              <MapPin className="h-3.5 w-3.5" /> US · Canada · UK · Spain · UAE · India · Pakistan
+              <MapPin className="h-3.5 w-3.5" /> North America · Europe · UAE · India · Pakistan
             </span>
           </div>
           <div className="flex flex-wrap gap-4 text-xs text-[var(--blue-gray)] md:justify-end">
