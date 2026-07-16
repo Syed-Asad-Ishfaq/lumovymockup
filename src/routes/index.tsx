@@ -971,7 +971,7 @@ function Services() {
                     src={SERVICE_SHAPES[i % SERVICE_SHAPES.length]}
                     alt=""
                     aria-hidden
-                    className="h-40 w-40 object-contain transition-[filter,opacity] duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-40 group-hover:blur-2xl group-hover:brightness-200"
+                    className="h-40 w-40 object-contain transition-opacity duration-[400ms] ease-out group-hover:opacity-0"
                   />
                 </div>
 
