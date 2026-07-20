@@ -720,88 +720,70 @@ function MetricsBand() {
       "Distributed delivery with client-embedded FDEs onsite and global engineering teams offshore for continuous execution, faster decisions, and seamless collaboration.",
     ],
   ];
-  const pinRef = useRef<HTMLDivElement | null>(null);
-  const [progress, setProgress] = useState(0); // 0..1 across the pinned scroll
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const [revealed, setRevealed] = useState(false);
 
-  // Scroll-pinned reveal: while this section is pinned to the viewport, the
-  // page's vertical scroll is translated into a 0..1 progress value that
-  // reveals the metric cards one-by-one, left to right.
+  // One-time staggered reveal: the cards animate in automatically the first
+  // time the section enters the viewport, and stay put afterwards (no replay
+  // when scrolling back up).
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
-      setProgress(1);
+      setRevealed(true);
       return;
     }
-    let raf = 0;
-    const update = () => {
-      raf = 0;
-      const pin = pinRef.current;
-      if (!pin) return;
-      const scrollable = pin.offsetHeight - window.innerHeight;
-      const scrolled = Math.min(scrollable, Math.max(0, -pin.getBoundingClientRect().top));
-      setProgress(scrollable > 0 ? scrolled / scrollable : 1);
-    };
-    const onScroll = () => {
-      if (!raf) raf = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
+    const el = sectionRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setRevealed(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
   }, []);
 
   return (
-    // Tall wrapper: extra height (relative to viewport) is the scroll distance
-    // consumed while pinned. ~55vh per card gives a comfortable reveal pace.
-    <div ref={pinRef} className="relative bg-[#0c2856]" style={{ height: `${100 + metrics.length * 55}vh` }}>
-      <section className="sticky top-0 flex h-screen items-center overflow-hidden bg-[#0c2856] text-white">
-        <div className="container-enterprise relative w-full">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
-              Outcomes at scale
-            </p>
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Measured impact, not vanity metrics
-            </h2>
-          </div>
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {metrics.map(([v, l, d], idx) => {
-              // Each card gets a slice of the progress; it reveals across its
-              // own window so they appear one after another, left to right.
-              const start = idx / metrics.length;
-              const span = 1 / metrics.length;
-              const local = Math.min(1, Math.max(0, (progress - start) / span));
-              return (
-                <div
-                  key={l}
-                  className="group/metric relative min-h-[172px] overflow-hidden rounded-lg border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-colors duration-300 hover:border-[var(--cyan-soft)]/40 hover:bg-white/[0.07]"
-                  style={{
-                    opacity: local,
-                    transform: `translateY(${(1 - local) * 28}px)`,
-                    transition: "opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.16,1,0.3,1)",
-                  }}
-                >
-                  {/* Number + label: always visible, fades under the detail overlay on hover */}
-                  <div className="transition-opacity duration-300 group-hover/metric:opacity-0">
-                    <div className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{v}</div>
-                    <div className="mt-2 text-xs font-medium leading-relaxed text-white/70">{l}</div>
-                  </div>
-                  {/* Detail overlay: revealed on hover, keeps card height fixed */}
-                  <div className="absolute inset-0 flex flex-col justify-center bg-white/[0.05] p-5 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover/metric:opacity-100">
-                    <div className="text-lg font-bold tracking-tight text-[var(--cyan-soft)]">{v}</div>
-                    <p className="mt-1.5 text-[11px] leading-relaxed text-white/80">{d}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+    <section ref={sectionRef} className="bg-[#0c2856] py-24 text-white sm:py-28">
+      <div className="container-enterprise">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
+            Outcomes at scale
+          </p>
+          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            Measured impact, not vanity metrics
+          </h2>
         </div>
-      </section>
-    </div>
+        <div className="mt-10 grid grid-cols-2 items-start gap-4 sm:grid-cols-3 lg:grid-cols-6">
+          {metrics.map(([v, l, d], idx) => (
+            <div
+              key={l}
+              className="group/metric rounded-lg border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-[background-color,border-color] duration-300 hover:border-[var(--cyan-soft)]/40 hover:bg-white/[0.07]"
+              style={{
+                opacity: revealed ? 1 : 0,
+                transform: revealed ? "translateY(0)" : "translateY(28px)",
+                transition: `opacity 0.6s ease-out ${idx * 110}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${idx * 110}ms`,
+              }}
+            >
+              <div className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{v}</div>
+              <div className="mt-2 text-xs font-medium leading-relaxed text-white/70">{l}</div>
+              {/* Detail: collapsed by default, expands the card downward on hover */}
+              <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out group-hover/metric:grid-rows-[1fr]">
+                <div className="overflow-hidden">
+                  <p className="mt-3 border-t border-white/10 pt-3 text-[11px] leading-relaxed text-white/70">
+                    {d}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
