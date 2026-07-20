@@ -689,12 +689,36 @@ function TrustedBy() {
 /* METRICS */
 function MetricsBand() {
   const metrics = [
-    ["320+", "Completed projects"],
-    ["300+", "Dynamics 365 consultants globally"],
-    ["50+", "Active customers"],
-    ["100 days", "Avg. go-live time"],
-    ["99.5%", "Uptime maintained"],
-    ["24/7", "Global delivery coverage"],
+    [
+      "320+",
+      "Completed projects",
+      "Proven delivery playbooks refined across complex Dynamics 365 transformations, reducing implementation risk, accelerating decisions, and avoiding costly project surprises.",
+    ],
+    [
+      "300+",
+      "Dynamics 365 consultants globally",
+      "One global Microsoft practice covering ERP, Commerce, Power Platform, AI, and QA without fragmented vendors.",
+    ],
+    [
+      "50+",
+      "Active customers",
+      "Long-term partnerships built on continuous optimization, managed services, and platform evolution, with a 95% retention rate.",
+    ],
+    [
+      "100 days",
+      "Avg. go-live time",
+      "Industry accelerators, reusable solution templates, and Microsoft expertise shorten deployment timelines while preserving governance and business continuity.",
+    ],
+    [
+      "99.5%",
+      "Uptime maintained",
+      "Enterprise-grade support, proactive monitoring, and disciplined release management keep critical business operations running with confidence.",
+    ],
+    [
+      "24/7",
+      "Global delivery coverage",
+      "Distributed delivery with client-embedded FDEs onsite and global engineering teams offshore for continuous execution, faster decisions, and seamless collaboration.",
+    ],
   ];
   const pinRef = useRef<HTMLDivElement | null>(null);
   const [progress, setProgress] = useState(0); // 0..1 across the pinned scroll
@@ -745,7 +769,7 @@ function MetricsBand() {
             </h2>
           </div>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-            {metrics.map(([v, l], idx) => {
+            {metrics.map(([v, l, d], idx) => {
               // Each card gets a slice of the progress; it reveals across its
               // own window so they appear one after another, left to right.
               const start = idx / metrics.length;
@@ -754,15 +778,23 @@ function MetricsBand() {
               return (
                 <div
                   key={l}
-                  className="rounded-lg border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm"
+                  className="group/metric relative min-h-[172px] overflow-hidden rounded-lg border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-colors duration-300 hover:border-[var(--cyan-soft)]/40 hover:bg-white/[0.07]"
                   style={{
                     opacity: local,
                     transform: `translateY(${(1 - local) * 28}px)`,
                     transition: "opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.16,1,0.3,1)",
                   }}
                 >
-                  <div className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{v}</div>
-                  <div className="mt-2 text-xs font-medium leading-relaxed text-white/70">{l}</div>
+                  {/* Number + label: always visible, fades under the detail overlay on hover */}
+                  <div className="transition-opacity duration-300 group-hover/metric:opacity-0">
+                    <div className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{v}</div>
+                    <div className="mt-2 text-xs font-medium leading-relaxed text-white/70">{l}</div>
+                  </div>
+                  {/* Detail overlay: revealed on hover, keeps card height fixed */}
+                  <div className="absolute inset-0 flex flex-col justify-center bg-white/[0.05] p-5 opacity-0 backdrop-blur-sm transition-opacity duration-300 group-hover/metric:opacity-100">
+                    <div className="text-lg font-bold tracking-tight text-[var(--cyan-soft)]">{v}</div>
+                    <p className="mt-1.5 text-[11px] leading-relaxed text-white/80">{d}</p>
+                  </div>
                 </div>
               );
             })}
@@ -1575,18 +1607,18 @@ function Framework() {
           </p>
           <ul className="mt-6 flex flex-wrap items-center gap-x-12 gap-y-6">
             {[
-              { src: leapworkLogo, alt: "Leapwork" },
-              { src: adyenLogo, alt: "Adyen" },
-              { src: shift4Logo, alt: "Shift4" },
-              { src: clarityRfidLogo, alt: "Clarity RFID" },
-              { src: lsRetailLogo, alt: "LS Retail" },
+              { src: leapworkLogo, alt: "Leapwork", h: "h-8" },
+              { src: adyenLogo, alt: "Adyen", h: "h-8" },
+              { src: shift4Logo, alt: "Shift4", h: "h-8" },
+              { src: clarityRfidLogo, alt: "Clarity RFID", h: "h-10" },
+              { src: lsRetailLogo, alt: "LS Retail", h: "h-12" },
             ].map((p) => (
               <li key={p.alt}>
                 <img
                   src={p.src}
                   alt={p.alt}
                   loading="lazy"
-                  className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
+                  className={`${p.h} w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0`}
                 />
               </li>
             ))}
