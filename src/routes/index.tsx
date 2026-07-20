@@ -762,7 +762,7 @@ function MetricsBand() {
           {metrics.map(([v, l, d], idx) => (
             <div
               key={l}
-              className="group/metric rounded-lg border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-[background-color,border-color] duration-300 hover:border-[var(--cyan-soft)]/40 hover:bg-white/[0.07]"
+              className="group/metric min-h-[132px] rounded-lg border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-[background-color,border-color] duration-300 hover:border-[var(--cyan-soft)]/40 hover:bg-white/[0.07]"
               style={{
                 opacity: revealed ? 1 : 0,
                 transform: revealed ? "translateY(0)" : "translateY(28px)",
