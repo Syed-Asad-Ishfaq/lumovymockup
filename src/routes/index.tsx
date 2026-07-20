@@ -660,7 +660,7 @@ function TrustedBy() {
           Trusted by regulated enterprises worldwide
         </p>
       </div>
-      <div className="group mt-10 overflow-hidden border-y border-border py-10">
+      <div className="group mt-10 overflow-hidden py-8">
         <div className="marquee-track flex w-max items-center gap-28 group-hover:[animation-play-state:paused]">
           {track.map((l, i) => (
             <div key={l.alt + i} className="flex shrink-0 items-center justify-center">
@@ -1569,17 +1569,11 @@ function Framework() {
           </ol>
         </div>
 
-        <div className="mt-20 border-t border-border/70 pt-14">
-          <div className="text-center">
-            <p className="eyebrow">Technology Partners</p>
-            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-3xl">
-              Powered by best-in-class platforms
-            </h3>
-            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[var(--blue-gray)]">
-              We deliver our framework alongside the technology leaders our clients trust.
-            </p>
-          </div>
-          <ul className="mt-10 grid grid-cols-2 items-center gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-20">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--blue-gray)]">
+            Technology Partners
+          </p>
+          <ul className="mt-6 flex flex-wrap items-center gap-x-12 gap-y-6">
             {[
               { src: leapworkLogo, alt: "Leapwork" },
               { src: adyenLogo, alt: "Adyen" },
@@ -1587,15 +1581,12 @@ function Framework() {
               { src: clarityRfidLogo, alt: "Clarity RFID" },
               { src: lsRetailLogo, alt: "LS Retail" },
             ].map((p) => (
-              <li
-                key={p.alt}
-                className="grid h-24 place-items-center rounded-xl border border-border bg-white px-6 py-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
-              >
+              <li key={p.alt}>
                 <img
                   src={p.src}
                   alt={p.alt}
                   loading="lazy"
-                  className="max-h-12 w-auto max-w-full object-contain opacity-80 grayscale transition-all hover:opacity-100 hover:grayscale-0"
+                  className="h-8 w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0"
                 />
               </li>
             ))}
