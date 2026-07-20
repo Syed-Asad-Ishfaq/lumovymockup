@@ -61,6 +61,11 @@ import svcShape1 from "@/assets/services/shape1.webp";
 import svcShape2 from "@/assets/services/shape2.webp";
 import svcShape3 from "@/assets/services/shape3.webp";
 import svcShape4 from "@/assets/services/shape4.webp";
+import leapworkLogo from "@/assets/leapwork.png";
+import adyenLogo from "@/assets/Adyen.png";
+import shift4Logo from "@/assets/Shift4.png";
+import clarityRfidLogo from "@/assets/ClarityRFID.webp";
+import lsRetailLogo from "@/assets/LS Retail.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -1562,6 +1567,39 @@ function Framework() {
               );
             })}
           </ol>
+        </div>
+
+        <div className="mt-20 border-t border-border/70 pt-14">
+          <div className="text-center">
+            <p className="eyebrow">Technology Partners</p>
+            <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-3xl">
+              Powered by best-in-class platforms
+            </h3>
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[var(--blue-gray)]">
+              We deliver our framework alongside the technology leaders our clients trust.
+            </p>
+          </div>
+          <ul className="mt-10 grid grid-cols-2 items-center gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            {[
+              { src: leapworkLogo, alt: "Leapwork" },
+              { src: adyenLogo, alt: "Adyen" },
+              { src: shift4Logo, alt: "Shift4" },
+              { src: clarityRfidLogo, alt: "Clarity RFID" },
+              { src: lsRetailLogo, alt: "LS Retail" },
+            ].map((p) => (
+              <li
+                key={p.alt}
+                className="grid h-24 place-items-center rounded-xl border border-border bg-white px-6 py-5 transition-all hover:-translate-y-0.5 hover:shadow-md"
+              >
+                <img
+                  src={p.src}
+                  alt={p.alt}
+                  loading="lazy"
+                  className="max-h-12 w-auto max-w-full object-contain opacity-80 grayscale transition-all hover:opacity-100 hover:grayscale-0"
+                />
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
