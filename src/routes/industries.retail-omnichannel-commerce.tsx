@@ -69,34 +69,32 @@ const TRUST_STRIP = [
 
 function RetailHero() {
   return (
-    <section className="hero-dark relative overflow-hidden">
-      <div aria-hidden className="hero-orbs" />
-      <div aria-hidden className="hero-grid" />
-      <div aria-hidden className="hero-grain" />
-      <div className="container-enterprise relative z-10 grid items-center gap-14 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-white to-[var(--blue-light)]/30">
+      <div aria-hidden className="mesh-blobs-light opacity-50" />
+      <div className="container-enterprise relative z-10 grid items-center gap-14 py-20 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
         {/* Copy */}
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--cyan-soft)] backdrop-blur">
+          <span className="hero-content-in inline-flex items-center gap-2 rounded-full bg-[var(--blue-light)]/70 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--royal)]">
             <Store className="h-3.5 w-3.5" />
             Retail &amp; Commerce
           </span>
-          <h1 className="mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]">
+          <h1 className="hero-content-in mt-6 text-4xl font-semibold leading-[1.08] tracking-tight text-[var(--navy-deep)] sm:text-5xl lg:text-[3.4rem]" style={{ animationDelay: "80ms" }}>
             MVP-Led Microsoft Retail Solutions Built for Modern Commerce in{" "}
-            <span className="relative whitespace-nowrap text-[var(--cyan-soft)]">
+            <span className="relative whitespace-nowrap text-[var(--royal)]">
               90 Days
             </span>
           </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70">
+          <p className="hero-content-in mt-6 max-w-xl text-base leading-relaxed text-[var(--blue-gray)]" style={{ animationDelay: "160ms" }}>
             The Retail &amp; Commerce Transformation Suite is an MVP-led engagement built on
             Microsoft retail solutions for multi-store and omnichannel retailers. As your long-term
             retail technology partner, Lumovy helps you establish a connected commerce foundation,
             improve inventory visibility, and deliver managed services that extend value well beyond
             go-live.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="hero-content-in mt-9 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/30"
+              className="group inline-flex items-center gap-2 rounded-full bg-[var(--royal)] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[var(--navy)] hover:shadow-lg hover:shadow-[var(--royal)]/25"
             >
               <Calendar className="h-4 w-4" />
               Book a Retail Readiness Call
@@ -104,7 +102,7 @@ function RetailHero() {
             </a>
             <a
               href="#suite"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-colors hover:border-[var(--royal)]/40 hover:bg-[var(--blue-light)]/40"
             >
               <Download className="h-4 w-4" />
               Download the Suite Overview
@@ -113,8 +111,8 @@ function RetailHero() {
         </div>
 
         {/* Visual */}
-        <div className="relative">
-          <div className="glass-panel overflow-hidden rounded-2xl">
+        <div className="hero-content-in relative" style={{ animationDelay: "200ms" }}>
+          <div className="overflow-hidden rounded-2xl border border-border shadow-fluent-lg">
             <img
               src={retailHero}
               alt="Connected omnichannel retail operations"
@@ -124,11 +122,11 @@ function RetailHero() {
             />
           </div>
           {/* Floating stat chip */}
-          <div className="absolute -bottom-6 -left-6 hidden rounded-xl border border-white/15 bg-[var(--navy-deep)]/85 px-5 py-4 backdrop-blur-md sm:block">
-            <div className="text-2xl font-bold tracking-tight text-white">100 days</div>
-            <div className="mt-0.5 text-xs text-white/60">D365 Commerce + F&amp;O, live</div>
+          <div className="absolute -bottom-6 -left-6 hidden rounded-xl border border-border bg-white px-5 py-4 shadow-fluent-md sm:block">
+            <div className="text-2xl font-bold tracking-tight text-[var(--navy-deep)]">100 days</div>
+            <div className="mt-0.5 text-xs text-[var(--blue-gray)]">D365 Commerce + F&amp;O, live</div>
           </div>
-          <div className="absolute -right-4 -top-4 hidden rounded-xl border border-white/15 bg-[var(--royal)]/90 px-4 py-3 backdrop-blur-md sm:block">
+          <div className="absolute -right-4 -top-4 hidden rounded-xl bg-[var(--royal)] px-4 py-3 shadow-fluent-md sm:block">
             <div className="flex items-center gap-2 text-xs font-semibold text-white">
               <ScanLine className="h-4 w-4 text-[var(--cyan-soft)]" />
               &lt; 2s AI product ID
@@ -138,11 +136,11 @@ function RetailHero() {
       </div>
 
       {/* Trust strip */}
-      <div className="relative z-10 border-t border-white/10">
+      <div className="relative z-10 border-t border-border">
         <div className="container-enterprise flex flex-wrap items-center gap-x-8 gap-y-3 py-5">
           {TRUST_STRIP.map((t) => (
-            <span key={t} className="inline-flex items-center gap-2 text-xs font-medium text-white/55">
-              <BadgeCheck className="h-4 w-4 text-[var(--cyan-soft)]" />
+            <span key={t} className="inline-flex items-center gap-2 text-xs font-medium text-[var(--blue-gray)]">
+              <BadgeCheck className="h-4 w-4 text-[var(--royal)]" />
               {t}
             </span>
           ))}

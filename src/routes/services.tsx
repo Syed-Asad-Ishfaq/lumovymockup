@@ -21,6 +21,8 @@ import {
   Store,
   Layers3,
   Quote,
+  TrendingUp,
+  Sparkles,
 } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Nav, Footer } from "./index";
@@ -123,39 +125,55 @@ function ServicesPage() {
 }
 
 /* ─────────────────────────────  1. HERO  ───────────────────────────── */
+const HERO_CHECKS = [
+  "Roadmap to go-live",
+  "Engineering & AI",
+  "Managed run & scale",
+  "Quality built in",
+];
+
 function ServicesHero() {
   return (
-    <section className="hero-dark relative overflow-hidden">
-      <div aria-hidden className="hero-beam" />
-      <div aria-hidden className="hero-orbs" />
-      <div aria-hidden className="hero-grid" />
-      <div aria-hidden className="hero-grain" />
-      <div className="container-enterprise relative z-10 flex min-h-[78vh] flex-col justify-center py-24">
-        <div className="max-w-4xl">
-          <span className="hero-content-in inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--cyan-soft)] backdrop-blur">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-white to-[var(--blue-light)]/30">
+      <div aria-hidden className="mesh-blobs-light opacity-50" />
+      <div className="container-enterprise relative z-10 grid items-center gap-14 py-20 lg:grid-cols-[1fr_1fr] lg:py-24">
+        {/* Left: copy */}
+        <div>
+          <span className="hero-content-in inline-flex items-center gap-2 rounded-full bg-[var(--blue-light)]/70 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--royal)]">
             <Cog className="h-3.5 w-3.5" />
             Services
           </span>
           <h1
-            className="hero-content-in mt-6 text-4xl font-semibold leading-[1.06] tracking-tight text-white sm:text-5xl lg:text-6xl"
+            className="hero-content-in mt-6 text-4xl font-semibold leading-[1.06] tracking-tight text-[var(--navy-deep)] sm:text-5xl lg:text-[3.4rem]"
             style={{ animationDelay: "80ms" }}
           >
             Microsoft Expertise That Accelerates Your Transformation
           </h1>
           <p
-            className="hero-content-in mt-6 max-w-2xl text-lg leading-relaxed text-white/70"
+            className="hero-content-in mt-6 max-w-xl text-lg leading-relaxed text-[var(--blue-gray)]"
             style={{ animationDelay: "160ms" }}
           >
             A tightly aligned suite of Dynamics 365 services — from first roadmap to day-two
             operations — built for retail, hospitality and commerce businesses.
           </p>
+          <ul
+            className="hero-content-in mt-7 grid max-w-md grid-cols-2 gap-x-6 gap-y-3"
+            style={{ animationDelay: "220ms" }}
+          >
+            {HERO_CHECKS.map((c) => (
+              <li key={c} className="flex items-center gap-2.5 text-sm font-medium text-[var(--navy-deep)]">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--royal)]" />
+                {c}
+              </li>
+            ))}
+          </ul>
           <div
             className="hero-content-in mt-9 flex flex-wrap gap-3"
-            style={{ animationDelay: "240ms" }}
+            style={{ animationDelay: "280ms" }}
           >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/30"
+              className="group inline-flex items-center gap-2 rounded-full bg-[var(--royal)] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[var(--navy)] hover:shadow-lg hover:shadow-[var(--royal)]/25"
             >
               <Calendar className="h-4 w-4" />
               Book a consultation
@@ -165,15 +183,96 @@ function ServicesHero() {
               href="https://appsource.microsoft.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-colors hover:border-[var(--royal)]/40 hover:bg-[var(--blue-light)]/40"
             >
               See the RFID connector on Microsoft Marketplace
               <ExternalLink className="h-4 w-4" />
             </a>
           </div>
         </div>
+
+        {/* Right: delivery-performance stat/graph card + floating tooltip */}
+        <div className="hero-content-in relative" style={{ animationDelay: "200ms" }}>
+          <HeroStatCard />
+        </div>
       </div>
     </section>
+  );
+}
+
+function HeroStatCard() {
+  // A clean SaaS-style performance card (mirrors the reference): three KPI
+  // stats above a rising line graph, with a floating insight tooltip.
+  return (
+    <div className="relative">
+      <div className="rounded-2xl border border-border bg-white p-7 shadow-fluent-lg sm:p-8">
+        <div className="flex items-center justify-between">
+          <h3 className="text-base font-semibold text-[var(--navy-deep)]">Delivery performance</h3>
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--cyan-soft)]/15 px-2.5 py-1 text-[11px] font-semibold text-[var(--royal)]">
+            <TrendingUp className="h-3.5 w-3.5" />
+            Live
+          </span>
+        </div>
+        <div className="mt-6 grid grid-cols-3 gap-4">
+          {[
+            { k: "GO-LIVES", v: "320+", d: null },
+            { k: "AVG GO-LIVE", v: "100d", d: "↘ 22" },
+            { k: "UPTIME", v: "99.5%", d: "↗ 4" },
+          ].map((s) => (
+            <div key={s.k}>
+              <div className="text-[10px] font-semibold uppercase tracking-wider text-[var(--blue-gray)]">
+                {s.k}
+              </div>
+              <div className="mt-1 flex items-baseline gap-1">
+                <span className="text-2xl font-bold tracking-tight text-[var(--navy-deep)]">{s.v}</span>
+                {s.d && <span className="text-xs font-semibold text-[var(--success)]">{s.d}</span>}
+              </div>
+            </div>
+          ))}
+        </div>
+        {/* Line graph */}
+        <div className="mt-6">
+          <svg viewBox="0 0 400 130" className="h-32 w-full" preserveAspectRatio="none" role="img" aria-label="Rising delivery trend across four quarters">
+            <defs>
+              <linearGradient id="svcArea" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="var(--royal)" stopOpacity="0.18" />
+                <stop offset="100%" stopColor="var(--royal)" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0,110 C70,104 110,88 160,74 C215,58 250,40 400,18 L400,130 L0,130 Z"
+              fill="url(#svcArea)"
+            />
+            <path
+              d="M0,110 C70,104 110,88 160,74 C215,58 250,40 400,18"
+              fill="none"
+              stroke="var(--royal)"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+              className="svc-line"
+            />
+            <circle cx="222" cy="55" r="6.5" fill="white" stroke="var(--royal)" strokeWidth="3" />
+          </svg>
+          <div className="mt-2 flex justify-between text-[11px] font-medium text-[var(--blue-gray)]">
+            <span>Q1</span>
+            <span>Q2</span>
+            <span>Q3</span>
+            <span>Q4</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating insight tooltip */}
+      <div className="absolute -bottom-6 right-4 flex items-center gap-3 sm:-right-4">
+        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--azure)] to-[var(--cyan-soft)] text-white shadow-lg">
+          <Sparkles className="h-5 w-5" />
+        </span>
+        <div className="max-w-[15rem] rounded-xl bg-[var(--navy-deep)] px-4 py-3 text-xs leading-relaxed text-white/70 shadow-fluent-md">
+          <span className="font-semibold text-[var(--cyan-soft)]">99.5% uptime</span> across managed
+          programs. <span className="text-white/50">De-risked, governed go-lives.</span>
+        </div>
+      </div>
+    </div>
   );
 }
 

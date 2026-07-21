@@ -223,6 +223,19 @@
   100% { background-position: 60px 60px; }
 }
 
+/* SVG line-draw for the services hero graph */
+@keyframes svc-line-draw {
+  0% { stroke-dashoffset: 520; }
+  100% { stroke-dashoffset: 0; }
+}
+.svc-line {
+  stroke-dasharray: 520;
+  animation: svc-line-draw 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .svc-line { animation: none; stroke-dasharray: none; }
+}
+
 /* Hero autoslider timer bar — fills across the active slide's duration */
 @keyframes hero-timer {
   0% { width: 0%; }
