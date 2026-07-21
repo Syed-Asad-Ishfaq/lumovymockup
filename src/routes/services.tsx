@@ -392,11 +392,12 @@ type Svc = {
   metric: string;
   icon: typeof Compass;
   cat: string;
+  href?: string;
 };
 const SERVICES: Svc[] = [
   { id: "implementation", cat: "Advisory & Delivery", icon: Rocket, name: "Implementation", outcome: "Achieve quick returns and lasting outcomes.", metric: "100-day rapid go-live track" },
   { id: "legacy-migration", cat: "Advisory & Delivery", icon: RefreshCw, name: "Legacy Migration", outcome: "Break free from on-premise constraints.", metric: "30% faster migration, full continuity" },
-  { id: "integrations-modernization", cat: "Engineering & AI", icon: Workflow, name: "Integrations & Modernization", outcome: "Build a connected, future-ready ecosystem.", metric: "50+ live integrations delivered" },
+  { id: "integrations-modernization", cat: "Engineering & AI", icon: Workflow, name: "Integrations & Modernization", outcome: "Build a connected, future-ready ecosystem.", metric: "50+ live integrations delivered", href: "/services/integrations-modernization" },
   { id: "agentic-ai", cat: "Engineering & AI", icon: Cpu, name: "Enterprise Agentic AI Solutions", outcome: "Deploy autonomous commerce agents.", metric: "Enterprise AI live in 20–60 days" },
   { id: "quality-engineering", cat: "Engineering & AI", icon: ShieldCheck, name: "Quality Engineering Factory", outcome: "Deliver flawless, performant, best-in-app experiences.", metric: "6× faster validation via Leapwork" },
   { id: "managed-support", cat: "Run & Scale", icon: LifeBuoy, name: "Managed Support & Expansion", outcome: "Pave the path for continuous improvement.", metric: "24/7 global support coverage" },
@@ -471,7 +472,7 @@ function ServiceList() {
                             {s.metric}
                           </span>
                           <a
-                            href="#contact"
+                            href={s.href ?? "#contact"}
                             className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--royal)]"
                           >
                             Learn more

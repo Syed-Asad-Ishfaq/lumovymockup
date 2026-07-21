@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesIntegrationsModernizationRouteImport } from './routes/services_.integrations-modernization'
 import { Route as IndustriesRetailOmnichannelCommerceRouteImport } from './routes/industries.retail-omnichannel-commerce'
 
 const ServicesRoute = ServicesRouteImport.update({
@@ -23,6 +24,12 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesIntegrationsModernizationRoute =
+  ServicesIntegrationsModernizationRouteImport.update({
+    id: '/services_/integrations-modernization',
+    path: '/services/integrations-modernization',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const IndustriesRetailOmnichannelCommerceRoute =
   IndustriesRetailOmnichannelCommerceRouteImport.update({
     id: '/industries/retail-omnichannel-commerce',
@@ -34,30 +41,47 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/services': typeof ServicesRoute
   '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
+  '/services/integrations-modernization': typeof ServicesIntegrationsModernizationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/services': typeof ServicesRoute
   '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
+  '/services/integrations-modernization': typeof ServicesIntegrationsModernizationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/services': typeof ServicesRoute
   '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
+  '/services_/integrations-modernization': typeof ServicesIntegrationsModernizationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/services' | '/industries/retail-omnichannel-commerce'
+  fullPaths:
+    | '/'
+    | '/services'
+    | '/industries/retail-omnichannel-commerce'
+    | '/services/integrations-modernization'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/services' | '/industries/retail-omnichannel-commerce'
-  id: '__root__' | '/' | '/services' | '/industries/retail-omnichannel-commerce'
+  to:
+    | '/'
+    | '/services'
+    | '/industries/retail-omnichannel-commerce'
+    | '/services/integrations-modernization'
+  id:
+    | '__root__'
+    | '/'
+    | '/services'
+    | '/industries/retail-omnichannel-commerce'
+    | '/services_/integrations-modernization'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ServicesRoute: typeof ServicesRoute
   IndustriesRetailOmnichannelCommerceRoute: typeof IndustriesRetailOmnichannelCommerceRoute
+  ServicesIntegrationsModernizationRoute: typeof ServicesIntegrationsModernizationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -76,6 +100,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services_/integrations-modernization': {
+      id: '/services_/integrations-modernization'
+      path: '/services/integrations-modernization'
+      fullPath: '/services/integrations-modernization'
+      preLoaderRoute: typeof ServicesIntegrationsModernizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/industries/retail-omnichannel-commerce': {
       id: '/industries/retail-omnichannel-commerce'
       path: '/industries/retail-omnichannel-commerce'
@@ -91,6 +122,8 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   IndustriesRetailOmnichannelCommerceRoute:
     IndustriesRetailOmnichannelCommerceRoute,
+  ServicesIntegrationsModernizationRoute:
+    ServicesIntegrationsModernizationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

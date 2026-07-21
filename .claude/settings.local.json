@@ -51,7 +51,12 @@
       "Bash(pkill -f vite)",
       "Bash(git commit -q -m 'Add Retail & Omnichannel Commerce industry inner page *)",
       "Bash(git checkout *)",
-      "Bash(python3 -c ' *)"
+      "Bash(python3 -c ' *)",
+      "Bash(sips -s format jpeg ~/Downloads/beautiful-shot-modern-style-open-space-office-interior_181624-19369.avif --out src/assets/services/integrations/office.jpg)",
+      "Bash(sips -g pixelWidth -g pixelHeight src/assets/services/integrations/office.jpg)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/services/integrations-modernization)",
+      "Bash(node shotint2.mjs)",
+      "Bash(git mv *)"
     ],
     "additionalDirectories": [
       "/private/tmp/cshot",

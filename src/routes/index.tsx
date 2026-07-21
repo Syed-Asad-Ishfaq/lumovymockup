@@ -172,7 +172,7 @@ const NAV_MENU: NavMain[] = [
       {
         heading: "Engineering & AI",
         items: [
-          { label: "Integrations & Modernization", href: "/services#integrations-modernization" },
+          { label: "Integrations & Modernization", href: "/services/integrations-modernization" },
           { label: "Enterprise Agentic AI Solutions", href: "/services#agentic-ai" },
           { label: "Quality Engineering Factory", href: "/services#quality-engineering" },
         ],
@@ -901,15 +901,16 @@ function Solutions() {
 // The 4 provided abstract blue shapes, cycled across the service cards.
 const SERVICE_SHAPES = [svcShape1, svcShape2, svcShape3, svcShape4];
 
-// Maps homepage service names to their anchor on the /services hub page.
-const SERVICE_ANCHORS: Record<string, string> = {
-  Implementation: "implementation",
-  "Managed Support & Expansion": "managed-support",
-  "Integrations & Modernization": "integrations-modernization",
-  "Enterprise Agentic AI Solutions": "agentic-ai",
-  "Legacy Migration": "legacy-migration",
-  "Quality Engineering Factory": "quality-engineering",
-  "Global Capability Centers": "global-capability-centers",
+// Maps homepage service names to a link. Services with a dedicated detail
+// page use a full path; the rest deep-link to their anchor on /services.
+const SERVICE_LINKS: Record<string, string> = {
+  Implementation: "/services#implementation",
+  "Managed Support & Expansion": "/services#managed-support",
+  "Integrations & Modernization": "/services/integrations-modernization",
+  "Enterprise Agentic AI Solutions": "/services#agentic-ai",
+  "Legacy Migration": "/services#legacy-migration",
+  "Quality Engineering Factory": "/services#quality-engineering",
+  "Global Capability Centers": "/services#global-capability-centers",
 };
 
 function Services() {
@@ -1025,7 +1026,7 @@ function Services() {
 
                 {/* CTA — fixed at the card bottom, does not move; only fades in */}
                 <div className="absolute inset-x-0 bottom-8 px-8 opacity-0 transition-opacity duration-[480ms] delay-150 ease-out group-hover:opacity-100 group-focus-within:opacity-100 group-hover:[&_a>span:first-child]:bg-white group-hover:[&_a>span:first-child]:text-[var(--royal)] group-hover:[&_a>span:last-child]:text-white">
-                  <LearnMore href={`/services#${SERVICE_ANCHORS[s.name] ?? ""}`} />
+                  <LearnMore href={SERVICE_LINKS[s.name] ?? "/services"} />
                 </div>
               </article>
             ))}
