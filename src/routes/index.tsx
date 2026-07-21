@@ -191,7 +191,7 @@ const NAV_MENU: NavMain[] = [
       {
         heading: "Industries",
         items: [
-          { label: "Retail & Omnichannel Commerce", href: "#industries" },
+          { label: "Retail & Omnichannel Commerce", href: "/industries/retail-omnichannel-commerce" },
           { label: "Manufacturing & Supply Chain", href: "#industries" },
           { label: "Modern Grocery & Hypermarkets", href: "#industries" },
           { label: "Hospitality, Entertainment & Sports", href: "#industries" },
@@ -218,7 +218,7 @@ const NAV_MENU: NavMain[] = [
   { label: "Contact", href: "#contact" },
 ];
 
-function Nav() {
+export function Nav() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
@@ -1027,6 +1027,7 @@ function Industries() {
       headline: "Unified Retail, Simplified",
       subhead:
         "Your digital and physical retail, connected. Unified operations, smart fulfillment, and personalized experiences, powered by Microsoft.",
+      href: "/industries/retail-omnichannel-commerce",
     },
     {
       name: "Manufacturing & Supply Chain",
@@ -1094,7 +1095,7 @@ function Industries() {
                 <h3 className="text-xl font-semibold leading-snug text-[var(--navy-deep)]">{i.headline}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{i.subhead}</p>
                 <div className="mt-auto pt-6">
-                  <LearnMore label="Explore industry" />
+                  <LearnMore label="Explore industry" href={(i as { href?: string }).href ?? "#contact"} />
                 </div>
               </div>
             </article>
@@ -1965,7 +1966,7 @@ function FinalCTA() {
 }
 
 /* FOOTER */
-function Footer() {
+export function Footer() {
   const cols: [string, string, string[]][] = [
     ["Products & Accelerators", "#solutions", [
       "D365 for Hypermarkets",

@@ -46,7 +46,10 @@
       "Bash(sips -g pixelHeight /private/tmp/claude-501/-Users-asadishfaq-Downloads-lovable-project-lumovy/65cdd4b5-89b2-4788-aa32-46aa45414686/scratchpad/full-page.png)",
       "Bash(sips --cropToHeightWidth 1000 1440 --cropOffset 3950 0 /private/tmp/claude-501/-Users-asadishfaq-Downloads-lovable-project-lumovy/65cdd4b5-89b2-4788-aa32-46aa45414686/scratchpad/r2.png)",
       "Read(//Users/asadishfaq/.npm/_npx/e41f203b7505f1fb/**)",
-      "Bash(node /tmp/shot.mjs)"
+      "Bash(node /tmp/shot.mjs)",
+      "Bash(pkill -f \"npm run dev\")",
+      "Bash(pkill -f vite)",
+      "Bash(git commit -q -m 'Add Retail & Omnichannel Commerce industry inner page *)"
     ],
     "additionalDirectories": [
       "/private/tmp/cshot",

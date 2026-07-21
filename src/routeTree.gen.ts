@@ -10,33 +10,44 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as IndustriesRetailOmnichannelCommerceRouteImport } from './routes/industries.retail-omnichannel-commerce'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndustriesRetailOmnichannelCommerceRoute =
+  IndustriesRetailOmnichannelCommerceRouteImport.update({
+    id: '/industries/retail-omnichannel-commerce',
+    path: '/industries/retail-omnichannel-commerce',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/industries/retail-omnichannel-commerce'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/industries/retail-omnichannel-commerce'
+  id: '__root__' | '/' | '/industries/retail-omnichannel-commerce'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  IndustriesRetailOmnichannelCommerceRoute: typeof IndustriesRetailOmnichannelCommerceRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +59,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/industries/retail-omnichannel-commerce': {
+      id: '/industries/retail-omnichannel-commerce'
+      path: '/industries/retail-omnichannel-commerce'
+      fullPath: '/industries/retail-omnichannel-commerce'
+      preLoaderRoute: typeof IndustriesRetailOmnichannelCommerceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  IndustriesRetailOmnichannelCommerceRoute:
+    IndustriesRetailOmnichannelCommerceRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
