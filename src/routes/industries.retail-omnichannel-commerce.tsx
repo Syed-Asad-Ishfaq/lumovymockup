@@ -323,7 +323,7 @@ function RetailTiers() {
               className={
                 "relative flex flex-col overflow-hidden rounded-xl p-8 transition-all hover:-translate-y-1 " +
                 (t.featured
-                  ? "bg-[var(--navy-deep)] text-white shadow-fluent-lg"
+                  ? "bg-[var(--royal)] text-white shadow-fluent-lg"
                   : "border border-border bg-white text-[var(--navy-deep)] hover:shadow-fluent-md")
               }
             >
