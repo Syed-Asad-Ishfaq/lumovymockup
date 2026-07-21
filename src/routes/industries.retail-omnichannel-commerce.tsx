@@ -340,7 +340,14 @@ function RetailTiers() {
               >
                 Tier {String(i + 1).padStart(2, "0")} · {t.tag}
               </div>
-              <h3 className="mt-4 text-2xl font-semibold tracking-tight">{t.name}</h3>
+              <h3
+                className={
+                  "mt-4 text-2xl font-semibold tracking-tight " +
+                  (t.featured ? "text-white" : "text-[var(--navy-deep)]")
+                }
+              >
+                {t.name}
+              </h3>
               <p
                 className={
                   "mt-4 flex-1 text-sm leading-relaxed " +
