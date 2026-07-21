@@ -159,28 +159,29 @@ const NAV_MENU: NavMain[] = [
   },
   {
     label: "Services",
+    href: "/services",
     groups: [
       {
         heading: "Advisory & Delivery",
         items: [
-          { label: "Advisory", href: "#services" },
-          { label: "Implementation", href: "#services" },
-          { label: "Legacy Migration", href: "#services" },
+          { label: "All Services", href: "/services" },
+          { label: "Implementation", href: "/services#implementation" },
+          { label: "Legacy Migration", href: "/services#legacy-migration" },
         ],
       },
       {
         heading: "Engineering & AI",
         items: [
-          { label: "Integrations & Modernization", href: "#services" },
-          { label: "Enterprise Agentic AI Solutions", href: "#services" },
-          { label: "Quality Engineering Factory", href: "#services" },
+          { label: "Integrations & Modernization", href: "/services#integrations-modernization" },
+          { label: "Enterprise Agentic AI Solutions", href: "/services#agentic-ai" },
+          { label: "Quality Engineering Factory", href: "/services#quality-engineering" },
         ],
       },
       {
         heading: "Run & Scale",
         items: [
-          { label: "Managed Support & Expansion", href: "#services" },
-          { label: "Global Capability Centers", href: "#services" },
+          { label: "Managed Support & Expansion", href: "/services#managed-support" },
+          { label: "Global Capability Centers", href: "/services#global-capability-centers" },
         ],
       },
     ],
@@ -243,7 +244,7 @@ export function Nav() {
       onMouseLeave={() => setActive(null)}
     >
       <div className="container-enterprise flex h-16 items-center justify-between">
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           <img src={lumovyLogo} alt="Lumovy Technology Solutions" className="h-9 w-auto" />
         </a>
 
@@ -900,6 +901,17 @@ function Solutions() {
 // The 4 provided abstract blue shapes, cycled across the service cards.
 const SERVICE_SHAPES = [svcShape1, svcShape2, svcShape3, svcShape4];
 
+// Maps homepage service names to their anchor on the /services hub page.
+const SERVICE_ANCHORS: Record<string, string> = {
+  Implementation: "implementation",
+  "Managed Support & Expansion": "managed-support",
+  "Integrations & Modernization": "integrations-modernization",
+  "Enterprise Agentic AI Solutions": "agentic-ai",
+  "Legacy Migration": "legacy-migration",
+  "Quality Engineering Factory": "quality-engineering",
+  "Global Capability Centers": "global-capability-centers",
+};
+
 function Services() {
   const services = [
     {
@@ -948,11 +960,17 @@ function Services() {
   return (
     <section id="services" className="border-b border-border bg-white py-28">
       <div className="container-enterprise">
-        <div className="max-w-none">
-          <p className="eyebrow">Services</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
-            From Planning to Performance, We're Your One Partner
-          </h2>
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-none">
+            <p className="eyebrow">Services</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
+              From Planning to Performance, We're Your One Partner
+            </h2>
+          </div>
+          <a href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
+            Explore all services
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
         </div>
       </div>
 
@@ -1007,7 +1025,7 @@ function Services() {
 
                 {/* CTA — fixed at the card bottom, does not move; only fades in */}
                 <div className="absolute inset-x-0 bottom-8 px-8 opacity-0 transition-opacity duration-[480ms] delay-150 ease-out group-hover:opacity-100 group-focus-within:opacity-100 group-hover:[&_a>span:first-child]:bg-white group-hover:[&_a>span:first-child]:text-[var(--royal)] group-hover:[&_a>span:last-child]:text-white">
-                  <LearnMore />
+                  <LearnMore href={`/services#${SERVICE_ANCHORS[s.name] ?? ""}`} />
                 </div>
               </article>
             ))}
@@ -2002,7 +2020,7 @@ export function Footer() {
       <div className="container-enterprise py-16">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-3">
-            <a href="#" className="flex items-center">
+            <a href="/" className="flex items-center">
               <img src={lumovyLogo} alt="Lumovy Technology Solutions" className="h-10 w-auto" />
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-[var(--blue-gray)]">

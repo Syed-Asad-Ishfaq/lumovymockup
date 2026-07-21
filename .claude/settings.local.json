@@ -50,7 +50,8 @@
       "Bash(pkill -f \"npm run dev\")",
       "Bash(pkill -f vite)",
       "Bash(git commit -q -m 'Add Retail & Omnichannel Commerce industry inner page *)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "Bash(python3 -c ' *)"
     ],
     "additionalDirectories": [
       "/private/tmp/cshot",

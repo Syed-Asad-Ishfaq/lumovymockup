@@ -9,9 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as IndustriesRetailOmnichannelCommerceRouteImport } from './routes/industries.retail-omnichannel-commerce'
 
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -26,32 +32,43 @@ const IndustriesRetailOmnichannelCommerceRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/services': typeof ServicesRoute
   '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/services': typeof ServicesRoute
   '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/services': typeof ServicesRoute
   '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/industries/retail-omnichannel-commerce'
+  fullPaths: '/' | '/services' | '/industries/retail-omnichannel-commerce'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/industries/retail-omnichannel-commerce'
-  id: '__root__' | '/' | '/industries/retail-omnichannel-commerce'
+  to: '/' | '/services' | '/industries/retail-omnichannel-commerce'
+  id: '__root__' | '/' | '/services' | '/industries/retail-omnichannel-commerce'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ServicesRoute: typeof ServicesRoute
   IndustriesRetailOmnichannelCommerceRoute: typeof IndustriesRetailOmnichannelCommerceRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -71,6 +88,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ServicesRoute: ServicesRoute,
   IndustriesRetailOmnichannelCommerceRoute:
     IndustriesRetailOmnichannelCommerceRoute,
 }
