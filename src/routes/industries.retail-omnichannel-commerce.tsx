@@ -172,30 +172,26 @@ function RetailHero() {
           </div>
         </div>
 
-        {/* Right: scattered Microsoft ecosystem logo boxes */}
-        <div className="hero-content-in relative" style={{ animationDelay: "200ms" }}>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
-            Built on the Microsoft ecosystem
-          </p>
-          <div className="relative mt-6 h-[300px]">
-            {MS_LOGOS.map((l, idx) => {
-              // Scattered positions for a "floating cards" look
-              const pos = [
-                "left-0 top-4 rotate-[-4deg]",
-                "right-2 top-0 rotate-[3deg]",
-                "left-8 bottom-6 rotate-[2deg]",
-                "right-6 bottom-2 rotate-[-3deg]",
-              ];
-              return (
-                <div
-                  key={l.alt}
-                  className={"absolute flex items-center justify-center rounded-xl border border-white/10 bg-white px-7 py-6 shadow-2xl shadow-black/25 " + pos[idx % pos.length]}
-                >
-                  <img src={l.src} alt={l.alt} loading="lazy" className={`${l.h} w-auto object-contain`} />
-                </div>
-              );
-            })}
-          </div>
+        {/* Right: floating Microsoft ecosystem logo cards */}
+        <div className="hero-content-in relative hidden min-h-[360px] lg:block" style={{ animationDelay: "200ms" }}>
+          {MS_LOGOS.map((l, idx) => {
+            // Balanced staggered layout + gentle float; each card offset in time.
+            const pos = [
+              "left-[6%] top-[8%] rotate-[-3deg]",
+              "right-[10%] top-[24%] rotate-[3deg]",
+              "left-[22%] top-[52%] rotate-[2deg]",
+              "right-[6%] top-[64%] rotate-[-2deg]",
+            ];
+            return (
+              <div
+                key={l.alt}
+                className={"animate-float-slow absolute flex items-center justify-center rounded-lg bg-white px-7 py-6 shadow-2xl shadow-black/25 " + pos[idx % pos.length]}
+                style={{ animationDelay: `${idx * 0.9}s` }}
+              >
+                <img src={l.src} alt={l.alt} loading="lazy" className={`${l.h} w-auto object-contain`} />
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -302,7 +298,7 @@ const SUITE_INCLUDED: { label: string; image: string }[] = [
   { label: "Go-live support & knowledge transfer", image: hospitalityImg },
 ];
 const SUITE_EXTENSIONS = ["Multi-country expansion", "Advanced loyalty", "Legacy modernization", "Managed services", "AI powered innovation"];
-const SUITE_INTERVAL = 3800; // ms per item
+const SUITE_INTERVAL = 6000; // ms per item
 
 function RetailSuite() {
   const [active, setActive] = useState(0);
@@ -340,16 +336,16 @@ function RetailSuite() {
                 <button
                   key={item.label}
                   onClick={() => setActive(i)}
-                  className="block w-full border-b border-[var(--royal)]/10 py-4 text-left last:border-b-0"
+                  className="block w-full py-4 text-left"
                 >
                   <span className={"text-base transition-colors duration-300 " + (isActive ? "font-semibold text-[var(--royal)]" : "font-normal text-[var(--navy-deep)]")}>
                     {item.label}
                   </span>
-                  {/* Progress line — fills over the interval when active */}
-                  <span className="mt-3 block h-0.5 w-full overflow-hidden rounded-full bg-[var(--royal)]/10">
+                  {/* Single line — grey track that fills blue over the interval when active */}
+                  <span className="mt-3 block h-px w-full overflow-hidden bg-[var(--royal)]/12">
                     <span
                       key={`${i}-${active}-${paused}`}
-                      className={"block h-full rounded-full bg-[var(--royal)] " + (isActive && !paused ? "suite-progress" : "")}
+                      className={"block h-full bg-[var(--royal)] " + (isActive && !paused ? "suite-progress" : "")}
                       style={{ width: isActive && paused ? "100%" : isActive ? undefined : "0%" }}
                     />
                   </span>
@@ -361,7 +357,7 @@ function RetailSuite() {
 
         {/* Right: synced image (crossfade) + extensions */}
         <div className="lg:sticky lg:top-24">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-fluent-lg">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[5px] shadow-fluent-lg">
             {SUITE_INCLUDED.map((item, i) => (
               <img
                 key={item.label + i}

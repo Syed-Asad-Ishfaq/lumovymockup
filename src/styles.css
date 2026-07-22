@@ -242,7 +242,7 @@
   100% { width: 100%; }
 }
 .suite-progress {
-  animation: suite-progress-fill 3800ms linear forwards;
+  animation: suite-progress-fill 6000ms linear forwards;
 }
 @media (prefers-reduced-motion: reduce) {
   .suite-progress { animation: none; width: 100%; }
