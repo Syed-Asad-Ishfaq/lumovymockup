@@ -236,6 +236,18 @@
   .svc-line { animation: none; stroke-dasharray: none; }
 }
 
+/* Transformation Suite — active item's progress line fills over the interval */
+@keyframes suite-progress-fill {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+.suite-progress {
+  animation: suite-progress-fill 3800ms linear forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .suite-progress { animation: none; width: 100%; }
+}
+
 /* Hero autoslider timer bar — fills across the active slide's duration */
 @keyframes hero-timer {
   0% { width: 0%; }

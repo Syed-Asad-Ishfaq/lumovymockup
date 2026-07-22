@@ -36,7 +36,6 @@ import {
   FaqAccordion,
   FinalCtaSection,
 } from "./index";
-import retailHero from "@/assets/industries/retail/retail-hero.jpg";
 import testimonialImg from "@/assets/testimonial.webp";
 import msLogo from "@/assets/microsoft.png";
 import d365Logo from "@/assets/Dynamics365.webp";
@@ -49,7 +48,6 @@ import implementationImg from "@/assets/services/implementation.jpg";
 import engineeringImg from "@/assets/services/engineering.jpg";
 import consultingImg from "@/assets/services/consulting.jpg";
 import supportImg from "@/assets/services/support.jpg";
-import heroAbstractImg from "@/assets/hero-abstract.jpg";
 
 export const Route = createFileRoute("/industries/retail-omnichannel-commerce")({
   component: RetailPage,
@@ -138,21 +136,18 @@ const TRUST_STRIP = [
 
 function RetailHero() {
   return (
-    <section className="hero-dark relative overflow-hidden">
-      <div aria-hidden className="hero-beam" />
-      <div aria-hidden className="hero-orbs" />
-      <div aria-hidden className="hero-grid" />
-      <div aria-hidden className="hero-grain" />
-      <div className="container-enterprise relative z-10 py-24 lg:py-28">
-        <div className="max-w-3xl">
+    <section className="relative overflow-hidden bg-[#003594]">
+      <div className="container-enterprise relative z-10 grid items-center gap-14 py-24 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
+        {/* Copy */}
+        <div>
           <span className="hero-content-in text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
             Retail &amp; Commerce
           </span>
-          <h1 className="hero-content-in mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]" style={{ animationDelay: "80ms" }}>
+          <h1 className="hero-content-in mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]" style={{ animationDelay: "80ms" }}>
             MVP-Led Microsoft Retail Solutions Built in{" "}
             <span className="text-[var(--cyan-soft)]">90 Days</span>
           </h1>
-          <p className="hero-content-in mt-6 max-w-2xl text-base leading-relaxed text-white/70" style={{ animationDelay: "160ms" }}>
+          <p className="hero-content-in mt-6 max-w-xl text-base leading-relaxed text-white/70" style={{ animationDelay: "160ms" }}>
             The Retail &amp; Commerce Transformation Suite is an MVP-led engagement built on
             Microsoft retail solutions for multi-store and omnichannel retailers. Lumovy helps you
             build connected commerce, improve inventory visibility, and provide long-term support
@@ -174,6 +169,32 @@ function RetailHero() {
               <Download className="h-4 w-4" />
               Download the Suite Overview
             </a>
+          </div>
+        </div>
+
+        {/* Right: scattered Microsoft ecosystem logo boxes */}
+        <div className="hero-content-in relative" style={{ animationDelay: "200ms" }}>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-white/50">
+            Built on the Microsoft ecosystem
+          </p>
+          <div className="relative mt-6 h-[300px]">
+            {MS_LOGOS.map((l, idx) => {
+              // Scattered positions for a "floating cards" look
+              const pos = [
+                "left-0 top-4 rotate-[-4deg]",
+                "right-2 top-0 rotate-[3deg]",
+                "left-8 bottom-6 rotate-[2deg]",
+                "right-6 bottom-2 rotate-[-3deg]",
+              ];
+              return (
+                <div
+                  key={l.alt}
+                  className={"absolute flex items-center justify-center rounded-xl border border-white/10 bg-white px-7 py-6 shadow-2xl shadow-black/25 " + pos[idx % pos.length]}
+                >
+                  <img src={l.src} alt={l.alt} loading="lazy" className={`${l.h} w-auto object-contain`} />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -217,19 +238,6 @@ function RetailKPIs() {
               <div className="mt-1.5 text-xs font-medium text-[var(--blue-gray)]">{k.l}</div>
             </div>
           ))}
-        </div>
-
-        <div className="mt-16 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--blue-gray)]">
-            Built on the Microsoft ecosystem
-          </p>
-          <div className="mx-auto mt-6 inline-flex flex-wrap items-stretch justify-center gap-1.5 overflow-hidden rounded-md">
-            {MS_LOGOS.map((l) => (
-              <div key={l.alt} className="flex items-center justify-center rounded-md border border-border bg-white px-8 py-5">
-                <img src={l.src} alt={l.alt} loading="lazy" className={`${l.h} w-auto object-contain`} />
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>
@@ -282,62 +290,87 @@ function RetailProblem() {
   );
 }
 
-/* ─────────────────────────────  4. THE TRANSFORMATION SUITE (layered scroll)  ───────────────────────────── */
-const SUITE_INCLUDED = [
-  { icon: Store, label: "Dynamics 365 Commerce foundation" },
-  { icon: CreditCard, label: "Modern POS & back-office enablement" },
-  { icon: Boxes, label: "Unified inventory & RFID readiness" },
-  { icon: TrendingUp, label: "Pricing, promotions & loyalty" },
-  { icon: ScanLine, label: "Retail payment integration" },
-  { icon: Workflow, label: "Omnichannel commerce enablement" },
-  { icon: ClipboardCheck, label: "Store associate enablement" },
-  { icon: LifeBuoy, label: "Go-live support & knowledge transfer" },
+/* ─────────────────────────────  4. THE TRANSFORMATION SUITE (auto-cycling)  ───────────────────────────── */
+const SUITE_INCLUDED: { label: string; image: string }[] = [
+  { label: "Dynamics 365 Commerce foundation", image: retailImg },
+  { label: "Modern POS & back-office enablement", image: hospitalityImg },
+  { label: "Unified inventory & RFID readiness", image: engineeringImg },
+  { label: "Pricing, promotions & loyalty", image: consultingImg },
+  { label: "Retail payment integration", image: implementationImg },
+  { label: "Omnichannel commerce enablement", image: supportImg },
+  { label: "Store associate enablement", image: retailImg },
+  { label: "Go-live support & knowledge transfer", image: hospitalityImg },
 ];
 const SUITE_EXTENSIONS = ["Multi-country expansion", "Advanced loyalty", "Legacy modernization", "Managed services", "AI powered innovation"];
+const SUITE_INTERVAL = 3800; // ms per item
 
 function RetailSuite() {
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const { ref, shown } = useReveal<HTMLDivElement>();
+
+  // Auto-advance through the items once the section is in view.
+  useEffect(() => {
+    if (!shown || paused) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setTimeout(() => setActive((a) => (a + 1) % SUITE_INCLUDED.length), SUITE_INTERVAL);
+    return () => clearTimeout(id);
+  }, [active, shown, paused]);
+
   return (
     <section id="suite" className="relative overflow-hidden bg-[var(--blue-light)]/30 py-28">
       <div aria-hidden className="mesh-blobs-light opacity-50" />
-      <div className="container-enterprise relative grid items-start gap-14 lg:grid-cols-2 lg:gap-16">
-        {/* Left: copy + stacked included list */}
+      <div ref={ref} className="container-enterprise relative grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
+        {/* Left: copy + auto-cycling list */}
         <div>
-          <Reveal>
-            <p className="eyebrow">The Transformation Suite</p>
-            <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              One structured engagement, built to scale with you
-            </h2>
-            <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-[var(--blue-gray)]">
-              Microsoft retail solutions combined with Lumovy&apos;s proven delivery approach and
-              implementation accelerators, backed by ongoing managed services that reduce delivery
-              risk and accelerate outcomes.
-            </p>
-          </Reveal>
+          <p className="eyebrow">The Transformation Suite</p>
+          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+            One structured engagement, built to scale with you
+          </h2>
+          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-[var(--blue-gray)]">
+            Microsoft retail solutions combined with Lumovy&apos;s proven delivery approach and
+            implementation accelerators, backed by ongoing managed services that reduce delivery
+            risk and accelerate outcomes.
+          </p>
 
-          <div className="mt-9 divide-y divide-[var(--royal)]/10 border-y border-[var(--royal)]/10">
-            {SUITE_INCLUDED.map((item, i) => (
-              <Reveal key={item.label} delay={i * 60}>
-                <div className="group flex items-center gap-4 py-3.5">
-                  <span className="inline-grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-white text-[var(--royal)] shadow-fluent-sm transition-transform group-hover:-translate-y-0.5">
-                    <item.icon className="h-5 w-5" />
+          <div className="mt-9" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+            {SUITE_INCLUDED.map((item, i) => {
+              const isActive = active === i;
+              return (
+                <button
+                  key={item.label}
+                  onClick={() => setActive(i)}
+                  className="block w-full border-b border-[var(--royal)]/10 py-4 text-left last:border-b-0"
+                >
+                  <span className={"text-base transition-colors duration-300 " + (isActive ? "font-semibold text-[var(--royal)]" : "font-normal text-[var(--navy-deep)]")}>
+                    {item.label}
                   </span>
-                  <span className="text-[15px] font-semibold text-[var(--navy-deep)]">{item.label}</span>
-                </div>
-              </Reveal>
-            ))}
+                  {/* Progress line — fills over the interval when active */}
+                  <span className="mt-3 block h-0.5 w-full overflow-hidden rounded-full bg-[var(--royal)]/10">
+                    <span
+                      key={`${i}-${active}-${paused}`}
+                      className={"block h-full rounded-full bg-[var(--royal)] " + (isActive && !paused ? "suite-progress" : "")}
+                      style={{ width: isActive && paused ? "100%" : isActive ? undefined : "0%" }}
+                    />
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
-        {/* Right: hero picture + extensions */}
-        <Reveal delay={120} className="lg:sticky lg:top-24">
-          <div className="overflow-hidden rounded-2xl shadow-fluent-lg">
-            <img
-              src={retailHero}
-              alt="Connected omnichannel retail operations"
-              width={1600}
-              height={1067}
-              className="aspect-[4/3] w-full object-cover"
-            />
+        {/* Right: synced image (crossfade) + extensions */}
+        <div className="lg:sticky lg:top-24">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-fluent-lg">
+            {SUITE_INCLUDED.map((item, i) => (
+              <img
+                key={item.label + i}
+                src={item.image}
+                alt={item.label}
+                className="absolute inset-0 h-full w-full object-cover transition-opacity duration-700"
+                style={{ opacity: active === i ? 1 : 0 }}
+              />
+            ))}
           </div>
           <div className="mt-6 rounded-2xl border border-[var(--royal)]/10 bg-white p-6">
             <span className="text-xs font-semibold uppercase tracking-widest text-[var(--royal)]">
@@ -351,7 +384,7 @@ function RetailSuite() {
               ))}
             </div>
           </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -760,7 +793,7 @@ function RetailProcess() {
 
 /* ─────────────────────────────  10. RELATED INSIGHTS  ───────────────────────────── */
 const INSIGHTS = [
-  { tag: "Guide", title: "The MVP-first path to Dynamics 365 Commerce", read: "6 min read", image: heroAbstractImg },
+  { tag: "Guide", title: "The MVP-first path to Dynamics 365 Commerce", read: "6 min read", image: consultingImg },
   { tag: "Case study", title: "How a UAE grocery leader went live in 100 days", read: "4 min read", image: retailImg },
   { tag: "Article", title: "Real-time inventory: from store-led to procurement-driven", read: "5 min read", image: supportImg },
 ];
