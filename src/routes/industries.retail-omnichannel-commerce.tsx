@@ -139,16 +139,16 @@ function RetailHero() {
     <section className="relative overflow-hidden bg-[#003594]">
       {/* Fine grid lines (like homepage) — color unchanged */}
       <div aria-hidden className="hero-grid" />
-      {/* Light gradient blob shapes on the right */}
+      {/* Light gradient blob shapes on the right — prominent */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-24 -top-24 h-[38rem] w-[38rem] rounded-full opacity-70 blur-[90px]"
-        style={{ background: "radial-gradient(circle at 35% 35%, color-mix(in oklch, var(--azure) 60%, transparent), transparent 68%)" }}
+        className="pointer-events-none absolute -right-20 -top-32 h-[46rem] w-[46rem] rounded-full opacity-90 blur-[70px]"
+        style={{ background: "radial-gradient(circle at 38% 38%, color-mix(in oklch, var(--azure) 90%, transparent), transparent 62%)" }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-[-14rem] right-[6rem] h-[30rem] w-[30rem] rounded-full opacity-60 blur-[80px]"
-        style={{ background: "radial-gradient(circle at 60% 60%, color-mix(in oklch, var(--cyan-soft) 45%, transparent), transparent 66%)" }}
+        className="pointer-events-none absolute bottom-[-16rem] right-[2rem] h-[34rem] w-[34rem] rounded-full opacity-80 blur-[65px]"
+        style={{ background: "radial-gradient(circle at 60% 60%, color-mix(in oklch, var(--cyan-soft) 70%, transparent), transparent 62%)" }}
       />
       <div className="container-enterprise relative z-10 py-24 lg:py-28">
         {/* Copy */}
@@ -227,8 +227,8 @@ function RetailKPIs() {
           ))}
         </div>
 
-        {/* Microsoft ecosystem — whitish standalone band with spacing */}
-        <div className="mt-20 rounded-2xl bg-[var(--blue-light)]/35 px-8 py-14 text-center">
+        {/* Microsoft ecosystem — standalone band with spacing */}
+        <div className="mt-20 py-6 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--blue-gray)]">
             Built on the Microsoft ecosystem
           </p>
@@ -328,13 +328,8 @@ function RetailSuite() {
           <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[var(--navy-deep)] sm:text-4xl">
             One structured engagement, built to scale with you
           </h2>
-          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-[var(--blue-gray)]">
-            Microsoft retail solutions combined with Lumovy&apos;s proven delivery approach and
-            implementation accelerators, backed by ongoing managed services that reduce delivery
-            risk and accelerate outcomes.
-          </p>
 
-          <div className="mt-9" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+          <div className="mt-8" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
             {SUITE_INCLUDED.map((item, i) => {
               const isActive = active === i;
               return (
@@ -363,7 +358,7 @@ function RetailSuite() {
         {/* Right: synced image (crossfade) + extensions.
             Top offset on lg aligns the image top with the H2 (past the eyebrow). */}
         <div className="lg:sticky lg:top-24 lg:mt-[2.1rem]">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[5px] shadow-fluent-lg">
+          <div className="relative aspect-[4/3] overflow-hidden rounded-xl shadow-fluent-lg">
             {SUITE_INCLUDED.map((item, i) => (
               <img
                 key={item.label + i}
