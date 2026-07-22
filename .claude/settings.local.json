@@ -63,11 +63,16 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/industries/retail-omnichannel-commerce)",
       "Bash(curl -s https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/services/integrations-modernization)",
       "Bash(curl -s https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/services)",
-      "Bash(curl -sS -I --max-time 20 https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/)"
+      "Bash(curl -sS -I --max-time 20 https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/)",
+      "Bash(cp \"/Users/asadishfaq/Downloads/Microsoft_logo_\\(2012\\).svg.png\" \"src/assets/microsoft.png\")",
+      "Bash(sips -g pixelWidth -g pixelHeight \"src/assets/testimonial .webp\")",
+      "Bash(sips -g pixelWidth -g pixelHeight src/assets/azure.jpeg)",
+      "Bash(sips -g pixelWidth -g pixelHeight ~/Downloads/azure.png)"
     ],
     "additionalDirectories": [
       "/private/tmp/cshot",
-      "/tmp"
+      "/tmp",
+      "/Users/asadishfaq/Downloads"
     ]
   }
 }
