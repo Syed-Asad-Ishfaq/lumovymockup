@@ -137,17 +137,30 @@ const TRUST_STRIP = [
 function RetailHero() {
   return (
     <section className="relative overflow-hidden bg-[#003594]">
-      <div className="container-enterprise relative z-10 grid items-center gap-14 py-24 lg:grid-cols-[1.05fr_0.95fr] lg:py-28">
+      {/* Fine grid lines (like homepage) — color unchanged */}
+      <div aria-hidden className="hero-grid" />
+      {/* Light gradient blob shapes on the right */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-24 -top-24 h-[38rem] w-[38rem] rounded-full opacity-70 blur-[90px]"
+        style={{ background: "radial-gradient(circle at 35% 35%, color-mix(in oklch, var(--azure) 60%, transparent), transparent 68%)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-[-14rem] right-[6rem] h-[30rem] w-[30rem] rounded-full opacity-60 blur-[80px]"
+        style={{ background: "radial-gradient(circle at 60% 60%, color-mix(in oklch, var(--cyan-soft) 45%, transparent), transparent 66%)" }}
+      />
+      <div className="container-enterprise relative z-10 py-24 lg:py-28">
         {/* Copy */}
-        <div>
+        <div className="max-w-3xl">
           <span className="hero-content-in text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
             Retail &amp; Commerce
           </span>
-          <h1 className="hero-content-in mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]" style={{ animationDelay: "80ms" }}>
+          <h1 className="hero-content-in mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.5rem]" style={{ animationDelay: "80ms" }}>
             MVP-Led Microsoft Retail Solutions Built in{" "}
             <span className="text-[var(--cyan-soft)]">90 Days</span>
           </h1>
-          <p className="hero-content-in mt-6 max-w-xl text-base leading-relaxed text-white/70" style={{ animationDelay: "160ms" }}>
+          <p className="hero-content-in mt-6 max-w-2xl text-base leading-relaxed text-white/70" style={{ animationDelay: "160ms" }}>
             The Retail &amp; Commerce Transformation Suite is an MVP-led engagement built on
             Microsoft retail solutions for multi-store and omnichannel retailers. Lumovy helps you
             build connected commerce, improve inventory visibility, and provide long-term support
@@ -170,28 +183,6 @@ function RetailHero() {
               Download the Suite Overview
             </a>
           </div>
-        </div>
-
-        {/* Right: floating Microsoft ecosystem logo cards */}
-        <div className="hero-content-in relative hidden min-h-[360px] lg:block" style={{ animationDelay: "200ms" }}>
-          {MS_LOGOS.map((l, idx) => {
-            // Balanced staggered layout + gentle float; each card offset in time.
-            const pos = [
-              "left-[6%] top-[8%] rotate-[-3deg]",
-              "right-[10%] top-[24%] rotate-[3deg]",
-              "left-[22%] top-[52%] rotate-[2deg]",
-              "right-[6%] top-[64%] rotate-[-2deg]",
-            ];
-            return (
-              <div
-                key={l.alt}
-                className={"animate-float-slow absolute flex items-center justify-center rounded-lg bg-white px-7 py-6 shadow-2xl shadow-black/25 " + pos[idx % pos.length]}
-                style={{ animationDelay: `${idx * 0.9}s` }}
-              >
-                <img src={l.src} alt={l.alt} loading="lazy" className={`${l.h} w-auto object-contain`} />
-              </div>
-            );
-          })}
         </div>
       </div>
 
@@ -234,6 +225,20 @@ function RetailKPIs() {
               <div className="mt-1.5 text-xs font-medium text-[var(--blue-gray)]">{k.l}</div>
             </div>
           ))}
+        </div>
+
+        {/* Microsoft ecosystem — whitish standalone band with spacing */}
+        <div className="mt-20 rounded-2xl bg-[var(--blue-light)]/35 px-8 py-14 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--blue-gray)]">
+            Built on the Microsoft ecosystem
+          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            {MS_LOGOS.map((l) => (
+              <div key={l.alt} className="flex items-center justify-center rounded-lg border border-border bg-white px-9 py-6">
+                <img src={l.src} alt={l.alt} loading="lazy" className={`${l.h} w-auto object-contain`} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -316,7 +321,7 @@ function RetailSuite() {
   return (
     <section id="suite" className="relative overflow-hidden bg-[var(--blue-light)]/30 py-28">
       <div aria-hidden className="mesh-blobs-light opacity-50" />
-      <div ref={ref} className="container-enterprise relative grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
+      <div ref={ref} className="container-enterprise relative grid items-start gap-14 lg:grid-cols-2 lg:gap-16">
         {/* Left: copy + auto-cycling list */}
         <div>
           <p className="eyebrow">The Transformation Suite</p>
@@ -355,8 +360,9 @@ function RetailSuite() {
           </div>
         </div>
 
-        {/* Right: synced image (crossfade) + extensions */}
-        <div className="lg:sticky lg:top-24">
+        {/* Right: synced image (crossfade) + extensions.
+            Top offset on lg aligns the image top with the H2 (past the eyebrow). */}
+        <div className="lg:sticky lg:top-24 lg:mt-[2.1rem]">
           <div className="relative aspect-[4/5] overflow-hidden rounded-[5px] shadow-fluent-lg">
             {SUITE_INCLUDED.map((item, i) => (
               <img
