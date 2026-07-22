@@ -1208,6 +1208,63 @@ function WhyLumovy() {
 }
 
 /* CASE STUDIES */
+/* Reusable case-study card — used on the homepage and inner pages.
+   Same styling/structure; content is passed in. */
+export type CaseStudyData = {
+  sector: string;
+  logo?: string;
+  logoClass?: string;
+  title: string;
+  challenge: string;
+  results: [string, string][];
+  cta?: string;
+  href?: string;
+};
+
+export function CaseStudyCard({
+  sector,
+  logo,
+  logoClass,
+  title,
+  challenge,
+  results,
+  cta = "Read the Engagement",
+  href = "#contact",
+}: CaseStudyData) {
+  return (
+    <article className="group card-lift flex flex-col rounded-xl border border-border bg-white p-8">
+      <div className="flex h-14 items-center">
+        {logo ? (
+          <img
+            src={logo}
+            alt={sector}
+            loading="lazy"
+            className={
+              (logoClass ?? "max-h-9") +
+              " w-auto max-w-[150px] object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
+            }
+          />
+        ) : (
+          <span className="text-sm font-semibold uppercase tracking-wide text-[var(--royal)]">{sector}</span>
+        )}
+      </div>
+      <h3 className="mt-4 text-xl font-semibold leading-snug text-[var(--navy-deep)]">{title}</h3>
+      <p className="mt-4 text-sm leading-relaxed text-[var(--blue-gray)]">{challenge}</p>
+      <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border pt-6">
+        {results.map(([v, l]) => (
+          <div key={l} className="min-w-0">
+            <div className="whitespace-nowrap text-[15px] font-bold leading-tight text-[var(--navy-deep)]">{v}</div>
+            <div className="mt-1 text-[11px] font-medium leading-tight text-[var(--blue-gray)]">{l}</div>
+          </div>
+        ))}
+      </div>
+      <div className="mt-6">
+        <LearnMore label={cta} href={href} />
+      </div>
+    </article>
+  );
+}
+
 function CaseStudies() {
   const cases = [
     {
@@ -1305,32 +1362,7 @@ function CaseStudies() {
         </div>
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
           {cases.map((c) => (
-            <article key={c.title} className="group card-lift flex flex-col rounded-xl border border-border bg-white p-8">
-              <div className="flex h-14 items-center">
-                <img
-                  src={c.logo}
-                  alt={c.sector}
-                  loading="lazy"
-                  className={
-                    (c.logoClass ?? "max-h-9") +
-                    " w-auto max-w-[150px] object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
-                  }
-                />
-              </div>
-              <h3 className="mt-4 text-xl font-semibold leading-snug text-[var(--navy-deep)]">{c.title}</h3>
-              <p className="mt-4 text-sm leading-relaxed text-[var(--blue-gray)]">{c.challenge}</p>
-              <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border pt-6">
-                {c.results.map(([v, l]) => (
-                  <div key={l} className="min-w-0">
-                    <div className="whitespace-nowrap text-[15px] font-bold leading-tight text-[var(--navy-deep)]">{v}</div>
-                    <div className="mt-1 text-[11px] font-medium leading-tight text-[var(--blue-gray)]">{l}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6">
-                <LearnMore label="Read the Engagement" />
-              </div>
-            </article>
+            <CaseStudyCard key={c.title} {...c} />
           ))}
         </div>
       </div>
@@ -1339,7 +1371,7 @@ function CaseStudies() {
 }
 
 /* TESTIMONIALS */
-type QuoteItem = {
+export type QuoteItem = {
   kind: "quote";
   quote: string;
   name: string;
@@ -1378,7 +1410,7 @@ const REFERENCES: RefItem[] = [
   { kind: "video", poster: consultingImg, name: "VP, IT", role: "US Specialty Retail · 3 min" },
 ];
 
-function QuoteCard({ q }: { q: QuoteItem }) {
+export function QuoteCard({ q }: { q: QuoteItem }) {
   return (
     <figure className="flex h-full flex-col rounded-xl border border-border bg-white p-8">
       <svg className="h-6 w-6 text-[var(--royal)]" fill="currentColor" viewBox="0 0 24 24">
@@ -1900,85 +1932,135 @@ function FAQ() {
     ["Do you provide global delivery?", "Yes. Our global onshore, nearshore, and offshore model lets you scale delivery while maintaining governance, quality, and cost efficiency."],
     ["How do you measure success?", "Success is measured by your business outcomes, not just project completion. Typical KPIs include implementation timelines, platform adoption, release quality, and long-term value."],
   ];
-  const [open, setOpen] = useState<number | null>(0);
-  const [showAll, setShowAll] = useState(false);
-  const VISIBLE = 6;
-  const visibleItems = showAll ? items : items.slice(0, VISIBLE);
   return (
     <section id="insights" className="border-b border-border bg-white py-28">
-      <div className="container-enterprise grid gap-10 lg:grid-cols-12">
-        <div className="lg:col-span-4">
-          <p className="eyebrow">FAQ</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Questions we get first
-          </h2>
-        </div>
-        <div className="lg:col-span-8">
-          <div className="divide-y divide-border">
-            {visibleItems.map(([q, a], idx) => (
-              <div key={q} className="py-5">
-                <button
-                  onClick={() => setOpen(open === idx ? null : idx)}
-                  className="flex w-full items-start justify-between gap-6 text-left"
-                >
-                  <span className="text-base font-semibold text-[var(--navy-deep)]">{q}</span>
-                  <ChevronDown className={"h-5 w-5 shrink-0 text-[var(--blue-gray)] transition-transform " + (open === idx ? "rotate-180" : "")} />
-                </button>
-                {open === idx && <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{a}</p>}
-              </div>
-            ))}
-          </div>
-          {items.length > VISIBLE && (
-            <button
-              onClick={() => {
-                setShowAll((v) => !v);
-                if (showAll) setOpen(0);
-              }}
-              className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold text-[var(--royal)] transition-all hover:-translate-y-0.5 hover:border-[var(--royal)]"
-            >
-              {showAll ? "Show fewer" : "View more"}
-              <ChevronDown className={"h-4 w-4 transition-transform " + (showAll ? "rotate-180" : "")} />
-            </button>
-          )}
-        </div>
+      <div className="container-enterprise">
+        <FaqAccordion title="Questions we get first" items={items} />
       </div>
     </section>
+  );
+}
+
+/* Reusable FAQ accordion — heading on the left, questions on the right, with
+   an optional "View more" collapse. Used on the homepage and inner pages. */
+export function FaqAccordion({
+  title,
+  intro,
+  items,
+  visible = 6,
+}: {
+  title: string;
+  intro?: string;
+  items: [string, string][];
+  visible?: number;
+}) {
+  const [open, setOpen] = useState<number | null>(0);
+  const [showAll, setShowAll] = useState(false);
+  const visibleItems = showAll ? items : items.slice(0, visible);
+  return (
+    <div className="grid gap-10 lg:grid-cols-12">
+      <div className="lg:col-span-4">
+        <p className="eyebrow">FAQ</p>
+        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+          {title}
+        </h2>
+        {intro && <p className="mt-5 text-sm leading-relaxed text-[var(--blue-gray)]">{intro}</p>}
+      </div>
+      <div className="lg:col-span-8">
+        <div className="divide-y divide-border">
+          {visibleItems.map(([q, a], idx) => (
+            <div key={q} className="py-5">
+              <button
+                onClick={() => setOpen(open === idx ? null : idx)}
+                className="flex w-full items-start justify-between gap-6 text-left"
+              >
+                <span className="text-base font-semibold text-[var(--navy-deep)]">{q}</span>
+                <ChevronDown className={"h-5 w-5 shrink-0 text-[var(--blue-gray)] transition-transform " + (open === idx ? "rotate-180" : "")} />
+              </button>
+              {open === idx && <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{a}</p>}
+            </div>
+          ))}
+        </div>
+        {items.length > visible && (
+          <button
+            onClick={() => {
+              setShowAll((v) => !v);
+              if (showAll) setOpen(0);
+            }}
+            className="mt-6 inline-flex items-center gap-2 rounded-full border border-border bg-white px-5 py-3 text-sm font-semibold text-[var(--royal)] transition-all hover:-translate-y-0.5 hover:border-[var(--royal)]"
+          >
+            {showAll ? "Show fewer" : "View more"}
+            <ChevronDown className={"h-4 w-4 transition-transform " + (showAll ? "rotate-180" : "")} />
+          </button>
+        )}
+      </div>
+    </div>
   );
 }
 
 /* FINAL CTA */
 function FinalCTA() {
   return (
-    <section className="hero-dark relative overflow-hidden py-28 text-white">
+    <FinalCtaSection
+      eyebrow="Ready when you are"
+      title="From strategy to production"
+      subtitle="Book a 30-minute executive briefing. No sales pitch."
+      primary={{ label: "Book a consultation", href: "#contact", icon: true }}
+      secondary={{ label: "Review case studies", href: "#case-studies" }}
+    />
+  );
+}
+
+/* Reusable dark closing-CTA section — used on the homepage and inner pages. */
+export function FinalCtaSection({
+  eyebrow = "Ready when you are",
+  title,
+  subtitle,
+  microcopy,
+  primary,
+  secondary,
+  id,
+}: {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  microcopy?: string;
+  primary: { label: string; href: string; icon?: boolean };
+  secondary?: { label: string; href: string };
+  id?: string;
+}) {
+  return (
+    <section id={id} className="hero-dark relative overflow-hidden py-28 text-white">
       <div aria-hidden className="hero-beam" />
       <div aria-hidden className="hero-orbs" />
       <div aria-hidden className="hero-grid" />
       <div aria-hidden className="hero-grain" />
       <div className="container-enterprise relative z-10 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">Ready when you are</p>
+        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">{eyebrow}</p>
         <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          From strategy to production
+          {title}
         </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-base text-white/70">
-          Book a 30-minute executive briefing. No sales pitch.
-        </p>
+        {subtitle && <p className="mx-auto mt-5 max-w-2xl text-base text-white/70">{subtitle}</p>}
         <div className="mt-9 flex flex-wrap justify-center gap-3">
           <a
-            href="#contact"
+            href={primary.href}
             className="group inline-flex items-center gap-2 rounded-full bg-[var(--royal)] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white hover:text-[var(--navy-deep)] hover:shadow-xl"
           >
-            <Calendar className="h-4 w-4" />
-            Book a consultation
+            {primary.icon && <Calendar className="h-4 w-4" />}
+            {primary.label}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
-          <a
-            href="#case-studies"
-            className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
-          >
-            Review case studies
-            <ArrowRight className="h-4 w-4" />
-          </a>
+          {secondary && (
+            <a
+              href={secondary.href}
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
+            >
+              {secondary.label}
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          )}
         </div>
+        {microcopy && <p className="mx-auto mt-6 max-w-xl text-xs text-white/50">{microcopy}</p>}
       </div>
     </section>
   );

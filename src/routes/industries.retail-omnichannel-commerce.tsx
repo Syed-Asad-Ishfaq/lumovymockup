@@ -34,7 +34,7 @@ import {
   FileText,
 } from "lucide-react";
 import { useState } from "react";
-import { Nav, Footer } from "./index";
+import { Nav, Footer, CaseStudyCard, QuoteCard, FaqAccordion, FinalCtaSection } from "./index";
 import retailHero from "@/assets/industries/retail/retail-hero.jpg";
 
 export const Route = createFileRoute("/industries/retail-omnichannel-commerce")({
@@ -688,50 +688,40 @@ const PROOF_METRICS = [
 
 function RetailProof() {
   return (
-    <section className="border-b border-border bg-white py-24">
-      <div className="container-enterprise">
-        <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:items-center">
-          <div>
-            <p className="eyebrow">Proof</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Transformation delivered with measurable outcomes
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-[var(--blue-gray)]">
-              One of the UAE&apos;s fastest-growing discount grocery retailers partnered with Lumovy
-              to modernize its retail operations using Microsoft Dynamics 365 Commerce and Finance
-              &amp; Operations. The engagement delivered a connected omnichannel solution across
-              stores, procurement, warehouses and POS — including AI-powered checkout and a
-              streamlined, real-time approach to inventory built to support rapid growth.
-            </p>
-            <a
-              href="#contact"
-              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]"
-            >
-              Talk to us about your retail outcomes
-              <ArrowRight className="h-4 w-4" />
-            </a>
+    <section className="relative overflow-hidden border-b border-border bg-[var(--blue-light)]/40 py-24">
+      <div aria-hidden className="mesh-blobs-light opacity-60" />
+      <div className="container-enterprise relative">
+        <div className="max-w-2xl">
+          <p className="eyebrow">Proof</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+            Transformation delivered with measurable outcomes
+          </h2>
+        </div>
+        {/* Reuses the homepage case-study + testimonial components with this page's content */}
+        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+          <div className="lg:col-span-2">
+            <CaseStudyCard
+              sector="UAE Discount Grocery Retailer"
+              title="Connected Omnichannel Commerce in 100 Days"
+              challenge="One of the UAE's fastest-growing discount grocery retailers modernized operations with Dynamics 365 Commerce and Finance & Operations — a connected omnichannel solution across stores, procurement, warehouses and POS, including AI-powered checkout and real-time inventory built to support rapid growth."
+              results={[
+                ["100 days", "D365 Commerce & F&O live"],
+                ["<2 sec", "AI product recognition at POS"],
+                ["4 weeks", "Secure payment integration"],
+              ]}
+              cta="Talk to us about your outcomes"
+            />
           </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            {PROOF_METRICS.map((m) => (
-              <div
-                key={m.l}
-                className="rounded-xl border border-border bg-[var(--blue-light)]/40 p-6"
-              >
-                <div className="text-2xl font-bold tracking-tight text-[var(--royal)] sm:text-3xl">
-                  {m.v}
-                </div>
-                <div className="mt-2 text-xs leading-relaxed text-[var(--blue-gray)]">{m.l}</div>
-              </div>
-            ))}
-            <div className="col-span-2 flex items-center gap-3 rounded-xl border border-[var(--royal)]/15 bg-white p-5">
-              <CreditCard className="h-5 w-5 shrink-0 text-[var(--royal)]" />
-              <p className="text-sm text-[var(--navy-deep)]">
-                Established a scalable retail technology platform built to support continued business
-                growth.
-              </p>
-            </div>
-          </div>
+          <QuoteCard
+            q={{
+              kind: "quote",
+              quote:
+                "Lumovy modernized our entire retail operation on Dynamics 365 and gave us a platform built to scale with our growth.",
+              name: "Retail Operations Lead",
+              role: "UAE Discount Grocery",
+              outcome: "Centralized, procurement-driven replenishment",
+            }}
+          />
         </div>
       </div>
     </section>
@@ -851,132 +841,54 @@ function RetailInsights() {
   );
 }
 
-/* ─────────────────────────────  FAQ  ───────────────────────────── */
-const FAQS = [
-  {
-    q: "How is the Transformation Suite different from a traditional implementation?",
-    a: "The Suite is MVP-led: we deliver a focused, high-value foundation first, prove business outcomes quickly, and then scale — rather than attempting a single large, high-risk implementation. It comes with proven accelerators and a direct path into managed services, so value continues well beyond go-live.",
-  },
-  {
-    q: "Can we expand beyond the initial engagement?",
-    a: "Yes. The Suite is designed to grow with you — from a Foundation MVP through Growth and Enterprise tiers, with extensions for multi-country expansion, advanced loyalty, legacy modernization, managed services and AI-powered retail innovation.",
-  },
-  {
-    q: "Which retail platforms, POS systems and payment providers can you integrate?",
-    a: "We build on Microsoft Dynamics 365 Commerce and integrate modern POS, payment providers and inventory/RFID capabilities, including our Clarity RFID accelerator and secure retail payment solution integrations.",
-  },
-  {
-    q: "What managed services for retail are available after go-live?",
-    a: "Ongoing optimization, proactive support, release management and platform evolution — keeping your retail systems supported, current and continuously improving as your business grows.",
-  },
-  {
-    q: "How do we get started with Lumovy as our retail technology partner?",
-    a: "Book a Retail Readiness Call. In a focused discovery session we assess your current retail landscape, identify the highest-value opportunities and recommend the right transformation path — without obligation.",
-  },
+/* ─────────────────────────────  FAQ (reuses homepage FaqAccordion)  ───────────────────────────── */
+const RETAIL_FAQS: [string, string][] = [
+  [
+    "How is the Transformation Suite different from a traditional implementation?",
+    "The Suite is MVP-led: we deliver a focused, high-value foundation first, prove business outcomes quickly, and then scale — rather than attempting a single large, high-risk implementation. It comes with proven accelerators and a direct path into managed services, so value continues well beyond go-live.",
+  ],
+  [
+    "Can we expand beyond the initial engagement?",
+    "Yes. The Suite is designed to grow with you — from a Foundation MVP through Growth and Enterprise tiers, with extensions for multi-country expansion, advanced loyalty, legacy modernization, managed services and AI-powered retail innovation.",
+  ],
+  [
+    "Which retail platforms, POS systems and payment providers can you integrate?",
+    "We build on Microsoft Dynamics 365 Commerce and integrate modern POS, payment providers and inventory/RFID capabilities, including our Clarity RFID accelerator and secure retail payment solution integrations.",
+  ],
+  [
+    "What managed services for retail are available after go-live?",
+    "Ongoing optimization, proactive support, release management and platform evolution — keeping your retail systems supported, current and continuously improving as your business grows.",
+  ],
+  [
+    "How do we get started with Lumovy as our retail technology partner?",
+    "Book a Retail Readiness Call. In a focused discovery session we assess your current retail landscape, identify the highest-value opportunities and recommend the right transformation path — without obligation.",
+  ],
 ];
 
 function RetailFAQ() {
-  const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="border-b border-border bg-white py-24">
-      <div className="container-enterprise grid gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-        <div>
-          <p className="eyebrow">FAQ</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Answers for retail leaders
-          </h2>
-          <p className="mt-5 text-sm leading-relaxed text-[var(--blue-gray)]">
-            Still have questions about how the Transformation Suite fits your business? Book a call
-            and we&apos;ll walk you through it.
-          </p>
-        </div>
-        <div>
-          <ul className="divide-y divide-border">
-            {FAQS.map((f, i) => {
-              const isOpen = open === i;
-              return (
-                <li key={f.q}>
-                  <button
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 py-5 text-left"
-                    aria-expanded={isOpen}
-                  >
-                    <span className="text-base font-semibold text-[var(--navy-deep)]">{f.q}</span>
-                    <span
-                      className={
-                        "grid h-7 w-7 shrink-0 place-items-center rounded-full border transition-colors " +
-                        (isOpen
-                          ? "border-[var(--royal)] bg-[var(--royal)] text-white"
-                          : "border-border text-[var(--royal)]")
-                      }
-                    >
-                      {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-                    </span>
-                  </button>
-                  <div
-                    className={
-                      "grid transition-all duration-300 ease-out " +
-                      (isOpen ? "grid-rows-[1fr] pb-5 opacity-100" : "grid-rows-[0fr] opacity-0")
-                    }
-                  >
-                    <div className="overflow-hidden">
-                      <p className="pr-10 text-sm leading-relaxed text-[var(--blue-gray)]">{f.a}</p>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+      <div className="container-enterprise">
+        <FaqAccordion
+          title="Answers for retail leaders"
+          intro="Still have questions about how the Transformation Suite fits your business? Book a call and we'll walk you through it."
+          items={RETAIL_FAQS}
+        />
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────  FINAL CTA  ───────────────────────────── */
+/* ─────────────────────────────  FINAL CTA (reuses homepage FinalCtaSection)  ───────────────────────────── */
 function RetailFinalCTA() {
   return (
-    <section id="contact" className="hero-dark relative overflow-hidden py-28 text-white">
-      <div aria-hidden className="hero-beam" />
-      <div aria-hidden className="hero-orbs" />
-      <div aria-hidden className="hero-grid" />
-      <div aria-hidden className="hero-grain" />
-      <div className="container-enterprise relative z-10 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
-          Ready when you are
-        </p>
-        <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          Start with measurable outcomes. Scale with a retail technology partner you can trust
-        </h2>
-        <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-white/70">
-          Whether your priority is a modern POS system, a reliable payment solution, stronger
-          inventory services, or a complete omnichannel solution, Lumovy helps you build the right
-          Microsoft Dynamics 365 retail foundation — a practical, MVP-first engagement designed to
-          accelerate business value and support long-term transformation.
-        </p>
-        <div className="mt-9 flex flex-wrap justify-center gap-3">
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl"
-          >
-            <Calendar className="h-4 w-4" />
-            Book a Retail Readiness Call
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
-          <a
-            href="#suite"
-            className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
-          >
-            <Download className="h-4 w-4" />
-            Download the Transformation Suite Overview
-          </a>
-        </div>
-        <p className="mx-auto mt-6 max-w-xl text-xs text-white/50">
-          In a focused discovery session, we&apos;ll assess your current retail landscape, identify
-          the highest-value opportunities and recommend the right transformation path — without
-          obligation.
-        </p>
-      </div>
-    </section>
+    <FinalCtaSection
+      id="contact"
+      title="Start with measurable outcomes. Scale with a retail technology partner you can trust"
+      subtitle="Whether your priority is a modern POS system, a reliable payment solution, stronger inventory services, or a complete omnichannel solution, Lumovy helps you build the right Microsoft Dynamics 365 retail foundation — a practical, MVP-first engagement designed to accelerate business value."
+      microcopy="In a focused discovery session, we'll assess your current retail landscape, identify the highest-value opportunities and recommend the right transformation path — without obligation."
+      primary={{ label: "Book a Retail Readiness Call", href: "#contact", icon: true }}
+      secondary={{ label: "Download the Transformation Suite Overview", href: "#suite" }}
+    />
   );
 }

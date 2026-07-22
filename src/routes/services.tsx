@@ -25,7 +25,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Nav, Footer } from "./index";
+import { Nav, Footer, FaqAccordion, FinalCtaSection } from "./index";
 
 export const Route = createFileRoute("/services")({
   component: ServicesPage,
@@ -760,96 +760,27 @@ const FAQS = [
 ];
 
 function ServicesFAQ() {
-  const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="bg-white py-24">
-      <div className="container-enterprise grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="lg:sticky lg:top-24 lg:self-start">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--royal)]">FAQ</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Common questions
-          </h2>
-          <p className="mt-5 text-sm leading-relaxed text-[var(--blue-gray)]">
-            Everything you need to know about scoping, teams and getting started. Still unsure? Book
-            a consultation and we&apos;ll talk it through.
-          </p>
-        </div>
-        <div>
-          <ul className="space-y-3">
-            {FAQS.map((f, i) => {
-              const isOpen = open === i;
-              return (
-                <li
-                  key={f.q}
-                  className={
-                    "rounded-2xl border px-6 transition-colors " +
-                    (isOpen ? "border-[var(--royal)]/25 bg-[var(--blue-light)]/25" : "border-border bg-white")
-                  }
-                >
-                  <button
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 py-5 text-left"
-                    aria-expanded={isOpen}
-                  >
-                    <span className="text-base font-semibold text-[var(--navy-deep)]">{f.q}</span>
-                    <span
-                      className={
-                        "grid h-7 w-7 shrink-0 place-items-center rounded-full border transition-colors " +
-                        (isOpen ? "border-[var(--royal)] bg-[var(--royal)] text-white" : "border-border text-[var(--royal)]")
-                      }
-                    >
-                      {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-                    </span>
-                  </button>
-                  <div
-                    className={
-                      "grid transition-all duration-300 ease-out " +
-                      (isOpen ? "grid-rows-[1fr] pb-5 opacity-100" : "grid-rows-[0fr] opacity-0")
-                    }
-                  >
-                    <div className="overflow-hidden">
-                      <p className="pr-8 text-sm leading-relaxed text-[var(--blue-gray)]">{f.a}</p>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+      <div className="container-enterprise">
+        <FaqAccordion
+          title="Common questions"
+          intro="Everything you need to know about scoping, teams and getting started. Still unsure? Book a consultation and we'll talk it through."
+          items={FAQS.map((f) => [f.q, f.a] as [string, string])}
+        />
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────  9. CLOSING CTA  ───────────────────────────── */
+/* ─────────────────────────────  9. CLOSING CTA (reuses homepage FinalCtaSection)  ───────────────────────────── */
 function ClosingCTA() {
   return (
-    <section id="contact" className="hero-dark relative overflow-hidden py-28 text-white">
-      <div aria-hidden className="hero-beam" />
-      <div aria-hidden className="hero-orbs" />
-      <div aria-hidden className="hero-grid" />
-      <div aria-hidden className="hero-grain" />
-      <div className="container-enterprise relative z-10 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
-          Ready when you are
-        </p>
-        <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          Ready to talk through your Dynamics 365 roadmap?
-        </h2>
-        <div className="mt-9 flex justify-center">
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl"
-          >
-            <Calendar className="h-4 w-4" />
-            Book a consultation
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
-        </div>
-        <p className="mx-auto mt-6 max-w-xl text-xs text-white/50">
-          NDA available on request. Response within 1 business day.
-        </p>
-      </div>
-    </section>
+    <FinalCtaSection
+      id="contact"
+      title="Ready to talk through your Dynamics 365 roadmap?"
+      microcopy="NDA available on request. Response within 1 business day."
+      primary={{ label: "Book a consultation", href: "#contact", icon: true }}
+    />
   );
 }

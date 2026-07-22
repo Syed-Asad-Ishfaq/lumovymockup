@@ -22,7 +22,7 @@ import {
   ArrowRightLeft,
 } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Nav, Footer } from "./index";
+import { Nav, Footer, CaseStudyCard, QuoteCard, FaqAccordion, FinalCtaSection } from "./index";
 import adyenLogo from "@/assets/Adyen.png";
 import shift4Logo from "@/assets/Shift4.png";
 import clarityRfidLogo from "@/assets/ClarityRFID.webp";
@@ -450,51 +450,35 @@ function ProofKit() {
             Proof, not promises
           </p>
         </Reveal>
+        {/* Reuses the homepage case-study + testimonial components with this page's content */}
         <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          {/* Case study */}
           <Reveal>
-            <div className="flex h-full flex-col rounded-2xl border border-border bg-[var(--blue-light)]/25 p-8">
-              <span className="inline-flex w-fit items-center rounded-full bg-white px-3 py-1 text-xs font-semibold text-[var(--royal)]">
-                Case study
-              </span>
-              <h3 className="mt-5 text-lg font-semibold text-[var(--navy-deep)]">
-                Multi-location QSR chain, North America
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">
-                A growing quick-service chain needed kitchen, POS and payment data to flow into D365
-                without a fragile custom build. We connected QSR Automations and the payment stack
-                through a single integration layer — orders, inventory depletion and settlement now
-                reconcile automatically.
-              </p>
-              <div className="mt-6 grid grid-cols-3 gap-4">
-                {[
-                  { v: "6 wks", l: "to go-live" },
-                  { v: "0", l: "manual re-keying" },
-                  { v: "Real-time", l: "inventory posting" },
-                ].map((m) => (
-                  <div key={m.l} className="rounded-xl bg-white p-4">
-                    <div className="text-xl font-bold tracking-tight text-[var(--royal)]">{m.v}</div>
-                    <div className="mt-1 text-[11px] leading-tight text-[var(--blue-gray)]">{m.l}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <CaseStudyCard
+              sector="Multi-location QSR chain, North America"
+              title="Kitchen, POS & Payments, Connected into D365"
+              challenge="A growing quick-service chain needed kitchen, POS and payment data to flow into D365 without a fragile custom build. We connected QSR Automations and the payment stack through a single integration layer — orders, inventory depletion and settlement now reconcile automatically."
+              results={[
+                ["6 wks", "To go-live"],
+                ["0", "Manual re-keying"],
+                ["Real-time", "Inventory posting"],
+              ]}
+              cta="Discuss your integration"
+            />
           </Reveal>
 
           {/* Testimonial + numbers */}
           <Reveal delay={90}>
             <div className="flex h-full flex-col gap-6">
-              <div className="rounded-2xl bg-[var(--navy-deep)] p-8 text-white">
-                <Quote className="h-8 w-8 text-[var(--cyan-soft)]/50" />
-                <blockquote className="mt-4 text-base font-medium leading-relaxed">
-                  “They didn't rip out our stack — they connected it. The integration went live on
-                  schedule and just works.”
-                </blockquote>
-                <div className="mt-5 text-sm">
-                  <div className="font-semibold text-white">VP of IT</div>
-                  <div className="text-white/60">Regional Grocery Chain</div>
-                </div>
-              </div>
+              <QuoteCard
+                q={{
+                  kind: "quote",
+                  quote:
+                    "They didn't rip out our stack — they connected it. The integration went live on schedule and just works.",
+                  name: "VP of IT",
+                  role: "Regional Grocery Chain",
+                  outcome: "Live on schedule, zero disruption",
+                }}
+              />
               <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border">
                 {NUMBERS.map((n) => (
                   <div key={n.l} className="bg-white px-3 py-6 text-center">
@@ -581,61 +565,14 @@ const FAQS = [
 ];
 
 function IntFAQ() {
-  const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="bg-white py-24">
-      <div className="container-enterprise grid gap-14 lg:grid-cols-[0.8fr_1.2fr]">
-        <div className="lg:sticky lg:top-24 lg:self-start">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--royal)]">FAQ</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Integration questions
-          </h2>
-          <p className="mt-5 text-sm leading-relaxed text-[var(--blue-gray)]">
-            Middleware, legacy sunset, testing and support — the questions engineering leaders ask.
-          </p>
-        </div>
-        <div>
-          <ul className="space-y-3">
-            {FAQS.map((f, i) => {
-              const isOpen = open === i;
-              return (
-                <li
-                  key={f.q}
-                  className={
-                    "rounded-2xl border px-6 transition-colors " +
-                    (isOpen ? "border-[var(--royal)]/25 bg-[var(--blue-light)]/25" : "border-border bg-white")
-                  }
-                >
-                  <button
-                    onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-4 py-5 text-left"
-                    aria-expanded={isOpen}
-                  >
-                    <span className="text-base font-semibold text-[var(--navy-deep)]">{f.q}</span>
-                    <span
-                      className={
-                        "grid h-7 w-7 shrink-0 place-items-center rounded-full border transition-colors " +
-                        (isOpen ? "border-[var(--royal)] bg-[var(--royal)] text-white" : "border-border text-[var(--royal)]")
-                      }
-                    >
-                      {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-                    </span>
-                  </button>
-                  <div
-                    className={
-                      "grid transition-all duration-300 ease-out " +
-                      (isOpen ? "grid-rows-[1fr] pb-5 opacity-100" : "grid-rows-[0fr] opacity-0")
-                    }
-                  >
-                    <div className="overflow-hidden">
-                      <p className="pr-8 text-sm leading-relaxed text-[var(--blue-gray)]">{f.a}</p>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
+      <div className="container-enterprise">
+        <FaqAccordion
+          title="Integration questions"
+          intro="Middleware, legacy sunset, testing and support — the questions engineering leaders ask."
+          items={FAQS.map((f) => [f.q, f.a] as [string, string])}
+        />
       </div>
     </section>
   );
@@ -704,34 +641,14 @@ function CrossLinks() {
   );
 }
 
-/* ─────────────────────────────  9. CLOSING CTA  ───────────────────────────── */
+/* ─────────────────────────────  9. CLOSING CTA (reuses homepage FinalCtaSection)  ───────────────────────────── */
 function ClosingCTA() {
   return (
-    <section id="contact" className="hero-dark relative overflow-hidden py-28 text-white">
-      <div aria-hidden className="hero-beam" />
-      <div aria-hidden className="hero-orbs" />
-      <div aria-hidden className="hero-grid" />
-      <div aria-hidden className="hero-grain" />
-      <div className="container-enterprise relative z-10 text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
-          Ready when you are
-        </p>
-        <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-          Not sure which integration path fits your stack?
-        </h2>
-        <div className="mt-9 flex justify-center">
-          <a
-            href="#contact"
-            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl"
-          >
-            Get an integration architecture review
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-          </a>
-        </div>
-        <p className="mx-auto mt-6 max-w-xl text-xs text-white/50">
-          Response within 1 business day. NDA available on request.
-        </p>
-      </div>
-    </section>
+    <FinalCtaSection
+      id="contact"
+      title="Not sure which integration path fits your stack?"
+      microcopy="Response within 1 business day. NDA available on request."
+      primary={{ label: "Get an integration architecture review", href: "#contact" }}
+    />
   );
 }
