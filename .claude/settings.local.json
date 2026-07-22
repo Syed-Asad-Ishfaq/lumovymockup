@@ -56,7 +56,14 @@
       "Bash(sips -g pixelWidth -g pixelHeight src/assets/services/integrations/office.jpg)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:8080/services/integrations-modernization)",
       "Bash(node shotint2.mjs)",
-      "Bash(git mv *)"
+      "Bash(git mv *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/services)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/services/integrations-modernization)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/industries/retail-omnichannel-commerce)",
+      "Bash(curl -s https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/services/integrations-modernization)",
+      "Bash(curl -s https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/services)",
+      "Bash(curl -sS -I --max-time 20 https://syed-asad-ishfaq-lumovymockup.lumovy.workers.dev/)"
     ],
     "additionalDirectories": [
       "/private/tmp/cshot",

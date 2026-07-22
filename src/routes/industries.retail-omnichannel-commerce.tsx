@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
+  ArrowUpRight,
   Calendar,
   Download,
   Check,
@@ -22,6 +23,15 @@ import {
   Rocket,
   TrendingUp,
   ScanLine,
+  Factory,
+  ShoppingCart,
+  Hotel,
+  Landmark,
+  Bot,
+  MessageSquare,
+  ClipboardCheck,
+  Warehouse,
+  FileText,
 } from "lucide-react";
 import { useState } from "react";
 import { Nav, Footer } from "./index";
@@ -46,12 +56,15 @@ function RetailPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <RetailHero />
+      <RetailKPIs />
       <RetailProblem />
       <RetailSuite />
       <RetailTiers />
+      <RetailIndustryAI />
       <RetailWhy />
       <RetailProof />
       <RetailProcess />
+      <RetailInsights />
       <RetailFAQ />
       <RetailFinalCTA />
       <Footer />
@@ -142,6 +155,47 @@ function RetailHero() {
             <span key={t} className="inline-flex items-center gap-2 text-xs font-medium text-[var(--blue-gray)]">
               <BadgeCheck className="h-4 w-4 text-[var(--royal)]" />
               {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────  KPI STRIP + MS ECOSYSTEM  ───────────────────────────── */
+const KPIS = [
+  { v: "99.5%", l: "Inventory accuracy" },
+  { v: "100 days", l: "To full go-live" },
+  { v: "<2 sec", l: "AI checkout recognition" },
+  { v: "4 weeks", l: "Payment integration" },
+];
+const MS_BADGES = ["Dynamics 365", "Power Platform", "Azure", "Data & AI"];
+
+function RetailKPIs() {
+  return (
+    <section className="border-b border-border bg-white py-12">
+      <div className="container-enterprise">
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-4">
+          {KPIS.map((k) => (
+            <div key={k.l} className="flex flex-col items-center justify-center bg-white px-6 py-7 text-center">
+              <div className="text-2xl font-bold tracking-tight text-[var(--navy-deep)] sm:text-3xl">{k.v}</div>
+              <div className="mt-1.5 text-xs font-medium text-[var(--blue-gray)]">{k.l}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-3">
+          <span className="text-xs font-semibold uppercase tracking-widest text-[var(--blue-gray)]">
+            Built on the Microsoft ecosystem
+          </span>
+          <span className="hidden h-4 w-px bg-border sm:block" />
+          {MS_BADGES.map((b) => (
+            <span
+              key={b}
+              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-[var(--blue-light)]/40 px-3 py-1.5 text-xs font-semibold text-[var(--navy-deep)]"
+            >
+              <BadgeCheck className="h-3.5 w-3.5 text-[var(--royal)]" />
+              {b}
             </span>
           ))}
         </div>
@@ -304,6 +358,20 @@ const TIERS = [
   },
 ];
 
+// Capability × tier matrix. Cells: "yes" → check, "no" → dash, else literal text.
+const TIER_MATRIX: { cap: string; cells: [string, string, string] }[] = [
+  { cap: "Connected Commerce", cells: ["yes", "yes", "yes"] },
+  { cap: "Modern Store Operations", cells: ["yes", "yes", "yes"] },
+  { cap: "Omnichannel Retail", cells: ["no", "yes", "yes"] },
+  { cap: "Mobile Commerce Experience", cells: ["no", "6 months", "Included"] },
+  { cap: "Retail Accelerators", cells: ["no", "Select", "Complete Suite"] },
+  { cap: "Inventory Intelligence", cells: ["no", "yes", "Advanced"] },
+  { cap: "Payments & Checkout", cells: ["Standard", "Enhanced", "Enterprise"] },
+  { cap: "AI Innovation", cells: ["no", "Add-on", "Included"] },
+  { cap: "Multi-Country Readiness", cells: ["Single Country", "Add-on", "Included"] },
+  { cap: "Hypercare & Managed Services", cells: ["2 Weeks", "4 Weeks", "12 Weeks"] },
+];
+
 function RetailTiers() {
   return (
     <section className="border-b border-border bg-white py-24">
@@ -368,6 +436,56 @@ function RetailTiers() {
           ))}
         </div>
 
+        {/* Capability comparison table */}
+        <div className="mt-12 overflow-hidden rounded-2xl border border-border bg-white shadow-fluent-sm">
+          <div className="overflow-x-auto">
+            <table className="w-full min-w-[640px] border-collapse text-sm">
+              <thead>
+                <tr className="border-b border-border bg-[var(--blue-light)]/30">
+                  <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-[var(--blue-gray)]">
+                    Transformation capability
+                  </th>
+                  {["Foundation", "Growth", "Enterprise"].map((h) => (
+                    <th
+                      key={h}
+                      className={
+                        "px-5 py-4 text-center text-sm font-semibold " +
+                        (h === "Growth" ? "bg-[var(--royal)]/5 text-[var(--royal)]" : "text-[var(--navy-deep)]")
+                      }
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {TIER_MATRIX.map((row, i) => (
+                  <tr key={row.cap} className={i % 2 ? "bg-[var(--blue-light)]/15" : "bg-white"}>
+                    <td className="px-6 py-3.5 font-medium text-[var(--navy-deep)]">{row.cap}</td>
+                    {row.cells.map((c, j) => (
+                      <td
+                        key={j}
+                        className={
+                          "px-5 py-3.5 text-center " +
+                          (j === 1 ? "bg-[var(--royal)]/5" : "")
+                        }
+                      >
+                        {c === "yes" ? (
+                          <Check className="mx-auto h-4 w-4 text-[var(--royal)]" />
+                        ) : c === "no" ? (
+                          <span className="text-[var(--gray-neutral)]">—</span>
+                        ) : (
+                          <span className="text-xs font-semibold text-[var(--navy-deep)]">{c}</span>
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
         {/* Guidance CTA band */}
         <div className="mt-10 flex flex-col items-start justify-between gap-5 rounded-xl border border-[var(--royal)]/15 bg-[var(--blue-light)]/50 p-7 sm:flex-row sm:items-center">
           <p className="text-base font-medium text-[var(--navy-deep)]">
@@ -381,6 +499,117 @@ function RetailTiers() {
             <Calendar className="h-4 w-4" />
             Book a Retail Readiness Call
           </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────  INDUSTRY SOLUTIONS & AI AGENTS  ───────────────────────────── */
+const INDUSTRIES = [
+  {
+    icon: ShoppingCart,
+    name: "Retail & Omnichannel Commerce",
+    body: "Connects your POS, payment solution and inventory services across stores, web and mobile into one true omnichannel solution.",
+  },
+  {
+    icon: Factory,
+    name: "Manufacturing & Supply Chain",
+    body: "End-to-end visibility from production to shelf, keeping supply and demand in sync across every location.",
+  },
+  {
+    icon: Store,
+    name: "Modern Grocery & Hypermarkets",
+    body: "Rapid replenishment, real-time inventory and a fast, reliable POS built for high-volume, low-margin operations.",
+  },
+  {
+    icon: Hotel,
+    name: "Hospitality, Entertainment & Sports",
+    body: "Fast, integrated checkout for venues and events, with secure payments across concessions, retail and ticketing.",
+  },
+  {
+    icon: Landmark,
+    name: "Public Sector",
+    body: "Secure, compliant Microsoft retail solutions with centralized inventory for government stores and service outlets.",
+  },
+];
+const AI_AGENTS = [
+  {
+    icon: ScanLine,
+    name: "Checkout & Product Recognition",
+    body: "AI-powered scan-and-go at the POS, cutting checkout time and reducing shrinkage.",
+  },
+  {
+    icon: TrendingUp,
+    name: "Inventory & Demand Forecasting",
+    body: "Predicts stock-outs and overstock before they happen, keeping inventory a step ahead of demand.",
+  },
+  {
+    icon: MessageSquare,
+    name: "Customer Service Agent",
+    body: "Always-on support across web, app and in-store kiosks, resolving order and loyalty questions instantly.",
+  },
+  {
+    icon: ClipboardCheck,
+    name: "Store Operations Agent",
+    body: "Automates replenishment triggers, task assignment and compliance checks, freeing staff to focus on customers.",
+  },
+];
+
+function RetailIndustryAI() {
+  return (
+    <section className="border-y border-border bg-[var(--blue-light)]/30 py-28">
+      <div className="container-enterprise">
+        <div className="max-w-2xl">
+          <p className="eyebrow">Industry solutions &amp; AI agents</p>
+          <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+            Purpose-built for your industry, powered by AI
+          </h2>
+        </div>
+
+        {/* Industry solutions */}
+        <div className="mt-14">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--royal)]">
+            Industry solutions
+          </p>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {INDUSTRIES.map((it) => (
+              <div
+                key={it.name}
+                className="group rounded-2xl border border-border bg-white p-6 transition-all hover:-translate-y-1 hover:border-[var(--royal)]/30 hover:shadow-fluent-md"
+              >
+                <span className="inline-grid h-11 w-11 place-items-center rounded-xl bg-[var(--blue-light)]/60 text-[var(--royal)] transition-colors group-hover:bg-[var(--royal)] group-hover:text-white">
+                  <it.icon className="h-5 w-5" />
+                </span>
+                <h3 className="mt-5 text-base font-semibold text-[var(--navy-deep)]">{it.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">{it.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* AI agents — dark tinted cards to differentiate */}
+        <div className="mt-14">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--royal)]">
+            AI agents
+          </p>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {AI_AGENTS.map((a) => (
+              <div
+                key={a.name}
+                className="group relative overflow-hidden rounded-2xl bg-[var(--navy-deep)] p-6 text-white"
+              >
+                <span className="inline-grid h-11 w-11 place-items-center rounded-xl bg-white/10 text-[var(--cyan-soft)] transition-colors group-hover:bg-[var(--cyan-soft)] group-hover:text-[var(--navy-deep)]">
+                  <a.icon className="h-5 w-5" />
+                </span>
+                <div className="mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-[var(--cyan-soft)]">
+                  <Bot className="h-3 w-3" /> AI agent
+                </div>
+                <h3 className="mt-1.5 text-base font-semibold text-white">{a.name}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/65">{a.body}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -553,6 +782,69 @@ function RetailProcess() {
               </li>
             ))}
           </ol>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─────────────────────────────  RELATED INSIGHTS  ───────────────────────────── */
+const INSIGHTS = [
+  {
+    tag: "Guide",
+    title: "The MVP-first path to Dynamics 365 Commerce",
+    read: "6 min read",
+  },
+  {
+    tag: "Case study",
+    title: "How a UAE grocery leader went live in 100 days",
+    read: "4 min read",
+  },
+  {
+    tag: "Article",
+    title: "Real-time inventory: from store-led to procurement-driven",
+    read: "5 min read",
+  },
+];
+
+function RetailInsights() {
+  return (
+    <section className="bg-white py-28">
+      <div className="container-enterprise">
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Related insights</p>
+            <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+              Retail thought leadership
+            </h2>
+          </div>
+          <a href="#" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
+            View all insights
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {INSIGHTS.map((p) => (
+            <a
+              key={p.title}
+              href="#"
+              className="group flex flex-col rounded-2xl border border-border bg-white p-7 transition-all hover:-translate-y-1 hover:border-[var(--royal)]/30 hover:shadow-fluent-md"
+            >
+              <div className="flex items-center gap-2">
+                <span className="rounded-full bg-[var(--blue-light)]/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--royal)]">
+                  {p.tag}
+                </span>
+                <span className="text-xs text-[var(--blue-gray)]">{p.read}</span>
+              </div>
+              <h3 className="mt-5 flex-1 text-lg font-semibold leading-snug text-[var(--navy-deep)]">
+                {p.title}
+              </h3>
+              <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--royal)]">
+                Read more
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </a>
+          ))}
         </div>
       </div>
     </section>
