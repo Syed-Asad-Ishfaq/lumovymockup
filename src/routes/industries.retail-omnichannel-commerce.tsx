@@ -216,7 +216,7 @@ const MS_LOGOS = [
 
 function RetailKPIs() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white pb-8 pt-20">
       <div className="container-enterprise">
         <div className="grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border lg:grid-cols-4">
           {KPIS.map((k) => (
@@ -271,7 +271,7 @@ const PROBLEMS = [
 
 function RetailProblem() {
   return (
-    <section className="border-b border-border bg-white pb-28">
+    <section className="border-b border-border bg-white py-28">
       <div className="container-enterprise">
         <div className="max-w-3xl">
           <p className="eyebrow">The challenge</p>
