@@ -279,22 +279,31 @@ function RetailProblem() {
             Retail complexity grows faster than most retailers can manage alone
           </h2>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {PROBLEMS.map((p, i) => (
-            <div key={p.title} className="card-lift group relative overflow-hidden rounded-xl border border-border bg-white p-7">
-              <span className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-[var(--royal)] transition-transform duration-500 group-hover:scale-x-100" />
-              <div className="flex items-center gap-3">
-                <span className="inline-grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--blue-light)] text-[var(--royal)] ring-1 ring-inset ring-[var(--royal)]/20">
-                  <p.icon className="h-5 w-5" />
+      </div>
+
+      {/* Horizontal slider — 3 fit per row, 4th peeks on the right edge */}
+      <div
+        className="container-enterprise mt-14"
+        style={{
+          ["--chal-card" as string]: "calc((min(1272px, 100vw - 3rem) - 2 * 2rem) / 3)",
+          ["--chal-bleed" as string]: "max(0px, calc((100vw - 1320px) / 2 + 1.5rem))",
+        }}
+      >
+        <div
+          className="scroll-hide snap-x snap-mandatory overflow-x-auto pb-2"
+          style={{ marginRight: "calc(-1 * var(--chal-bleed))" }}
+        >
+          <div className="flex gap-8 pr-6">
+            {PROBLEMS.map((p) => (
+              <div key={p.title} style={{ width: "var(--chal-card)" }} className="shrink-0 snap-start">
+                <span className="inline-grid h-12 w-12 place-items-center rounded-xl bg-[var(--blue-light)] text-[var(--royal)]">
+                  <p.icon className="h-6 w-6" />
                 </span>
-                <span className="text-2xl font-bold tabular-nums text-[var(--blue-light)] transition-colors group-hover:text-[var(--royal)]">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+                <h3 className="mt-6 text-xl font-semibold leading-snug text-[var(--navy-deep)]">{p.title}</h3>
+                <p className="mt-3 text-[15px] leading-relaxed text-[var(--blue-gray)]">{p.body}</p>
               </div>
-              <h3 className="mt-5 text-base font-semibold leading-snug text-[var(--navy-deep)]">{p.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{p.body}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>
