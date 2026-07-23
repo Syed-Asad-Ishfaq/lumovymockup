@@ -491,8 +491,8 @@ function RetailTiers() {
           ))}
         </div>
 
-        {/* Guidance strip — full width, dark, left text / right CTA */}
-        <div className="mt-16 overflow-hidden rounded-2xl bg-[#003594]">
+        {/* Guidance strip — full width, dark navy, left text / right CTA */}
+        <div className="mt-16 overflow-hidden rounded-2xl bg-[var(--navy)]">
           <div className="flex flex-col items-start justify-between gap-6 px-8 py-10 sm:flex-row sm:items-center sm:px-12">
             <div>
               <h3 className="text-2xl font-semibold tracking-tight text-white">
