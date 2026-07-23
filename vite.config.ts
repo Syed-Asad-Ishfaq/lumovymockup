@@ -12,4 +12,12 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Ensure server-rendered HTML is always revalidated so new deploys show
+  // immediately (browsers were heuristically caching stale pages).
+  nitro: {
+    routeRules: {
+      "/**": { headers: { "cache-control": "public, max-age=0, must-revalidate" } },
+      "/assets/**": { headers: { "cache-control": "public, max-age=31536000, immutable" } },
+    },
+  },
 });

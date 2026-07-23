@@ -283,7 +283,7 @@ function RetailProblem() {
 
       {/* Horizontal slider — 3 fit per row, 4th peeks on the right edge */}
       <div
-        className="container-enterprise mt-14"
+        className="container-enterprise mt-20"
         style={{
           ["--chal-card" as string]: "calc((min(1272px, 100vw - 3rem) - 2 * 2rem) / 3)",
           ["--chal-bleed" as string]: "max(0px, calc((100vw - 1320px) / 2 + 1.5rem))",
@@ -299,7 +299,7 @@ function RetailProblem() {
                 <span className="inline-grid h-12 w-12 place-items-center rounded-xl bg-[var(--blue-light)] text-[var(--royal)]">
                   <p.icon className="h-6 w-6" />
                 </span>
-                <h3 className="mt-6 text-xl font-semibold leading-snug text-[var(--navy-deep)]">{p.title}</h3>
+                <h3 className="mt-6 text-xl font-medium leading-snug text-[var(--navy-deep)]">{p.title}</h3>
                 <p className="mt-3 text-[15px] leading-relaxed text-[var(--blue-gray)]">{p.body}</p>
               </div>
             ))}
