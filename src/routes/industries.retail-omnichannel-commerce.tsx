@@ -139,16 +139,16 @@ function RetailHero() {
     <section className="relative overflow-hidden bg-[#003594]">
       {/* Fine grid lines (like homepage) — color unchanged */}
       <div aria-hidden className="hero-grid" />
-      {/* Light gradient blob shapes on the right — prominent */}
+      {/* Large soft overlapping light discs (reference style) — top-right cluster */}
       <div
         aria-hidden
-        className="pointer-events-none absolute -right-20 -top-32 h-[46rem] w-[46rem] rounded-full opacity-90 blur-[70px]"
-        style={{ background: "radial-gradient(circle at 38% 38%, color-mix(in oklch, var(--azure) 90%, transparent), transparent 62%)" }}
+        className="pointer-events-none absolute right-[8%] -top-[22rem] h-[42rem] w-[42rem] rounded-full blur-[40px]"
+        style={{ background: "radial-gradient(circle, color-mix(in oklch, var(--azure) 55%, #003594) 0%, color-mix(in oklch, var(--azure) 40%, #003594) 60%, transparent 72%)" }}
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-[-16rem] right-[2rem] h-[34rem] w-[34rem] rounded-full opacity-80 blur-[65px]"
-        style={{ background: "radial-gradient(circle at 60% 60%, color-mix(in oklch, var(--cyan-soft) 70%, transparent), transparent 62%)" }}
+        className="pointer-events-none absolute -right-[16rem] -top-[8rem] h-[46rem] w-[46rem] rounded-full blur-[40px]"
+        style={{ background: "radial-gradient(circle, color-mix(in oklch, var(--azure) 48%, #003594) 0%, color-mix(in oklch, var(--azure) 34%, #003594) 58%, transparent 70%)" }}
       />
       <div className="container-enterprise relative z-10 py-24 lg:py-28">
         {/* Copy */}
@@ -249,18 +249,23 @@ function RetailKPIs() {
 const PROBLEMS = [
   {
     icon: Layers,
-    title: "Fragmented commerce operations",
-    body: "Disconnected stores, e-commerce, ERP, inventory and customer data create inconsistent experiences, slower decisions and higher operating costs, often the result of not having a dedicated retail technology partner.",
+    title: "Disconnected Commerce & Omnichannel Experiences",
+    body: "Fragmented systems across stores, e-commerce, ERP, inventory and customer data create inconsistent experiences, limited visibility and disconnected omnichannel journeys that impact both customers and operations.",
   },
   {
     icon: Boxes,
-    title: "Limited inventory visibility",
-    body: "Without real-time inventory accuracy, retailers struggle with stock discrepancies, inefficient fulfillment, lost sales opportunities and reduced customer confidence.",
+    title: "Inefficient Store Operations & Inventory Execution",
+    body: "Manual store processes, inaccurate inventory, limited fulfilment visibility and reactive replenishment reduce productivity, increase shrink and make it harder to deliver consistent customer service.",
   },
   {
-    icon: LifeBuoy,
-    title: "No support beyond go-live",
-    body: "Many implementations end at launch. Retailers need managed services for retail that keep systems optimized, supported and evolving as the business grows.",
+    icon: Workflow,
+    title: "Slow Modernization & Complex Retail Expansion",
+    body: "Legacy systems, stalled Dynamics 365 programmes, complex payment integrations and country-specific language and compliance requirements slow transformation and make every rollout more expensive.",
+  },
+  {
+    icon: Cpu,
+    title: "Limited AI Driven Growth & Continuous Innovation",
+    body: "Retailers often have transactional systems but lack AI powered insights, automation and a long-term innovation partner to continuously optimize operations and unlock new business value.",
   },
 ];
 
@@ -274,14 +279,19 @@ function RetailProblem() {
             Retail complexity grows faster than most retailers can manage alone
           </h2>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {PROBLEMS.map((p) => (
-            <div key={p.title} className="card-lift group relative overflow-hidden rounded-xl border border-border bg-white p-8">
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {PROBLEMS.map((p, i) => (
+            <div key={p.title} className="card-lift group relative overflow-hidden rounded-xl border border-border bg-white p-7">
               <span className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-[var(--royal)] transition-transform duration-500 group-hover:scale-x-100" />
-              <span className="inline-grid h-12 w-12 place-items-center rounded-2xl bg-[var(--blue-light)] text-[var(--royal)] ring-1 ring-inset ring-[var(--royal)]/20">
-                <p.icon className="h-6 w-6" />
-              </span>
-              <h3 className="mt-5 text-lg font-semibold text-[var(--navy-deep)]">{p.title}</h3>
+              <div className="flex items-center gap-3">
+                <span className="inline-grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-[var(--blue-light)] text-[var(--royal)] ring-1 ring-inset ring-[var(--royal)]/20">
+                  <p.icon className="h-5 w-5" />
+                </span>
+                <span className="text-2xl font-bold tabular-nums text-[var(--blue-light)] transition-colors group-hover:text-[var(--royal)]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <h3 className="mt-5 text-base font-semibold leading-snug text-[var(--navy-deep)]">{p.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{p.body}</p>
             </div>
           ))}
@@ -411,19 +421,6 @@ const TIERS = [
     featured: false,
   },
 ];
-const TIER_MATRIX: { cap: string; cells: [string, string, string] }[] = [
-  { cap: "Connected Commerce", cells: ["yes", "yes", "yes"] },
-  { cap: "Modern Store Operations", cells: ["yes", "yes", "yes"] },
-  { cap: "Omnichannel Retail", cells: ["no", "yes", "yes"] },
-  { cap: "Mobile Commerce Experience", cells: ["no", "6 months", "Included"] },
-  { cap: "Retail Accelerators", cells: ["no", "Select", "Complete Suite"] },
-  { cap: "Inventory Intelligence", cells: ["no", "yes", "Advanced"] },
-  { cap: "Payments & Checkout", cells: ["Standard", "Enhanced", "Enterprise"] },
-  { cap: "AI Innovation", cells: ["no", "Add-on", "Included"] },
-  { cap: "Multi-Country Readiness", cells: ["Single Country", "Add-on", "Included"] },
-  { cap: "Hypercare & Managed Services", cells: ["2 Weeks", "4 Weeks", "12 Weeks"] },
-];
-
 function RetailTiers() {
   return (
     <section className="border-b border-border bg-white py-28">
@@ -483,49 +480,6 @@ function RetailTiers() {
               </a>
             </div>
           ))}
-        </div>
-
-        {/* Comparison table — full width */}
-        <div className="mt-16">
-          <p className="mb-5 text-center text-xs font-semibold uppercase tracking-[0.2em] text-[var(--royal)]">
-            Compare capabilities
-          </p>
-          <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-fluent-sm">
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[640px] border-collapse text-sm">
-                <thead>
-                  <tr className="border-b border-border bg-[var(--blue-light)]/30">
-                    <th className="px-6 py-4 text-left text-xs font-semibold uppercase tracking-wider text-[var(--blue-gray)]">
-                      Transformation capability
-                    </th>
-                    {["Foundation", "Growth", "Enterprise"].map((h) => (
-                      <th key={h} className={"px-5 py-4 text-center text-sm font-semibold " + (h === "Growth" ? "bg-[var(--royal)]/5 text-[var(--royal)]" : "text-[var(--navy-deep)]")}>
-                        {h}
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {TIER_MATRIX.map((row, i) => (
-                    <tr key={row.cap} className={i % 2 ? "bg-[var(--blue-light)]/15" : "bg-white"}>
-                      <td className="px-6 py-3.5 font-medium text-[var(--navy-deep)]">{row.cap}</td>
-                      {row.cells.map((c, j) => (
-                        <td key={j} className={"px-5 py-3.5 text-center " + (j === 1 ? "bg-[var(--royal)]/5" : "")}>
-                          {c === "yes" ? (
-                            <Check className="mx-auto h-4 w-4 text-[var(--royal)]" />
-                          ) : c === "no" ? (
-                            <span className="text-[var(--gray-neutral)]">—</span>
-                          ) : (
-                            <span className="text-xs font-semibold text-[var(--navy-deep)]">{c}</span>
-                          )}
-                        </td>
-                      ))}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
 
         {/* Guidance strip — full width, dark, left text / right CTA */}
