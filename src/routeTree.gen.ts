@@ -9,19 +9,80 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as HomeV2RouteImport } from './routes/home-v2'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WhatWeDoProductsAcceleratorsRouteImport } from './routes/what-we-do_.products-accelerators'
+import { Route as WhatWeDoPracticeAreasRouteImport } from './routes/what-we-do_.practice-areas'
+import { Route as WhatWeDoDeliverySupportRouteImport } from './routes/what-we-do_.delivery-support'
 import { Route as ServicesIntegrationsModernizationRouteImport } from './routes/services_.integrations-modernization'
-import { Route as IndustriesRetailOmnichannelCommerceRouteImport } from './routes/industries.retail-omnichannel-commerce'
+import { Route as ProductsConsumerSwiftCommerceRouteImport } from './routes/products.consumer-swift-commerce'
+import { Route as IndustriesRetailOmnichannelCommerceRouteImport } from './routes/industries_.retail-omnichannel-commerce'
+import { Route as IndustriesPublicSectorRouteImport } from './routes/industries_.public-sector'
+import { Route as IndustriesHospitalityEntertainmentSportsRouteImport } from './routes/industries_.hospitality-entertainment-sports'
+import { Route as IndustriesGroceryHypermarketsRouteImport } from './routes/industries_.grocery-hypermarkets'
+import { Route as WhatWeDoProductsAcceleratorsRfidConnectRouteImport } from './routes/what-we-do_.products-accelerators_.rfid-connect'
+import { Route as WhatWeDoProductsAcceleratorsPerflens365RouteImport } from './routes/what-we-do_.products-accelerators_.perflens365'
+import { Route as WhatWeDoProductsAcceleratorsOptim365RouteImport } from './routes/what-we-do_.products-accelerators_.optim365'
+import { Route as WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRouteImport } from './routes/what-we-do_.products-accelerators_.in-store-mobility-suite'
+import { Route as WhatWeDoProductsAcceleratorsHypermarketAcceleratorRouteImport } from './routes/what-we-do_.products-accelerators_.hypermarket-accelerator'
+import { Route as WhatWeDoProductsAcceleratorsHospitalitySolutionRouteImport } from './routes/what-we-do_.products-accelerators_.hospitality-solution'
+import { Route as WhatWeDoProductsAcceleratorsB2bInABoxRouteImport } from './routes/what-we-do_.products-accelerators_.b2b-in-a-box'
+import { Route as WhatWeDoPracticeAreasSupplyChainRouteImport } from './routes/what-we-do_.practice-areas_.supply-chain'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRoute = IndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeV2Route = HomeV2RouteImport.update({
+  id: '/home-v2',
+  path: '/home-v2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatWeDoProductsAcceleratorsRoute =
+  WhatWeDoProductsAcceleratorsRouteImport.update({
+    id: '/what-we-do_/products-accelerators',
+    path: '/what-we-do/products-accelerators',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoPracticeAreasRoute = WhatWeDoPracticeAreasRouteImport.update({
+  id: '/what-we-do_/practice-areas',
+  path: '/what-we-do/practice-areas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhatWeDoDeliverySupportRoute = WhatWeDoDeliverySupportRouteImport.update({
+  id: '/what-we-do_/delivery-support',
+  path: '/what-we-do/delivery-support',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesIntegrationsModernizationRoute =
@@ -30,67 +91,313 @@ const ServicesIntegrationsModernizationRoute =
     path: '/services/integrations-modernization',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ProductsConsumerSwiftCommerceRoute =
+  ProductsConsumerSwiftCommerceRouteImport.update({
+    id: '/products/consumer-swift-commerce',
+    path: '/products/consumer-swift-commerce',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const IndustriesRetailOmnichannelCommerceRoute =
   IndustriesRetailOmnichannelCommerceRouteImport.update({
-    id: '/industries/retail-omnichannel-commerce',
+    id: '/industries_/retail-omnichannel-commerce',
     path: '/industries/retail-omnichannel-commerce',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const IndustriesPublicSectorRoute = IndustriesPublicSectorRouteImport.update({
+  id: '/industries_/public-sector',
+  path: '/industries/public-sector',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesHospitalityEntertainmentSportsRoute =
+  IndustriesHospitalityEntertainmentSportsRouteImport.update({
+    id: '/industries_/hospitality-entertainment-sports',
+    path: '/industries/hospitality-entertainment-sports',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const IndustriesGroceryHypermarketsRoute =
+  IndustriesGroceryHypermarketsRouteImport.update({
+    id: '/industries_/grocery-hypermarkets',
+    path: '/industries/grocery-hypermarkets',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAcceleratorsRfidConnectRoute =
+  WhatWeDoProductsAcceleratorsRfidConnectRouteImport.update({
+    id: '/what-we-do_/products-accelerators_/rfid-connect',
+    path: '/what-we-do/products-accelerators/rfid-connect',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAcceleratorsPerflens365Route =
+  WhatWeDoProductsAcceleratorsPerflens365RouteImport.update({
+    id: '/what-we-do_/products-accelerators_/perflens365',
+    path: '/what-we-do/products-accelerators/perflens365',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAcceleratorsOptim365Route =
+  WhatWeDoProductsAcceleratorsOptim365RouteImport.update({
+    id: '/what-we-do_/products-accelerators_/optim365',
+    path: '/what-we-do/products-accelerators/optim365',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRoute =
+  WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRouteImport.update({
+    id: '/what-we-do_/products-accelerators_/in-store-mobility-suite',
+    path: '/what-we-do/products-accelerators/in-store-mobility-suite',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAcceleratorsHypermarketAcceleratorRoute =
+  WhatWeDoProductsAcceleratorsHypermarketAcceleratorRouteImport.update({
+    id: '/what-we-do_/products-accelerators_/hypermarket-accelerator',
+    path: '/what-we-do/products-accelerators/hypermarket-accelerator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAcceleratorsHospitalitySolutionRoute =
+  WhatWeDoProductsAcceleratorsHospitalitySolutionRouteImport.update({
+    id: '/what-we-do_/products-accelerators_/hospitality-solution',
+    path: '/what-we-do/products-accelerators/hospitality-solution',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoProductsAcceleratorsB2bInABoxRoute =
+  WhatWeDoProductsAcceleratorsB2bInABoxRouteImport.update({
+    id: '/what-we-do_/products-accelerators_/b2b-in-a-box',
+    path: '/what-we-do/products-accelerators/b2b-in-a-box',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoPracticeAreasSupplyChainRoute =
+  WhatWeDoPracticeAreasSupplyChainRouteImport.update({
+    id: '/what-we-do_/practice-areas_/supply-chain',
+    path: '/what-we-do/practice-areas/supply-chain',
     getParentRoute: () => rootRouteImport,
   } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/home-v2': typeof HomeV2Route
+  '/industries': typeof IndustriesRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
+  '/industries/grocery-hypermarkets': typeof IndustriesGroceryHypermarketsRoute
+  '/industries/hospitality-entertainment-sports': typeof IndustriesHospitalityEntertainmentSportsRoute
+  '/industries/public-sector': typeof IndustriesPublicSectorRoute
   '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
+  '/products/consumer-swift-commerce': typeof ProductsConsumerSwiftCommerceRoute
   '/services/integrations-modernization': typeof ServicesIntegrationsModernizationRoute
+  '/what-we-do/delivery-support': typeof WhatWeDoDeliverySupportRoute
+  '/what-we-do/practice-areas': typeof WhatWeDoPracticeAreasRoute
+  '/what-we-do/products-accelerators': typeof WhatWeDoProductsAcceleratorsRoute
+  '/what-we-do/practice-areas/supply-chain': typeof WhatWeDoPracticeAreasSupplyChainRoute
+  '/what-we-do/products-accelerators/b2b-in-a-box': typeof WhatWeDoProductsAcceleratorsB2bInABoxRoute
+  '/what-we-do/products-accelerators/hospitality-solution': typeof WhatWeDoProductsAcceleratorsHospitalitySolutionRoute
+  '/what-we-do/products-accelerators/hypermarket-accelerator': typeof WhatWeDoProductsAcceleratorsHypermarketAcceleratorRoute
+  '/what-we-do/products-accelerators/in-store-mobility-suite': typeof WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRoute
+  '/what-we-do/products-accelerators/optim365': typeof WhatWeDoProductsAcceleratorsOptim365Route
+  '/what-we-do/products-accelerators/perflens365': typeof WhatWeDoProductsAcceleratorsPerflens365Route
+  '/what-we-do/products-accelerators/rfid-connect': typeof WhatWeDoProductsAcceleratorsRfidConnectRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/home-v2': typeof HomeV2Route
+  '/industries': typeof IndustriesRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
+  '/industries/grocery-hypermarkets': typeof IndustriesGroceryHypermarketsRoute
+  '/industries/hospitality-entertainment-sports': typeof IndustriesHospitalityEntertainmentSportsRoute
+  '/industries/public-sector': typeof IndustriesPublicSectorRoute
   '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
+  '/products/consumer-swift-commerce': typeof ProductsConsumerSwiftCommerceRoute
   '/services/integrations-modernization': typeof ServicesIntegrationsModernizationRoute
+  '/what-we-do/delivery-support': typeof WhatWeDoDeliverySupportRoute
+  '/what-we-do/practice-areas': typeof WhatWeDoPracticeAreasRoute
+  '/what-we-do/products-accelerators': typeof WhatWeDoProductsAcceleratorsRoute
+  '/what-we-do/practice-areas/supply-chain': typeof WhatWeDoPracticeAreasSupplyChainRoute
+  '/what-we-do/products-accelerators/b2b-in-a-box': typeof WhatWeDoProductsAcceleratorsB2bInABoxRoute
+  '/what-we-do/products-accelerators/hospitality-solution': typeof WhatWeDoProductsAcceleratorsHospitalitySolutionRoute
+  '/what-we-do/products-accelerators/hypermarket-accelerator': typeof WhatWeDoProductsAcceleratorsHypermarketAcceleratorRoute
+  '/what-we-do/products-accelerators/in-store-mobility-suite': typeof WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRoute
+  '/what-we-do/products-accelerators/optim365': typeof WhatWeDoProductsAcceleratorsOptim365Route
+  '/what-we-do/products-accelerators/perflens365': typeof WhatWeDoProductsAcceleratorsPerflens365Route
+  '/what-we-do/products-accelerators/rfid-connect': typeof WhatWeDoProductsAcceleratorsRfidConnectRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/home-v2': typeof HomeV2Route
+  '/industries': typeof IndustriesRoute
+  '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
-  '/industries/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
+  '/terms': typeof TermsRoute
+  '/industries_/grocery-hypermarkets': typeof IndustriesGroceryHypermarketsRoute
+  '/industries_/hospitality-entertainment-sports': typeof IndustriesHospitalityEntertainmentSportsRoute
+  '/industries_/public-sector': typeof IndustriesPublicSectorRoute
+  '/industries_/retail-omnichannel-commerce': typeof IndustriesRetailOmnichannelCommerceRoute
+  '/products/consumer-swift-commerce': typeof ProductsConsumerSwiftCommerceRoute
   '/services_/integrations-modernization': typeof ServicesIntegrationsModernizationRoute
+  '/what-we-do_/delivery-support': typeof WhatWeDoDeliverySupportRoute
+  '/what-we-do_/practice-areas': typeof WhatWeDoPracticeAreasRoute
+  '/what-we-do_/products-accelerators': typeof WhatWeDoProductsAcceleratorsRoute
+  '/what-we-do_/practice-areas_/supply-chain': typeof WhatWeDoPracticeAreasSupplyChainRoute
+  '/what-we-do_/products-accelerators_/b2b-in-a-box': typeof WhatWeDoProductsAcceleratorsB2bInABoxRoute
+  '/what-we-do_/products-accelerators_/hospitality-solution': typeof WhatWeDoProductsAcceleratorsHospitalitySolutionRoute
+  '/what-we-do_/products-accelerators_/hypermarket-accelerator': typeof WhatWeDoProductsAcceleratorsHypermarketAcceleratorRoute
+  '/what-we-do_/products-accelerators_/in-store-mobility-suite': typeof WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRoute
+  '/what-we-do_/products-accelerators_/optim365': typeof WhatWeDoProductsAcceleratorsOptim365Route
+  '/what-we-do_/products-accelerators_/perflens365': typeof WhatWeDoProductsAcceleratorsPerflens365Route
+  '/what-we-do_/products-accelerators_/rfid-connect': typeof WhatWeDoProductsAcceleratorsRfidConnectRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
+    | '/home-v2'
+    | '/industries'
+    | '/privacy'
     | '/services'
+    | '/terms'
+    | '/industries/grocery-hypermarkets'
+    | '/industries/hospitality-entertainment-sports'
+    | '/industries/public-sector'
     | '/industries/retail-omnichannel-commerce'
+    | '/products/consumer-swift-commerce'
     | '/services/integrations-modernization'
+    | '/what-we-do/delivery-support'
+    | '/what-we-do/practice-areas'
+    | '/what-we-do/products-accelerators'
+    | '/what-we-do/practice-areas/supply-chain'
+    | '/what-we-do/products-accelerators/b2b-in-a-box'
+    | '/what-we-do/products-accelerators/hospitality-solution'
+    | '/what-we-do/products-accelerators/hypermarket-accelerator'
+    | '/what-we-do/products-accelerators/in-store-mobility-suite'
+    | '/what-we-do/products-accelerators/optim365'
+    | '/what-we-do/products-accelerators/perflens365'
+    | '/what-we-do/products-accelerators/rfid-connect'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
+    | '/home-v2'
+    | '/industries'
+    | '/privacy'
     | '/services'
+    | '/terms'
+    | '/industries/grocery-hypermarkets'
+    | '/industries/hospitality-entertainment-sports'
+    | '/industries/public-sector'
     | '/industries/retail-omnichannel-commerce'
+    | '/products/consumer-swift-commerce'
     | '/services/integrations-modernization'
+    | '/what-we-do/delivery-support'
+    | '/what-we-do/practice-areas'
+    | '/what-we-do/products-accelerators'
+    | '/what-we-do/practice-areas/supply-chain'
+    | '/what-we-do/products-accelerators/b2b-in-a-box'
+    | '/what-we-do/products-accelerators/hospitality-solution'
+    | '/what-we-do/products-accelerators/hypermarket-accelerator'
+    | '/what-we-do/products-accelerators/in-store-mobility-suite'
+    | '/what-we-do/products-accelerators/optim365'
+    | '/what-we-do/products-accelerators/perflens365'
+    | '/what-we-do/products-accelerators/rfid-connect'
   id:
     | '__root__'
     | '/'
+    | '/about'
+    | '/home-v2'
+    | '/industries'
+    | '/privacy'
     | '/services'
-    | '/industries/retail-omnichannel-commerce'
+    | '/terms'
+    | '/industries_/grocery-hypermarkets'
+    | '/industries_/hospitality-entertainment-sports'
+    | '/industries_/public-sector'
+    | '/industries_/retail-omnichannel-commerce'
+    | '/products/consumer-swift-commerce'
     | '/services_/integrations-modernization'
+    | '/what-we-do_/delivery-support'
+    | '/what-we-do_/practice-areas'
+    | '/what-we-do_/products-accelerators'
+    | '/what-we-do_/practice-areas_/supply-chain'
+    | '/what-we-do_/products-accelerators_/b2b-in-a-box'
+    | '/what-we-do_/products-accelerators_/hospitality-solution'
+    | '/what-we-do_/products-accelerators_/hypermarket-accelerator'
+    | '/what-we-do_/products-accelerators_/in-store-mobility-suite'
+    | '/what-we-do_/products-accelerators_/optim365'
+    | '/what-we-do_/products-accelerators_/perflens365'
+    | '/what-we-do_/products-accelerators_/rfid-connect'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  HomeV2Route: typeof HomeV2Route
+  IndustriesRoute: typeof IndustriesRoute
+  PrivacyRoute: typeof PrivacyRoute
   ServicesRoute: typeof ServicesRoute
+  TermsRoute: typeof TermsRoute
+  IndustriesGroceryHypermarketsRoute: typeof IndustriesGroceryHypermarketsRoute
+  IndustriesHospitalityEntertainmentSportsRoute: typeof IndustriesHospitalityEntertainmentSportsRoute
+  IndustriesPublicSectorRoute: typeof IndustriesPublicSectorRoute
   IndustriesRetailOmnichannelCommerceRoute: typeof IndustriesRetailOmnichannelCommerceRoute
+  ProductsConsumerSwiftCommerceRoute: typeof ProductsConsumerSwiftCommerceRoute
   ServicesIntegrationsModernizationRoute: typeof ServicesIntegrationsModernizationRoute
+  WhatWeDoDeliverySupportRoute: typeof WhatWeDoDeliverySupportRoute
+  WhatWeDoPracticeAreasRoute: typeof WhatWeDoPracticeAreasRoute
+  WhatWeDoProductsAcceleratorsRoute: typeof WhatWeDoProductsAcceleratorsRoute
+  WhatWeDoPracticeAreasSupplyChainRoute: typeof WhatWeDoPracticeAreasSupplyChainRoute
+  WhatWeDoProductsAcceleratorsB2bInABoxRoute: typeof WhatWeDoProductsAcceleratorsB2bInABoxRoute
+  WhatWeDoProductsAcceleratorsHospitalitySolutionRoute: typeof WhatWeDoProductsAcceleratorsHospitalitySolutionRoute
+  WhatWeDoProductsAcceleratorsHypermarketAcceleratorRoute: typeof WhatWeDoProductsAcceleratorsHypermarketAcceleratorRoute
+  WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRoute: typeof WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRoute
+  WhatWeDoProductsAcceleratorsOptim365Route: typeof WhatWeDoProductsAcceleratorsOptim365Route
+  WhatWeDoProductsAcceleratorsPerflens365Route: typeof WhatWeDoProductsAcceleratorsPerflens365Route
+  WhatWeDoProductsAcceleratorsRfidConnectRoute: typeof WhatWeDoProductsAcceleratorsRfidConnectRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries': {
+      id: '/industries'
+      path: '/industries'
+      fullPath: '/industries'
+      preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home-v2': {
+      id: '/home-v2'
+      path: '/home-v2'
+      fullPath: '/home-v2'
+      preLoaderRoute: typeof HomeV2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -100,6 +407,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/what-we-do_/products-accelerators': {
+      id: '/what-we-do_/products-accelerators'
+      path: '/what-we-do/products-accelerators'
+      fullPath: '/what-we-do/products-accelerators'
+      preLoaderRoute: typeof WhatWeDoProductsAcceleratorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/practice-areas': {
+      id: '/what-we-do_/practice-areas'
+      path: '/what-we-do/practice-areas'
+      fullPath: '/what-we-do/practice-areas'
+      preLoaderRoute: typeof WhatWeDoPracticeAreasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/delivery-support': {
+      id: '/what-we-do_/delivery-support'
+      path: '/what-we-do/delivery-support'
+      fullPath: '/what-we-do/delivery-support'
+      preLoaderRoute: typeof WhatWeDoDeliverySupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services_/integrations-modernization': {
       id: '/services_/integrations-modernization'
       path: '/services/integrations-modernization'
@@ -107,11 +435,95 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIntegrationsModernizationRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/industries/retail-omnichannel-commerce': {
-      id: '/industries/retail-omnichannel-commerce'
+    '/products/consumer-swift-commerce': {
+      id: '/products/consumer-swift-commerce'
+      path: '/products/consumer-swift-commerce'
+      fullPath: '/products/consumer-swift-commerce'
+      preLoaderRoute: typeof ProductsConsumerSwiftCommerceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries_/retail-omnichannel-commerce': {
+      id: '/industries_/retail-omnichannel-commerce'
       path: '/industries/retail-omnichannel-commerce'
       fullPath: '/industries/retail-omnichannel-commerce'
       preLoaderRoute: typeof IndustriesRetailOmnichannelCommerceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries_/public-sector': {
+      id: '/industries_/public-sector'
+      path: '/industries/public-sector'
+      fullPath: '/industries/public-sector'
+      preLoaderRoute: typeof IndustriesPublicSectorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries_/hospitality-entertainment-sports': {
+      id: '/industries_/hospitality-entertainment-sports'
+      path: '/industries/hospitality-entertainment-sports'
+      fullPath: '/industries/hospitality-entertainment-sports'
+      preLoaderRoute: typeof IndustriesHospitalityEntertainmentSportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries_/grocery-hypermarkets': {
+      id: '/industries_/grocery-hypermarkets'
+      path: '/industries/grocery-hypermarkets'
+      fullPath: '/industries/grocery-hypermarkets'
+      preLoaderRoute: typeof IndustriesGroceryHypermarketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-accelerators_/rfid-connect': {
+      id: '/what-we-do_/products-accelerators_/rfid-connect'
+      path: '/what-we-do/products-accelerators/rfid-connect'
+      fullPath: '/what-we-do/products-accelerators/rfid-connect'
+      preLoaderRoute: typeof WhatWeDoProductsAcceleratorsRfidConnectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-accelerators_/perflens365': {
+      id: '/what-we-do_/products-accelerators_/perflens365'
+      path: '/what-we-do/products-accelerators/perflens365'
+      fullPath: '/what-we-do/products-accelerators/perflens365'
+      preLoaderRoute: typeof WhatWeDoProductsAcceleratorsPerflens365RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-accelerators_/optim365': {
+      id: '/what-we-do_/products-accelerators_/optim365'
+      path: '/what-we-do/products-accelerators/optim365'
+      fullPath: '/what-we-do/products-accelerators/optim365'
+      preLoaderRoute: typeof WhatWeDoProductsAcceleratorsOptim365RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-accelerators_/in-store-mobility-suite': {
+      id: '/what-we-do_/products-accelerators_/in-store-mobility-suite'
+      path: '/what-we-do/products-accelerators/in-store-mobility-suite'
+      fullPath: '/what-we-do/products-accelerators/in-store-mobility-suite'
+      preLoaderRoute: typeof WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-accelerators_/hypermarket-accelerator': {
+      id: '/what-we-do_/products-accelerators_/hypermarket-accelerator'
+      path: '/what-we-do/products-accelerators/hypermarket-accelerator'
+      fullPath: '/what-we-do/products-accelerators/hypermarket-accelerator'
+      preLoaderRoute: typeof WhatWeDoProductsAcceleratorsHypermarketAcceleratorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-accelerators_/hospitality-solution': {
+      id: '/what-we-do_/products-accelerators_/hospitality-solution'
+      path: '/what-we-do/products-accelerators/hospitality-solution'
+      fullPath: '/what-we-do/products-accelerators/hospitality-solution'
+      preLoaderRoute: typeof WhatWeDoProductsAcceleratorsHospitalitySolutionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/products-accelerators_/b2b-in-a-box': {
+      id: '/what-we-do_/products-accelerators_/b2b-in-a-box'
+      path: '/what-we-do/products-accelerators/b2b-in-a-box'
+      fullPath: '/what-we-do/products-accelerators/b2b-in-a-box'
+      preLoaderRoute: typeof WhatWeDoProductsAcceleratorsB2bInABoxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/practice-areas_/supply-chain': {
+      id: '/what-we-do_/practice-areas_/supply-chain'
+      path: '/what-we-do/practice-areas/supply-chain'
+      fullPath: '/what-we-do/practice-areas/supply-chain'
+      preLoaderRoute: typeof WhatWeDoPracticeAreasSupplyChainRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -119,11 +531,39 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  HomeV2Route: HomeV2Route,
+  IndustriesRoute: IndustriesRoute,
+  PrivacyRoute: PrivacyRoute,
   ServicesRoute: ServicesRoute,
+  TermsRoute: TermsRoute,
+  IndustriesGroceryHypermarketsRoute: IndustriesGroceryHypermarketsRoute,
+  IndustriesHospitalityEntertainmentSportsRoute:
+    IndustriesHospitalityEntertainmentSportsRoute,
+  IndustriesPublicSectorRoute: IndustriesPublicSectorRoute,
   IndustriesRetailOmnichannelCommerceRoute:
     IndustriesRetailOmnichannelCommerceRoute,
+  ProductsConsumerSwiftCommerceRoute: ProductsConsumerSwiftCommerceRoute,
   ServicesIntegrationsModernizationRoute:
     ServicesIntegrationsModernizationRoute,
+  WhatWeDoDeliverySupportRoute: WhatWeDoDeliverySupportRoute,
+  WhatWeDoPracticeAreasRoute: WhatWeDoPracticeAreasRoute,
+  WhatWeDoProductsAcceleratorsRoute: WhatWeDoProductsAcceleratorsRoute,
+  WhatWeDoPracticeAreasSupplyChainRoute: WhatWeDoPracticeAreasSupplyChainRoute,
+  WhatWeDoProductsAcceleratorsB2bInABoxRoute:
+    WhatWeDoProductsAcceleratorsB2bInABoxRoute,
+  WhatWeDoProductsAcceleratorsHospitalitySolutionRoute:
+    WhatWeDoProductsAcceleratorsHospitalitySolutionRoute,
+  WhatWeDoProductsAcceleratorsHypermarketAcceleratorRoute:
+    WhatWeDoProductsAcceleratorsHypermarketAcceleratorRoute,
+  WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRoute:
+    WhatWeDoProductsAcceleratorsInStoreMobilitySuiteRoute,
+  WhatWeDoProductsAcceleratorsOptim365Route:
+    WhatWeDoProductsAcceleratorsOptim365Route,
+  WhatWeDoProductsAcceleratorsPerflens365Route:
+    WhatWeDoProductsAcceleratorsPerflens365Route,
+  WhatWeDoProductsAcceleratorsRfidConnectRoute:
+    WhatWeDoProductsAcceleratorsRfidConnectRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
