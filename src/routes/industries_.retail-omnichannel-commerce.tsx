@@ -49,7 +49,7 @@ import engineeringImg from "@/assets/services/engineering.jpg";
 import consultingImg from "@/assets/services/consulting.jpg";
 import supportImg from "@/assets/services/support.jpg";
 
-export const Route = createFileRoute("/industries/retail-omnichannel-commerce")({
+export const Route = createFileRoute("/industries_/retail-omnichannel-commerce")({
   component: RetailPage,
   head: () => ({
     meta: [

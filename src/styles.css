@@ -4,6 +4,16 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Space Grotesk — self-hosted variable font, used only on the About page
+   (scoped via the .font-grotesk utility) to mimic the reference design. */
+@font-face {
+  font-family: "Space Grotesk";
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("/fonts/SpaceGrotesk.woff2") format("woff2");
+}
+
 /*
  * Design system definition.
  *
@@ -172,11 +182,37 @@
   }
 }
 
+/* Site-wide: soften pill buttons / CTA links to a small, modern radius
+   instead of a fully rounded pill. Icon circles, dots, and progress
+   tracks use rounded-full on span/div elements and are left untouched.
+   Placed outside @layer + !important so it beats Tailwind's utilities layer. */
+a[class~="rounded-full"],
+button[class~="rounded-full"] {
+  border-radius: 0.5rem !important;
+}
+
+/* The mega-menu's dropdown content (category ribbons, sub-item links,
+   feature panel) stays sharp-edged — no rounding inside the nav dropdown. */
+.mega-menu-panel [class*="rounded"] {
+  border-radius: 0 !important;
+}
+
 @utility container-enterprise {
   width: 100%;
   max-width: 1320px;
   margin-inline: auto;
   padding-inline: 1.5rem;
+}
+
+/* About-page (Ramp-style) type scope: Space Grotesk headlines + tight tracking. */
+.font-grotesk {
+  font-family: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+.font-grotesk h1,
+.font-grotesk h2,
+.font-grotesk h3 {
+  font-family: "Space Grotesk", "Inter", ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: -0.03em;
 }
 
 @utility eyebrow {
@@ -244,8 +280,13 @@
 .suite-progress {
   animation: suite-progress-fill 6000ms linear forwards;
 }
+/* Core Capabilities (Swift Commerce) — same fill, shorter interval */
+.cap-progress {
+  animation: suite-progress-fill 4500ms linear forwards;
+}
 @media (prefers-reduced-motion: reduce) {
   .suite-progress { animation: none; width: 100%; }
+  .cap-progress { animation: none; width: 100%; }
 }
 
 /* Hero autoslider timer bar — fills across the active slide's duration */
@@ -409,6 +450,36 @@
     radial-gradient(120% 120% at 15% 10%, color-mix(in oklch, var(--royal) 38%, transparent) 0%, transparent 45%),
     radial-gradient(100% 100% at 85% 90%, color-mix(in oklch, var(--azure) 22%, transparent) 0%, transparent 50%),
     linear-gradient(160deg, #001a3d 0%, #001129 55%, #000b1c 100%);
+}
+
+/* Static royal-blue hero background — exact match of the About/"Our History"
+   hero (bg-[#003594] + two static azure radial blobs). No motion, unlike
+   hero-orbs/hero-beam. Used wherever a section should mirror that page. */
+@utility hero-blue-static {
+  position: relative;
+  background-color: #003594;
+}
+.hero-blue-static::before,
+.hero-blue-static::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  border-radius: 9999px;
+  filter: blur(40px);
+}
+.hero-blue-static::before {
+  right: 8%;
+  top: -22rem;
+  height: 42rem;
+  width: 42rem;
+  background: radial-gradient(circle, color-mix(in oklch, var(--azure) 55%, #003594) 0%, color-mix(in oklch, var(--azure) 40%, #003594) 60%, transparent 72%);
+}
+.hero-blue-static::after {
+  right: -16rem;
+  top: -8rem;
+  height: 46rem;
+  width: 46rem;
+  background: radial-gradient(circle, color-mix(in oklch, var(--azure) 48%, #003594) 0%, color-mix(in oklch, var(--azure) 34%, #003594) 58%, transparent 70%);
 }
 
 /* Slow-drifting glowing orbs, like the reference spheres */

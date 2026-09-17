@@ -638,7 +638,7 @@ function FeaturedCase() {
                 <Quote className="h-9 w-9 text-[var(--cyan-soft)]/50" />
                 <blockquote className="mt-5 text-xl font-medium leading-relaxed text-white sm:text-2xl">
                   “Lumovy delivered a connected omnichannel platform across our stores, procurement
-                  and POS in 100 days — including AI-powered checkout — and gave us a foundation
+                  and POS in 100 days — including AI powered checkout — and gave us a foundation
                   built to scale with our growth.”
                 </blockquote>
                 <div className="mt-7 text-sm">

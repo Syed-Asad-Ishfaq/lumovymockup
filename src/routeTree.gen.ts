@@ -25,6 +25,7 @@ import { Route as IndustriesRetailOmnichannelCommerceRouteImport } from './route
 import { Route as IndustriesPublicSectorRouteImport } from './routes/industries_.public-sector'
 import { Route as IndustriesHospitalityEntertainmentSportsRouteImport } from './routes/industries_.hospitality-entertainment-sports'
 import { Route as IndustriesGroceryHypermarketsRouteImport } from './routes/industries_.grocery-hypermarkets'
+import { Route as CompanyPeopleStoriesRouteImport } from './routes/company_.people-stories'
 import { Route as WhatWeDoProductsAcceleratorsRfidConnectRouteImport } from './routes/what-we-do_.products-accelerators_.rfid-connect'
 import { Route as WhatWeDoProductsAcceleratorsPerflens365RouteImport } from './routes/what-we-do_.products-accelerators_.perflens365'
 import { Route as WhatWeDoProductsAcceleratorsOptim365RouteImport } from './routes/what-we-do_.products-accelerators_.optim365'
@@ -120,6 +121,11 @@ const IndustriesGroceryHypermarketsRoute =
     path: '/industries/grocery-hypermarkets',
     getParentRoute: () => rootRouteImport,
   } as any)
+const CompanyPeopleStoriesRoute = CompanyPeopleStoriesRouteImport.update({
+  id: '/company_/people-stories',
+  path: '/company/people-stories',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WhatWeDoProductsAcceleratorsRfidConnectRoute =
   WhatWeDoProductsAcceleratorsRfidConnectRouteImport.update({
     id: '/what-we-do_/products-accelerators_/rfid-connect',
@@ -177,6 +183,7 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/company/people-stories': typeof CompanyPeopleStoriesRoute
   '/industries/grocery-hypermarkets': typeof IndustriesGroceryHypermarketsRoute
   '/industries/hospitality-entertainment-sports': typeof IndustriesHospitalityEntertainmentSportsRoute
   '/industries/public-sector': typeof IndustriesPublicSectorRoute
@@ -203,6 +210,7 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/company/people-stories': typeof CompanyPeopleStoriesRoute
   '/industries/grocery-hypermarkets': typeof IndustriesGroceryHypermarketsRoute
   '/industries/hospitality-entertainment-sports': typeof IndustriesHospitalityEntertainmentSportsRoute
   '/industries/public-sector': typeof IndustriesPublicSectorRoute
@@ -230,6 +238,7 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/company_/people-stories': typeof CompanyPeopleStoriesRoute
   '/industries_/grocery-hypermarkets': typeof IndustriesGroceryHypermarketsRoute
   '/industries_/hospitality-entertainment-sports': typeof IndustriesHospitalityEntertainmentSportsRoute
   '/industries_/public-sector': typeof IndustriesPublicSectorRoute
@@ -258,6 +267,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/services'
     | '/terms'
+    | '/company/people-stories'
     | '/industries/grocery-hypermarkets'
     | '/industries/hospitality-entertainment-sports'
     | '/industries/public-sector'
@@ -284,6 +294,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/services'
     | '/terms'
+    | '/company/people-stories'
     | '/industries/grocery-hypermarkets'
     | '/industries/hospitality-entertainment-sports'
     | '/industries/public-sector'
@@ -310,6 +321,7 @@ export interface FileRouteTypes {
     | '/privacy'
     | '/services'
     | '/terms'
+    | '/company_/people-stories'
     | '/industries_/grocery-hypermarkets'
     | '/industries_/hospitality-entertainment-sports'
     | '/industries_/public-sector'
@@ -337,6 +349,7 @@ export interface RootRouteChildren {
   PrivacyRoute: typeof PrivacyRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
+  CompanyPeopleStoriesRoute: typeof CompanyPeopleStoriesRoute
   IndustriesGroceryHypermarketsRoute: typeof IndustriesGroceryHypermarketsRoute
   IndustriesHospitalityEntertainmentSportsRoute: typeof IndustriesHospitalityEntertainmentSportsRoute
   IndustriesPublicSectorRoute: typeof IndustriesPublicSectorRoute
@@ -470,6 +483,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndustriesGroceryHypermarketsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/company_/people-stories': {
+      id: '/company_/people-stories'
+      path: '/company/people-stories'
+      fullPath: '/company/people-stories'
+      preLoaderRoute: typeof CompanyPeopleStoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/what-we-do_/products-accelerators_/rfid-connect': {
       id: '/what-we-do_/products-accelerators_/rfid-connect'
       path: '/what-we-do/products-accelerators/rfid-connect'
@@ -537,6 +557,7 @@ const rootRouteChildren: RootRouteChildren = {
   PrivacyRoute: PrivacyRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
+  CompanyPeopleStoriesRoute: CompanyPeopleStoriesRoute,
   IndustriesGroceryHypermarketsRoute: IndustriesGroceryHypermarketsRoute,
   IndustriesHospitalityEntertainmentSportsRoute:
     IndustriesHospitalityEntertainmentSportsRoute,

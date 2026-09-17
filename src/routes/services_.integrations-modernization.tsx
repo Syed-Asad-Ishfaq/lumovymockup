@@ -2,31 +2,37 @@ import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowRight,
   ArrowUpRight,
-  ArrowLeft,
-  ExternalLink,
+  Calendar,
+  Download,
   CreditCard,
+  Store,
   Utensils,
-  ScanLine,
-  ShoppingCart,
   Search,
   PenTool,
   Cable,
   CheckCircle2,
   LifeBuoy,
-  Quote,
-  Plus,
-  Minus,
-  Code2,
-  Boxes,
   Database,
   ArrowRightLeft,
+  Cloud,
+  Cpu,
+  Workflow,
 } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { Nav, Footer, CaseStudyCard, QuoteCard, FaqAccordion, FinalCtaSection } from "./index";
+import { Nav, Footer, FaqAccordion, FinalCtaSection } from "./index";
+import d365Logo from "@/assets/Dynamics365.webp";
+import powerPlatformLogo from "@/assets/PowerPlatform.png";
+import azureLogo from "@/assets/azure-logo.png";
 import adyenLogo from "@/assets/Adyen.png";
 import shift4Logo from "@/assets/Shift4.png";
 import clarityRfidLogo from "@/assets/ClarityRFID.webp";
-import officeImg from "@/assets/services/integrations/office.jpg";
+import testimonialImg from "@/assets/testimonial.webp";
+import retailImg from "@/assets/industries/retail.jpg";
+import hospitalityImg from "@/assets/industries/hospitality.jpg";
+import implementationImg from "@/assets/services/implementation.jpg";
+import engineeringImg from "@/assets/services/engineering.jpg";
+import consultingImg from "@/assets/services/consulting.jpg";
+import supportImg from "@/assets/services/support.jpg";
 
 export const Route = createFileRoute("/services_/integrations-modernization")({
   component: IntegrationsPage,
@@ -36,7 +42,7 @@ export const Route = createFileRoute("/services_/integrations-modernization")({
       {
         name: "description",
         content:
-          "Pre-architected Dynamics 365 connectors for Adyen, Shift4, QSR Automations and SML RFID — named, proven integration paths into D365 Commerce and Finance.",
+          "Connect systems and modernize applications. Integrate Microsoft Dynamics 365 with payment platforms, retail technologies, ERP, and business systems into one connected, scalable enterprise.",
       },
     ],
     scripts: [
@@ -89,7 +95,7 @@ function Reveal({ children, delay = 0, className = "" }: { children: ReactNode; 
       className={className}
       style={{
         opacity: shown ? 1 : 0,
-        transform: shown ? "translateY(0)" : "translateY(22px)",
+        transform: shown ? "translateY(0)" : "translateY(24px)",
         transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.7s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
       }}
     >
@@ -103,67 +109,64 @@ function IntegrationsPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Nav />
       <IntHero />
-      <PartnerStrip />
-      <PerIntegration />
-      <HowWeIntegrate />
-      <ProofKit />
-      <EngineeringExcerpt />
+      <IntEcosystem />
+      <IntExpertise />
+      <IntProcess />
+      <IntProofKit />
+      <IntTechnical />
       <IntFAQ />
-      <CrossLinks />
-      <ClosingCTA />
+      <IntInsights />
+      <IntClosingCTA />
       <Footer />
     </div>
   );
 }
 
-/* ─────────────────────────────  1. HERO (dark)  ───────────────────────────── */
+/* ─────────────────────────────  1. HERO (solid corporate blue + gradient blobs)  ───────────────────────────── */
 function IntHero() {
   return (
-    <section className="hero-dark relative overflow-hidden">
-      <div aria-hidden className="hero-beam" />
-      <div aria-hidden className="hero-orbs" />
+    <section className="relative overflow-hidden bg-[#003594]">
+      {/* Fine grid lines (like homepage/retail) */}
       <div aria-hidden className="hero-grid" />
-      <div aria-hidden className="hero-grain" />
-      <div className="container-enterprise relative z-10 py-20 lg:py-28">
-        <a
-          href="/services"
-          className="hero-content-in inline-flex items-center gap-1.5 text-xs font-semibold text-white/60 transition-colors hover:text-white"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          All services
-        </a>
-        <div className="mt-6 max-w-4xl">
-          <span className="hero-content-in inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--cyan-soft)] backdrop-blur">
-            <ArrowRightLeft className="h-3.5 w-3.5" />
-            Engineering &amp; AI
+      {/* Large soft overlapping light discs (reference style) — top-right cluster */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-[8%] -top-[22rem] h-[42rem] w-[42rem] rounded-full blur-[40px]"
+        style={{ background: "radial-gradient(circle, color-mix(in oklch, var(--azure) 55%, #003594) 0%, color-mix(in oklch, var(--azure) 40%, #003594) 60%, transparent 72%)" }}
+      />
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -right-[16rem] -top-[8rem] h-[46rem] w-[46rem] rounded-full blur-[40px]"
+        style={{ background: "radial-gradient(circle, color-mix(in oklch, var(--azure) 48%, #003594) 0%, color-mix(in oklch, var(--azure) 34%, #003594) 58%, transparent 70%)" }}
+      />
+      <div className="container-enterprise relative z-10 py-24 lg:py-28">
+        <div className="max-w-3xl">
+          <span className="hero-content-in text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
+            Integrations &amp; Modernization
           </span>
-          <h1
-            className="hero-content-in mt-6 text-4xl font-semibold leading-[1.07] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]"
-            style={{ animationDelay: "80ms" }}
-          >
-            Dynamics 365 Integrations Built for Adyen, Shift4, QSR Automations &amp; SML RFID
+          <h1 className="hero-content-in mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]" style={{ animationDelay: "80ms" }}>
+            Connect Systems. Modernize Applications. Move Business Forward.
           </h1>
-          <p
-            className="hero-content-in mt-6 max-w-2xl text-lg leading-relaxed text-white/70"
-            style={{ animationDelay: "160ms" }}
-          >
-            Pre-architected connectors for the platforms your business already runs on — not a
-            generic &ldquo;hyper-connected ecosystem,&rdquo; but named, proven integration paths into
-            D365 Commerce and Finance.
+          <p className="hero-content-in mt-6 max-w-2xl text-base leading-relaxed text-white/70" style={{ animationDelay: "160ms" }}>
+            Disconnected systems slow decisions, increase costs, and limit growth. Modernize legacy
+            applications and integrate Microsoft Dynamics 365 with payment platforms, retail
+            technologies, ERP, and business systems, creating one connected, scalable enterprise.
           </p>
           <div className="hero-content-in mt-9 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
             <a
               href="#contact"
               className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/30"
             >
-              Get an integration architecture review
+              <Calendar className="h-4 w-4" />
+              Get an Integration Architecture Review
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="#partners"
+              href="#expertise"
               className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
             >
-              See our integration partners
+              <Download className="h-4 w-4" />
+              Explore Integration Accelerators
             </a>
           </div>
         </div>
@@ -172,369 +175,343 @@ function IntHero() {
   );
 }
 
-/* ─────────────────────────────  2. PARTNER STRIP  ───────────────────────────── */
-const PARTNERS = [
-  { key: "adyen", name: "Adyen", logo: adyenLogo, h: "h-7" },
-  { key: "shift4", name: "Shift4", logo: shift4Logo, h: "h-7" },
-  { key: "qsr", name: "QSR Automations", logo: null, h: "" },
-  { key: "sml", name: "SML RFID", logo: clarityRfidLogo, h: "h-8" },
+/* ─────────────────────────────  2. TRUSTED INTEGRATION ECOSYSTEM  ───────────────────────────── */
+const ECOSYSTEM_LOGOS = [
+  { src: d365Logo, alt: "Microsoft Dynamics 365", h: "h-9" },
+  { src: azureLogo, alt: "Azure", h: "h-9" },
+  { src: powerPlatformLogo, alt: "Power Platform", h: "h-9" },
+  { src: adyenLogo, alt: "Adyen", h: "h-6" },
+  { src: shift4Logo, alt: "Shift4", h: "h-6" },
+  { src: clarityRfidLogo, alt: "Clarity RFID", h: "h-8" },
 ];
 
-function PartnerStrip() {
+function IntEcosystem() {
   return (
-    <section id="partners" className="border-b border-border bg-white py-14">
+    <section className="bg-white py-28">
       <div className="container-enterprise">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-[var(--royal)]">
-          Integration partners
-        </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-16 gap-y-8">
-          {PARTNERS.map((p) =>
-            p.logo ? (
-              <img
-                key={p.key}
-                src={p.logo}
-                alt={p.name}
-                className={`${p.h} w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0`}
-              />
-            ) : (
-              <span key={p.key} className="text-lg font-bold tracking-tight text-[var(--navy-deep)]/70">
-                {p.name}
-              </span>
-            ),
-          )}
+        <div className="mx-auto max-w-2xl text-center">
+          <h2 className="text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+            Trusted Integration Ecosystem
+          </h2>
+          <p className="mt-4 text-[15px] leading-relaxed text-[var(--blue-gray)]">
+            Built on Microsoft technologies with proven integration experience across commerce,
+            payments, inventory, and business operations.
+          </p>
         </div>
-        <p className="mt-8 text-center text-sm text-[var(--blue-gray)]">
-          Pre-built, production-proven integrations — not a custom build every time.
-        </p>
+
+        {/* Single logo strip — all ecosystem + partner logos in white boxes */}
+        <div className="mt-14 flex flex-wrap items-center justify-center gap-3">
+          {ECOSYSTEM_LOGOS.map((l) => (
+            <div key={l.alt} className="flex items-center justify-center rounded-lg border border-border bg-white px-9 py-6">
+              <img src={l.src} alt={l.alt} loading="lazy" className={`${l.h} w-auto object-contain`} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────  3. PER-INTEGRATION DEEP SECTIONS  ───────────────────────────── */
-type Integration = {
-  id: string;
-  icon: typeof CreditCard;
-  name: string;
-  role: string;
-  what: string;
-  prebuilt: string[];
-  timeline: string;
-  proof: string;
-  diagram: [string, string, string];
-  link?: { label: string; href: string };
-};
-const INTEGRATIONS: Integration[] = [
+/* ─────────────────────────────  3. INTEGRATION EXPERTISE (picture cards)  ───────────────────────────── */
+const EXPERTISE = [
   {
-    id: "adyen",
     icon: CreditCard,
-    name: "Adyen",
-    role: "Payments integration for D365 Commerce",
-    what: "Connects Adyen's payment processing directly into D365 Commerce, unifying online and in-store transactions under one reconciliation layer.",
-    prebuilt: ["Tokenized payment capture", "Refund & chargeback sync", "Settlement reconciliation", "Online + in-store under one ledger"],
-    timeline: "4–6 weeks kickoff to go-live",
-    proof: "Deployed across multi-location retail estates",
-    diagram: ["Adyen", "Integration Layer", "D365 Commerce"],
+    name: "Payments Without Complexity",
+    image: implementationImg,
+    body: "Integrate leading payment providers with Dynamics 365 Commerce to deliver secure omnichannel payments, faster reconciliation, and seamless customer experiences.",
   },
   {
-    id: "shift4",
-    icon: ShoppingCart,
-    name: "Shift4",
-    role: "Unified commerce payments",
-    what: "Integrates Shift4's payment stack for unified commerce environments, syncing transaction data across POS and D365.",
-    prebuilt: ["POS ↔ D365 transaction sync", "Tokenization & secure capture", "End-of-day settlement", "Multi-store reconciliation"],
-    timeline: "4–6 weeks kickoff to go-live",
-    proof: "Unified POS + back-office transaction data",
-    diagram: ["Shift4 POS", "Integration Layer", "D365 Finance"],
+    icon: Store,
+    name: "Connect Stores to Your Business",
+    image: retailImg,
+    body: "Connect RFID, POS, warehouse, inventory, and store systems to improve inventory accuracy, fulfillment, and operational visibility.",
   },
   {
-    id: "qsr-automations",
     icon: Utensils,
-    name: "QSR Automations",
-    role: "Kitchen & order integration",
-    what: "Links kitchen display systems and order management into D365, closing the loop between front-of-house orders and back-office inventory and finance.",
-    prebuilt: ["Order-throughput sync", "Menu & item mapping", "KDS order routing", "Inventory depletion posting"],
-    timeline: "5–7 weeks kickoff to go-live",
-    proof: "Front-of-house to back-office, in real time",
-    diagram: ["QSR Automations", "Integration Layer", "D365 Supply Chain"],
+    name: "Hospitality & Kitchen Integration",
+    image: hospitalityImg,
+    body: "Integrate kitchen display systems, POS, order management, and finance to streamline operations and improve guest experiences.",
   },
   {
-    id: "sml-rfid",
-    icon: ScanLine,
-    name: "SML RFID",
-    role: "Inventory & asset intelligence",
-    what: "Connects SML RFID's tag and reader infrastructure into D365 for real-time inventory accuracy, cycle counts, and shrinkage reduction.",
-    prebuilt: ["Real-time inventory accuracy", "Automated cycle counts", "Shrinkage detection", "Marketplace-listed RFID connector"],
-    timeline: "6–8 weeks kickoff to go-live",
-    proof: "Listed on Microsoft AppSource",
-    diagram: ["SML RFID", "Clarity Connector", "D365 Commerce"],
-    link: { label: "See it on Microsoft AppSource", href: "https://appsource.microsoft.com/" },
+    icon: Cloud,
+    name: "Microsoft Enterprise Integration",
+    image: engineeringImg,
+    body: "Use Azure Integration Services and Power Platform to connect ERP, CRM, WMS, finance, eCommerce, and third-party applications while enabling workflow automation, customer portals, and real-time analytics.",
   },
 ];
 
-function ArchDiagram({ boxes }: { boxes: [string, string, string] }) {
+function IntExpertise() {
   return (
-    <div className="flex items-center gap-2 rounded-xl border border-border bg-[var(--blue-light)]/30 p-4">
-      {boxes.map((b, i) => (
-        <div key={b} className="flex flex-1 items-center gap-2">
-          <div
-            className={
-              "flex-1 rounded-lg px-2 py-3 text-center text-[11px] font-semibold leading-tight " +
-              (i === 1
-                ? "bg-[var(--royal)] text-white"
-                : "border border-border bg-white text-[var(--navy-deep)]")
-            }
-          >
-            {i === 1 && <Cable className="mx-auto mb-1 h-3.5 w-3.5" />}
-            {b}
-          </div>
-          {i < boxes.length - 1 && (
-            <ArrowRight className="h-4 w-4 shrink-0 text-[var(--royal)]" />
-          )}
+    <section id="expertise" className="relative overflow-hidden border-y border-border bg-[var(--blue-light)]/40 py-28">
+      <div aria-hidden className="mesh-blobs-light opacity-60" />
+      <div className="container-enterprise relative">
+        <div className="max-w-2xl">
+          <p className="eyebrow">Integration expertise</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+            Named, proven integration paths, not a generic promise
+          </h2>
         </div>
-      ))}
-    </div>
-  );
-}
-
-function PerIntegration() {
-  return (
-    <section className="bg-white py-24">
-      <div className="container-enterprise">
-        <Reveal>
-          <div className="max-w-2xl">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--royal)]">
-              Named, proven paths
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Four integrations, pre-architected for D365
-            </h2>
-          </div>
-        </Reveal>
-
-        <div className="mt-14 space-y-6">
-          {INTEGRATIONS.map((it, i) => (
-            <Reveal key={it.id} delay={(i % 2) * 80}>
-              <div
-                id={it.id}
-                className="scroll-mt-24 grid gap-8 rounded-2xl border border-border bg-white p-7 shadow-fluent-sm sm:p-9 lg:grid-cols-[1.15fr_0.85fr] lg:items-center"
-              >
-                {/* Left: copy */}
-                <div>
-                  <div className="flex items-center gap-3">
-                    <span className="grid h-11 w-11 place-items-center rounded-xl bg-[var(--royal)] text-white">
-                      <it.icon className="h-5 w-5" />
-                    </span>
-                    <div>
-                      <h3 className="text-xl font-semibold text-[var(--navy-deep)]">{it.name}</h3>
-                      <p className="text-xs font-medium uppercase tracking-wider text-[var(--royal)]">
-                        {it.role}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="mt-5 text-[15px] leading-relaxed text-[var(--blue-gray)]">{it.what}</p>
-                  <ul className="mt-5 grid gap-x-6 gap-y-2 sm:grid-cols-2">
-                    {it.prebuilt.map((b) => (
-                      <li key={b} className="flex items-start gap-2 text-sm text-[var(--navy-deep)]">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--royal)]" />
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-6 flex flex-wrap items-center gap-3">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--blue-light)]/60 px-3 py-1.5 text-xs font-semibold text-[var(--navy-deep)]">
-                      ⏱ {it.timeline}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--cyan-soft)]/15 px-3 py-1.5 text-xs font-semibold text-[var(--royal)]">
-                      <CheckCircle2 className="h-3.5 w-3.5" /> {it.proof}
-                    </span>
-                    {it.link && (
-                      <a
-                        href={it.link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--royal)]"
-                      >
-                        {it.link.label}
-                        <ExternalLink className="h-3.5 w-3.5" />
-                      </a>
-                    )}
-                  </div>
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
+          {EXPERTISE.map((e, i) => (
+            <Reveal key={e.name} delay={(i % 2) * 90}>
+              <article className="group card-lift flex h-full flex-col overflow-hidden rounded-xl border border-border bg-white">
+                <div className="relative aspect-[16/9] w-full overflow-hidden">
+                  <img src={e.image} alt={e.name} loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <span className="absolute left-4 top-4 inline-grid h-11 w-11 place-items-center rounded-xl bg-white/95 text-[var(--royal)] shadow-sm">
+                    <e.icon className="h-5 w-5" />
+                  </span>
                 </div>
-
-                {/* Right: architecture diagram */}
-                <div>
-                  <p className="mb-3 text-[10px] font-semibold uppercase tracking-widest text-[var(--blue-gray)]">
-                    Integration architecture
-                  </p>
-                  <ArchDiagram boxes={it.diagram} />
+                <div className="flex flex-1 flex-col p-7">
+                  <h3 className="text-lg font-semibold leading-snug text-[var(--navy-deep)]">{e.name}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{e.body}</p>
                 </div>
-              </div>
+              </article>
             </Reveal>
           ))}
         </div>
-        <Reveal delay={100}>
-          <p className="mt-8 text-center text-sm text-[var(--blue-gray)]">
-            Need a payment or POS system not listed here? These four are proven, not exhaustive —{" "}
-            <a href="#contact" className="font-semibold text-[var(--royal)]">talk to our architects</a>.
-          </p>
-        </Reveal>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────  4. HOW WE INTEGRATE  ───────────────────────────── */
+/* ─────────────────────────────  4. HOW WE INTEGRATE (animated process)  ───────────────────────────── */
 const PHASES = [
-  { icon: Search, name: "Assess", note: "Audit current systems, data flows and integration debt." },
-  { icon: PenTool, name: "Architect", note: "Design the pattern: API-led, event-driven or middleware-based." },
-  { icon: Cable, name: "Connect", note: "Build and configure using pre-existing connectors where available." },
-  { icon: CheckCircle2, name: "Validate", note: "End-to-end testing, including refunds, partial syncs and failure recovery." },
-  { icon: LifeBuoy, name: "Handoff", note: "Monitoring and support transitions to Managed Support & Expansion." },
+  { icon: Search, title: "Discover", body: "Assess applications, business processes, and integration opportunities." },
+  { icon: PenTool, title: "Design", body: "Create a scalable integration architecture aligned with business goals." },
+  { icon: Cable, title: "Connect", body: "Build secure integrations using Microsoft best practices and reusable accelerators." },
+  { icon: CheckCircle2, title: "Validate", body: "Perform comprehensive end-to-end testing before deployment." },
+  { icon: LifeBuoy, title: "Optimize & Support", body: "Proactive monitoring, managed services, and continuous improvement." },
 ];
 
-function HowWeIntegrate() {
+function IntProcess() {
+  const wrapRef = useRef<HTMLDivElement | null>(null);
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setProgress(1);
+      return;
+    }
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const el = wrapRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+      const p = (vh * 0.85 - rect.top) / (vh * 0.85 - vh * 0.3 + rect.height);
+      setProgress(Math.min(1, Math.max(0, p)));
+    };
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update); };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
   return (
-    <section className="hero-dark relative overflow-hidden py-24 text-white">
-      <div aria-hidden className="hero-orbs opacity-50" />
-      <div aria-hidden className="hero-grid" />
-      <div className="container-enterprise relative z-10">
+    <section className="border-b border-border bg-white py-28">
+      <div ref={wrapRef} className="container-enterprise">
         <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--cyan-soft)]">
-            How we integrate
-          </span>
-          <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
-            A phased approach, from assessment to managed support
+          <p className="eyebrow">How we integrate</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+            A phased approach, from discovery to managed support
           </h2>
         </div>
         <div className="relative mt-16">
-          <div aria-hidden className="absolute left-0 right-0 top-7 hidden h-px bg-gradient-to-r from-[var(--royal)]/30 via-[var(--azure)]/40 to-[var(--cyan-soft)]/50 lg:block" />
-          <ol className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4">
-            {PHASES.map((p, i) => (
-              <li key={p.name} className="relative">
-                <span className="relative z-10 grid h-14 w-14 place-items-center rounded-full border border-white/15 bg-[var(--navy-deep)] text-[var(--cyan-soft)]">
-                  <p.icon className="h-6 w-6" />
-                </span>
-                <div className="mt-4">
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-[var(--cyan-soft)]">
-                    Step {i + 1}
+          <div aria-hidden className="absolute left-0 right-0 top-7 hidden h-0.5 bg-[var(--blue-light)] lg:block" />
+          <div aria-hidden className="absolute left-0 top-7 hidden h-0.5 bg-gradient-to-r from-[var(--royal)] via-[var(--azure)] to-[var(--cyan-soft)] lg:block" style={{ width: `${progress * 100}%`, transition: "width 0.1s linear" }} />
+          <ol className="grid gap-8 sm:grid-cols-2 lg:grid-cols-5 lg:gap-5">
+            {PHASES.map((s, i) => {
+              const reached = progress >= i / (PHASES.length - 1) - 0.02;
+              return (
+                <li key={s.title} className="relative">
+                  <span className={"relative z-10 grid h-14 w-14 place-items-center rounded-full border transition-all duration-500 " + (reached ? "border-[var(--cyan-soft)] bg-[var(--royal)] text-white shadow-[0_0_26px_-4px_var(--cyan-soft)]" : "border-border bg-white text-[var(--royal)]")}>
+                    <s.icon className="h-6 w-6" />
+                  </span>
+                  <div className="mt-4">
+                    <div className="text-[11px] font-bold uppercase tracking-widest text-[var(--royal)]">Step {i + 1}</div>
+                    <h3 className="mt-1 text-lg font-semibold text-[var(--navy-deep)]">{s.title}</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-[var(--blue-gray)]">{s.body}</p>
                   </div>
-                  <h3 className="mt-1 text-base font-semibold text-white">{p.name}</h3>
-                  <p className="mt-1.5 text-xs leading-relaxed text-white/60">{p.note}</p>
-                </div>
-              </li>
-            ))}
+                </li>
+              );
+            })}
           </ol>
         </div>
-        <p className="mt-12 text-sm text-white/55">
-          Typical core team: Integration Architect · Solution Architect · QA Lead.
-        </p>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────  5. PROOF KIT  ───────────────────────────── */
-const NUMBERS = [
-  { v: "50+", l: "Live integrations delivered" },
-  { v: "4–8", l: "Weeks typical go-live" },
-  { v: "99.5%", l: "Sync reliability maintained" },
-];
-
-function ProofKit() {
+/* ─────────────────────────────  5. PROOF KIT (case study + testimonial)  ───────────────────────────── */
+function IntProofKit() {
   return (
-    <section className="bg-white py-24">
-      <div className="container-enterprise">
-        <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--royal)]">
-            Proof, not promises
-          </p>
-        </Reveal>
-        {/* Reuses the homepage case-study + testimonial components with this page's content */}
-        <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-          <Reveal>
-            <CaseStudyCard
-              sector="Multi-location QSR chain, North America"
-              title="Kitchen, POS & Payments, Connected into D365"
-              challenge="A growing quick-service chain needed kitchen, POS and payment data to flow into D365 without a fragile custom build. We connected QSR Automations and the payment stack through a single integration layer — orders, inventory depletion and settlement now reconcile automatically."
-              results={[
-                ["6 wks", "To go-live"],
-                ["0", "Manual re-keying"],
-                ["Real-time", "Inventory posting"],
-              ]}
-              cta="Discuss your integration"
-            />
-          </Reveal>
-
-          {/* Testimonial + numbers */}
-          <Reveal delay={90}>
-            <div className="flex h-full flex-col gap-6">
-              <QuoteCard
-                q={{
-                  kind: "quote",
-                  quote:
-                    "They didn't rip out our stack — they connected it. The integration went live on schedule and just works.",
-                  name: "VP of IT",
-                  role: "Regional Grocery Chain",
-                  outcome: "Live on schedule, zero disruption",
-                }}
-              />
-              <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-border bg-border">
-                {NUMBERS.map((n) => (
-                  <div key={n.l} className="bg-white px-3 py-6 text-center">
-                    <div className="text-xl font-bold tracking-tight text-[var(--navy-deep)]">{n.v}</div>
-                    <div className="mt-1 text-[10px] leading-tight text-[var(--blue-gray)]">{n.l}</div>
+    <section className="relative overflow-hidden border-b border-border bg-[var(--blue-light)]/40 py-28">
+      <div aria-hidden className="mesh-blobs-light opacity-60" />
+      <div className="container-enterprise relative">
+        <div className="max-w-2xl">
+          <p className="eyebrow">Proof kit</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+            A complex landscape, simplified and connected
+          </h2>
+        </div>
+        <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[1.35fr_1fr]">
+          <div className="flex min-h-[440px] flex-col justify-between rounded-xl border border-border bg-white p-8">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-widest text-[var(--royal)]">
+                Retail Enterprise
+              </span>
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-[var(--navy-deep)]">
+                Disconnected Systems, Unified into One Platform
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-[var(--blue-gray)]">
+                A retail enterprise running a patchwork of disconnected systems partnered with Lumovy
+                to integrate its ERP, POS, and e-commerce platforms into one connected foundation,
+                cutting manual reconciliation and giving every team the same real-time data.
+              </p>
+            </div>
+            <div>
+              <div className="grid grid-cols-3 gap-3 border-t border-border pt-6">
+                {[
+                  ["Faster", "Business processes"],
+                  ["Improved", "Inventory visibility"],
+                  ["Reduced", "Manual effort"],
+                ].map(([v, l]) => (
+                  <div key={l} className="min-w-0">
+                    <div className="whitespace-nowrap text-[15px] font-bold leading-tight text-[var(--navy-deep)]">{v}</div>
+                    <div className="mt-1 text-[11px] font-medium leading-tight text-[var(--blue-gray)]">{l}</div>
                   </div>
                 ))}
               </div>
+              <a
+                href="#contact"
+                className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]"
+              >
+                Talk to us about your integration
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </div>
-          </Reveal>
+          </div>
+          {/* Testimonial: photo + colorless glass-blur scrim + white text (reference style) */}
+          <figure className="relative overflow-hidden rounded-xl">
+            <img src={testimonialImg} alt="Integration transformation leader" className="absolute inset-0 h-full w-full object-cover object-top" />
+            <div aria-hidden className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-black/80 via-black/45 to-transparent" />
+            <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/2 backdrop-blur-[3px] [mask-image:linear-gradient(to_top,black_35%,transparent)]" />
+            <figcaption className="relative z-10 flex h-full min-h-[440px] flex-col justify-end p-8">
+              <div className="text-3xl font-bold tracking-tight text-white">Scalable</div>
+              <div className="mt-1 text-sm text-white/80">A foundation built for future growth</div>
+              <blockquote className="mt-4 text-sm leading-relaxed text-white/90">
+                &ldquo;Lumovy simplified a complex integration landscape while creating a scalable
+                foundation for future growth.&rdquo;
+              </blockquote>
+              <div className="mt-4 border-t border-white/20 pt-3">
+                <div className="text-sm font-semibold text-white">Director of IT</div>
+                <div className="text-xs text-white/70">Retail Enterprise</div>
+              </div>
+            </figcaption>
+          </figure>
+        </div>
+
+        {/* By the numbers strip */}
+        <div className="mt-6 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3">
+          {[
+            ["Microsoft Dynamics 365", "Specialists across commerce & finance"],
+            ["Retail & Hospitality", "Pre-built integration accelerators"],
+            ["End-to-end", "Implementation & managed services"],
+          ].map(([v, l]) => (
+            <div key={l} className="bg-white px-6 py-7 text-center">
+              <div className="text-lg font-bold tracking-tight text-[var(--navy-deep)]">{v}</div>
+              <div className="mt-1.5 text-xs leading-tight text-[var(--blue-gray)]">{l}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-/* ─────────────────────────────  6. ENGINEERING EXCERPT  ───────────────────────────── */
-function EngineeringExcerpt() {
+/* ─────────────────────────────  6. TECHNICAL CREDIBILITY (architecture)  ───────────────────────────── */
+const TECH_STACK = [
+  { icon: Cloud, label: "Azure Integration Services" },
+  { icon: Cable, label: "APIs & connectors" },
+  { icon: Workflow, label: "Power Platform automation" },
+  { icon: Database, label: "Dynamics 365 core" },
+];
+
+function IntTechnical() {
   return (
-    <section className="border-y border-border bg-[var(--blue-light)]/30 py-24">
-      <div className="container-enterprise grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-        <Reveal>
-          <div className="overflow-hidden rounded-2xl border border-border shadow-fluent-md">
-            <img
-              src={officeImg}
-              alt="Lumovy engineering team"
-              className="aspect-[4/3] w-full object-cover"
-            />
+    <section className="hero-dark relative overflow-hidden py-28 text-white">
+      <div aria-hidden className="hero-orbs opacity-50" />
+      <div aria-hidden className="hero-grid" />
+      <div className="container-enterprise relative z-10 grid items-center gap-14 lg:grid-cols-2">
+        {/* Left: copy + stack */}
+        <div>
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--cyan-soft)]">
+            <Cpu className="h-3.5 w-3.5" /> Technical credibility
+          </span>
+          <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
+            Secure, scalable integrations built on Microsoft
+          </h2>
+          <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-white/70">
+            Lumovy uses Azure Integration Services, APIs, Power Platform, and Microsoft Dynamics 365
+            to build secure, scalable enterprise integrations, resilient by design, with idempotent
+            sync and automated reconciliation.
+          </p>
+          <ul className="mt-8 grid gap-4 sm:grid-cols-2">
+            {TECH_STACK.map((t) => (
+              <li key={t.label} className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3.5 backdrop-blur-sm">
+                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-white/10 text-[var(--cyan-soft)]">
+                  <t.icon className="h-4 w-4" />
+                </span>
+                <span className="text-sm font-medium text-white/85">{t.label}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Right: featured architecture pattern diagram */}
+        <div className="rounded-2xl border border-white/10 bg-white/[0.05] p-7 backdrop-blur-sm">
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-[var(--cyan-soft)]">
+            Featured pattern
+          </p>
+          <p className="mt-2 text-sm text-white/60">
+            Payments flowing securely from processor to commerce, reconciled automatically.
+          </p>
+          <div className="mt-7 flex flex-col gap-3">
+            {[
+              { label: "Adyen", sub: "Payment processor", icon: CreditCard, accent: false },
+              { label: "Azure Integration Services", sub: "Idempotent integration layer", icon: Cloud, accent: true },
+              { label: "Dynamics 365 Commerce", sub: "Unified ledger & reconciliation", icon: Database, accent: false },
+            ].map((b, i) => (
+              <div key={b.label}>
+                <div
+                  className={
+                    "flex items-center gap-3 rounded-xl px-5 py-4 " +
+                    (b.accent
+                      ? "bg-[var(--royal)] ring-1 ring-[var(--cyan-soft)]/40"
+                      : "border border-white/12 bg-white/[0.03]")
+                  }
+                >
+                  <span className={"grid h-10 w-10 shrink-0 place-items-center rounded-lg " + (b.accent ? "bg-white/15 text-[var(--cyan-soft)]" : "bg-white/8 text-white/80")}>
+                    <b.icon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="text-sm font-semibold text-white">{b.label}</div>
+                    <div className="text-xs text-white/55">{b.sub}</div>
+                  </div>
+                </div>
+                {i < 2 && (
+                  <div className="flex justify-center py-1.5">
+                    <ArrowRightLeft className="h-4 w-4 rotate-90 text-[var(--cyan-soft)]/60" />
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
-        </Reveal>
-        <Reveal delay={90}>
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--royal)]">
-              <Code2 className="h-3.5 w-3.5" />
-              From our engineering team
-            </span>
-            <h2 className="mt-5 text-2xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-3xl">
-              Integrating Adyen with D365 Commerce: the architecture patterns we use
-            </h2>
-            <p className="mt-5 text-[15px] leading-relaxed text-[var(--blue-gray)]">
-              We favor an API-led pattern with an idempotent integration layer between Adyen and D365
-              Commerce — so a retried settlement never double-posts, refunds reconcile against the
-              original capture, and a failed sync is replayed, not lost. Tokenized captures keep card
-              data out of D365 entirely, and a reconciliation job closes the loop nightly against
-              Adyen's settlement report. The same pattern generalizes to Shift4 and other processors:
-              named connectors on top of a resilient, event-driven core.
-            </p>
-            <a
-              href="#contact"
-              className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]"
-            >
-              Read the full integration pattern guide
-              <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
@@ -543,34 +520,34 @@ function EngineeringExcerpt() {
 /* ─────────────────────────────  7. FAQ  ───────────────────────────── */
 const FAQS = [
   {
-    q: "Do you work with our existing middleware, or does this require a full replacement?",
-    a: "We work with your existing middleware wherever it's healthy — we assess it first, and only recommend replacing components that are creating integration debt or blocking reliability. The goal is to connect your stack, not rip it out.",
+    q: "Can you integrate with our existing systems?",
+    a: "Yes. We integrate Dynamics 365 with ERP, CRM, WMS, finance, payment, and third-party applications.",
   },
   {
-    q: "How do you handle legacy system sunset during an integration project?",
-    a: "We run legacy and new systems in parallel through a controlled cutover, validating data parity before decommissioning anything. Where a legacy platform is being retired entirely, we sequence it with our Legacy Migration service so there's continuity, not a hard switch.",
+    q: "Can you automate business processes?",
+    a: "Yes. We automate approvals, document processing, notifications, reporting, and operational workflows using Microsoft Power Platform.",
   },
   {
-    q: "What's your integration testing approach?",
-    a: "Our Validate phase covers end-to-end testing across both systems, explicitly including edge cases — refunds, chargebacks, partial syncs and failure recovery — not just the happy path. Quality Engineering is embedded, so integrations are load- and failure-tested before go-live.",
+    q: "Do you replace existing systems?",
+    a: "Not always. We maximize existing investments while modernizing where it creates the most value.",
   },
   {
-    q: "Can you integrate a payment or POS system not listed here?",
-    a: "Yes. Adyen, Shift4, QSR Automations and SML RFID are our proven, pre-built paths — but they're not exhaustive. We build named connectors on a resilient integration core, so a new processor or POS follows the same pattern.",
+    q: "How do you ensure quality?",
+    a: "Every project includes structured testing, validation, and deployment planning.",
   },
   {
-    q: "Who supports the integration after go-live?",
-    a: "Support transitions to our Managed Support & Expansion team with monitoring, alerting and release management — so your integrations stay healthy and evolve as your platforms update.",
+    q: "Do you provide post-go-live support?",
+    a: "Yes. Our Managed Services team provides ongoing optimization and support.",
   },
 ];
 
 function IntFAQ() {
   return (
-    <section className="bg-white py-24">
+    <section className="border-b border-border bg-white py-28">
       <div className="container-enterprise">
         <FaqAccordion
-          title="Integration questions"
-          intro="Middleware, legacy sunset, testing and support — the questions engineering leaders ask."
+          title="Frequently asked questions"
+          intro="Existing systems, automation, quality and support: the questions integration leaders ask."
           items={FAQS.map((f) => [f.q, f.a] as [string, string])}
         />
       </div>
@@ -578,62 +555,47 @@ function IntFAQ() {
   );
 }
 
-/* ─────────────────────────────  8. CROSS-LINKS  ───────────────────────────── */
-const LINKS = [
-  {
-    icon: Database,
-    tag: "Before integration",
-    title: "Migrating from a legacy platform? Start here.",
-    href: "/services#legacy-migration",
-    cta: "Legacy Migration",
-  },
-  {
-    icon: LifeBuoy,
-    tag: "After go-live",
-    title: "What happens once your integration is live.",
-    href: "/services#managed-support",
-    cta: "Managed Support & Expansion",
-  },
-  {
-    icon: Boxes,
-    tag: "By industry",
-    title: "See integrations in a retail & commerce context.",
-    href: "/industries/retail-omnichannel-commerce",
-    cta: "Retail & Commerce",
-  },
+/* ─────────────────────────────  8. INSIGHTS  ───────────────────────────── */
+const INSIGHTS = [
+  { tag: "Connector", title: "Adyen Connector: unified omnichannel payments on Dynamics 365 Commerce", read: "6 min read", image: consultingImg },
+  { tag: "Integration", title: "Shopify integration: syncing storefronts with Dynamics 365 in real time", read: "5 min read", image: supportImg },
+  { tag: "Capability", title: "Digital signature workflows: faster approvals across the business", read: "4 min read", image: engineeringImg },
 ];
 
-function CrossLinks() {
+function IntInsights() {
   return (
-    <section className="border-y border-border bg-[var(--blue-light)]/30 py-24">
+    <section className="bg-white py-28">
       <div className="container-enterprise">
-        <Reveal>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--royal)]">
-            Where to go next
-          </p>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {LINKS.map((c, i) => (
-            <Reveal key={c.tag} delay={i * 90}>
-              <a
-                href={c.href}
-                className="group flex h-full flex-col rounded-2xl border border-border bg-white p-7 transition-all hover:-translate-y-1 hover:border-[var(--royal)]/30 hover:shadow-fluent-md"
-              >
-                <span className="inline-grid h-11 w-11 place-items-center rounded-xl bg-[var(--blue-light)]/60 text-[var(--royal)] transition-colors group-hover:bg-[var(--royal)] group-hover:text-white">
-                  <c.icon className="h-5 w-5" />
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Related insights</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+              Integration thought leadership
+            </h2>
+          </div>
+          <a href="#" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
+            View all insights
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {INSIGHTS.map((p) => (
+            <a key={p.title} href="#" className="group card-lift flex flex-col overflow-hidden rounded-xl border border-border bg-white">
+              <div className="relative aspect-[16/9] w-full overflow-hidden">
+                <img src={p.image} alt="" loading="lazy" className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <span className="absolute left-4 top-4 rounded-md bg-white/95 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--royal)] shadow-sm">
+                  {p.tag}
                 </span>
-                <div className="mt-5 text-[11px] font-semibold uppercase tracking-widest text-[var(--royal)]">
-                  {c.tag}
-                </div>
-                <h3 className="mt-2 flex-1 text-base font-semibold text-[var(--navy-deep)]">
-                  {c.title}
-                </h3>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--royal)]">
-                  {c.cta}
-                  <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <span className="text-xs text-[var(--blue-gray)]">{p.read}</span>
+                <h3 className="mt-2 flex-1 text-lg font-semibold leading-snug text-[var(--navy-deep)]">{p.title}</h3>
+                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--royal)]">
+                  Read more
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                 </span>
-              </a>
-            </Reveal>
+              </div>
+            </a>
           ))}
         </div>
       </div>
@@ -641,14 +603,16 @@ function CrossLinks() {
   );
 }
 
-/* ─────────────────────────────  9. CLOSING CTA (reuses homepage FinalCtaSection)  ───────────────────────────── */
-function ClosingCTA() {
+/* ─────────────────────────────  10. CLOSING CTA (reuses homepage FinalCtaSection)  ───────────────────────────── */
+function IntClosingCTA() {
   return (
     <FinalCtaSection
       id="contact"
-      title="Not sure which integration path fits your stack?"
-      microcopy="Response within 1 business day. NDA available on request."
-      primary={{ label: "Get an integration architecture review", href: "#contact" }}
+      title="Ready to Modernize Your Business Ecosystem?"
+      subtitle="Whether you're modernizing legacy applications or connecting enterprise systems, Lumovy delivers secure, scalable integrations that accelerate business growth."
+      microcopy="Connect with our experts and receive tailored recommendations within one business day."
+      primary={{ label: "Schedule an Integration Assessment", href: "#contact", icon: true }}
+      secondary={{ label: "Explore Integration Accelerators", href: "#expertise" }}
     />
   );
 }

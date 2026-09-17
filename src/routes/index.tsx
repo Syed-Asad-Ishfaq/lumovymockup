@@ -6,50 +6,42 @@ import {
   CheckCircle2,
   ChevronDown,
   ChevronRight,
-  Shield,
-  Building2,
+  ChevronLeft,
   Users,
-  Gauge,
-  Lock,
-  FileCheck2,
   Globe2,
-  LineChart,
   Linkedin,
   Phone,
   Mail,
   MapPin,
   Menu,
-  Award,
-  BadgeCheck,
   Play,
   Hotel,
   Store,
-  Compass,
-  Rocket,
   Wrench,
   Cog,
-  LifeBuoy,
-  Layers,
   Cpu,
   Boxes,
   Workflow,
   ShieldCheck,
   RefreshCw,
   X,
+  Sparkles,
+  Truck,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import implementationImg from "@/assets/services/implementation.jpg";
 import consultingImg from "@/assets/services/consulting.jpg";
 import engineeringImg from "@/assets/services/engineering.jpg";
 import supportImg from "@/assets/services/support.jpg";
+import boardroomImg from "@/assets/boardroom.jpg";
 import retailImg from "@/assets/industries/retail.jpg";
-import hospitalityImg from "@/assets/industries/hospitality.jpg";
+import mafCaseImg from "@/assets/case-studies/majid-al-futtaim.jpg";
+import cavendersCaseImg from "@/assets/case-studies/cavenders.jpg";
+import mattressFirmCaseImg from "@/assets/case-studies/mattress-firm.jpg";
 import mafLogo from "@/assets/logos/majid-al-futtaim.png";
 import mattressFirmLogo from "@/assets/logos/mattress-firm.png";
 import janieJackLogo from "@/assets/logos/janie-and-jack.png";
 import cavendersLogo from "@/assets/logos/cavenders.png";
-import utahDabsLogo from "@/assets/logos/utah-dabs.png";
-import monumentalLogo from "@/assets/logos/monumental.png";
 import bluecrestLogo from "@/assets/logos/bluecrest.png";
 import britaxLogo from "@/assets/logos/britax.png";
 import stateOfUtahLogo from "@/assets/logos/state-of-utah.png";
@@ -57,15 +49,13 @@ import steMichelleLogo from "@/assets/logos/ste-michelle.png";
 import syscoLogo from "@/assets/logos/sysco.png";
 import vermontLogo from "@/assets/logos/vermont-country-store.png";
 import lumovyLogo from "@/assets/lumovy-logo.png";
-import svcShape1 from "@/assets/services/shape1.webp";
-import svcShape2 from "@/assets/services/shape2.webp";
-import svcShape3 from "@/assets/services/shape3.webp";
-import svcShape4 from "@/assets/services/shape4.webp";
+import qsrAutomationsLogo from "@/assets/QSR automation.webp";
+import smlLogo from "@/assets/SML.png";
+import navFeatureImg from "@/assets/feature.jpg";
 import leapworkLogo from "@/assets/leapwork.png";
 import adyenLogo from "@/assets/Adyen.png";
 import shift4Logo from "@/assets/Shift4.png";
-import clarityRfidLogo from "@/assets/ClarityRFID.webp";
-import lsRetailLogo from "@/assets/LS Retail.png";
+import msLogo from "@/assets/microsoft.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -87,6 +77,76 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+/* Small inline Microsoft Teams mark — lucide-react has no brand icon for it. */
+function TeamsIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 2228.833 2073.333" className={className} aria-hidden xmlns="http://www.w3.org/2000/svg">
+      <path fill="#5059C9" d="M1554.637,777.5h575.713c54.391,0,98.483,44.092,98.483,98.483c0,0,0,0,0,0v524.398 c0,199.901-162.051,361.952-361.952,361.952h0h-1.711c-199.901,0.028-361.975-162-362.004-361.901c0-0.017,0-0.034,0-0.051V828.971 C1503.167,800.544,1526.211,777.5,1554.637,777.5L1554.637,777.5z"/>
+      <circle fill="#5059C9" cx="1943.75" cy="440.583" r="233.25"/>
+      <circle fill="#7B83EB" cx="1218.083" cy="336.917" r="336.917"/>
+      <path fill="#7B83EB" d="M1667.323,777.5H717.01c-53.743,1.33-96.257,45.931-95.01,99.676v598.657 c-7.505,322.519,247.657,590.16,570.167,598.5c322.51-8.34,577.671-276,570.167-598.5V877.176 C1763.579,823.431,1721.066,778.83,1667.323,777.5z"/>
+      <path opacity=".1" d="M1244,777.5v838.145c-0.258,38.435-23.549,72.964-59.087,87.598 c-11.316,4.787-23.475,7.254-35.758,7.257H667.613c-6.738-17.105-12.958-34.21-18.142-51.833 c-18.144-59.477-27.402-121.307-27.472-183.49V877.02c-1.246-53.659,41.198-98.19,94.855-99.52H1244z"/>
+      <path opacity=".2" d="M1192.167,777.5v889.978c-0.006,12.283-2.472,24.442-7.257,35.758 c-14.634,35.538-49.163,58.829-87.598,59.087H691.975c-8.812-17.105-17.105-34.21-24.362-51.833 c-7.257-17.623-12.958-34.21-18.142-51.833c-18.144-59.476-27.402-121.307-27.472-183.49V877.02 c-1.246-53.659,41.198-98.19,94.855-99.52H1192.167z"/>
+      <path opacity=".2" d="M1192.167,777.5v786.312c-0.395,52.223-42.632,94.46-94.855,94.855h-447.84 c-18.144-59.476-27.402-121.307-27.472-183.49V877.02c-1.246-53.659,41.198-98.19,94.855-99.52H1192.167z"/>
+      <path opacity=".2" d="M1140.333,777.5v786.312c-0.395,52.223-42.632,94.46-94.855,94.855H649.313 c-18.144-59.476-27.402-121.307-27.472-183.49V877.02c-1.246-53.659,41.198-98.19,94.855-99.52H1140.333z"/>
+      <path opacity=".1" d="M1244,509.522v163.275c-8.812,0.518-17.105,1.037-25.917,1.037 c-8.812,0-17.105-0.518-25.917-1.037c-17.496-1.161-34.848-3.937-51.833-8.293c-104.963-24.857-191.679-99.181-233.25-199.598 c-7.153-16.858-12.706-34.352-16.587-52.25h258.648C1201.449,412.792,1243.855,455.377,1244,509.522z"/>
+      <path opacity=".2" d="M1192.167,561.372v111.425c-17.496-1.161-34.848-3.937-51.833-8.293 c-104.963-24.857-191.679-99.181-233.25-199.598h190.228C1149.757,464.987,1192.02,507.398,1192.167,561.372z"/>
+      <path opacity=".2" d="M1192.167,561.372v111.425c-17.496-1.161-34.848-3.937-51.833-8.293 c-104.963-24.857-191.679-99.181-233.25-199.598h190.228C1149.757,464.987,1192.02,507.398,1192.167,561.372z"/>
+      <path opacity=".2" d="M1140.333,561.372v103.132c-104.963-24.857-191.679-99.181-233.25-199.598h138.395 C1097.923,464.987,1140.187,507.398,1140.333,561.372z"/>
+      <linearGradient id="teams-a" gradientUnits="userSpaceOnUse" x1="198.099" y1="1683.632" x2="942.234" y2="2401.918" gradientTransform="matrix(1 0 0 -1 0 2075.333)">
+        <stop offset="0" stopColor="#5a62c3"/>
+        <stop offset=".5" stopColor="#4d55bd"/>
+        <stop offset="1" stopColor="#3940ab"/>
+      </linearGradient>
+      <path fill="url(#teams-a)" d="M95.01,464.833h950.312c52.473,0,95.01,42.538,95.01,95.01v950.312c0,52.473-42.538,95.01-95.01,95.01 H95.01c-52.473,0-95.01-42.538-95.01-95.01V559.844C0,507.371,42.538,464.833,95.01,464.833z"/>
+      <path fill="#FFF" d="M820.211,828.257H630.241v517.297H509.211V828.257H320.123V727.775h500.088V828.257z"/>
+    </svg>
+  );
+}
+
+/* Scroll-reveal — identical to the About page's: fades + slides up once,
+   the first time an element enters the viewport, then stays put. */
+function useReveal<T extends HTMLElement>() {
+  const ref = useRef<T | null>(null);
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setShown(true);
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.15 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return { ref, shown };
+}
+function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+  const { ref, shown } = useReveal<HTMLDivElement>();
+  return (
+    <div
+      ref={ref}
+      className={className}
+      style={{
+        opacity: shown ? 1 : 0,
+        transform: shown ? "translateY(0)" : "translateY(30px)",
+        transition: `opacity 0.85s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.85s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+      }}
+    >
+      {children}
+    </div>
+  );
+}
+
 const CLIENT_LOGOS = [
   { src: mafLogo, alt: "Majid Al Futtaim", sizeClass: "h-12" },
   { src: mattressFirmLogo, alt: "Mattress Firm", sizeClass: "h-9" },
@@ -105,17 +165,13 @@ function Index() {
       <Nav />
       <Hero />
       <TrustedBy />
-      <Solutions />
-      <Services />
-      <MetricsBand />
-      <Industries />
-      <WhyLumovy />
+      <IndustryRouter />
+      <ProofStrip />
+      <WhatWeDo />
+      <PartnersStrip />
       <CaseStudies />
       <Testimonials />
-      <Framework />
-      <Procurement />
       <Contact />
-      <FAQ />
       <FinalCTA />
       <Footer />
       <StickyCTA />
@@ -124,100 +180,91 @@ function Index() {
 }
 
 /* NAV */
-type SubItem = { label: string; href: string };
-type NavGroup = { heading: string; items: SubItem[] };
-type NavMain = { label: string; groups?: NavGroup[]; href?: string };
+type SubItem = { label: string; href: string; subtitle?: string };
+type NavGroup = { heading: string; headingHref?: string; items: SubItem[] };
+// Optional highlighted "feature" panel shown on the left of a mega-menu.
+type NavFeature = { title: string; image: string; href: string; cta?: string; blurb?: string };
+type NavMain = { label: string; groups?: NavGroup[]; href?: string; feature?: NavFeature };
 
 const NAV_MENU: NavMain[] = [
   {
-    label: "Products & Accelerators",
+    label: "What We Do",
+    feature: {
+      title: "Industry Solutions",
+      image: navFeatureImg,
+      href: "/industries",
+      blurb: "Cloud-First Grocery & Discount Launch in Under 100 Days",
+      cta: "Explore industries",
+    },
     groups: [
       {
-        heading: "Retail & Commerce",
+        heading: "Industry Solutions",
+        headingHref: "/industries",
         items: [
-          { label: "D365 for Hypermarkets", href: "#solutions" },
-          { label: "B2B in a Box", href: "#solutions" },
-          { label: "Consumer Swift Commerce", href: "#solutions" },
-          { label: "In-Store Mobility Suite", href: "#solutions" },
+          { label: "Guest Commerce", href: "/industries/hospitality-entertainment-sports" },
+          { label: "Retail & Hypermarket", href: "/industries/grocery-hypermarkets" },
+          { label: "Distribution & Supply Chain", href: "/what-we-do/practice-areas/supply-chain" },
         ],
       },
       {
-        heading: "Hospitality & Operations",
+        heading: "Services",
+        headingHref: "/services",
         items: [
-          { label: "Innovative Hospitality Solution (IHS)", href: "#solutions" },
-          { label: "Clarity RFID Connector", href: "#solutions" },
-        ],
-      },
-      {
-        heading: "Platform & Performance",
-        items: [
-          { label: "Optim365", href: "#solutions" },
-          { label: "PerfLens365", href: "#solutions" },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Services",
-    href: "/services",
-    groups: [
-      {
-        heading: "Advisory & Delivery",
-        items: [
-          { label: "All Services", href: "/services" },
-          { label: "Implementation", href: "/services#implementation" },
-          { label: "Legacy Migration", href: "/services#legacy-migration" },
-        ],
-      },
-      {
-        heading: "Engineering & AI",
-        items: [
-          { label: "Integrations & Modernization", href: "/services/integrations-modernization" },
-          { label: "Enterprise Agentic AI Solutions", href: "/services#agentic-ai" },
-          { label: "Quality Engineering Factory", href: "/services#quality-engineering" },
-        ],
-      },
-      {
-        heading: "Run & Scale",
-        items: [
-          { label: "Managed Support & Expansion", href: "/services#managed-support" },
-          { label: "Global Capability Centers", href: "/services#global-capability-centers" },
-        ],
-      },
-    ],
-  },
-  {
-    label: "Industries",
-    groups: [
-      {
-        heading: "Industries",
-        items: [
-          { label: "Retail & Omnichannel Commerce", href: "/industries/retail-omnichannel-commerce" },
-          { label: "Manufacturing & Supply Chain", href: "#industries" },
-          { label: "Modern Grocery & Hypermarkets", href: "#industries" },
-          { label: "Hospitality, Entertainment & Sports", href: "#industries" },
-          { label: "Public Sector", href: "#industries" },
+          {
+            label: "Microsoft Dynamics 365",
+            href: "/services",
+            subtitle: "Retail, Supply Chain, Finance & Operations, Customer Experience",
+          },
+          { label: "Quality Engineering", href: "/what-we-do/delivery-support/quality-engineering-factory" },
+          { label: "Managed Services", href: "/what-we-do/delivery-support/managed-support-expansion" },
         ],
       },
     ],
   },
   {
     label: "Insights",
+    href: "/insights",
+  },
+  {
+    label: "About Us",
+    feature: {
+      title: "About Us",
+      image: navFeatureImg,
+      href: "/about",
+      blurb: "The people and purpose behind Lumovy",
+      cta: "Discover our story",
+    },
     groups: [
       {
-        heading: "Insights",
+        heading: "",
         items: [
-          { label: "Case Studies", href: "#case-studies" },
-          { label: "Blogs", href: "#insights" },
-          { label: "Whitepapers", href: "#insights" },
-          { label: "News", href: "#insights" },
+          { label: "About Us", href: "/about" },
+          { label: "Life at Lumovy", href: "/company/people-stories" },
         ],
       },
     ],
   },
-  { label: "About", href: "#why" },
-  { label: "Contact", href: "#contact" },
 ];
+
+/* AI Copilot search — compact input, UI only for now (no backend wired up
+   yet). Submits are no-ops so it can drop straight into a real assistant
+   later without changing the navbar layout. */
+function AiCopilotSearch() {
+  return (
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      className="group flex w-[190px] items-center gap-2 rounded-full border border-border bg-[var(--blue-light)]/40 px-3.5 py-2 transition-colors focus-within:border-[var(--royal)]/40 focus-within:bg-white xl:w-[220px]"
+    >
+      <Sparkles className="h-3.5 w-3.5 shrink-0 text-[var(--royal)]" />
+      <input
+        type="text"
+        placeholder="Ask us anything"
+        aria-label="Ask Lumovy anything"
+        className="w-full bg-transparent text-[13px] text-[var(--navy-deep)] placeholder:text-[var(--blue-gray)] focus:outline-none"
+      />
+    </form>
+  );
+}
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -255,13 +302,12 @@ export function Nav() {
             return (
               <div
                 key={item.label}
-                className="relative"
-                onMouseEnter={() => hasMenu && setActive(item.label)}
+                onMouseEnter={() => setActive(hasMenu ? item.label : null)}
               >
                 <a
                   href={item.href ?? "#"}
                   className={
-                    "group relative inline-flex items-center gap-1 px-3 py-2 text-[13px] font-medium transition-colors " +
+                    "group relative inline-flex items-center gap-1 px-3 py-2 text-xs font-medium transition-colors " +
                     (isActive
                       ? "text-[var(--royal)]"
                       : solid
@@ -285,17 +331,13 @@ export function Nav() {
                     }
                   />
                 </a>
-                {hasMenu && isActive && (
-                  <div className="absolute left-1/2 top-full z-50 -translate-x-1/2 pt-2">
-                    <MegaMenu groups={item.groups!} />
-                  </div>
-                )}
               </div>
             );
           })}
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <AiCopilotSearch />
           <a
             href="#contact"
             className={
@@ -305,8 +347,7 @@ export function Nav() {
                 : "bg-white text-[var(--navy-deep)] hover:shadow-lg hover:shadow-black/30")
             }
           >
-            <Calendar className="h-3.5 w-3.5" />
-            Book a consultation
+            Contact Us
           </a>
         </div>
         <button
@@ -321,18 +362,38 @@ export function Nav() {
         </button>
       </div>
 
+      {/* Full-width mega-menu panel (desktop) */}
+      {(() => {
+        const activeItem = NAV_MENU.find((m) => m.label === active && m.groups);
+        if (!activeItem) return null;
+        return (
+          <div className="mega-menu-panel absolute inset-x-0 top-full hidden border-t border-border bg-white shadow-fluent-lg lg:block">
+            <MegaMenu groups={activeItem.groups!} feature={activeItem.feature} />
+          </div>
+        );
+      })()}
+
       {open && (
         <div className="max-h-[70vh] overflow-y-auto border-t border-border bg-background lg:hidden">
           <div className="container-enterprise flex flex-col py-3">
             {NAV_MENU.map((item) => (
               <MobileMenuItem key={item.label} item={item} onNavigate={() => setOpen(false)} />
             ))}
+            <div className="mt-3 flex items-center gap-2 rounded-full border border-border bg-[var(--blue-light)]/40 px-3.5 py-2.5">
+              <Sparkles className="h-3.5 w-3.5 shrink-0 text-[var(--royal)]" />
+              <input
+                type="text"
+                placeholder="Ask us anything"
+                aria-label="Ask Lumovy anything"
+                className="w-full bg-transparent text-sm text-[var(--navy-deep)] placeholder:text-[var(--blue-gray)] focus:outline-none"
+              />
+            </div>
             <a
               href="#contact"
               onClick={() => setOpen(false)}
               className="mt-3 inline-flex items-center justify-center gap-1.5 rounded-full bg-[var(--royal)] px-4 py-3 text-sm font-semibold text-white"
             >
-              <Calendar className="h-4 w-4" /> Book a consultation
+              Contact Us
             </a>
           </div>
         </div>
@@ -341,29 +402,72 @@ export function Nav() {
   );
 }
 
-function MegaMenu({ groups }: { groups: NavGroup[] }) {
-  const cols = Math.min(groups.length, 3);
+function MegaMenu({ groups, feature }: { groups: NavGroup[]; feature?: NavFeature }) {
   return (
-    <div
-      className="animate-menu-in rounded-xl border border-border bg-white shadow-fluent-lg"
-      style={{ minWidth: cols === 1 ? 280 : cols === 2 ? 480 : 640 }}
-    >
-      <div className="grid gap-6 p-6" style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}>
-        {groups.map((g) => (
-          <div key={g.heading}>
-            <div className="text-[10px] font-semibold uppercase tracking-widest text-[var(--royal)]">
-              {g.heading}
-            </div>
-            <ul className="mt-3 space-y-1">
+    <div className="animate-menu-in flex items-stretch">
+      {/* Optional highlighted feature panel — full height, connected top & bottom.
+          Anchored to the left of the viewport (bg + left inset), content aligned
+          to the container's left edge via padding. */}
+      {feature && (
+        <a
+          href={feature.href}
+          className="group hidden shrink-0 flex-col bg-[var(--blue-light)]/30 py-9 pr-9 transition-colors hover:bg-[var(--blue-light)]/50 xl:flex"
+          style={{ width: "calc((100vw - 1320px) / 2 + 1.5rem + 400px)", paddingLeft: "calc((100vw - 1320px) / 2 + 1.5rem)" }}
+        >
+          <span className="text-base font-bold tracking-tight text-[var(--navy-deep)]">
+            {feature.title}
+          </span>
+          <span className="mt-4 block overflow-hidden">
+            <img
+              src={feature.image}
+              alt={feature.title}
+              className="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+          </span>
+          {feature.blurb && (
+            <span className="mt-4 block text-[15px] font-semibold leading-snug text-[var(--navy-deep)]">
+              {feature.blurb}
+            </span>
+          )}
+          <span className="mt-4 inline-flex items-center gap-2 text-[14px] font-semibold text-[var(--royal)]">
+            <span className="border-b-2 border-[var(--royal)] pb-0.5">{feature.cta ?? "Learn more"}</span>
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </span>
+        </a>
+      )}
+
+      {/* Category columns */}
+      <div className={"flex items-start gap-3 py-10 " + (feature ? "pl-14" : "container-enterprise")}>
+        {groups.map((g, gi) => (
+          <div key={g.heading || gi} className="w-[280px]">
+            {g.heading ? (
+              g.headingHref ? (
+                <a
+                  href={g.headingHref}
+                  className="block bg-[var(--blue-light)] px-4 py-1.5 text-[13px] font-bold tracking-tight text-[var(--navy-deep)] transition-colors hover:text-[var(--royal)]"
+                >
+                  {g.heading}
+                </a>
+              ) : (
+                <div className="bg-[var(--blue-light)] px-4 py-1.5 text-[13px] font-bold tracking-tight text-[var(--navy-deep)]">
+                  {g.heading}
+                </div>
+              )
+            ) : (
+              <div className="h-px" aria-hidden />
+            )}
+            <ul className={"space-y-3.5 " + (g.heading ? "mt-5" : "mt-0")}>
               {g.items.map((s) => (
                 <li key={s.label}>
                   <a
                     href={s.href}
-                    className="group flex items-center justify-between rounded-xl px-2 py-1.5 text-sm font-medium text-[var(--navy-deep)] transition-colors hover:bg-[var(--blue-light)]/50 hover:text-[var(--royal)]"
+                    className="block text-[14px] font-medium text-[var(--blue-gray)] transition-colors hover:text-[var(--royal)]"
                   >
-                    <span>{s.label}</span>
-                    <ChevronRight className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition-all group-hover:translate-x-0 group-hover:opacity-100" />
+                    {s.label}
                   </a>
+                  {s.subtitle && (
+                    <p className="mt-1 text-[12px] leading-snug text-[var(--gray-neutral)]">{s.subtitle}</p>
+                  )}
                 </li>
               ))}
             </ul>
@@ -396,15 +500,28 @@ function MobileMenuItem({ item, onNavigate }: { item: NavMain; onNavigate: () =>
         <div className="pb-3 pl-2">
           {item.groups.map((g) => (
             <div key={g.heading} className="mt-2">
-              <div className="text-[10px] font-semibold uppercase tracking-widest text-[var(--royal)]">
-                {g.heading}
-              </div>
+              {g.headingHref ? (
+                <a
+                  href={g.headingHref}
+                  onClick={onNavigate}
+                  className="block text-[10px] font-semibold uppercase tracking-widest text-[var(--royal)]"
+                >
+                  {g.heading}
+                </a>
+              ) : (
+                <div className="text-[10px] font-semibold uppercase tracking-widest text-[var(--royal)]">
+                  {g.heading}
+                </div>
+              )}
               <ul className="mt-1">
                 {g.items.map((s) => (
                   <li key={s.label}>
                     <a href={s.href} onClick={onNavigate} className="block py-1.5 text-sm text-[var(--navy-deep)]">
                       {s.label}
                     </a>
+                    {s.subtitle && (
+                      <p className="-mt-1 pb-1.5 text-xs leading-snug text-[var(--blue-gray)]">{s.subtitle}</p>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -419,44 +536,34 @@ function MobileMenuItem({ item, onNavigate }: { item: NavMain; onNavigate: () =>
 /* HERO */
 const HERO_SLIDES = [
   {
-    eyebrow: "Microsoft Solutions Partner",
-    headline: "Modernize Mission-Critical Systems. Drive Measurable Outcomes",
+    eyebrow: "Microsoft Dynamics 365 for Guest Commerce, Retail & Finance",
+    headline: "We've stood where you're standing.",
     subhead:
-      "Microsoft Dynamics 365 solutions built around your business, so you move faster, with less complexity.",
-    cta: "See Client Outcomes",
+      "Founded by people who led technology change from inside a business, not from outside a slide deck. We put Microsoft Dynamics 365 to work as one system, guest experience, commerce, finance and supply chain together.",
+    cta: "Talk to Us",
+    href: "#contact",
+  },
+  {
+    eyebrow: "Guest Commerce, in Production",
+    headline: "An NBA arena runs checkout-free, end to end, on what we built.",
+    subhead: "30 food & beverage stands. 9 retail outlets. Zero queues. One Dynamics 365 core behind all of it.",
+    cta: "See How Intuit Dome Runs",
     href: "#case-studies",
   },
   {
-    eyebrow: "Agentic AI",
-    headline: "AI Agents Built Around How Your Business Runs",
+    eyebrow: "Retail & Hypermarket Commerce",
+    headline: "Empty warehouse to 1,600+ SKUs live, in 100 days.",
     subhead:
-      "Our AI agents connect with Dynamics 365 to automate your processes. Your team always stays in control.",
-    cta: "Explore Our AI Factory",
-    href: "#services",
-  },
-  {
-    eyebrow: "Rapid Implementation Playbook",
-    headline: "From Idea to Value in 100 Days",
-    subhead:
-      "See how we helped Majid Al Futtaim launch Sava in just 100 days, from zero infrastructure to a full Dynamics 365 platform.",
-    cta: "Read the MAF Case Study",
+      "A new grocery chain launched on Dynamics 365 from a standing start, no legacy system, no shortcuts.",
+    cta: "See the Retail Story",
     href: "#case-studies",
   },
   {
-    eyebrow: "Quality & Trust",
-    headline: "20,000+ Automated Tests, Run Every Day, Across the Globe",
-    subhead:
-      "Test automation and full QA ownership, end to end. Our Quality Engineering team redefines what quality means for you.",
-    cta: "Explore Quality Engineering",
-    href: "#services",
-  },
-  {
-    eyebrow: "Microsoft Credentials",
-    headline: "Microsoft Expertise That Accelerates Your Transformation",
-    subhead:
-      "A top-rated Microsoft Solutions Partner, working closely with Microsoft's product teams to drive your transformation.",
-    cta: "See Our Microsoft Credentials",
-    href: "#why",
+    eyebrow: "Dynamics 365 Customer Experience",
+    headline: "Half the case time. One screen instead of six.",
+    subhead: "Cavender's unified its service desk on Dynamics 365 CE and Copilot in under 10 weeks.",
+    cta: "See the CX Story",
+    href: "#case-studies",
   },
 ];
 
@@ -599,44 +706,25 @@ function HeroDots({
 function Hero() {
   const { active, paused, phase, setPaused, handleAnimEnd, goTo } = useHeroSlider();
   return (
-    <section className="hero-dark relative overflow-hidden">
-      <div aria-hidden className="hero-beam" />
-      <div aria-hidden className="hero-orbs" />
+    <section className="hero-blue-static overflow-hidden">
       <div aria-hidden className="hero-grid" />
-      <div aria-hidden className="hero-grain" />
       <div className="container-enterprise relative z-10 grid gap-14 pt-24 lg:grid-cols-12 lg:gap-10 lg:pt-32">
         <HeroSlider active={active} phase={phase} setPaused={setPaused} handleAnimEnd={handleAnimEnd} />
-        <aside className="lg:col-span-5">
-          <div className="glass-panel rounded-xl p-7">
-            <div className="flex items-center gap-2">
-              <Calendar className="h-4 w-4 text-[var(--cyan-soft)]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--cyan-soft)]">
-                Schedule with leadership
-              </span>
-            </div>
-            <h3 className="mt-3 text-xl font-semibold text-white">30-min executive briefing</h3>
-            <p className="mt-2 text-sm leading-relaxed text-white/60">
+        <aside className="lg:col-span-5 lg:pt-14">
+          <div className="rounded-xl bg-white p-7 shadow-2xl shadow-black/30">
+            <h3 className="text-xl font-semibold text-[var(--navy-deep)]">Executive Briefing</h3>
+            <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">
               Talk directly with one of our engagement principals about what matters to you.
             </p>
-            <ul className="mt-5 space-y-2.5">
-              {[
-                "NDA available on request",
-                "Response within 1 business day",
-                "Reference architecture on the call",
-              ].map((t) => (
-                <li key={t} className="flex items-start gap-2 text-sm text-white/80">
-                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[var(--cyan-soft)]" />
-                  {t}
-                </li>
-              ))}
-            </ul>
+            <div className="mt-5 flex items-center gap-2 rounded-lg bg-[var(--blue-light)]/50 px-3.5 py-2.5">
+              <TeamsIcon className="h-4 w-4 shrink-0" />
+              <span className="text-sm font-medium text-[var(--navy-deep)]">Microsoft Teams</span>
+            </div>
             <a
               href="#contact"
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-4 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/30"
+              className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[var(--royal)] px-4 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[var(--navy)] hover:shadow-lg hover:shadow-black/20"
             >
-              <Calendar className="h-4 w-4" />
-              Book a consultation
-              <ArrowRight className="h-4 w-4" />
+              Book a 30-Min Strategy Call
             </a>
           </div>
         </aside>
@@ -657,9 +745,11 @@ function TrustedBy() {
   return (
     <section className="border-b border-border bg-white py-16">
       <div className="container-enterprise">
-        <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-[var(--blue-gray)]">
-          Trusted by regulated enterprises worldwide
-        </p>
+        <Reveal>
+          <p className="text-center text-xs font-semibold uppercase tracking-[0.2em] text-[var(--blue-gray)]">
+            Trusted by clients worldwide
+          </p>
+        </Reveal>
       </div>
       <div className="group mt-10 overflow-hidden py-8">
         <div className="marquee-track flex w-max items-center gap-28 group-hover:[animation-play-state:paused]">
@@ -687,46 +777,146 @@ function TrustedBy() {
   );
 }
 
-/* METRICS */
-function MetricsBand() {
+/* INDUSTRY ROUTER — primary navigation action on the page: three large,
+   image-led cards routing into the industry hubs. */
+type IndustryRouteItem = {
+  name: string;
+  headline: string;
+  subhead: string;
+  href: string;
+  cta: string;
+  icon: typeof Hotel;
+  tint: "orange" | "green" | "blue";
+};
+
+const INDUSTRY_ROUTES: IndustryRouteItem[] = [
+  {
+    name: "Guest Commerce",
+    headline: "Guest Commerce",
+    subhead:
+      "One system, from the concession stand to the ledger. Built for stadiums, arenas and hospitality groups running live, high-volume guest experiences.",
+    href: "/industries/hospitality-entertainment-sports",
+    cta: "Explore Guest Commerce",
+    icon: Hotel,
+    tint: "orange",
+  },
+  {
+    name: "Retail & Hypermarket Commerce",
+    headline: "Retail & Hypermarket Commerce",
+    subhead:
+      "Multi-store, multi-format retail on one Dynamics 365 core, from a single boutique chain to a national hypermarket estate.",
+    href: "/industries/grocery-hypermarkets",
+    cta: "Explore Retail & Hypermarket Commerce",
+    icon: Store,
+    tint: "green",
+  },
+  {
+    name: "Distribution & Supply Chain",
+    headline: "Distribution & Supply Chain",
+    subhead: "Fulfilment and inventory that hold up under real order volume, not just in a pilot.",
+    href: "/what-we-do/practice-areas/supply-chain",
+    cta: "Explore Distribution & Supply Chain",
+    icon: Truck,
+    tint: "blue",
+  },
+];
+
+const ICON_TINTS = {
+  orange: "bg-[#fdf1e6] text-[#c2650a]",
+  green: "bg-[#e8f5ea] text-[#1e7b34]",
+  blue: "bg-[var(--blue-light)] text-[var(--royal)]",
+} as const;
+
+function IndustryRouter() {
+  return (
+    <section id="industries" className="relative overflow-hidden border-b border-border bg-[var(--blue-light)]/40 py-28">
+      <div aria-hidden className="mesh-blobs-light opacity-60" />
+      <div className="container-enterprise relative">
+        <Reveal className="flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <p className="eyebrow">Where we play</p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+              Find yourself here first, the platform conversation comes next.
+            </h2>
+          </div>
+          <a href="/industries" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
+            Explore industry hub
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </Reveal>
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {INDUSTRY_ROUTES.map((i, idx) => (
+            <Reveal key={i.name} delay={idx * 100} className="h-full">
+              <article className="card-lift flex h-full flex-col rounded-xl border border-border bg-white p-7">
+                <div className={"grid h-12 w-12 place-items-center rounded-xl " + ICON_TINTS[i.tint]}>
+                  <i.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mt-6 text-xl font-semibold leading-snug text-[var(--navy-deep)]">{i.headline}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{i.subhead}</p>
+                <div className="mt-auto pt-6">
+                  <LearnMore label={i.cta} href={i.href} />
+                </div>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* PROOF STRIP — named, already-published customer outcomes pulled straight
+   from the CaseStudies data below. No invented figures. */
+/* Counts up from 0 to the numeric part of `value` once `start` flips true,
+   then keeps whatever non-numeric prefix/suffix the label had (e.g. "+",
+   " Days"). Runs once; ignored entirely under reduced-motion. */
+function CountUpMetric({ value, start, duration = 1400 }: { value: string; start: boolean; duration?: number }) {
+  const match = value.match(/[\d,]+/);
+  const target = match ? parseInt(match[0].replace(/,/g, ""), 10) : null;
+  const prefix = match ? value.slice(0, match.index) : "";
+  const suffix = match ? value.slice((match.index ?? 0) + match[0].length) : "";
+  const [display, setDisplay] = useState(target === null ? value : "0");
+
+  useEffect(() => {
+    if (!start || target === null) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplay(String(target));
+      return;
+    }
+    let raf: number;
+    const startTime = performance.now();
+    const tick = (now: number) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplay(String(Math.round(eased * target)));
+      if (progress < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [start, target, duration]);
+
+  return (
+    <>
+      {prefix}
+      {display}
+      {suffix}
+    </>
+  );
+}
+
+function ProofStrip() {
   const metrics = [
-    [
-      "320+",
-      "Completed projects",
-      "Proven delivery playbooks refined across complex Dynamics 365 transformations, reducing implementation risk, accelerating decisions, and avoiding costly project surprises.",
-    ],
-    [
-      "300+",
-      "Dynamics 365 consultants globally",
-      "One global Microsoft practice covering ERP, Commerce, Power Platform, AI, and QA without fragmented vendors.",
-    ],
-    [
-      "50+",
-      "Active customers",
-      "Long-term partnerships built on continuous optimization, managed services, and platform evolution, with a 95% retention rate.",
-    ],
-    [
-      "100 days",
-      "Avg. go-live time",
-      "Industry accelerators, reusable solution templates, and Microsoft expertise shorten deployment timelines while preserving governance and business continuity.",
-    ],
-    [
-      "99.5%",
-      "Uptime maintained",
-      "Enterprise-grade support, proactive monitoring, and disciplined release management keep critical business operations running with confidence.",
-    ],
-    [
-      "24/7",
-      "Global delivery coverage",
-      "Distributed delivery with client-embedded FDEs onsite and global engineering teams offshore for continuous execution, faster decisions, and seamless collaboration.",
-    ],
+    ["320+", "Completed Dynamics 365 projects"],
+    ["300+", "Consultants worldwide"],
+    ["50+", "Active customers, 95% retention"],
+    ["100 Days", "Average go-live"],
   ];
   const sectionRef = useRef<HTMLElement | null>(null);
   const [revealed, setRevealed] = useState(false);
 
-  // One-time staggered reveal: the cards animate in automatically the first
-  // time the section enters the viewport, and stay put afterwards (no replay
-  // when scrolling back up).
+  // One-time staggered reveal: the numbers animate in automatically the
+  // first time the section enters the viewport, and stay put afterwards
+  // (no replay when scrolling back up).
   useEffect(() => {
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
@@ -749,37 +939,23 @@ function MetricsBand() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#0c2856] py-24 text-white sm:py-28">
+    <section ref={sectionRef} className="bg-[#0c2856] py-20 text-white sm:py-24">
       <div className="container-enterprise">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
-            Outcomes at scale
-          </p>
-          <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Measured impact, not vanity metrics
-          </h2>
-        </div>
-        <div className="mt-10 grid grid-cols-2 items-start gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          {metrics.map(([v, l, d], idx) => (
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-6">
+          {metrics.map(([v, l], idx) => (
             <div
               key={l}
-              className="group/metric min-h-[132px] rounded-lg border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-[background-color,border-color] duration-300 hover:border-[var(--cyan-soft)]/40 hover:bg-white/[0.07]"
+              className="text-center sm:text-left"
               style={{
                 opacity: revealed ? 1 : 0,
                 transform: revealed ? "translateY(0)" : "translateY(28px)",
                 transition: `opacity 0.6s ease-out ${idx * 110}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${idx * 110}ms`,
               }}
             >
-              <div className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{v}</div>
-              <div className="mt-2 text-xs font-medium leading-relaxed text-white/70">{l}</div>
-              {/* Detail: collapsed by default, expands the card downward on hover */}
-              <div className="grid grid-rows-[0fr] transition-[grid-template-rows] duration-500 ease-out group-hover/metric:grid-rows-[1fr]">
-                <div className="overflow-hidden">
-                  <p className="mt-3 border-t border-white/10 pt-3 text-[11px] leading-relaxed text-white/70">
-                    {d}
-                  </p>
-                </div>
+              <div className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+                <CountUpMetric value={v} start={revealed} />
               </div>
+              <div className="mt-2 text-sm font-medium leading-relaxed text-white/70">{l}</div>
             </div>
           ))}
         </div>
@@ -788,336 +964,145 @@ function MetricsBand() {
   );
 }
 
-/* PRODUCTS & ACCELERATORS */
-function Solutions() {
-  const products = [
-    {
-      name: "D365 for Hypermarkets",
-      image: retailImg,
-      blurb:
-        "A Dynamics 365 solution we've pre-configured for your grocery and hypermarket store operations.",
-    },
-    {
-      name: "Innovative Hospitality Solution",
-      image: hospitalityImg,
-      blurb:
-        "Built on D365 Commerce and Finance, unifying your hospitality data and service.",
-    },
-    {
-      name: "Clarity RFID Connector",
-      image: engineeringImg,
-      blurb:
-        "Track your inventory accurately and gain real-time visibility with our RFID connector.",
-    },
-    {
-      name: "B2B in a Box",
-      image: consultingImg,
-      blurb:
-        "A ready-made bundle that takes your quote-to-cash on D365 Commerce, from storefront to fulfillment.",
-    },
-    {
-      name: "Consumer Swift Commerce",
-      image: implementationImg,
-      blurb:
-        "A white-label app linked to D365 Commerce, built so you can launch mobile fast.",
-    },
-    {
-      name: "Optim365",
-      image: supportImg,
-      blurb:
-        "A framework that governs your data, optimizes your licensing, and boosts your D365 performance.",
-    },
-    {
-      name: "PerfLens365",
-      image: consultingImg,
-      blurb:
-        "A performance toolkit covering load testing, live monitoring, and diagnostics for your D365 platform.",
-    },
-    {
-      name: "In-Store Mobility Suite",
-      image: retailImg,
-      blurb:
-        "A set of Power Apps linked to D365 F&O, so you can manage labeling, stock counts, and orders.",
-    },
-  ];
-  return (
-    <section id="solutions" className="relative overflow-hidden border-b border-border bg-[var(--blue-light)]/40 py-28">
-      <div aria-hidden className="mesh-blobs-light opacity-50" />
-      <div className="container-enterprise relative">
-        <div className="max-w-none">
-          <p className="eyebrow">Products &amp; Accelerators</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
-            Pre-built accelerators that shorten your time-to-value
-          </h2>
-        </div>
-      </div>
+/* WHAT WE DO — "Services at a Glance". Single rail + showcase panel (no
+   tabs), matching the updated homepage content doc's 5 services exactly. */
+type WhatWeDoItem = SubItem & { blurb: string; image: string };
 
-      {/* Horizontal swipe track — same pattern as Services */}
-      <div
-        className="container-enterprise relative mt-12"
-        style={{
-          ["--svc-card" as string]: "calc((min(1272px, 100vw - 3rem) - 2 * 1.5rem) / 3)",
-          ["--svc-bleed" as string]: "max(0px, calc((100vw - 1320px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          className="scroll-hide snap-x snap-mandatory -my-6 overflow-x-auto py-6"
-          style={{ marginRight: "calc(-1 * var(--svc-bleed))" }}
-        >
-          <div className="flex gap-6 pr-6">
-            {products.map((p) => (
-              <article
-                key={p.name}
-                style={{ width: "var(--svc-card)" }}
-                className="group card-lift flex min-w-[300px] shrink-0 snap-start flex-col overflow-hidden rounded-lg border border-border bg-white"
-              >
-                <div className="relative aspect-[16/9] w-full overflow-hidden">
+const WHAT_WE_DO_SERVICES: WhatWeDoItem[] = [
+  {
+    label: "Retail",
+    href: "/what-we-do/practice-areas/commerce",
+    image: retailImg,
+    blurb: "Store Commerce, POS and eCommerce unified on Dynamics 365 Commerce.",
+  },
+  {
+    label: "Supply Chain",
+    href: "/what-we-do/practice-areas/supply-chain",
+    image: engineeringImg,
+    blurb: "Inventory, warehouse and fulfilment that scales with order volume.",
+  },
+  {
+    label: "Finance & Operations",
+    href: "/what-we-do/practice-areas/finance",
+    image: boardroomImg,
+    blurb: "From invoice processing to financial reporting, one unified view.",
+  },
+  {
+    label: "Customer Experience",
+    href: "/what-we-do/practice-areas/customer-engagement",
+    image: supportImg,
+    blurb: "One unified view, from first contact to loyal customer.",
+  },
+  {
+    label: "Quality Engineering",
+    href: "/what-we-do/delivery-support/quality-engineering-factory",
+    image: consultingImg,
+    blurb: "Continuous validation for every Dynamics 365 release.",
+  },
+];
+
+function WhatWeDo() {
+  const [activeLabel, setActiveLabel] = useState(WHAT_WE_DO_SERVICES[0].label);
+  const current = WHAT_WE_DO_SERVICES.find((i) => i.label === activeLabel) ?? WHAT_WE_DO_SERVICES[0];
+
+  return (
+    <section id="what-we-do" className="bg-white py-28">
+      <div className="container-enterprise">
+        <Reveal className="max-w-none">
+          <p className="eyebrow">What we do</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
+            Services at a glance
+          </h2>
+        </Reveal>
+
+        {/* Rail + showcase panel */}
+        <Reveal delay={100} className="hero-content-in mt-9 grid gap-0 overflow-hidden rounded-2xl border border-border bg-white shadow-fluent-md lg:grid-cols-[320px_1fr]">
+          <div className="flex flex-row gap-2 overflow-x-auto border-b border-border p-4 lg:flex-col lg:overflow-visible lg:border-b-0 lg:border-r lg:p-5">
+            {WHAT_WE_DO_SERVICES.map((item) => {
+              const isActive = item.label === current.label;
+              return (
+                <button
+                  key={item.label}
+                  onMouseEnter={() => setActiveLabel(item.label)}
+                  onClick={() => setActiveLabel(item.label)}
+                  className={
+                    "group flex shrink-0 items-center justify-between gap-3 px-4 py-3.5 text-left text-[15px] font-semibold transition-colors lg:shrink " +
+                    (isActive
+                      ? "bg-[var(--blue-light)] text-[var(--navy-deep)]"
+                      : "text-[var(--blue-gray)] hover:bg-[var(--blue-light)]/40 hover:text-[var(--navy-deep)]")
+                  }
+                >
+                  <span className="whitespace-nowrap lg:whitespace-normal">{item.label}</span>
+                  <ChevronRight
+                    className={
+                      "h-4 w-4 shrink-0 transition-transform " +
+                      (isActive ? "translate-x-0.5 text-[var(--royal)]" : "text-[var(--gray-neutral)]")
+                    }
+                  />
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="relative p-6 lg:p-9">
+            <div className="relative aspect-[16/8] w-full overflow-hidden rounded-lg bg-[#0c2856] lg:aspect-[16/6.5]">
+              <img
+                src={current.image}
+                alt={current.label}
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
+
+            <p className="mt-6 max-w-2xl text-[15px] leading-relaxed text-[var(--blue-gray)]">{current.blurb}</p>
+            <div className="mt-5">
+              <LearnMore label="Learn more" href={current.href} />
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* PARTNERS STRIP — Microsoft first, then the technology partners behind
+   every engagement, each with what it's used for. */
+type PartnerTile = { name: string; caption: string; logo: string; logoClass?: string };
+
+const PARTNER_TILES: PartnerTile[] = [
+  { name: "Microsoft", caption: "Dynamics 365, Azure, and Power Platform, the foundation of every engagement.", logo: msLogo, logoClass: "h-7" },
+  { name: "Adyen", caption: "Unified, secure payments across every channel.", logo: adyenLogo, logoClass: "h-8" },
+  { name: "Shift4", caption: "Integrated payment processing for retail and hospitality.", logo: shift4Logo, logoClass: "h-8" },
+  { name: "QSR Automations", caption: "Kitchen display and order management for high-volume restaurants.", logo: qsrAutomationsLogo, logoClass: "h-14" },
+  { name: "SML", caption: "RFID and loss-prevention hardware for retail inventory.", logo: smlLogo, logoClass: "h-8" },
+  { name: "Leapwork", caption: "No-code test automation for faster, safer releases.", logo: leapworkLogo, logoClass: "h-8" },
+];
+
+function PartnersStrip() {
+  return (
+    <section className="border-b border-border bg-white py-24">
+      <div className="container-enterprise">
+        <Reveal className="max-w-none">
+          <p className="eyebrow">Technology partners</p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
+            The technology behind every engagement
+          </h2>
+        </Reveal>
+        <div className="mt-14 grid gap-4 sm:grid-cols-3">
+          {PARTNER_TILES.map((p, idx) => (
+            <Reveal key={p.name} delay={(idx % 3) * 90} className="h-full">
+              <div className="h-full rounded-xl border border-border bg-white p-7">
+                <div className="flex h-14 items-center">
                   <img
-                    src={p.image}
+                    src={p.logo}
                     alt={p.name}
                     loading="lazy"
-                    width={1024}
-                    height={640}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    className={(p.logoClass ?? "h-8") + " w-auto object-contain"}
                   />
                 </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="truncate text-xl font-semibold leading-snug text-[var(--navy-deep)]">{p.name}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-[var(--blue-gray)]">{p.blurb}</p>
-                  <div className="mt-auto pt-6">
-                    <LearnMore label="Learn more" />
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* SERVICES */
-// The 4 provided abstract blue shapes, cycled across the service cards.
-const SERVICE_SHAPES = [svcShape1, svcShape2, svcShape3, svcShape4];
-
-// Maps homepage service names to a link. Services with a dedicated detail
-// page use a full path; the rest deep-link to their anchor on /services.
-const SERVICE_LINKS: Record<string, string> = {
-  Implementation: "/services#implementation",
-  "Managed Support & Expansion": "/services#managed-support",
-  "Integrations & Modernization": "/services/integrations-modernization",
-  "Enterprise Agentic AI Solutions": "/services#agentic-ai",
-  "Legacy Migration": "/services#legacy-migration",
-  "Quality Engineering Factory": "/services#quality-engineering",
-  "Global Capability Centers": "/services#global-capability-centers",
-};
-
-function Services() {
-  const services = [
-    {
-      name: "Implementation",
-      shape: "refresh",
-      approach: "Your full Dynamics 365 implementation, handled from discovery to deployment.",
-      outcome: "Sava went live on Dynamics 365 in under 100 days.",
-    },
-    {
-      name: "Managed Support & Expansion",
-      shape: "shield",
-      approach: "24/7 managed services for your Dynamics 365 and Azure infrastructure, backed by SLAs and monitoring.",
-      outcome: "120+ upgrades, enterprise SLA compliance.",
-    },
-    {
-      name: "Integrations & Modernization",
-      shape: "quad",
-      approach: "Simpler operations, faster transformation, using Azure and Power Platform.",
-      outcome: "Unified integrations powered by Azure.",
-    },
-    {
-      name: "Enterprise Agentic AI Solutions",
-      shape: "spark",
-      approach: "AI agents built for your business, deployed using Copilot and custom solutions.",
-      outcome: "Enterprise AI live in 20-60 days.",
-    },
-    {
-      name: "Legacy Migration",
-      shape: "ring",
-      approach: "A proven, low-disruption path from any legacy ERP to Dynamics 365.",
-      outcome: "30% faster migration, full continuity.",
-    },
-    {
-      name: "Quality Engineering Factory",
-      shape: "cpu",
-      approach: "Release with confidence, backed by AI driven testing and quality checks.",
-      outcome: "6x faster validation, lighter testing.",
-    },
-    {
-      name: "Global Capability Centers",
-      shape: "boxes",
-      approach: "A capability center built to grow into your hub for talent and innovation.",
-      outcome: "Specialized talent deployed in 3 weeks.",
-    },
-  ];
-  return (
-    <section id="services" className="border-b border-border bg-white py-28">
-      <div className="container-enterprise">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-none">
-            <p className="eyebrow">Services</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
-              From Planning to Performance, We're Your One Partner
-            </h2>
-          </div>
-          <a href="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
-            Explore all services
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
-        </div>
-      </div>
-
-      {/* Glow-mark cards on a horizontal swipe track. Only the title shows by
-          default; hovering a card reveals the details + CTA. */}
-      <div
-        className="container-enterprise mt-12"
-        style={{
-          ["--svc-card" as string]: "calc((min(1272px, 100vw - 3rem) - 2 * 1.5rem) / 3)",
-          ["--svc-bleed" as string]: "max(0px, calc((100vw - 1320px) / 2 + 1.5rem))",
-        }}
-      >
-        <div
-          className="scroll-hide snap-x snap-mandatory -my-6 overflow-x-auto py-6"
-          style={{ marginRight: "calc(-1 * var(--svc-bleed))" }}
-        >
-          <div className="flex gap-6 pr-6">
-            {services.map((s, i) => (
-              <article
-                key={s.name}
-                style={{ width: "var(--svc-card)" }}
-                className="group relative h-[300px] min-w-[300px] shrink-0 snap-start overflow-hidden rounded-lg border border-border bg-white"
-              >
-                {/* Blue gradient fill fades in on hover */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 bg-[#003594] opacity-0 transition-opacity duration-[580ms] ease-out group-hover:opacity-100"
-                />
-
-                {/* Glow mark — sits in the upper area, away from the title;
-                    blurs on hover. */}
-                <div className="pointer-events-none absolute inset-x-0 top-8 flex h-40 items-center justify-center">
-                  <img
-                    src={SERVICE_SHAPES[i % SERVICE_SHAPES.length]}
-                    alt=""
-                    aria-hidden
-                    className="h-40 w-40 object-contain transition-opacity duration-[400ms] ease-out group-hover:opacity-0"
-                  />
-                </div>
-
-                {/* Content — anchored so the TITLE sits at the card's bottom
-                    padding at rest, with the details extending below (clipped).
-                    On hover the whole block slides up by the details' height,
-                    then returns exactly to rest. Text turns white over the blue. */}
-                <div className="absolute inset-x-0 bottom-8 px-8 transition-transform duration-[580ms] ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:-translate-y-[176px] group-focus-within:-translate-y-[176px]">
-                  <h3 className="text-xl font-semibold text-[var(--navy-deep)] transition-colors duration-[580ms] group-hover:text-white">{s.name}</h3>
-                  <div className="absolute inset-x-8 top-full pt-3 opacity-0 transition-opacity duration-[480ms] delay-100 ease-out group-hover:opacity-100 group-focus-within:opacity-100">
-                    <p className="text-sm leading-relaxed text-[var(--blue-gray)] group-hover:text-white/85">{s.approach}</p>
-                    <p className="mt-3 text-sm font-semibold text-[var(--success)] group-hover:text-[var(--cyan-soft)]">{s.outcome}</p>
-                  </div>
-                </div>
-
-                {/* CTA — fixed at the card bottom, does not move; only fades in */}
-                <div className="absolute inset-x-0 bottom-8 px-8 opacity-0 transition-opacity duration-[480ms] delay-150 ease-out group-hover:opacity-100 group-focus-within:opacity-100 group-hover:[&_a>span:first-child]:bg-white group-hover:[&_a>span:first-child]:text-[var(--royal)] group-hover:[&_a>span:last-child]:text-white">
-                  <LearnMore href={SERVICE_LINKS[s.name] ?? "/services"} />
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* INDUSTRIES */
-function Industries() {
-  const items = [
-    {
-      name: "Retail & Omnichannel Commerce",
-      image: retailImg,
-      headline: "Unified Retail, Simplified",
-      subhead:
-        "Your digital and physical retail, connected. Unified operations, smart fulfillment, and personalized experiences, powered by Microsoft.",
-      href: "/industries/retail-omnichannel-commerce",
-    },
-    {
-      name: "Manufacturing & Supply Chain",
-      image: implementationImg,
-      headline: "Smarter Supply Chain Planning",
-      subhead:
-        "Your production, inventory, and suppliers, aligned. Real-time visibility and smarter, AI driven forecasting, built in.",
-    },
-    {
-      name: "Modern Grocery & Hypermarkets",
-      image: engineeringImg,
-      headline: "Smarter Grocery Retail",
-      subhead:
-        "Your store operations, supply chain, and merchandising, powered by AI, built for modern grocery and discount retail.",
-    },
-    {
-      name: "Hospitality, Entertainment & Sports",
-      image: hospitalityImg,
-      headline: "Better Guest Experiences, Built In",
-      subhead:
-        "Our technology gives your guests frictionless dining, concessions, and venue experiences. You gain efficiency and revenue.",
-    },
-    {
-      name: "Public Sector",
-      image: consultingImg,
-      headline: "Government Services, Modernized",
-      subhead:
-        "Your operations, modernized with secure, compliant platforms, for better service delivery and stronger resilience.",
-    },
-  ];
-  return (
-    <section id="industries" className="relative overflow-hidden border-b border-border bg-[var(--blue-light)]/40 py-28">
-      <div aria-hidden className="mesh-blobs-light opacity-60" />
-      <div className="container-enterprise relative">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-2xl">
-            <p className="eyebrow">Industries</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              24/7 Expertise, On Demand.
-            </h2>
-          </div>
-          <a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
-            Explore industry hub
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
-        </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {items.map((i) => (
-            <article key={i.name} className="group card-lift flex flex-col overflow-hidden rounded-xl border border-border bg-white">
-              <div className="relative aspect-[21/9] w-full overflow-hidden">
-                <img
-                  src={i.image}
-                  alt={i.name}
-                  loading="lazy"
-                  width={1024}
-                  height={439}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy-deep)]/40 to-transparent" />
-                <span className="absolute left-4 top-4 inline-flex items-center rounded-full bg-white/95 px-3 py-1 text-xs font-semibold text-[var(--navy-deep)] shadow-sm backdrop-blur">
-                  {i.name}
-                </span>
+                <p className="mt-4 text-sm leading-relaxed text-[var(--blue-gray)]">{p.caption}</p>
               </div>
-              <div className="flex flex-1 flex-col px-6 pb-6 pt-7">
-                <h3 className="text-xl font-semibold leading-snug text-[var(--navy-deep)]">{i.headline}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{i.subhead}</p>
-                <div className="mt-auto pt-6">
-                  <LearnMore label="Explore industry" href={(i as { href?: string }).href ?? "#contact"} />
-                </div>
-              </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -1126,142 +1111,144 @@ function Industries() {
 }
 
 /* WHY */
-function WhyLumovy() {
-  const pillars = [
-    {
-      icon: Shield,
-      t: "End-to-End Ownership",
-      d: "Your outcomes are ours to own. Our delivery leaders stay accountable for your platform's success and long-term value.",
-      proofs: ["Outcome accountability", "Executive oversight", "Named delivery principal"],
-    },
-    {
-      icon: LifeBuoy,
-      t: "Program Recovery Specialists",
-      d: "Struggling transformations, rescued. If your program falls behind or loses momentum, our team restores structure and pace.",
-      proofs: ["Recovery programmes", "Governance reset", "Adoption acceleration"],
-    },
-    {
-      icon: Rocket,
-      t: "Unlocking Platform Potential",
-      d: "Implementation is just the start. Our team helps you optimize processes, elevate experience, and unlock your platform's full value.",
-      proofs: ["Platform optimisation", "User adoption", "Experience elevation"],
-    },
-    {
-      icon: Layers,
-      t: "Faster Time-to-Value by Design",
-      d: "Configure-first, MVP-led delivery is where it starts. Our accelerators limit customization, reduce risk, and get you to value fast.",
-      proofs: ["Configure-First", "MVP-Based Delivery", "Capability-Led Solution Design", "Faster Go-Live", "Reduced Risk & Customisation"],
-    },
-    {
-      icon: Award,
-      t: "Microsoft-Aligned Innovation",
-      d: "Built on Microsoft, proven through execution. Your business, modernized with expertise across Dynamics 365, Azure, Data, and AI.",
-      proofs: ["Microsoft Solutions Partner", "Microsoft FastTrack Portfolio Partner", "Agentic AI Innovation"],
-    },
-    {
-      icon: Globe2,
-      t: "Global Scale. Industry Depth.",
-      d: "Global delivery, local accountability. Teams across seven countries provide round-the-clock execution and deep transformation expertise.",
-      proofs: ["7 Global Delivery Locations", "24x7 Delivery Model", "Retail & Commerce", "Grocery & Hypermarkets", "Hospitality & Venues", "Enterprise Agentic AI"],
-    },
-  ];
-  return (
-    <section id="why" className="border-b border-border bg-white py-28">
-      <div className="container-enterprise">
-        <div className="max-w-none">
-          <p className="eyebrow">Why Lumovy</p>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl lg:whitespace-nowrap">
-            Trusted to Rescue and Elevate Your Transformation
-          </h2>
-        </div>
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {pillars.map((p) => {
-            const Icon = p.icon;
-            return (
-              <div key={p.t} className="card-lift group relative overflow-hidden rounded-xl border border-border bg-white p-8">
-                <span className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-[var(--royal)] transition-transform duration-500 group-hover:scale-x-100" />
-                <div className="flex items-center gap-3">
-                  <div className="grid h-11 w-11 place-items-center rounded-2xl bg-[var(--blue-light)] text-[var(--royal)] ring-1 ring-inset ring-[var(--royal)]/20">
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="text-lg font-semibold text-[var(--navy-deep)]">{p.t}</h3>
-                </div>
-                <p className="mt-4 text-sm leading-relaxed text-[var(--blue-gray)]">{p.d}</p>
-                <ul className="mt-5 flex flex-wrap gap-1.5">
-                  {p.proofs.map((pr) => (
-                    <li
-                      key={pr}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-[var(--blue-light)]/80 px-2.5 py-1 text-[11px] font-semibold text-[var(--navy-deep)] ring-1 ring-inset ring-[var(--royal)]/15"
-                    >
-                      <CheckCircle2 className="h-3 w-3 text-[var(--success)]" />
-                      {pr}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* CASE STUDIES */
 /* Reusable case-study card — used on the homepage and inner pages.
    Same styling/structure; content is passed in. */
 export type CaseStudyData = {
   sector: string;
+  image: string;
   logo?: string;
   logoClass?: string;
   title: string;
-  challenge: string;
   results: [string, string][];
   cta?: string;
   href?: string;
 };
 
+/* Microsoft-customers-style case study card: photo on top with the client's
+   logo in a white chip over the top-left corner, title below, then metrics
+   and a CTA. No descriptive paragraph, kept consistent everywhere on the
+   site (homepage grid and every inner-page Proof/case-study section). */
 export function CaseStudyCard({
   sector,
+  image,
   logo,
   logoClass,
   title,
-  challenge,
   results,
   cta = "Read the Engagement",
   href = "#contact",
 }: CaseStudyData) {
   return (
-    <article className="group card-lift flex flex-col rounded-xl border border-border bg-white p-8">
-      <div className="flex h-14 items-center">
-        {logo ? (
-          <img
-            src={logo}
-            alt={sector}
-            loading="lazy"
-            className={
-              (logoClass ?? "max-h-9") +
-              " w-auto max-w-[150px] object-contain opacity-80 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0"
-            }
-          />
-        ) : (
-          <span className="text-sm font-semibold uppercase tracking-wide text-[var(--royal)]">{sector}</span>
+    <article className="group card-lift flex flex-col overflow-hidden rounded-xl border border-border bg-white">
+      <div className="relative aspect-[16/10] w-full overflow-hidden">
+        <img
+          src={image}
+          alt={sector}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+        {logo && (
+          <span className="absolute left-4 top-4 flex h-11 items-center rounded-lg bg-white px-3.5 shadow-sm">
+            <img
+              src={logo}
+              alt={sector}
+              loading="lazy"
+              className={(logoClass ?? "max-h-6") + " w-auto max-w-[120px] object-contain"}
+            />
+          </span>
         )}
       </div>
-      <h3 className="mt-4 text-xl font-semibold leading-snug text-[var(--navy-deep)]">{title}</h3>
-      <p className="mt-4 text-sm leading-relaxed text-[var(--blue-gray)]">{challenge}</p>
-      <div className="mt-6 grid grid-cols-3 gap-3 border-t border-border pt-6">
-        {results.map(([v, l]) => (
-          <div key={l} className="min-w-0">
-            <div className="whitespace-nowrap text-[15px] font-bold leading-tight text-[var(--navy-deep)]">{v}</div>
-            <div className="mt-1 text-[11px] font-medium leading-tight text-[var(--blue-gray)]">{l}</div>
-          </div>
-        ))}
-      </div>
-      <div className="mt-6">
-        <LearnMore label={cta} href={href} />
+      <div className="flex flex-1 flex-col p-7">
+        <h3 className="line-clamp-2 min-h-11 text-lg font-semibold leading-snug text-[var(--navy-deep)]">{title}</h3>
+        <div className="mt-5 grid flex-1 grid-cols-3 items-start gap-3 border-t border-border pt-5">
+          {results.map(([v, l]) => (
+            <div key={l} className="min-w-0">
+              <div className="whitespace-nowrap text-[15px] font-bold leading-tight text-[var(--navy-deep)]">{v}</div>
+              <div className="mt-1 text-[11px] font-medium leading-tight text-[var(--blue-gray)]">{l}</div>
+            </div>
+          ))}
+        </div>
+        <div className="mt-5">
+          <LearnMore label={cta} href={href} />
+        </div>
       </div>
     </article>
+  );
+}
+
+/* Reusable horizontal card slider: shows 3 cards per view on desktop with
+   prev/next arrow controls, snap-scrolls one card at a time. Falls back to a
+   native swipeable row on smaller screens where 3-up doesn't fit. */
+export function CardSlider({ children }: { children: React.ReactNode[] }) {
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
+
+  const updateEdges = () => {
+    const el = trackRef.current;
+    if (!el) return;
+    setAtStart(el.scrollLeft <= 4);
+    setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 4);
+  };
+
+  useEffect(() => {
+    updateEdges();
+    const el = trackRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateEdges, { passive: true });
+    window.addEventListener("resize", updateEdges);
+    return () => {
+      el.removeEventListener("scroll", updateEdges);
+      window.removeEventListener("resize", updateEdges);
+    };
+  }, []);
+
+  const scrollByCard = (dir: 1 | -1) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const card = el.querySelector<HTMLElement>("[data-slide]");
+    const step = card ? card.getBoundingClientRect().width + 24 : el.clientWidth * 0.9;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative">
+      <div
+        ref={trackRef}
+        className="scroll-hide snap-x snap-mandatory overflow-x-auto pb-2"
+      >
+        <div className="flex gap-6">
+          {children.map((child, i) => (
+            <div
+              key={i}
+              data-slide
+              className="w-[min(85vw,380px)] shrink-0 snap-start lg:w-[calc((100%-3rem)/3)]"
+            >
+              {child}
+            </div>
+          ))}
+        </div>
+      </div>
+      <button
+        type="button"
+        aria-label="Previous"
+        onClick={() => scrollByCard(-1)}
+        disabled={atStart}
+        className="absolute left-0 top-1/2 hidden -translate-x-5 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-white p-2.5 shadow-fluent-md transition-opacity disabled:pointer-events-none disabled:opacity-0 lg:flex"
+      >
+        <ChevronLeft className="h-5 w-5 text-[var(--navy-deep)]" />
+      </button>
+      <button
+        type="button"
+        aria-label="Next"
+        onClick={() => scrollByCard(1)}
+        disabled={atEnd}
+        className="absolute right-0 top-1/2 hidden -translate-y-1/2 translate-x-5 items-center justify-center rounded-full border border-border bg-white p-2.5 shadow-fluent-md transition-opacity disabled:pointer-events-none disabled:opacity-0 lg:flex"
+      >
+        <ChevronRight className="h-5 w-5 text-[var(--navy-deep)]" />
+      </button>
+    </div>
   );
 }
 
@@ -1269,10 +1256,9 @@ function CaseStudies() {
   const cases = [
     {
       sector: "Majid Al Futtaim (Sava)",
+      image: mafCaseImg,
       logo: mafLogo,
       title: "Cloud-First Grocery & Discount Launch in Under 100 Days",
-      challenge:
-        "Sava was launching from scratch. They faced complex chilled and frozen inventory, and a tight store-opening deadline.",
       results: [
         ["100 days", "To full ERP-enabled store operations"],
         ["130+", "Business processes, 14 modules"],
@@ -1281,11 +1267,10 @@ function CaseStudies() {
     },
     {
       sector: "Cavender's",
+      image: cavendersCaseImg,
       logo: cavendersLogo,
       logoClass: "max-h-8",
       title: "Unified, AI Powered Customer Experience",
-      challenge:
-        "Voice, email, and knowledge systems ran separately. Agents had no automated routing or unified visibility.",
       results: [
         ["+75%", "Agent efficiency"],
         ["-60%", "Case processing time"],
@@ -1293,50 +1278,10 @@ function CaseStudies() {
       ],
     },
     {
-      sector: "U.S. Omnichannel Specialty Retailer",
-      logo: cavendersLogo,
-      logoClass: "max-h-8",
-      title: "Intelligent, Omnichannel Order Fulfillment",
-      challenge:
-        "Fulfillment was fragmented and inventory visibility was low. Rising order volumes strained their multi-store operations.",
-      results: [
-        ["99%", "Order fulfillment efficiency"],
-        ["<1%", "Order cancellations"],
-        ["25%", "Upsell via BOPIS"],
-      ],
-    },
-    {
-      sector: "Utah DABS",
-      logo: utahDabsLogo,
-      logoClass: "max-h-12",
-      title: "From Underutilization to Optimization on Dynamics 365",
-      challenge:
-        "Manual, spreadsheet-based reconciliation left audit gaps. Their bailment-inventory costing logic was outdated and inefficient.",
-      results: [
-        ["Audit-ready", "Bailment valuation & COGS"],
-        ["Lower", "Safety stock via forecasting"],
-        ["Faster", "Financial close"],
-      ],
-    },
-    {
-      sector: "Monumental",
-      logo: monumentalLogo,
-      logoClass: "max-h-12",
-      title: "Enabling Frictionless Commerce at a Next-Generation Venue",
-      challenge:
-        "Checkout technologies were loosely integrated. This created stability risk across apps, POS, and back-office systems during events.",
-      results: [
-        ["Real-time", "Core integration"],
-        ["Event-grade", "High-traffic resilience"],
-        ["Multi-year", "Sustained engineering"],
-      ],
-    },
-    {
       sector: "Mattress Firm",
+      image: mattressFirmCaseImg,
       logo: mattressFirmLogo,
       title: "One-Stop End-to-End Test Automation",
-      challenge:
-        "Manual test cycles ran long. Automation was fragmented, and integrations caused defect leakage.",
       results: [
         ["87%", "Manual-effort savings"],
         ["65%", "Cycle-time reduction"],
@@ -1348,7 +1293,7 @@ function CaseStudies() {
     <section id="case-studies" className="relative overflow-hidden border-b border-border bg-[var(--blue-light)]/40 py-28">
       <div aria-hidden className="mesh-blobs-light opacity-60" />
       <div className="container-enterprise relative">
-        <div className="flex flex-wrap items-end justify-between gap-6">
+        <Reveal className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
             <p className="eyebrow">Case studies</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
@@ -1356,13 +1301,15 @@ function CaseStudies() {
             </h2>
           </div>
           <a href="#contact" className="inline-flex items-center gap-2 text-sm font-semibold text-[var(--royal)]">
-            Request Full References
+            View more
             <ArrowUpRight className="h-4 w-4" />
           </a>
-        </div>
+        </Reveal>
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {cases.map((c) => (
-            <CaseStudyCard key={c.title} {...c} />
+          {cases.map((c, idx) => (
+            <Reveal key={c.title} delay={idx * 100} className="h-full">
+              <CaseStudyCard {...c} />
+            </Reveal>
           ))}
         </div>
       </div>
@@ -1534,12 +1481,12 @@ function Testimonials() {
         {/* Pinned viewport */}
         <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden py-16">
           <div className="container-enterprise">
-            <div className="max-w-2xl">
+            <Reveal className="max-w-2xl">
               <p className="eyebrow">Executive references</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
                 What decision-makers say
               </h2>
-            </div>
+            </Reveal>
           </div>
 
           <div className="relative mt-12">
@@ -1566,145 +1513,6 @@ function Testimonials() {
               aria-hidden
               className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-white to-transparent"
             />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* FRAMEWORK */
-function Framework() {
-  const steps = [
-    { no: "01", when: "Assess", title: "Business Value Assessment", desc: "We assess priorities, process maturity, and automation potential, then map a roadmap with clear, measurable outcomes.", icon: Compass },
-    { no: "02", when: "Initiate", title: "Solution Blueprinting", desc: "Through hands-on workshops, we shape business processes, solution design, workflows, project scope, and success metrics.", icon: Layers },
-    { no: "03", when: "Build & Validate", title: "Iterative Solution Delivery", desc: "We build in agile sprints, configuring first, testing quality, and validating with ongoing business feedback loops.", icon: BadgeCheck },
-    { no: "04", when: "Deploy & Adopt", title: "Enterprise Rollout & Hypercare", desc: "We roll out in structured phases, guiding teams through adoption, change, and hands-on support for lasting success.", icon: Rocket },
-    { no: "05", when: "Operate & Optimize", title: "Continuous Value Realization", desc: "We manage daily operations, releases, and automation upgrades, keeping your platform sharp through continuous innovation.", icon: LifeBuoy },
-  ];
-  return (
-    <section className="relative overflow-hidden border-b border-border bg-[var(--blue-light)]/40 py-28">
-      <div aria-hidden className="mesh-blobs-light opacity-60" />
-      <div className="container-enterprise relative">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-2xl">
-            <p className="eyebrow">Lumovy Delivery Framework</p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Human Led, AI Accelerated
-            </h2>
-          </div>
-          <div className="hidden gap-2 md:flex">
-            <span className="rounded-full border border-border bg-white px-3 py-1.5 text-[11px] font-semibold uppercase tracking-widest text-[var(--blue-gray)]">
-              Swipe →
-            </span>
-          </div>
-        </div>
-
-        <div className="scroll-hide mt-12 overflow-x-auto pb-4">
-          <ol className="flex snap-x snap-mandatory gap-5" style={{ minWidth: "min-content" }}>
-            {steps.map((s, i) => {
-              const Icon = s.icon;
-              return (
-                <li
-                  key={s.no}
-                  className="snap-start"
-                  style={{ animation: `fade-up 0.6s ${i * 90}ms both cubic-bezier(0.16,1,0.3,1)` }}
-                >
-                  <div className="relative flex h-full w-[300px] flex-col overflow-hidden rounded-xl border border-border bg-white p-7 sm:w-[340px]">
-                    <div className="flex items-center justify-between">
-                      <span className="text-5xl font-bold tracking-tight text-[var(--navy-deep)]/10">{s.no}</span>
-                      <div className="grid h-10 w-10 place-items-center rounded-2xl bg-[var(--royal)] text-white shadow-lg shadow-[var(--royal)]/25">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                    </div>
-                    <div className="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-[var(--blue-light)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-widest text-[var(--royal)] ring-1 ring-inset ring-[var(--royal)]/15">
-                      {s.when}
-                    </div>
-                    <h3 className="mt-4 text-lg font-semibold leading-snug text-[var(--navy-deep)]">{s.title}</h3>
-                    <p className="mt-3 text-sm leading-relaxed text-[var(--blue-gray)]">{s.desc}</p>
-                    <div className="mt-6 h-1 w-full overflow-hidden rounded-full bg-[var(--blue-light)]">
-                      <div
-                        className="h-full bg-gradient-to-r from-[var(--royal)] to-[var(--azure)]"
-                        style={{ width: `${((i + 1) / steps.length) * 100}%` }}
-                      />
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-
-        <div className="mt-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--blue-gray)]">
-            Technology Partners
-          </p>
-          <ul className="mt-6 flex flex-wrap items-center gap-x-12 gap-y-6">
-            {[
-              { src: leapworkLogo, alt: "Leapwork", h: "h-8" },
-              { src: adyenLogo, alt: "Adyen", h: "h-8" },
-              { src: shift4Logo, alt: "Shift4", h: "h-8" },
-              { src: clarityRfidLogo, alt: "Clarity RFID", h: "h-10" },
-              { src: lsRetailLogo, alt: "LS Retail", h: "h-12" },
-            ].map((p) => (
-              <li key={p.alt}>
-                <img
-                  src={p.src}
-                  alt={p.alt}
-                  loading="lazy"
-                  className={`${p.h} w-auto object-contain opacity-70 grayscale transition-all hover:opacity-100 hover:grayscale-0`}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* PROCUREMENT */
-function Procurement() {
-  const items = [
-    { icon: FileCheck2, t: "NDA in 24 hours", d: "Mutual NDAs turned around within one business day." },
-    { icon: Building2, t: "Vendor onboarding", d: "Ariba, Coupa, SAP, and Workday supported." },
-    { icon: FileCheck2, t: "MSA & SOW ready", d: "Enterprise templates and DPA available." },
-    { icon: LineChart, t: "Transparent invoicing", d: "Milestone or fixed-fee, Net-30 to Net-60." },
-    { icon: Globe2, t: "Global entities", d: "Contracting entities across the US, EU, and GCC." },
-    { icon: Lock, t: "Insurance", d: "$10M professional indemnity and cyber liability coverage." },
-    { icon: Gauge, t: "Response SLAs", d: "Sales < 4 business hours. Security & legal < 1 business day." },
-  ];
-  return (
-    <section className="relative overflow-hidden bg-[var(--navy-deep)] py-28 text-white">
-      <div aria-hidden className="mesh-blobs opacity-40" />
-      <div className="container-enterprise relative">
-        <div className="grid gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
-              Procurement facts
-            </p>
-            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-              Built for procurement, not around it
-            </h2>
-            <p className="mt-5 text-base leading-relaxed text-white/70">
-              Everything legal and security need to say yes.
-            </p>
-            <a href="#contact" className="mt-6 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:bg-white/90">
-              Book a Consultation
-              <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
-          <div className="grid grid-cols-2 gap-4 lg:col-span-7">
-            {items.map((i) => {
-              const Icon = i.icon;
-              return (
-                <div key={i.t} className="scale-in-hover rounded-lg border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm transition-colors hover:bg-white/[0.08]">
-                  <Icon className="h-5 w-5 text-[var(--cyan-soft)]" />
-                  <div className="mt-3 text-sm font-semibold text-white">{i.t}</div>
-                  <div className="mt-1 text-xs leading-relaxed text-white/70">{i.d}</div>
-                </div>
-              );
-            })}
           </div>
         </div>
       </div>
@@ -1771,7 +1579,7 @@ function Contact() {
       <div aria-hidden className="mesh-blobs-light opacity-60" />
       <div className="container-enterprise relative">
         <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-5">
+          <Reveal className="lg:col-span-5">
             <p className="eyebrow">Contact</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
               Route your request to the right team
@@ -1809,8 +1617,9 @@ function Contact() {
                 <span>North America · Europe · UAE · India · Pakistan</span>
               </div>
             </dl>
-          </div>
-          <form className="card-lift rounded-xl border border-border bg-white p-8 lg:col-span-7">
+          </Reveal>
+          <Reveal delay={100} className="lg:col-span-7">
+            <form className="card-lift rounded-xl border border-border bg-white p-8">
             <label className="text-xs font-semibold uppercase tracking-widest text-[var(--blue-gray)]">
               What are you looking for?
             </label>
@@ -1880,6 +1689,7 @@ function Contact() {
               </button>
             </div>
           </form>
+          </Reveal>
         </div>
       </div>
     </section>
@@ -1914,33 +1724,6 @@ function LearnMore({ label = "Learn more", href = "#contact" }: { label?: string
 }
 
 /* FAQ */
-function FAQ() {
-  const items = [
-    ["Why choose Lumovy over a traditional implementation partner?", "Strategic advisory, Dynamics 365 consulting, managed services, quality engineering, AI, and modernization, all under one Microsoft-focused practice. You work with a single partner from strategy through continuous optimization."],
-    ["What industries does Lumovy specialize in?", "Our focus includes Retail & Omnichannel Commerce, Modern Grocery & Hypermarkets, Hospitality, Sports & Entertainment, Consumer Goods, Public Sector, and complex enterprise operations running on Microsoft technologies."],
-    ["Which Microsoft technologies do you specialize in?", "Our solutions span Dynamics 365, Dynamics 365 Business Central, Power Platform, Azure, Microsoft Copilot, Fabric, and AI, backed by Microsoft's Success by Design methodology and FastTrack engagement where applicable."],
-    ["How quickly can Lumovy deliver a Dynamics 365 implementation?", "Your timeline depends on your business complexity. With our configure-first, MVP-based approach, you can realize value faster than with traditional phased implementations, while we maintain governance and quality."],
-    ["Can you modernize our existing Dynamics AX or legacy ERP environment?", "Yes. Your migration from legacy ERP platforms to Dynamics 365 uses phased strategies that reduce disruption, preserve continuity, and optimize licensing."],
-    ["Can Lumovy integrate Dynamics 365 with our existing systems?", "Absolutely. Our team designs and builds integrations connecting your ERP, CRM, eCommerce, POS, warehouse, and payment platforms, using Azure Integration Services and modern APIs."],
-    ["Do you support highly customized Dynamics 365 environments?", "Yes. Our team supports standard Microsoft capabilities, custom extensions, ISV solutions, and complex integrations, following Microsoft's recommended practices."],
-    ["What happens after go-live?", "Our relationship doesn't end at deployment. You get 24/7 managed support, proactive monitoring, continuous optimization, and platform expansion as your needs evolve."],
-    ["How do you ensure implementation quality?", "Quality engineering is embedded throughout your project, not just at the end, combining automation, performance testing, and continuous validation to reduce risk."],
-    ["How does Lumovy approach AI?", "Our focus is practical, enterprise AI. The Lumovy AI Factory helps you deploy Microsoft Copilot and custom agents, with governance and human approval built into every workflow."],
-    ["Can your team work alongside our internal IT organization?", "Yes. You can retain strategic ownership while we provide specialist expertise and extra delivery capacity, or take on full end-to-end ownership."],
-    ["How do you minimize project risk?", "Every engagement begins with a business process assessment, architecture review, and governance plan. Our configure-first approach limits customization and protects your platform's long-term health."],
-    ["What engagement models do you offer?", "Our engagement options include fixed-scope projects, staff augmentation, managed services, outcome-based delivery, Centers of Excellence, and hybrid models built around your needs."],
-    ["Do you provide global delivery?", "Yes. Our global onshore, nearshore, and offshore model lets you scale delivery while maintaining governance, quality, and cost efficiency."],
-    ["How do you measure success?", "Success is measured by your business outcomes, not just project completion. Typical KPIs include implementation timelines, platform adoption, release quality, and long-term value."],
-  ];
-  return (
-    <section id="insights" className="border-b border-border bg-white py-28">
-      <div className="container-enterprise">
-        <FaqAccordion title="Questions we get first" items={items} />
-      </div>
-    </section>
-  );
-}
-
 /* Reusable FAQ accordion — heading on the left, questions on the right, with
    an optional "View more" collapse. Used on the homepage and inner pages. */
 export function FaqAccordion({
@@ -2003,10 +1786,10 @@ function FinalCTA() {
   return (
     <FinalCtaSection
       eyebrow="Ready when you are"
-      title="From strategy to production"
-      subtitle="Book a 30-minute executive briefing. No sales pitch."
-      primary={{ label: "Book a consultation", href: "#contact", icon: true }}
+      title="Tell us what's not talking to what, and we'll tell you what it takes to fix it."
+      primary={{ label: "Book a 30-Min Strategy Call", href: "#contact" }}
       secondary={{ label: "Review case studies", href: "#case-studies" }}
+      blueStatic
     />
   );
 }
@@ -2020,6 +1803,7 @@ export function FinalCtaSection({
   primary,
   secondary,
   id,
+  blueStatic = false,
 }: {
   eyebrow?: string;
   title: string;
@@ -2028,13 +1812,23 @@ export function FinalCtaSection({
   primary: { label: string; href: string; icon?: boolean };
   secondary?: { label: string; href: string };
   id?: string;
+  /* Use the exact static About/"Our History" blue background instead of the
+     default animated dark hero. Homepage-only for now. */
+  blueStatic?: boolean;
 }) {
   return (
-    <section id={id} className="hero-dark relative overflow-hidden py-28 text-white">
-      <div aria-hidden className="hero-beam" />
-      <div aria-hidden className="hero-orbs" />
+    <section
+      id={id}
+      className={(blueStatic ? "hero-blue-static" : "hero-dark relative") + " overflow-hidden py-28 text-white"}
+    >
+      {!blueStatic && (
+        <>
+          <div aria-hidden className="hero-beam" />
+          <div aria-hidden className="hero-orbs" />
+          <div aria-hidden className="hero-grain" />
+        </>
+      )}
       <div aria-hidden className="hero-grid" />
-      <div aria-hidden className="hero-grain" />
       <div className="container-enterprise relative z-10 text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">{eyebrow}</p>
         <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
@@ -2044,7 +1838,11 @@ export function FinalCtaSection({
         <div className="mt-9 flex flex-wrap justify-center gap-3">
           <a
             href={primary.href}
-            className="group inline-flex items-center gap-2 rounded-full bg-[var(--royal)] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white hover:text-[var(--navy-deep)] hover:shadow-xl"
+            className={
+              blueStatic
+                ? "group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/30"
+                : "group inline-flex items-center gap-2 rounded-full bg-[var(--royal)] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-white hover:text-[var(--navy-deep)] hover:shadow-xl"
+            }
           >
             {primary.icon && <Calendar className="h-4 w-4" />}
             {primary.label}
@@ -2068,35 +1866,24 @@ export function FinalCtaSection({
 
 /* FOOTER */
 export function Footer() {
-  const cols: [string, string, string[]][] = [
-    ["Products & Accelerators", "#solutions", [
-      "D365 for Hypermarkets",
-      "Innovative Hospitality Solution",
-      "Clarity RFID Connector",
-      "B2B in a Box",
-      "Consumer Swift Commerce",
-      "Optim365",
-      "PerfLens365",
-      "In-Store Mobility Suite",
+  const cols: [string, string, SubItem[]][] = [
+    ["Industry Solutions", "/industries", [
+      { label: "Guest Commerce", href: "/industries/hospitality-entertainment-sports" },
+      { label: "Retail & Hypermarket", href: "/industries/grocery-hypermarkets" },
+      { label: "Distribution & Supply Chain", href: "/what-we-do/practice-areas/supply-chain" },
     ]],
-    ["Services", "#services", [
-      "Implementation",
-      "Managed Support & Expansion",
-      "Integrations & Modernization",
-      "Enterprise Agentic AI Solutions",
-      "Legacy Migration",
-      "Quality Engineering Factory",
-      "Global Capability Centers",
+    ["Services", "/services", [
+      { label: "Microsoft Dynamics 365", href: "/services" },
+      { label: "Quality Engineering", href: "/what-we-do/delivery-support/quality-engineering-factory" },
+      { label: "Managed Services", href: "/what-we-do/delivery-support/managed-support-expansion" },
     ]],
-    ["Industries", "#industries", [
-      "Retail & Omnichannel Commerce",
-      "Manufacturing & Supply Chain",
-      "Modern Grocery & Hypermarkets",
-      "Hospitality, Entertainment & Sports",
-      "Public Sector",
+    ["Insights", "/insights", [
+      { label: "Insights", href: "/insights" },
     ]],
-    ["Insights", "#insights", ["Case Studies", "Blogs", "Whitepapers", "News", "FAQ"]],
-    ["Company", "#contact", ["About", "Why Lumovy", "Delivery Framework", "Contact"]],
+    ["Company", "/about", [
+      { label: "About Us", href: "/about" },
+      { label: "Life at Lumovy", href: "/company/people-stories" },
+    ]],
   ];
   return (
     <footer className="bg-white text-[var(--navy-deep)]">
@@ -2126,15 +1913,20 @@ export function Footer() {
               </form>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-8 lg:col-span-9 lg:grid-cols-5">
-            {cols.map(([h, href, items]) => (
+          <div className="grid grid-cols-2 gap-8 lg:col-span-9 lg:grid-cols-4">
+            {cols.map(([h, headingHref, items]) => (
               <div key={h}>
-                <div className="text-xs font-semibold uppercase tracking-widest text-[var(--navy-deep)]">{h}</div>
+                <a
+                  href={headingHref}
+                  className="text-xs font-semibold uppercase tracking-widest text-[var(--navy-deep)] hover:text-[var(--royal)]"
+                >
+                  {h}
+                </a>
                 <ul className="mt-4 space-y-2.5">
                   {items.map((i) => (
-                    <li key={i}>
-                      <a href={href} className="text-sm text-[var(--blue-gray)] hover:text-[var(--royal)]">
-                        {i}
+                    <li key={i.label}>
+                      <a href={i.href} className="text-sm text-[var(--blue-gray)] hover:text-[var(--royal)]">
+                        {i.label}
                       </a>
                     </li>
                   ))}
@@ -2161,8 +1953,8 @@ export function Footer() {
             </span>
           </div>
           <div className="flex flex-wrap gap-4 text-xs text-[var(--blue-gray)] md:justify-end">
-            <a href="#" className="hover:text-[var(--royal)]">Privacy</a>
-            <a href="#" className="hover:text-[var(--royal)]">Terms</a>
+            <a href="/privacy" className="hover:text-[var(--royal)]">Privacy</a>
+            <a href="/terms" className="hover:text-[var(--royal)]">Terms</a>
             <a href="#" className="hover:text-[var(--royal)]">Trust Center</a>
             <span>© {new Date().getFullYear()} Lumovy Inc.</span>
           </div>
