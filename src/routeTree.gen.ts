@@ -34,6 +34,8 @@ import { Route as WhatWeDoProductsAcceleratorsHypermarketAcceleratorRouteImport 
 import { Route as WhatWeDoProductsAcceleratorsHospitalitySolutionRouteImport } from './routes/what-we-do_.products-accelerators_.hospitality-solution'
 import { Route as WhatWeDoProductsAcceleratorsB2bInABoxRouteImport } from './routes/what-we-do_.products-accelerators_.b2b-in-a-box'
 import { Route as WhatWeDoPracticeAreasSupplyChainRouteImport } from './routes/what-we-do_.practice-areas_.supply-chain'
+import { Route as WhatWeDoDeliverySupportQualityEngineeringFactoryRouteImport } from './routes/what-we-do_.delivery-support_.quality-engineering-factory'
+import { Route as WhatWeDoDeliverySupportManagedSupportExpansionRouteImport } from './routes/what-we-do_.delivery-support_.managed-support-expansion'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -174,6 +176,18 @@ const WhatWeDoPracticeAreasSupplyChainRoute =
     path: '/what-we-do/practice-areas/supply-chain',
     getParentRoute: () => rootRouteImport,
   } as any)
+const WhatWeDoDeliverySupportQualityEngineeringFactoryRoute =
+  WhatWeDoDeliverySupportQualityEngineeringFactoryRouteImport.update({
+    id: '/what-we-do_/delivery-support_/quality-engineering-factory',
+    path: '/what-we-do/delivery-support/quality-engineering-factory',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const WhatWeDoDeliverySupportManagedSupportExpansionRoute =
+  WhatWeDoDeliverySupportManagedSupportExpansionRouteImport.update({
+    id: '/what-we-do_/delivery-support_/managed-support-expansion',
+    path: '/what-we-do/delivery-support/managed-support-expansion',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -193,6 +207,8 @@ export interface FileRoutesByFullPath {
   '/what-we-do/delivery-support': typeof WhatWeDoDeliverySupportRoute
   '/what-we-do/practice-areas': typeof WhatWeDoPracticeAreasRoute
   '/what-we-do/products-accelerators': typeof WhatWeDoProductsAcceleratorsRoute
+  '/what-we-do/delivery-support/managed-support-expansion': typeof WhatWeDoDeliverySupportManagedSupportExpansionRoute
+  '/what-we-do/delivery-support/quality-engineering-factory': typeof WhatWeDoDeliverySupportQualityEngineeringFactoryRoute
   '/what-we-do/practice-areas/supply-chain': typeof WhatWeDoPracticeAreasSupplyChainRoute
   '/what-we-do/products-accelerators/b2b-in-a-box': typeof WhatWeDoProductsAcceleratorsB2bInABoxRoute
   '/what-we-do/products-accelerators/hospitality-solution': typeof WhatWeDoProductsAcceleratorsHospitalitySolutionRoute
@@ -220,6 +236,8 @@ export interface FileRoutesByTo {
   '/what-we-do/delivery-support': typeof WhatWeDoDeliverySupportRoute
   '/what-we-do/practice-areas': typeof WhatWeDoPracticeAreasRoute
   '/what-we-do/products-accelerators': typeof WhatWeDoProductsAcceleratorsRoute
+  '/what-we-do/delivery-support/managed-support-expansion': typeof WhatWeDoDeliverySupportManagedSupportExpansionRoute
+  '/what-we-do/delivery-support/quality-engineering-factory': typeof WhatWeDoDeliverySupportQualityEngineeringFactoryRoute
   '/what-we-do/practice-areas/supply-chain': typeof WhatWeDoPracticeAreasSupplyChainRoute
   '/what-we-do/products-accelerators/b2b-in-a-box': typeof WhatWeDoProductsAcceleratorsB2bInABoxRoute
   '/what-we-do/products-accelerators/hospitality-solution': typeof WhatWeDoProductsAcceleratorsHospitalitySolutionRoute
@@ -248,6 +266,8 @@ export interface FileRoutesById {
   '/what-we-do_/delivery-support': typeof WhatWeDoDeliverySupportRoute
   '/what-we-do_/practice-areas': typeof WhatWeDoPracticeAreasRoute
   '/what-we-do_/products-accelerators': typeof WhatWeDoProductsAcceleratorsRoute
+  '/what-we-do_/delivery-support_/managed-support-expansion': typeof WhatWeDoDeliverySupportManagedSupportExpansionRoute
+  '/what-we-do_/delivery-support_/quality-engineering-factory': typeof WhatWeDoDeliverySupportQualityEngineeringFactoryRoute
   '/what-we-do_/practice-areas_/supply-chain': typeof WhatWeDoPracticeAreasSupplyChainRoute
   '/what-we-do_/products-accelerators_/b2b-in-a-box': typeof WhatWeDoProductsAcceleratorsB2bInABoxRoute
   '/what-we-do_/products-accelerators_/hospitality-solution': typeof WhatWeDoProductsAcceleratorsHospitalitySolutionRoute
@@ -277,6 +297,8 @@ export interface FileRouteTypes {
     | '/what-we-do/delivery-support'
     | '/what-we-do/practice-areas'
     | '/what-we-do/products-accelerators'
+    | '/what-we-do/delivery-support/managed-support-expansion'
+    | '/what-we-do/delivery-support/quality-engineering-factory'
     | '/what-we-do/practice-areas/supply-chain'
     | '/what-we-do/products-accelerators/b2b-in-a-box'
     | '/what-we-do/products-accelerators/hospitality-solution'
@@ -304,6 +326,8 @@ export interface FileRouteTypes {
     | '/what-we-do/delivery-support'
     | '/what-we-do/practice-areas'
     | '/what-we-do/products-accelerators'
+    | '/what-we-do/delivery-support/managed-support-expansion'
+    | '/what-we-do/delivery-support/quality-engineering-factory'
     | '/what-we-do/practice-areas/supply-chain'
     | '/what-we-do/products-accelerators/b2b-in-a-box'
     | '/what-we-do/products-accelerators/hospitality-solution'
@@ -331,6 +355,8 @@ export interface FileRouteTypes {
     | '/what-we-do_/delivery-support'
     | '/what-we-do_/practice-areas'
     | '/what-we-do_/products-accelerators'
+    | '/what-we-do_/delivery-support_/managed-support-expansion'
+    | '/what-we-do_/delivery-support_/quality-engineering-factory'
     | '/what-we-do_/practice-areas_/supply-chain'
     | '/what-we-do_/products-accelerators_/b2b-in-a-box'
     | '/what-we-do_/products-accelerators_/hospitality-solution'
@@ -359,6 +385,8 @@ export interface RootRouteChildren {
   WhatWeDoDeliverySupportRoute: typeof WhatWeDoDeliverySupportRoute
   WhatWeDoPracticeAreasRoute: typeof WhatWeDoPracticeAreasRoute
   WhatWeDoProductsAcceleratorsRoute: typeof WhatWeDoProductsAcceleratorsRoute
+  WhatWeDoDeliverySupportManagedSupportExpansionRoute: typeof WhatWeDoDeliverySupportManagedSupportExpansionRoute
+  WhatWeDoDeliverySupportQualityEngineeringFactoryRoute: typeof WhatWeDoDeliverySupportQualityEngineeringFactoryRoute
   WhatWeDoPracticeAreasSupplyChainRoute: typeof WhatWeDoPracticeAreasSupplyChainRoute
   WhatWeDoProductsAcceleratorsB2bInABoxRoute: typeof WhatWeDoProductsAcceleratorsB2bInABoxRoute
   WhatWeDoProductsAcceleratorsHospitalitySolutionRoute: typeof WhatWeDoProductsAcceleratorsHospitalitySolutionRoute
@@ -546,6 +574,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WhatWeDoPracticeAreasSupplyChainRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/what-we-do_/delivery-support_/quality-engineering-factory': {
+      id: '/what-we-do_/delivery-support_/quality-engineering-factory'
+      path: '/what-we-do/delivery-support/quality-engineering-factory'
+      fullPath: '/what-we-do/delivery-support/quality-engineering-factory'
+      preLoaderRoute: typeof WhatWeDoDeliverySupportQualityEngineeringFactoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/what-we-do_/delivery-support_/managed-support-expansion': {
+      id: '/what-we-do_/delivery-support_/managed-support-expansion'
+      path: '/what-we-do/delivery-support/managed-support-expansion'
+      fullPath: '/what-we-do/delivery-support/managed-support-expansion'
+      preLoaderRoute: typeof WhatWeDoDeliverySupportManagedSupportExpansionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -570,6 +612,10 @@ const rootRouteChildren: RootRouteChildren = {
   WhatWeDoDeliverySupportRoute: WhatWeDoDeliverySupportRoute,
   WhatWeDoPracticeAreasRoute: WhatWeDoPracticeAreasRoute,
   WhatWeDoProductsAcceleratorsRoute: WhatWeDoProductsAcceleratorsRoute,
+  WhatWeDoDeliverySupportManagedSupportExpansionRoute:
+    WhatWeDoDeliverySupportManagedSupportExpansionRoute,
+  WhatWeDoDeliverySupportQualityEngineeringFactoryRoute:
+    WhatWeDoDeliverySupportQualityEngineeringFactoryRoute,
   WhatWeDoPracticeAreasSupplyChainRoute: WhatWeDoPracticeAreasSupplyChainRoute,
   WhatWeDoProductsAcceleratorsB2bInABoxRoute:
     WhatWeDoProductsAcceleratorsB2bInABoxRoute,

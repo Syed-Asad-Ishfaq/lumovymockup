@@ -3,9 +3,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Calendar,
-  ExternalLink,
   Compass,
-  PenTool,
   Hammer,
   CheckCircle2,
   Rocket,
@@ -13,7 +11,6 @@ import {
   Cog,
   RefreshCw,
   Boxes,
-  Cpu,
   Workflow,
   ShieldCheck,
   Plus,
@@ -31,11 +28,11 @@ export const Route = createFileRoute("/services")({
   component: ServicesPage,
   head: () => ({
     meta: [
-      { title: "Dynamics 365 Services | Lumovy" },
+      { title: "Microsoft Dynamics 365 Services | Lumovy" },
       {
         name: "description",
         content:
-          "A tightly aligned suite of Microsoft Dynamics 365 services — from first roadmap to day-two operations — for retail, hospitality and commerce businesses.",
+          "Lumovy helps you implement, improve and extend Microsoft Dynamics 365 across Finance & Operations, supply chain, retail and commerce, and customer engagement — with Copilot and AI agents put to work where they make a measurable difference.",
       },
     ],
     scripts: [
@@ -126,10 +123,10 @@ function ServicesPage() {
 
 /* ─────────────────────────────  1. HERO  ───────────────────────────── */
 const HERO_CHECKS = [
-  "Roadmap to go-live",
-  "Engineering & AI",
-  "Managed run & scale",
-  "Quality built in",
+  "Finance & Operations",
+  "Supply chain",
+  "Retail & commerce",
+  "Customer engagement",
 ];
 
 function ServicesHero() {
@@ -141,20 +138,23 @@ function ServicesHero() {
         <div>
           <span className="hero-content-in inline-flex items-center gap-2 rounded-full bg-[var(--blue-light)]/70 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--royal)]">
             <Cog className="h-3.5 w-3.5" />
-            Services
+            Microsoft Dynamics 365 Services
           </span>
           <h1
             className="hero-content-in mt-6 text-4xl font-semibold leading-[1.06] tracking-tight text-[var(--navy-deep)] sm:text-5xl lg:text-[3.4rem]"
             style={{ animationDelay: "80ms" }}
           >
-            Microsoft Expertise That Accelerates Your Transformation
+            Make your next Dynamics decision a better business decision.
           </h1>
           <p
             className="hero-content-in mt-6 max-w-xl text-lg leading-relaxed text-[var(--blue-gray)]"
             style={{ animationDelay: "160ms" }}
           >
-            A tightly aligned suite of Dynamics 365 services — from first roadmap to day-two
-            operations — built for retail, hospitality and commerce businesses.
+            Improve how your business runs today. Build the capabilities it needs next. Lumovy
+            helps you implement, improve and extend Microsoft Dynamics 365 across Finance &amp;
+            Operations, supply chain, retail and commerce, and customer engagement — connecting
+            processes, applications and data, and putting Copilot and AI agents to work where
+            they make a measurable difference.
           </p>
           <ul
             className="hero-content-in mt-7 grid max-w-md grid-cols-2 gap-x-6 gap-y-3"
@@ -176,17 +176,15 @@ function ServicesHero() {
               className="group inline-flex items-center gap-2 rounded-full bg-[var(--royal)] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[var(--navy)] hover:shadow-lg hover:shadow-[var(--royal)]/25"
             >
               <Calendar className="h-4 w-4" />
-              Book a consultation
+              Find my starting point
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="https://appsource.microsoft.com/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#services-list"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-colors hover:border-[var(--royal)]/40 hover:bg-[var(--blue-light)]/40"
             >
-              See the RFID connector on Microsoft Marketplace
-              <ExternalLink className="h-4 w-4" />
+              Explore our services
+              <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </div>
@@ -326,25 +324,35 @@ function TrustStrip() {
   );
 }
 
-/* ─────────────────────────────  3. CATEGORY FRAMING  ───────────────────────────── */
+/* ─────────────────────────────  3. CATEGORY FRAMING (business areas)  ───────────────────────────── */
 const PILLARS = [
   {
-    icon: Compass,
-    name: "Advisory & Delivery",
-    line: "From roadmap to go-live.",
+    icon: TrendingUp,
+    name: "Finance & Operations",
+    line: "Bring greater clarity to financial control, multi-entity operations and reporting.",
     n: "01",
+    href: "#contact",
   },
   {
-    icon: Cpu,
-    name: "Engineering & AI",
-    line: "Build, connect, and modernize what runs the business.",
+    icon: Boxes,
+    name: "Supply Chain",
+    line: "Connect procurement, inventory, warehousing and fulfillment around a clearer view of operations.",
     n: "02",
+    href: "#contact",
   },
   {
-    icon: RefreshCw,
-    name: "Run & Scale",
-    line: "Keep it running, and keep it growing.",
+    icon: Store,
+    name: "Retail & Commerce",
+    line: "Make buying, selling and fulfillment work across stores and digital channels.",
     n: "03",
+    href: "#contact",
+  },
+  {
+    icon: Layers3,
+    name: "Customer Engagement",
+    line: "Help sales and service teams act with the right customer context.",
+    n: "04",
+    href: "#contact",
   },
 ];
 
@@ -354,13 +362,16 @@ function CategoryFraming() {
       <div className="container-enterprise">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--royal)]">
-            How we work with you
+            Start with what needs to work better
           </p>
         </Reveal>
         <div className="mt-10 divide-y divide-border border-y border-border">
           {PILLARS.map((p, i) => (
             <Reveal key={p.name} delay={i * 100}>
-              <div className="group flex items-center gap-6 py-8 transition-colors sm:gap-10">
+              <a
+                href={p.href}
+                className="group flex items-center gap-6 py-8 transition-colors sm:gap-10"
+              >
                 <span className="text-3xl font-bold tabular-nums text-[var(--blue-light)] transition-colors group-hover:text-[var(--royal)] sm:text-5xl">
                   {p.n}
                 </span>
@@ -375,7 +386,8 @@ function CategoryFraming() {
                     {p.line}
                   </p>
                 </div>
-              </div>
+                <ArrowRight className="hidden h-5 w-5 shrink-0 text-[var(--blue-light)] transition-colors group-hover:text-[var(--royal)] sm:block" />
+              </a>
             </Reveal>
           ))}
         </div>
@@ -395,27 +407,26 @@ type Svc = {
   href?: string;
 };
 const SERVICES: Svc[] = [
-  { id: "implementation", cat: "Advisory & Delivery", icon: Rocket, name: "Implementation", outcome: "Achieve quick returns and lasting outcomes.", metric: "100-day rapid go-live track" },
-  { id: "legacy-migration", cat: "Advisory & Delivery", icon: RefreshCw, name: "Legacy Migration", outcome: "Break free from on-premise constraints.", metric: "30% faster migration, full continuity" },
-  { id: "integrations-modernization", cat: "Engineering & AI", icon: Workflow, name: "Integrations & Modernization", outcome: "Build a connected, future-ready ecosystem.", metric: "50+ live integrations delivered", href: "/services/integrations-modernization" },
-  { id: "agentic-ai", cat: "Engineering & AI", icon: Cpu, name: "Enterprise Agentic AI Solutions", outcome: "Deploy autonomous commerce agents.", metric: "Enterprise AI live in 20–60 days" },
-  { id: "quality-engineering", cat: "Engineering & AI", icon: ShieldCheck, name: "Quality Engineering Factory", outcome: "Deliver flawless, performant, best-in-app experiences.", metric: "6× faster validation via Leapwork" },
-  { id: "managed-support", cat: "Run & Scale", icon: LifeBuoy, name: "Managed Support & Expansion", outcome: "Pave the path for continuous improvement.", metric: "24/7 global support coverage" },
-  { id: "global-capability-centers", cat: "Run & Scale", icon: Boxes, name: "Global Capability Centers", outcome: "Stand up a dedicated hub for talent and innovation.", metric: "Specialized talent deployed in 3 weeks" },
+  { id: "discovery-advisory", cat: "Know what's next", icon: Compass, name: "Discovery & Advisory", outcome: "Know what to do next, and why — our Horizon Model organizes findings into stabilize, extend and transformation decisions.", metric: "H1 · H2 · H3 Horizon Model" },
+  { id: "implementation", cat: "Build it right", icon: Rocket, name: "Implementation", outcome: "Build around how the business needs to run, through Initiate, Implement, Prepare and Operate.", metric: "100-day rapid go-live track" },
+  { id: "implementation-recovery", cat: "Restore confidence", icon: ShieldCheck, name: "Implementation Recovery & Re-implementation", outcome: "Restore confidence before adding more change — diagnose, contain, correct and prove.", metric: "Diagnose → Contain → Correct → Prove" },
+  { id: "legacy-migration", cat: "Move forward", icon: RefreshCw, name: "Migration & Upgrade", outcome: "Decide what should move forward with you, then assess, rationalize, rehearse and transition.", metric: "30% faster migration, full continuity" },
+  { id: "integrations-modernization", cat: "Connect the business", icon: Workflow, name: "Integrations & Modernization", outcome: "Make the whole business journey work — connect Dynamics 365 with the systems the business depends on.", metric: "50+ live integrations delivered", href: "/services/integrations-modernization" },
+  { id: "managed-support", cat: "Keep improving", icon: LifeBuoy, name: "Managed Services & Optimization", outcome: "Keep everyday support connected to lasting improvement, with a visible backlog and clear communication.", metric: "24/7 global support coverage" },
 ];
 
 function ServiceList() {
   const [active, setActive] = useState<string>(SERVICES[0].id);
   return (
-    <section className="border-y border-border bg-[var(--blue-light)]/30 py-24">
+    <section id="services-list" className="scroll-mt-20 border-y border-border bg-[var(--blue-light)]/30 py-24">
       <div className="container-enterprise">
         <Reveal>
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--royal)]">
-              Seven ways we deliver
+              The right service starts with the right diagnosis
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-              Every engagement is a proof point
+              A new implementation, a targeted improvement and a platform transformation solve different problems.
             </h2>
           </div>
         </Reveal>
@@ -497,12 +508,10 @@ function ServiceList() {
 
 /* ─────────────────────────────  5. METHODOLOGY BAND (flagship)  ───────────────────────────── */
 const PHASES = [
-  { icon: Compass, name: "Discovery", note: "Priorities & scope" },
-  { icon: PenTool, name: "Blueprint", note: "Solution design" },
-  { icon: Hammer, name: "Build", note: "Configure & integrate" },
-  { icon: CheckCircle2, name: "Validate", note: "Test & assure quality" },
-  { icon: Rocket, name: "Go-Live", note: "Governed launch" },
-  { icon: LifeBuoy, name: "Hypercare", note: "Stabilize & optimize" },
+  { icon: Compass, name: "Initiate", note: "Agree outcomes, scope and blueprint" },
+  { icon: Hammer, name: "Implement", note: "Design, configure, build and test" },
+  { icon: CheckCircle2, name: "Prepare", note: "Validate readiness, prepare users" },
+  { icon: Rocket, name: "Operate", note: "Deploy, hypercare, transition to support" },
 ];
 
 function MethodologyBand() {
@@ -547,15 +556,15 @@ function MethodologyBand() {
       <div ref={pinRef} className="container-enterprise relative z-10">
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--cyan-soft)]">
-            The framework
+            The delivery framework
           </span>
           <h2 className="mt-5 text-3xl font-semibold leading-tight tracking-tight text-white sm:text-4xl">
-            The LTS + Success by Design Framework
+            Initiate. Implement. Prepare. Operate.
           </h2>
           <p className="mt-5 text-base leading-relaxed text-white/70">
-            Every engagement runs on a hybrid delivery framework — Microsoft&apos;s Success by
-            Design methodology combined with Lumovy&apos;s own LTS approach. Governed go-lives,
-            structured checkpoints, no surprise overruns.
+            Lumovy translates business priorities into a configured, tested and operationally
+            prepared solution through four stages — with business capabilities first,
+            configuration before customization and early user validation built in throughout.
           </p>
         </div>
 
@@ -572,7 +581,7 @@ function MethodologyBand() {
             className="absolute left-0 top-7 hidden h-0.5 bg-gradient-to-r from-[var(--royal)] via-[var(--azure)] to-[var(--cyan-soft)] lg:block"
             style={{ width: `${progress * 100}%`, transition: "width 0.1s linear" }}
           />
-          <ol className="grid gap-8 sm:grid-cols-2 lg:grid-cols-6 lg:gap-3">
+          <ol className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
             {PHASES.map((ph, i) => {
               const reached = progress >= i / (PHASES.length - 1) - 0.02;
               return (
@@ -605,7 +614,7 @@ function MethodologyBand() {
             href="#contact"
             className="group inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
           >
-            See how we de-risk your D365 program
+            Explore Discovery & Advisory
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
           </a>
         </div>
@@ -738,24 +747,36 @@ function CrossSell() {
 /* ─────────────────────────────  8. FAQ  ───────────────────────────── */
 const FAQS = [
   {
-    q: "How do you scope a new engagement?",
-    a: "We start with a focused discovery session to define your business priorities and MVP outcomes, then produce a blueprint and roadmap with clear checkpoints — so scope, timeline and investment are agreed before build begins.",
+    q: "What Microsoft Dynamics 365 services does Lumovy provide?",
+    a: "Lumovy provides Discovery & Advisory, implementation, implementation recovery, migration and upgrade, integrations and modernization, and managed services. These services support Finance & Operations, supply chain, retail and commerce, and customer engagement, with AI enablement incorporated where relevant.",
   },
   {
-    q: "Do you work with an existing Dynamics 365 implementation, or only new deployments?",
-    a: "Both. We take on new deployments as well as existing D365 environments — whether you need optimization, new modules, integrations, or to modernize a legacy or partially-implemented system.",
+    q: "Can Lumovy improve our current Dynamics environment without replacing it?",
+    a: "Yes. Lumovy assesses immediate improvements and extension opportunities alongside the case for transformation. The recommendation depends on business value, platform constraints and readiness.",
   },
   {
-    q: "What does your typical delivery team look like?",
-    a: "A blended team of solution architects, functional and technical consultants, integration and QA engineers, and a delivery lead — the same roles named on our Implementation and Integrations pages, scaled to the engagement.",
+    q: "What is Lumovy's Horizon Model?",
+    a: "The Horizon Model structures discovery into H1 — Stabilize & Optimize, H2 — Extend & Enable, and H3 — Evaluate Transformation. It helps leaders decide what to fix now, what capabilities to add and when platform transformation merits deeper assessment.",
   },
   {
-    q: "Can you take over support from our current partner?",
-    a: "Yes. Our Managed Support & Expansion service includes a structured switch-over — we can assume support of your existing environment, typically within 30 days, with knowledge transfer and no disruption to operations.",
+    q: "Does Discovery & Advisory commit us to migration?",
+    a: "No. The engagement produces findings, priorities and recommendations. Migration is investigated when the evidence supports it; it is not the assumed outcome.",
   },
   {
-    q: "Do you offer a smaller, lower-commitment starting engagement?",
-    a: "Yes. We offer assessment and health-check style entry engagements that give you a clear picture and roadmap before committing to a full program — a low-risk way to start.",
+    q: "How does Lumovy approach Dynamics 365 implementation?",
+    a: "Lumovy follows four stages: Initiate, Implement, Prepare and Operate. The approach includes iterative delivery, business reviews, testing, user preparation, cutover and hypercare.",
+  },
+  {
+    q: "Can Lumovy recover a struggling implementation?",
+    a: "Yes. Lumovy can assess an in-flight or live implementation and recommend a recovery approach. The findings determine whether targeted correction or broader re-implementation is appropriate.",
+  },
+  {
+    q: "How can Lumovy help us adopt AI in Dynamics 365?",
+    a: "Lumovy helps identify use cases, assess prerequisites, configure or extend suitable capabilities, connect systems and validate outcomes. Each use case starts with a defined business task and a measure of improvement.",
+  },
+  {
+    q: "How long will an engagement take?",
+    a: "Timing depends on scope, complexity, dependencies and business readiness. The delivery plan is established after these are understood — the Horizon Model does not impose fixed timelines.",
   },
 ];
 
@@ -778,9 +799,11 @@ function ClosingCTA() {
   return (
     <FinalCtaSection
       id="contact"
-      title="Ready to talk through your Dynamics 365 roadmap?"
+      title="What should work better next?"
+      subtitle="A stronger platform. A connected process. An AI capability that earns its place in the business. Let's identify the next move around your priorities."
       microcopy="NDA available on request. Response within 1 business day."
-      primary={{ label: "Book a consultation", href: "#contact", icon: true }}
+      primary={{ label: "Discuss my Dynamics priorities", href: "#contact", icon: true }}
+      secondary={{ label: "Find my starting point", href: "#services-list" }}
     />
   );
 }

@@ -17,11 +17,12 @@ import {
   Bot,
   ClipboardCheck,
   Settings2,
-  Gauge,
+  Radio,
   ArrowUpRight,
-  Factory,
-  Truck,
-  ShieldCheck,
+  Warehouse,
+  Route as RouteIcon,
+  PackageSearch,
+  RefreshCw,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -46,16 +47,17 @@ import implementationImg from "@/assets/services/implementation.jpg";
 import engineeringImg from "@/assets/services/engineering.jpg";
 import consultingImg from "@/assets/services/consulting.jpg";
 import supportImg from "@/assets/services/support.jpg";
+import rfidScanImg from "@/assets/products/rfid-scan.jpg";
 
 export const Route = createFileRoute("/what-we-do_/practice-areas_/supply-chain")({
   component: SupplyChainPage,
   head: () => ({
     meta: [
-      { title: "Manufacturing & Supply Chain Transformation Suite | Lumovy" },
+      { title: "Supply Chain & Distribution Solutions | Lumovy D365" },
       {
         name: "description",
         content:
-          "Connect production, inventory, and suppliers with Lumovy's Manufacturing & Supply Chain Transformation Suite, powered by AI-driven forecasting on Dynamics 365 Supply Chain Management and delivered in 100 days.",
+          "Connect inventory, warehouses, replenishment, and fulfilment with Lumovy's Dynamics 365 supply chain and distribution solutions for retail, grocery, and distribution businesses.",
       },
     ],
   }),
@@ -109,10 +111,10 @@ function SupplyChainPage() {
 
 /* ─────────────────────────────  1. HERO (dark)  ───────────────────────────── */
 const PROOF_BAR = [
-  "Up to 98% Forecast Accuracy",
-  "Real-Time Inventory Visibility",
-  "100-Day D365 SCM Rollout",
-  "Connected Production-to-Supplier Foundation",
+  "100 Days to Full ERP-Enabled Store Operations",
+  "Under 1% Order Cancellations",
+  "50+ Upstream & Downstream Integrations",
+  "1,600+ SKUs Onboarded",
 ];
 const MS_LOGOS = [
   { src: msLogo, alt: "Microsoft", h: "h-6" },
@@ -138,22 +140,24 @@ function SupplyChainHero() {
       <div className="container-enterprise relative z-10 py-24 lg:py-28">
         <div className="max-w-3xl">
           <span className="hero-content-in text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
-            Manufacturing &amp; Supply Chain Transformation
+            Supply Chain &amp; Distribution
           </span>
           <h1 className="hero-content-in mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]" style={{ animationDelay: "80ms" }}>
-            Turn Supply Chain Gaps Into Better Margins
+            From Stock on Hand to Promises Kept
           </h1>
           <p className="hero-content-in mt-6 max-w-2xl text-base leading-relaxed text-white/70" style={{ animationDelay: "160ms" }}>
-            Connect production, inventory, and suppliers with our Manufacturing &amp; Supply Chain
-            Transformation Suite, powered by AI-driven forecasting on Dynamics 365 Supply Chain
-            Management and delivered in 100 days.
+            Having the stock is only the beginning. Knowing where it is, where it should go, and
+            how to get it to the customer is what makes it valuable. Lumovy connects inventory,
+            purchasing, warehouses, and fulfilment across your Dynamics 365 environment, turning
+            disconnected operations into a coordinated flow of goods and information for
+            retailers, grocery businesses, and distributors.
           </p>
           <div className="hero-content-in mt-9 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
             <a
               href="#suite"
               className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/30"
             >
-              See What&apos;s Included
+              Explore the Solutions
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
@@ -161,7 +165,7 @@ function SupplyChainHero() {
               className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
             >
               <Calendar className="h-4 w-4" />
-              Get Your Supply Chain Bundle Quote
+              Find My Solution Priorities
             </a>
           </div>
         </div>
@@ -192,32 +196,32 @@ function SupplyChainHero() {
   );
 }
 
-/* ─────────────────────────────  2. THE PROBLEM  ───────────────────────────── */
+/* ─────────────────────────────  2. THE PROBLEM (Solution Choices)  ───────────────────────────── */
 const PROBLEMS = [
   {
-    icon: Workflow,
-    title: "Disconnected Planning & Production",
-    body: "Disconnected sales, planning, and production create delays, excess inventory, and missed demand. Connect planning and execution with Dynamics 365 Supply Chain Management.",
+    icon: PackageSearch,
+    title: "Inventory Visibility and Accuracy",
+    body: "“We need to trust the stock before we promise it.” Connect inventory information across stores, warehouses, and linked systems, with RFID-enabled counting where it fits the operation.",
+  },
+  {
+    icon: Warehouse,
+    title: "Warehouse and Distribution Operations",
+    body: "“Goods are moving. Too much information is still being chased.” Connect receiving, warehouse activity, transfers, and external logistics systems into one aligned flow.",
+  },
+  {
+    icon: RouteIcon,
+    title: "Omnichannel Order Fulfilment",
+    body: "“We have the inventory. We need more ways to fulfil the order.” Use location and priority rules to direct orders across stores and warehouses, including split fulfilment and BOPIS.",
+  },
+  {
+    icon: RefreshCw,
+    title: "Procurement and Replenishment",
+    body: "“The right stock needs to arrive before the shortage does.” Connect purchasing, vendor ordering, and stock movement across suppliers, distribution centres, and stores.",
   },
   {
     icon: Boxes,
-    title: "Inventory You Can Trust",
-    body: "Limited inventory visibility leads to stockouts and excess stock. Gain real-time visibility across plants and warehouses with Microsoft Dynamics 365 Inventory Management.",
-  },
-  {
-    icon: TrendingUp,
-    title: "Predictive Demand Planning",
-    body: "Reactive forecasting causes costly shortages and overproduction. Use AI-powered forecasting to anticipate demand and supply risks early.",
-  },
-  {
-    icon: Truck,
-    title: "Smarter Procurement",
-    body: "Manual purchasing and disconnected supplier data slow operations. Automate procurement and manage suppliers from one connected platform.",
-  },
-  {
-    icon: Cpu,
-    title: "Built for Growth",
-    body: "Legacy ERP systems limit agility and slow expansion. Modernize with Dynamics 365 for Manufacturing to scale production, suppliers, and operations with confidence.",
+    title: "Grocery and Store Inventory Operations",
+    body: "“Our replenishment challenge changes by aisle, store, and temperature zone.” Bring store ordering, counting, write-offs, transfers, and shelf-label workflows into one operating model.",
   },
 ];
 
@@ -226,10 +230,16 @@ function SupplyChainProblem() {
     <section className="border-b border-border bg-white py-28">
       <div className="container-enterprise">
         <div className="max-w-3xl">
-          <p className="eyebrow">The problem</p>
+          <p className="eyebrow">Start where the friction is</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Close Supply Chain Gaps. Protect Margin.
+            Available Stock and a Fulfilled Order Are Not the Same Thing
           </h2>
+          <p className="mt-5 text-[15px] leading-relaxed text-[var(--blue-gray)]">
+            Inventory can be in the wrong location. A warehouse update can arrive too late. A
+            store can have the item without being able to fulfil the order. Choose the challenge
+            closest to yours, each solution area can be scoped around your current environment
+            and combined with others as your priorities expand.
+          </p>
         </div>
       </div>
 
@@ -263,26 +273,25 @@ function SupplyChainProblem() {
 
 /* ─────────────────────────────  3. THE TRANSFORMATION SUITE  ───────────────────────────── */
 const SUITE_INCLUDED: { label: string; image: string }[] = [
-  { label: "Dynamics 365 Supply Chain Management core configuration", image: engineeringImg },
-  { label: "Production planning and scheduling", image: implementationImg },
-  { label: "AI-driven demand forecasting", image: consultingImg },
-  { label: "Real-time inventory management across raw materials, work in progress, and finished goods", image: supportImg },
-  { label: "Supplier and procurement management", image: engineeringImg },
-  { label: "Warehouse management and fulfillment", image: implementationImg },
-  { label: "Quality management and compliance tracking", image: consultingImg },
-  { label: "Cost and margin visibility by product and plant", image: supportImg },
-  { label: "Manufacturing and supply chain KPI dashboards", image: engineeringImg },
-  { label: "Go-live support and continuous optimization", image: implementationImg },
+  { label: "Inventory visibility across stores, warehouses, and linked systems", image: engineeringImg },
+  { label: "Stock counting, reconciliation, and RFID-enabled counting where it fits", image: rfidScanImg },
+  { label: "Warehouse receiving, transfer, and WMS/3PL integration workflows", image: implementationImg },
+  { label: "Distributed order management with location and priority rules", image: consultingImg },
+  { label: "Split fulfilment, buy online pick up in store, and ship-to-store journeys", image: supportImg },
+  { label: "Procurement and sourcing with vendor-ordering workflows", image: engineeringImg },
+  { label: "Replenishment coordination between distribution centres and stores", image: implementationImg },
+  { label: "Grocery store ordering, write-offs, transfers, and shelf-label workflows", image: consultingImg },
+  { label: "Ambient, chilled, and frozen inventory handling for grocery operations", image: supportImg },
+  { label: "Go-live support and continuous optimization", image: engineeringImg },
 ];
 const SUITE_EXTENSIONS = [
-  "Multi-plant and multi-country expansion",
-  "Advanced planning and scheduling (APS)",
-  "IoT-connected shop floor monitoring",
-  "Supplier collaboration portal",
-  "AI-powered quality inspection",
-  "Warehouse automation integration",
-  "Advanced procurement analytics",
-  "Managed services for manufacturing",
+  "RFID-enabled inventory counting with SML",
+  "Multi-store and multi-country expansion",
+  "Third-party logistics (3PL) integration",
+  "Store pickup and store-transfer capabilities",
+  "Vendor collaboration workflows",
+  "Advanced warehouse workflows",
+  "Managed services for supply chain",
 ];
 const SUITE_INTERVAL = 6000;
 
@@ -290,22 +299,22 @@ const TIERS = [
   {
     name: "Foundation",
     tag: "Start",
-    blurb: "Launch a connected manufacturing and supply chain operation with core Dynamics 365 Supply Chain Management, inventory visibility, and standardized production processes.",
-    points: ["Connected production & core D365 SCM", "Real-time inventory visibility", "Standard production scheduling", "2-week hypercare"],
+    blurb: "Bring stock information into a more consistent view with connected inventory, standardized counting, and core Dynamics 365 Supply Chain Management.",
+    points: ["Inventory visibility across locations", "Stock counting & reconciliation", "Core D365 SCM configuration", "2-week hypercare"],
     featured: false,
   },
   {
     name: "Growth",
     tag: "Scale up",
-    blurb: "Expand capabilities across plants and suppliers with AI-driven forecasting, advanced planning, supplier collaboration, and inventory intelligence.",
-    points: ["Everything in Foundation", "AI-driven demand forecasting", "Advanced planning (APS)", "Multi-supplier, automated PO", "4-week hypercare"],
+    blurb: "Connect warehouses, logistics partners, and order fulfilment so stock across your network becomes part of a coordinated fulfilment proposition.",
+    points: ["Everything in Foundation", "WMS/3PL integration", "Distributed order management", "Split fulfilment & BOPIS", "4-week hypercare"],
     featured: true,
   },
   {
     name: "Enterprise",
     tag: "Scale wide",
-    blurb: "Scale transformation across plants, regions, and supplier networks with advanced planning and scheduling, a full AI forecasting suite, and an enterprise integration layer.",
-    points: ["Everything in Growth", "Full predictive AI suite", "Multi-plant APS + optimization", "Full supplier collaboration portal", "12-week hypercare"],
+    blurb: "Extend replenishment, procurement, and grocery store operations across your full network, with RFID-enabled counting where it fits the operation.",
+    points: ["Everything in Growth", "Procurement & replenishment coordination", "Grocery & store inventory operations", "RFID inventory counting", "12-week hypercare"],
     featured: false,
   },
 ];
@@ -327,15 +336,16 @@ function SupplyChainSuite() {
       <div aria-hidden className="mesh-blobs-light opacity-50" />
       <div className="container-enterprise relative">
         <div className="max-w-3xl">
-          <p className="eyebrow">The Transformation Suite</p>
+          <p className="eyebrow">The Solution Suite</p>
           <h2 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Plan Smarter. Produce Reliably. Move as One.
+            Dynamics 365 at the Centre. Your Operating Reality Around It.
           </h2>
           <p className="mt-5 text-[15px] leading-relaxed text-[var(--blue-gray)]">
-            Our Manufacturing &amp; Supply Chain Transformation Suite brings together the
-            capabilities manufacturers need to improve inventory accuracy, forecast demand,
-            streamline production planning, connect suppliers, and manage the full source-to-pay
-            cycle, all on a scalable Dynamics 365 Supply Chain Management foundation.
+            Lumovy brings together Dynamics 365 Supply Chain Management, Finance, and Commerce
+            with the surrounding applications that move products, orders, and inventory. Business
+            rules that reflect how you trade, location priorities, split orders, store pickup,
+            transfers, and warehouse workflows, are shaped around the way your business fulfils
+            demand.
           </p>
         </div>
 
@@ -409,7 +419,7 @@ function SupplyChainTiers() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Engagement tiers</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Three Ways to Begin Working with Your Supply Chain Transformation Partner
+            Three Ways to Begin Working with Your Supply Chain Partner
           </h2>
         </div>
 
@@ -471,8 +481,8 @@ function SupplyChainTiers() {
                 Not sure where to begin?
               </h3>
               <p className="mt-2 max-w-lg text-sm leading-relaxed text-white/70">
-                Book a Supply Chain Readiness Call and we&apos;ll recommend the right starting
-                point for your business.
+                Answer a few business questions to find your solution priorities, then we&apos;ll
+                recommend the right starting point for your business.
               </p>
             </div>
             <a
@@ -480,7 +490,7 @@ function SupplyChainTiers() {
               className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl"
             >
               <Calendar className="h-4 w-4" />
-              Book a Supply Chain Readiness Call
+              Find My Solution Priorities
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
@@ -492,8 +502,8 @@ function SupplyChainTiers() {
 
 /* ─────────────────────────────  5. ACCELERATORS & SOLUTIONS  ───────────────────────────── */
 const ACCELERATORS = [
-  { icon: Settings2, name: "Optim365", body: "A framework that governs your data, optimizes your licensing, and boosts your D365 SCM performance.", href: "/what-we-do/products-accelerators/optim365" },
-  { icon: Gauge, name: "PerfLens365", body: "A performance toolkit covering load testing, live monitoring, and diagnostics for your Dynamics 365 supply chain management platform.", href: "/what-we-do/products-accelerators/perflens365" },
+  { icon: Radio, name: "Clarity RFID Connector", body: "Developed in collaboration with SML, our ready RFID inventory-counting solution connects physical stock counts with Microsoft Dynamics 365 Finance & Operations.", href: "/what-we-do/products-accelerators/rfid-connect" },
+  { icon: Settings2, name: "Optim365", body: "A framework that governs your data, optimizes your licensing, and boosts your D365 Supply Chain Management performance.", href: "/what-we-do/products-accelerators/optim365" },
 ];
 
 function SupplyChainAccelerators() {
@@ -527,12 +537,12 @@ function SupplyChainAccelerators() {
   );
 }
 
-/* ─────────────────────────────  6. AI AGENTS  ───────────────────────────── */
+/* ─────────────────────────────  6. AI AGENTS (Now and Beyond)  ───────────────────────────── */
 const AI_AGENTS = [
-  { icon: TrendingUp, name: "Demand Forecasting Agent", body: "Predicts material shortages and demand shifts before they hit production, keeping your D365 SCM plan a step ahead." },
-  { icon: ShieldCheck, name: "Supplier Risk Agent", body: "Flags supplier delays and quality issues early, so procurement can act before a shortage reaches the shop floor." },
-  { icon: Factory, name: "Production Scheduling Agent", body: "Automates shop floor scheduling adjustments and compliance checks as demand and capacity shift." },
-  { icon: ClipboardCheck, name: "Inventory Optimization Agent", body: "Automates replenishment and safety stock triggers across plants and warehouses." },
+  { icon: Bot, name: "Inventory Fulfillment Agent", body: "Built using Microsoft Copilot Studio and inventory visibility capabilities, this Lumovy asset helps teams answer: can we fulfil this order, and where is stock short?" },
+  { icon: TrendingUp, name: "Replenishment Exceptions", body: "Ongoing agent development explores shortages and replenishment exceptions, helping teams recognize what needs attention sooner." },
+  { icon: ClipboardCheck, name: "Fulfilment Exceptions", body: "Exploring how an agent can flag fulfilment exceptions across your network, so decisions get made before an order is delayed or cancelled." },
+  { icon: Boxes, name: "Slow-Moving Stock", body: "Ongoing development also looks at surfacing slow-moving or ageing stock, so it gets attention before it becomes a write-off." },
 ];
 
 function SupplyChainAIAgents() {
@@ -543,11 +553,17 @@ function SupplyChainAIAgents() {
       <div className="container-enterprise relative z-10">
         <div className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--cyan-soft)]">
-            <Bot className="h-3.5 w-3.5" /> AI agents
+            <Bot className="h-3.5 w-3.5" /> Now and beyond
           </span>
           <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Powered by AI, working alongside your teams
+            Solve Today&apos;s Movement of Goods. Prepare for Tomorrow&apos;s Decisions.
           </h2>
+          <p className="mt-5 text-[15px] leading-relaxed text-white/65">
+            Today&apos;s foundation is connected inventory, working fulfilment rules, and
+            dependable information across systems. The next opportunity is helping teams recognize
+            exceptions and decide what to do sooner. Agent availability, fit, and scope are
+            confirmed for the proposed use case.
+          </p>
         </div>
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {AI_AGENTS.map((a) => (
@@ -560,6 +576,15 @@ function SupplyChainAIAgents() {
             </div>
           ))}
         </div>
+        <div className="mt-10">
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl"
+          >
+            Discuss an Inventory or Fulfilment Agent
+            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </a>
+        </div>
       </div>
     </section>
   );
@@ -567,10 +592,10 @@ function SupplyChainAIAgents() {
 
 /* ─────────────────────────────  7. WHY LUMOVY  ───────────────────────────── */
 const WHY = [
-  { icon: BadgeCheck, title: "Built Around Modern Manufacturing", body: "From production planning and inventory control to supplier collaboration and demand volatility, we help manufacturers solve the operational challenges that slow growth and impact profitability. Every engagement is built around Microsoft Dynamics 365 for Manufacturing, keeping production planning, inventory, and supplier data on one connected platform." },
-  { icon: Target, title: "Focused on Operational Excellence", body: "Every engagement is designed to improve production efficiency, increase inventory accuracy, strengthen supply chain resilience, and deliver measurable business outcomes, not simply implement new technology." },
-  { icon: Sparkles, title: "Built to Grow with Your Business", body: "Whether you're expanding production capacity, adding new plants, onboarding suppliers, or introducing AI-driven planning, we help you scale with confidence while minimizing disruption." },
-  { icon: LifeBuoy, title: "Powered by Microsoft. Proven in Manufacturing.", body: "Built on Microsoft Dynamics 365 Supply Chain Management, our solutions combine deep manufacturing expertise, implementation accelerators, and continuous optimization to help your operations stay agile, efficient, and ready for what's next." },
+  { icon: BadgeCheck, title: "Business Rules That Reflect How You Trade", body: "Location priorities, split orders, store pickup, transfers, and warehouse workflows are shaped around the way your business fulfils demand, not a generic template." },
+  { icon: Link2, title: "Connections That Reach Beyond the ERP", body: "Our integration experience spans warehouse platforms, third-party logistics, merchandising systems, commerce applications, and RFID. Azure and, where appropriate, existing middleware connect the information those systems exchange." },
+  { icon: Sparkles, title: "Reusable Assets with a Specific Purpose", body: "Store applications and a ready RFID integration solution provide starting points for defined operating needs. We assess their fit against your processes and environment before recommending them." },
+  { icon: LifeBuoy, title: "Evidence from Connected Retail and Grocery Operations", body: "Cavender's demonstrates the connection between inventory, stores, and fulfilment. Majid Al Futtaim demonstrates the coordination needed to launch grocery operations across finance, supply chain, and stores." },
 ];
 
 function SupplyChainWhy() {
@@ -580,7 +605,7 @@ function SupplyChainWhy() {
         <div className="max-w-2xl">
           <p className="eyebrow">Why Lumovy</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Built by people who understand how manufacturers and supply chains actually operate
+            Dynamics 365 at the Centre. Your Operating Reality Around It.
           </h2>
         </div>
         <div className="mt-14 grid gap-6 md:grid-cols-2">
@@ -609,28 +634,31 @@ function SupplyChainProof() {
         <div className="max-w-2xl">
           <p className="eyebrow">Proof</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            What manufacturers see after moving to Dynamics 365 Supply Chain Management
+            What this looks like in a working business
           </h2>
         </div>
         <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-[1.35fr_1fr]">
           <div className="flex min-h-[440px] flex-col justify-between rounded-xl border border-border bg-white p-8">
             <div>
-              <span className="eyebrow">Manufacturing &amp; Supply Chain</span>
+              <span className="eyebrow">Cavender&apos;s</span>
               <h3 className="mt-6 text-2xl font-semibold tracking-tight text-[var(--navy-deep)]">
-                Tighter Inventory Control, Faster Forecast Cycles
+                More Fulfilment Options Across a Complex Store and Warehouse Network
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-[var(--blue-gray)]">
-                Manufacturers running Dynamics 365 Supply Chain Management with Lumovy typically
-                see tighter inventory control, faster forecast cycles, and fewer supplier-driven
-                delays within the first two quarters after go-live.
+                Rising order volumes and multi-store complexity exposed fragmented fulfilment,
+                partial shipments, and limited inventory visibility. Lumovy extended Dynamics 365
+                with distributed order management, location and priority rules, inventory-based
+                order splitting, store pickup and transfer capabilities, and advanced warehouse
+                workflows, with Azure and Boomi integrations connecting upstream and downstream
+                systems.
               </p>
             </div>
             <div>
               <div className="grid grid-cols-3 gap-3 border-t border-border pt-6">
                 {[
-                  ["Improved", "Forecast accuracy through AI-driven demand planning"],
-                  ["Reduced", "Safety stock while maintaining service levels"],
-                  ["Faster", "PO cycle times through automated procurement"],
+                  ["Under 1%", "Order cancellations"],
+                  ["25%", "Upsell from buy online, pick up in store"],
+                  ["50+", "Upstream and downstream integrations"],
                 ].map(([v, l]) => (
                   <div key={l} className="min-w-0">
                     <div className="whitespace-nowrap text-[15px] font-bold leading-tight text-[var(--navy-deep)]">{v}</div>
@@ -653,14 +681,14 @@ function SupplyChainProof() {
             <div aria-hidden className="absolute inset-x-0 bottom-0 h-1/2 backdrop-blur-[3px] [mask-image:linear-gradient(to_top,black_35%,transparent)]" />
             <figcaption className="relative z-10 flex h-full min-h-[440px] flex-col justify-end p-8">
               <div className="text-3xl font-bold tracking-tight text-white">Connected</div>
-              <div className="mt-1 text-sm text-white/80">A scalable D365 SCM platform ready for additional plants and suppliers</div>
+              <div className="mt-1 text-sm text-white/80">Stock across the network became part of a more connected fulfilment proposition</div>
               <blockquote className="mt-4 text-sm leading-relaxed text-white/90">
-                &ldquo;Lumovy connected our production, inventory, and suppliers on Dynamics 365
-                and gave us a platform built to scale with our growth.&rdquo;
+                &ldquo;Lumovy connected our inventory, stores, and fulfilment on Dynamics 365 and
+                gave us a platform built to scale with our growth.&rdquo;
               </blockquote>
               <div className="mt-4 border-t border-white/20 pt-3">
                 <div className="text-sm font-semibold text-white">Supply Chain Operations Lead</div>
-                <div className="text-xs text-white/70">Manufacturing &amp; Distribution</div>
+                <div className="text-xs text-white/70">Retail &amp; Distribution</div>
               </div>
             </figcaption>
           </figure>
@@ -672,11 +700,11 @@ function SupplyChainProof() {
 
 /* ─────────────────────────────  9. HOW IT WORKS (animated)  ───────────────────────────── */
 const STEPS = [
-  { icon: Compass, title: "Discover", body: "Assess your manufacturing operations to identify production bottlenecks, planning gaps, and supply chain inefficiencies." },
-  { icon: Target, title: "Plan", body: "Prioritize the capabilities that will deliver the greatest operational and business impact." },
-  { icon: Link2, title: "Transform", body: "Connect production, inventory, procurement, and planning on a unified Dynamics 365 platform." },
+  { icon: Compass, title: "Discover", body: "Identify where the business feels the friction, in inventory, distribution, fulfilment, replenishment, or store operations." },
+  { icon: Target, title: "Plan", body: "Prioritize the solution areas that will deliver the greatest business impact, scoped around your current environment." },
+  { icon: Link2, title: "Connect", body: "Bring inventory, purchasing, warehouses, and fulfilment together across your Dynamics 365 environment." },
   { icon: Rocket, title: "Launch", body: "Go live with guided user adoption, seamless deployment, and dedicated hypercare support." },
-  { icon: TrendingUp, title: "Optimize", body: "Continuously improve performance with AI-driven forecasting, advanced planning, and ongoing optimization." },
+  { icon: TrendingUp, title: "Optimize", body: "Continuously improve with dependable information across systems, and prepare for agent-assisted decisions." },
 ];
 
 function SupplyChainProcess() {
@@ -713,7 +741,7 @@ function SupplyChainProcess() {
         <div className="max-w-2xl">
           <p className="eyebrow">How it works</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            From discovery to enterprise scale
+            From today&apos;s foundation to tomorrow&apos;s decisions
           </h2>
         </div>
         <div className="relative mt-16">
@@ -748,11 +776,11 @@ const SUPPLY_CHAIN_CASE_STUDIES = [
     sector: "Majid Al Futtaim (Sava)",
     image: mafCaseImg,
     logo: mafLogo,
-    title: "Cloud-First Grocery & Discount Launch in Under 100 Days",
+    title: "From a New Grocery Operation to ERP-Enabled Stores in 100 Days",
     results: [
       ["100 days", "To full ERP-enabled store operations"],
-      ["130+", "Business processes, 14 modules"],
-      ["1,600+", "SKUs; 160 weekly offers"],
+      ["4 to 2 days", "Vendor-to-DC replenishment time"],
+      ["1,600+", "SKUs onboarded"],
     ] as [string, string][],
   },
   {
@@ -760,11 +788,11 @@ const SUPPLY_CHAIN_CASE_STUDIES = [
     image: cavendersCaseImg,
     logo: cavendersLogo,
     logoClass: "max-h-8",
-    title: "Unified, AI Powered Customer Experience",
+    title: "More Fulfilment Options Across a Complex Store and Warehouse Network",
     results: [
-      ["+75%", "Agent efficiency"],
-      ["-60%", "Case processing time"],
-      ["-50%", "Manual effort"],
+      ["<1%", "Order cancellations"],
+      ["25%", "Upsell from BOPIS"],
+      ["50+", "Upstream & downstream integrations"],
     ] as [string, string][],
   },
   {
@@ -787,7 +815,7 @@ function SupplyChainCaseStudies() {
       <div className="container-enterprise relative">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
-            <p className="eyebrow">Case studies</p>
+            <p className="eyebrow">Customer evidence</p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
               Real engagements. Auditable outcomes
             </h2>
@@ -802,6 +830,10 @@ function SupplyChainCaseStudies() {
             <CaseStudyCard key={c.title} {...c} />
           ))}
         </div>
+        <p className="mt-6 text-xs leading-relaxed text-[var(--blue-gray)]">
+          Results reflect the individual programmes described and are not forecasts for other
+          engagements.
+        </p>
       </div>
     </section>
   );
@@ -810,24 +842,28 @@ function SupplyChainCaseStudies() {
 /* ─────────────────────────────  10. FAQ  ───────────────────────────── */
 const SUPPLY_CHAIN_FAQS: [string, string][] = [
   [
-    "How quickly can we modernize without disrupting production?",
-    "Most Foundation engagements go live in 100 days, using a phased rollout by plant or product line, so production continues while we configure and test the new environment in parallel.",
+    "What supply chain and distribution solutions does Lumovy offer?",
+    "Lumovy's solution areas cover inventory visibility, warehouse and distribution operations, omnichannel fulfilment, procurement and replenishment, and grocery store operations. They combine Microsoft Dynamics 365 capabilities with integrations, extensions, and relevant Lumovy assets.",
   ],
   [
-    "Can we start with a single plant or product line before expanding?",
-    "Yes. Many manufacturers start with one plant or one product line, validate the Dynamics 365 Supply Chain Management configuration, then roll it out to additional plants and suppliers.",
+    "Can Lumovy connect Dynamics 365 to our existing WMS or 3PL?",
+    "Yes. Lumovy has experience connecting Dynamics 365 with warehouse and third-party logistics systems for product, order, inventory, and adjustment flows. The solution depends on your current platforms, interfaces, and business requirements.",
   ],
   [
-    "Can this integrate with our existing ERP, MES, and supplier systems?",
-    "Yes. The suite is built to integrate with common ERP and MES platforms, supplier systems, EDI, and IoT data sources where available.",
+    "Can we support store pickup and fulfil orders across multiple locations?",
+    "Lumovy has delivered store-pickup, store-transfer, distributed order management, and inventory-based order-splitting capabilities. The appropriate design depends on stock availability, location priorities, and your fulfilment policies.",
   ],
   [
-    "How does Lumovy improve forecast accuracy?",
-    "We configure AI-driven forecasting on Dynamics 365 Supply Chain Management using your historical demand, seasonality, and supplier lead times, then validate the model against real orders before it drives planning decisions.",
+    "What is the Lumovy and SML RFID solution?",
+    "It is a ready RFID inventory-counting solution developed in collaboration with SML and connected to Dynamics 365 Finance & Operations. It supports the exchange of product and on-hand inventory information and the creation of inventory counting journals from RFID results. The solution provides an integration foundation, tagging, readers, configuration, licensing, and deployment requirements are confirmed for your environment.",
   ],
   [
-    "What happens after go-live?",
-    "You move into hypercare, then can extend into managed services for manufacturing, covering monitoring, plant onboarding, and continuous forecasting optimization.",
+    "Are these solutions relevant to grocery businesses?",
+    "Yes. Lumovy's documented grocery experience includes ambient, chilled, and frozen inventory handling, vendor and warehouse ordering, stock counting, write-offs, and transfers within a connected Dynamics 365 environment.",
+  ],
+  [
+    "Do we need to replace all our existing systems?",
+    "The starting point is your business requirement and current landscape. Lumovy can assess how Dynamics 365 works with existing warehouse, logistics, merchandising, and commerce systems, and where a configuration change, extension, or integration is needed.",
   ],
 ];
 
@@ -836,8 +872,8 @@ function SupplyChainFAQ() {
     <section className="border-b border-border bg-white py-28">
       <div className="container-enterprise">
         <FaqAccordion
-          title="Answers for manufacturing leaders"
-          intro="Still have questions about how the Transformation Suite fits your business? Book a call and we'll walk you through it."
+          title="Supply Chain and Distribution Solution FAQs"
+          intro="Still have questions about where to start? Book a call and we'll walk you through it."
           items={SUPPLY_CHAIN_FAQS}
         />
       </div>
@@ -850,11 +886,11 @@ function SupplyChainFinalCTA() {
   return (
     <FinalCtaSection
       id="contact"
-      title="Start with Measurable Outcomes. Scale with a Supply Chain Transformation Partner You Can Trust."
-      subtitle="Whether you're looking to improve demand planning, gain real-time inventory visibility, or modernize your supply chain, Lumovy helps you build a scalable Dynamics 365 Supply Chain Management foundation for long-term growth."
-      microcopy="In a focused discovery session, we'll assess your current production and supply chain landscape, identify the highest-value opportunities, and recommend the right transformation path, without obligation."
-      primary={{ label: "Book a Supply Chain Readiness Call", href: "#contact", icon: true }}
-      secondary={{ label: "Download the Transformation Suite Overview", href: "#suite" }}
+      title="Where Does Your Supply Chain Stop Keeping the Promise?"
+      subtitle="Stock accuracy. Order allocation. Warehouse handoffs. Replenishment. Store execution. Find the area that deserves attention first, and the solution options worth exploring."
+      microcopy="Answer a few business questions to identify your starting point. View your results before deciding whether to speak with Lumovy."
+      primary={{ label: "Find My Solution Priorities", href: "#contact", icon: true }}
+      secondary={{ label: "Discuss My Supply Chain Priorities", href: "#contact" }}
     />
   );
 }

@@ -18,13 +18,13 @@ import {
   Bot,
   ClipboardCheck,
   Radio,
-  Smartphone,
   Settings2,
   Gauge,
   Tablet,
   ArrowUpRight,
-  DollarSign,
-  Truck,
+  UserCircle,
+  MessageSquare,
+  Smartphone,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -56,11 +56,11 @@ export const Route = createFileRoute("/industries_/grocery-hypermarkets")({
   component: GroceryPage,
   head: () => ({
     meta: [
-      { title: "Grocery & Hypermarket Transformation Suite | Lumovy" },
+      { title: "Retail & Hypermarket Commerce | Lumovy" },
       {
         name: "description",
         content:
-          "Lumovy's Grocery & Hypermarket Transformation Suite unifies checkout, inventory, and pricing on Microsoft Dynamics 365, so grocery retailers can operate smarter and scale with confidence.",
+          "Every gap in your store is a sale walking out of it. Lumovy connects stores, inventory and checkout on Microsoft Dynamics 365 Commerce, and gives the platform agents that catch revenue leaks before they cost you the sale.",
       },
     ],
   }),
@@ -114,10 +114,9 @@ function GroceryPage() {
 
 /* ─────────────────────────────  1. HERO (dark)  ───────────────────────────── */
 const PROOF_BAR = [
-  "Up to 99% Inventory Accuracy",
-  "<2 Second AI Checkout Recognition",
-  "100-Day Grocery Rollout",
-  "Unified Store Operations Foundation",
+  "Up to 99.5% Inventory Accuracy",
+  "Under 2-Second AI Product Recognition",
+  "Live in 100 Days",
 ];
 const MS_LOGOS = [
   { src: msLogo, alt: "Microsoft", h: "h-6" },
@@ -143,29 +142,31 @@ function GroceryHero() {
       <div className="container-enterprise relative z-10 py-24 lg:py-28">
         <div className="max-w-3xl">
           <span className="hero-content-in text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
-            Modern Grocery &amp; Hypermarkets
+            Retail &amp; Hypermarket Commerce
           </span>
           <h1 className="hero-content-in mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]" style={{ animationDelay: "80ms" }}>
-            Deliver Faster Checkout, Smarter Inventory, and Accurate Pricing
+            Every Gap in Your Store Is a Sale Walking Out of It
           </h1>
           <p className="hero-content-in mt-6 max-w-2xl text-base leading-relaxed text-white/70" style={{ animationDelay: "160ms" }}>
-            Unify checkout, inventory, and pricing with our Microsoft Dynamics 365-powered grocery
-            store POS system, built to reduce stockouts, pricing gaps, and operational inefficiencies.
+            A stockout an agent could have flagged. A checkout line an agent could have shortened.
+            A customer an agent didn&apos;t recognize. We connect stores, inventory and checkout on
+            Microsoft Dynamics 365 Commerce, and give the platform the ability to catch these
+            before they cost you the sale.
           </p>
           <div className="hero-content-in mt-9 flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
             <a
-              href="#suite"
+              href="#contact"
               className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/30"
             >
-              See What&apos;s Included
+              <Calendar className="h-4 w-4" />
+              Book a Retail Readiness Call
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
             <a
-              href="#contact"
+              href="#suite"
               className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
             >
-              <Calendar className="h-4 w-4" />
-              Get Your Grocery Bundle Quote
+              See What&apos;s Included
             </a>
           </div>
         </div>
@@ -173,7 +174,7 @@ function GroceryHero() {
 
       {/* Proof bar */}
       <div className="relative z-10 border-t border-white/10">
-        <div className="container-enterprise grid grid-cols-2 gap-x-8 gap-y-5 py-8 sm:grid-cols-4">
+        <div className="container-enterprise grid grid-cols-1 gap-x-8 gap-y-5 py-8 sm:grid-cols-3">
           {PROOF_BAR.map((t) => (
             <span key={t} className="text-sm font-bold uppercase leading-tight tracking-wide text-white/45">
               {t}
@@ -199,29 +200,29 @@ function GroceryHero() {
 /* ─────────────────────────────  2. THE PROBLEM  ───────────────────────────── */
 const PROBLEMS = [
   {
-    icon: Gauge,
-    title: "Slow, Error-Prone Checkout",
-    body: "Outdated grocery point of sale systems slow every transaction and frustrate cashiers and customers alike. A fast, AI powered point of sale for grocery store operations keeps lines moving and baskets bigger.",
+    icon: UserCircle,
+    title: "The Customer Isn't Recognized",
+    body: "A shopper on the app, at the register, and on the phone with support looks like three different people to three different systems. An agent working from one customer profile knows it's the same person every time, and personalizes accordingly.",
   },
   {
     icon: Boxes,
-    title: "Inventory You Can't Trust",
-    body: "Perishables, high SKU counts, and daily deliveries make stock hard to track with legacy grocery ERP software. Real-time inventory across every store and warehouse stops stockouts before they cost you a sale.",
+    title: "The Stock Count Is Wrong Before Anyone Finds Out",
+    body: "A stockout usually surfaces when a customer hits it. A demand-forecasting agent flags the shortfall days earlier, while there's still time to act.",
   },
   {
-    icon: DollarSign,
-    title: "Pricing and Promotions That Don't Keep Up",
-    body: "Manual price updates across stores create shelf-to-register mismatches. Centralized pricing keeps every store and channel accurate at once.",
+    icon: Gauge,
+    title: "The Line Is Too Slow, Twice",
+    body: "Every extra second at the till grows the queue; every extra step online grows cart abandonment. A checkout agent doing scan-and-go fixes both without adding staff.",
   },
   {
     icon: Workflow,
-    title: "Manual Store Operations",
-    body: "Manual stock counts, paper-based receiving, and disconnected replenishment turn store associates into administrators instead of merchandisers.",
+    title: "Store Associates Do the System's Job Instead of the Customer's",
+    body: "Manual replenishment and paper checklists turn a salesperson into an administrator. A store-operations agent triggers the replenishment itself.",
   },
   {
     icon: Cpu,
-    title: "Outdated Platform",
-    body: "Legacy systems slow down every new store opening or category expansion, making it harder to compete with modern grocery and discount retail chains.",
+    title: "The Platform Can't Keep Up",
+    body: "Every new capability used to mean a re-platform. On Dynamics 365, it means turning an agent on.",
   },
 ];
 
@@ -232,8 +233,12 @@ function GroceryProblem() {
         <div className="max-w-3xl">
           <p className="eyebrow">The problem</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Stop Losing Margin to Disconnected Systems
+            Where Revenue Leaks, and Where an Agent Catches It
           </h2>
+          <p className="mt-5 text-[15px] leading-relaxed text-[var(--blue-gray)]">
+            Retail doesn&apos;t lose revenue in one place. It leaks in five, quietly enough that
+            nobody owns the fix, until now, an agent can.
+          </p>
         </div>
       </div>
 
@@ -261,21 +266,40 @@ function GroceryProblem() {
           </div>
         </div>
       </div>
+
+      {/* Agentic Retail & Commerce narrative */}
+      <div className="container-enterprise mt-16">
+        <div className="rounded-2xl border border-[var(--royal)]/10 bg-[var(--blue-light)]/30 p-8 lg:p-10">
+          <p className="text-xs font-semibold uppercase tracking-widest text-[var(--royal)]">
+            Agentic Retail &amp; Commerce
+          </p>
+          <p className="mt-4 max-w-3xl text-[15px] leading-relaxed text-[var(--blue-gray)]">
+            This isn&apos;t a separate product sitting next to your commerce platform, it&apos;s
+            the same platform gaining the ability to act on its own. Microsoft is building this
+            directly into Dynamics 365 Commerce: agents that can check stock, flag a price
+            mismatch, or recover an abandoned cart, the moment the problem exists rather than
+            after a customer notices it. For a retailer, that&apos;s the difference between a
+            monthly report that tells you where you lost revenue last quarter, and a system that
+            stops the loss while the customer&apos;s still standing there.
+          </p>
+        </div>
+      </div>
     </section>
   );
 }
 
 /* ─────────────────────────────  3. THE TRANSFORMATION SUITE  ───────────────────────────── */
 const SUITE_INCLUDED: { label: string; image: string }[] = [
-  { label: "Modern grocery point of sale system with AI, mobile, and offline support", image: retailImg },
-  { label: "Real-time inventory across stores, warehouses, and distribution centers", image: engineeringImg },
-  { label: "Centralized pricing, promotions, and loyalty", image: implementationImg },
-  { label: "Automated replenishment tuned to grocery demand patterns", image: consultingImg },
-  { label: "Perishable and short shelf-life tracking", image: supportImg },
-  { label: "Vendor and procurement workflows for high-frequency grocery buying", image: hospitalityImg },
-  { label: "Store associate tools for stock counts, receiving, and order management", image: retailImg },
-  { label: "Store and category performance dashboards", image: implementationImg },
-  { label: "Go-live support and continuous optimization", image: supportImg },
+  { label: "AI assisted POS, mobile and offline capable", image: retailImg },
+  { label: "Digital commerce storefront, B2B and B2C", image: hospitalityImg },
+  { label: "Faster checkout, in store and online", image: implementationImg },
+  { label: "Connected inventory across stores, warehouses and online", image: engineeringImg },
+  { label: "Payments and core system integrations", image: consultingImg },
+  { label: "Unified pricing, promotions and loyalty", image: supportImg },
+  { label: "Omnichannel fulfilment", image: retailImg },
+  { label: "Store associate tools for inventory, orders and service", image: hospitalityImg },
+  { label: "Store and commerce KPI dashboards", image: implementationImg },
+  { label: "Go-live support and continuous optimization", image: engineeringImg },
 ];
 const SUITE_EXTENSIONS = [
   "Multi-store and multi-country expansion",
@@ -292,22 +316,22 @@ const TIERS = [
   {
     name: "Foundation",
     tag: "Start",
-    blurb: "Build a connected grocery operation with modern checkout, live inventory visibility, and standardized store execution.",
-    points: ["Connected checkout & modern POS", "Real-time inventory visibility", "Pricing sync across stores", "2-week hypercare"],
+    blurb: "Best for a single connected store operation: modern POS, a B2C or B2B storefront, and standard payments, reconciled.",
+    points: ["Connected commerce & modern POS", "Digital storefront: B2C, B2B or both", "Click & collect, ship-to-home, returns", "Single payment provider, reconciled", "2 weeks hypercare, optional"],
     featured: false,
   },
   {
     name: "Growth",
     tag: "Scale up",
-    blurb: "Increase sales and improve customer experience through intelligent replenishment, dynamic pricing, digital loyalty, and AI assisted demand planning.",
-    points: ["Everything in Foundation", "Automated replenishment", "Mobile associate tools", "Cross-store analytics", "4-week hypercare"],
+    blurb: "Best for expanding across stores and channels, with advanced B2B, personalization and multi-provider payments.",
+    points: ["Everything in Foundation", "Advanced B2B & personalization", "Ship-from-store, endless aisle", "Multi-provider payments + wallets/BNPL", "Checkout & product recognition agents", "4 weeks hypercare, standard"],
     featured: true,
   },
   {
     name: "Enterprise",
     tag: "Scale wide",
-    blurb: "Lead the future of grocery with connected stores, AI powered merchandising, enterprise analytics, and a scalable commerce platform built for continuous growth.",
-    points: ["Everything in Growth", "AI driven demand forecasting", "Full mobility suite", "Advanced BI & predictive analytics", "12-week hypercare"],
+    blurb: "Best for scaling across brands, regions and warehouses, with headless commerce and the full agent suite.",
+    points: ["Everything in Growth", "Headless, multi-site/brand storefront", "Order orchestration, cross-border", "Multi-currency, full reconciliation", "Full agent suite", "12 weeks hypercare, dedicated"],
     featured: false,
   },
 ];
@@ -411,7 +435,7 @@ function GroceryTiers() {
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">Engagement tiers</p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[var(--navy-deep)] sm:text-4xl">
-            Choose Your Path to Partnership
+            Three Ways to Start
           </h2>
         </div>
 
@@ -470,11 +494,11 @@ function GroceryTiers() {
           <div className="flex flex-col items-start justify-between gap-6 px-8 py-10 sm:flex-row sm:items-center sm:px-12">
             <div>
               <h3 className="text-2xl font-semibold tracking-tight text-white">
-                Not sure where to begin?
+                Not sure where to start?
               </h3>
               <p className="mt-2 max-w-lg text-sm leading-relaxed text-white/70">
-                Book a Grocery Readiness Call and we&apos;ll recommend the right starting point for
-                your business.
+                Book a Retail Readiness Call and we&apos;ll recommend the right tier for your
+                business.
               </p>
             </div>
             <a
@@ -482,7 +506,7 @@ function GroceryTiers() {
               className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl"
             >
               <Calendar className="h-4 w-4" />
-              Book a Grocery Readiness Call
+              Book a Retail Readiness Call
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
@@ -494,10 +518,11 @@ function GroceryTiers() {
 
 /* ─────────────────────────────  5. ACCELERATORS & SOLUTIONS  ───────────────────────────── */
 const ACCELERATORS = [
-  { icon: Boxes, name: "D365 for Hypermarkets", body: "A pre-configured Dynamics 365 accelerator for grocery and hypermarket operations, with built-in retail processes for a faster go-live.", href: "/what-we-do/products-accelerators/hypermarket-accelerator" },
-  { icon: Radio, name: "Clarity RFID Connector", body: "Track your inventory accurately and gain real-time visibility with our RFID connector.", href: "/what-we-do/products-accelerators/rfid-connect" },
-  { icon: Settings2, name: "Optim365", body: "A framework that governs your data, optimizes your licensing, and boosts your D365 performance.", href: "/what-we-do/products-accelerators/optim365" },
-  { icon: Tablet, name: "In-Store Mobility Suite", body: "A set of Power Apps linked to D365 F&O, so you can manage labeling, stock counts, and orders.", href: "/what-we-do/products-accelerators/in-store-mobility-suite" },
+  { icon: Radio, name: "Clarity RFID Connector", body: "Real-time inventory accuracy, at the item level.", href: "/what-we-do/products-accelerators/rfid-connect" },
+  { icon: Boxes, name: "B2B in a Box", body: "Quote-to-cash on Dynamics 365 Commerce, pre-built.", href: "/what-we-do/products-accelerators/b2b-in-a-box" },
+  { icon: Smartphone, name: "Consumer Swift Commerce", body: "A white-label mobile app, connected and fast to launch.", href: "/products/consumer-swift-commerce" },
+  { icon: Settings2, name: "Optim365", body: "Governs data and licensing as Dynamics 365 scales.", href: "/what-we-do/products-accelerators/optim365" },
+  { icon: Tablet, name: "In-Store Mobility Suite", body: "Power Apps for labeling, counts and orders, connected to D365 F&O.", href: "/what-we-do/products-accelerators/in-store-mobility-suite" },
 ];
 
 function GroceryAccelerators() {
@@ -511,7 +536,7 @@ function GroceryAccelerators() {
             Ready-made accelerators that shorten your time to value
           </h2>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
           {ACCELERATORS.map((a) => (
             <a key={a.name} href={a.href} className="group card-lift flex flex-col rounded-xl border border-border bg-white p-7">
               <span className="inline-grid h-11 w-11 place-items-center rounded-2xl bg-[var(--blue-light)] text-[var(--royal)] ring-1 ring-inset ring-[var(--royal)]/20">
@@ -533,10 +558,10 @@ function GroceryAccelerators() {
 
 /* ─────────────────────────────  6. AI AGENTS  ───────────────────────────── */
 const AI_AGENTS = [
-  { icon: ScanLine, name: "Checkout & Product Recognition Agent", body: "AI powered scan-and-go at the grocery point of sale, cutting checkout time and reducing shrinkage." },
-  { icon: TrendingUp, name: "Inventory & Demand Forecasting Agent", body: "Predicts stockouts and overstock before they happen, keeping your grocery ERP software a step ahead of demand." },
-  { icon: Truck, name: "Pricing & Promotions Agent", body: "Keeps prices and promotions synced across every store and channel, catching mismatches before they reach the register." },
-  { icon: ClipboardCheck, name: "Store Operations Agent", body: "Automates replenishment triggers, task assignment, and compliance checks for store teams." },
+  { icon: ScanLine, name: "Checkout & Product Recognition", body: "Scan-and-go at the register, cutting checkout time in store and online without adding staff." },
+  { icon: TrendingUp, name: "Inventory & Demand Forecasting", body: "Catches a stockout before it happens, flagging the shortfall days before a customer hits it." },
+  { icon: MessageSquare, name: "Customer Service", body: "Always-on across web, app and kiosk, working from one customer profile every time." },
+  { icon: ClipboardCheck, name: "Store Operations", body: "Triggers replenishment and task assignment on its own, so store associates can focus on customers." },
 ];
 
 function GroceryAIAgents() {
@@ -626,17 +651,18 @@ function GroceryProof() {
                 Connected Grocery Operations at Scale
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-[var(--blue-gray)]">
-                Majid Al Futtaim partnered with Lumovy to modernize grocery and hypermarket
-                operations on Microsoft Dynamics 365, connecting checkout, inventory, and
-                procurement into a single platform with AI powered product recognition at POS.
+                A fast-growing UAE discount grocery retailer, modernized on Dynamics 365 Commerce
+                and Finance &amp; Operations. A connected solution across stores, procurement,
+                warehouses and POS, including AI powered checkout and real-time inventory, built
+                for rapid growth.
               </p>
             </div>
             <div>
               <div className="grid grid-cols-3 gap-3 border-t border-border pt-6">
                 {[
-                  ["<2 sec", "AI product recognition at POS"],
+                  ["100 days", "Live on D365 Commerce & F&O"],
+                  ["<2 sec", "Product recognition at POS"],
                   ["4 weeks", "Secure payment integration"],
-                  ["Centralized", "Procurement-driven supply model"],
                 ].map(([v, l]) => (
                   <div key={l} className="min-w-0">
                     <div className="whitespace-nowrap text-[15px] font-bold leading-tight text-[var(--navy-deep)]">{v}</div>
@@ -816,24 +842,20 @@ function GroceryCaseStudies() {
 /* ─────────────────────────────  10. FAQ  ───────────────────────────── */
 const GROCERY_FAQS: [string, string][] = [
   [
-    "How quickly can we modernize without disrupting store operations?",
-    "Most Foundation engagements go live in 100 days, using a phased rollout by store, so daily operations continue while we configure and test in parallel.",
+    "Can we modernize without disrupting store operations?",
+    "Yes, rollouts are phased and stores stay open throughout.",
   ],
   [
-    "Can we start with a few stores before expanding?",
-    "Yes. Many grocery retailers pilot the platform in a handful of stores, validate it against real transaction volume, then roll it out chain-wide.",
+    "Can we start with a few stores first?",
+    "Yes, that's what Foundation is built for.",
   ],
   [
-    "Can this integrate with our existing ERP, POS, and e-commerce platforms?",
-    "Yes. The suite is built to integrate with common ERP, POS, and e-commerce platforms, along with supplier and loyalty systems.",
-  ],
-  [
-    "How does Lumovy reduce stock discrepancies?",
-    "We combine real-time inventory tracking with automated replenishment and, where needed, RFID visibility, so stock counts reflect what is actually on the shelf.",
+    "Does this integrate with our existing ERP, POS or e-commerce platform?",
+    "Yes, connection is the default, not replacement.",
   ],
   [
     "What happens after go-live?",
-    "You move into hypercare, then can extend into managed services for retail, covering monitoring, updates, and continuous optimization of your grocery retail technology platform.",
+    "Hypercare, then continuous optimization, not a handoff.",
   ],
 ];
 
@@ -842,8 +864,8 @@ function GroceryFAQ() {
     <section className="border-b border-border bg-white py-28">
       <div className="container-enterprise">
         <FaqAccordion
-          title="Answers for grocery leaders"
-          intro="Still have questions about how the Transformation Suite fits your business? Book a call and we'll walk you through it."
+          title="Answers for retail leaders"
+          intro="Still have questions about how we fit your business? Book a call and we'll walk you through it."
           items={GROCERY_FAQS}
         />
       </div>
@@ -856,10 +878,10 @@ function GroceryFinalCTA() {
   return (
     <FinalCtaSection
       id="contact"
-      title="Build Smarter Grocery Operations with a Partner You Can Trust"
-      subtitle="Whether you're improving checkout, inventory visibility, or store operations, Lumovy helps you build a connected Microsoft Dynamics 365 platform designed for faster value and long-term growth."
-      microcopy="In a focused discovery session, we'll assess your current store landscape, identify the highest-value opportunities, and recommend the right transformation path, without obligation."
-      primary={{ label: "Book a Grocery Readiness Call", href: "#contact", icon: true }}
+      title="Start with One Measurable Outcome. Scale from There."
+      subtitle="Whether your priority is checkout speed, inventory accuracy, or a connected omnichannel storefront, Lumovy helps you build the right Microsoft Dynamics 365 Commerce foundation, and give it the agents to catch revenue leaks before they cost you the sale."
+      microcopy="A focused, no-obligation session to assess your setup and recommend where to start."
+      primary={{ label: "Book a Retail Readiness Call", href: "#contact", icon: true }}
       secondary={{ label: "Download the Transformation Suite Overview", href: "#suite" }}
     />
   );
