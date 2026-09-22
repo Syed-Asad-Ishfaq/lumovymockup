@@ -19,7 +19,6 @@ import {
   Layers3,
   Quote,
   TrendingUp,
-  Sparkles,
 } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Nav, Footer, FaqAccordion, FinalCtaSection } from "./index";
@@ -131,23 +130,22 @@ const HERO_CHECKS = [
 
 function ServicesHero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white via-white to-[var(--blue-light)]/30">
-      <div aria-hidden className="mesh-blobs-light opacity-50" />
-      <div className="container-enterprise relative z-10 grid items-center gap-14 py-20 lg:grid-cols-[1fr_1fr] lg:py-24">
-        {/* Left: copy */}
-        <div>
-          <span className="hero-content-in inline-flex items-center gap-2 rounded-full bg-[var(--blue-light)]/70 px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--royal)]">
+    <section className="hero-blue-static overflow-hidden">
+      <div aria-hidden className="hero-grid" />
+      <div className="container-enterprise relative z-10 py-24 lg:py-28">
+        <div className="max-w-3xl">
+          <span className="hero-content-in inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
             <Cog className="h-3.5 w-3.5" />
             Microsoft Dynamics 365 Services
           </span>
           <h1
-            className="hero-content-in mt-6 text-4xl font-semibold leading-[1.06] tracking-tight text-[var(--navy-deep)] sm:text-5xl lg:text-[3.4rem]"
+            className="hero-content-in mt-5 text-4xl font-semibold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-[3.4rem]"
             style={{ animationDelay: "80ms" }}
           >
             Make your next Dynamics decision a better business decision.
           </h1>
           <p
-            className="hero-content-in mt-6 max-w-xl text-lg leading-relaxed text-[var(--blue-gray)]"
+            className="hero-content-in mt-6 max-w-2xl text-base leading-relaxed text-white/70"
             style={{ animationDelay: "160ms" }}
           >
             Improve how your business runs today. Build the capabilities it needs next. Lumovy
@@ -156,24 +154,13 @@ function ServicesHero() {
             processes, applications and data, and putting Copilot and AI agents to work where
             they make a measurable difference.
           </p>
-          <ul
-            className="hero-content-in mt-7 grid max-w-md grid-cols-2 gap-x-6 gap-y-3"
-            style={{ animationDelay: "220ms" }}
-          >
-            {HERO_CHECKS.map((c) => (
-              <li key={c} className="flex items-center gap-2.5 text-sm font-medium text-[var(--navy-deep)]">
-                <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--royal)]" />
-                {c}
-              </li>
-            ))}
-          </ul>
           <div
             className="hero-content-in mt-9 flex flex-wrap gap-3"
-            style={{ animationDelay: "280ms" }}
+            style={{ animationDelay: "240ms" }}
           >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-[var(--royal)] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[var(--navy)] hover:shadow-lg hover:shadow-[var(--royal)]/25"
+              className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/30"
             >
               <Calendar className="h-4 w-4" />
               Find my starting point
@@ -181,96 +168,27 @@ function ServicesHero() {
             </a>
             <a
               href="#services-list"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-6 py-3.5 text-sm font-semibold text-[var(--navy-deep)] transition-colors hover:border-[var(--royal)]/40 hover:bg-[var(--blue-light)]/40"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10"
             >
               Explore our services
               <ArrowRight className="h-4 w-4" />
             </a>
           </div>
         </div>
+      </div>
 
-        {/* Right: delivery-performance stat/graph card + floating tooltip */}
-        <div className="hero-content-in relative" style={{ animationDelay: "200ms" }}>
-          <HeroStatCard />
+      {/* Proof bar */}
+      <div className="relative z-10 border-t border-white/10">
+        <div className="container-enterprise grid grid-cols-2 gap-x-8 gap-y-5 py-8 sm:grid-cols-4">
+          {HERO_CHECKS.map((c) => (
+            <span key={c} className="flex items-center gap-2.5 text-sm font-semibold text-white/70">
+              <CheckCircle2 className="h-4 w-4 shrink-0 text-[var(--cyan-soft)]" />
+              {c}
+            </span>
+          ))}
         </div>
       </div>
     </section>
-  );
-}
-
-function HeroStatCard() {
-  // A clean SaaS-style performance card (mirrors the reference): three KPI
-  // stats above a rising line graph, with a floating insight tooltip.
-  return (
-    <div className="relative">
-      <div className="rounded-2xl border border-border bg-white p-7 shadow-fluent-lg sm:p-8">
-        <div className="flex items-center justify-between">
-          <h3 className="text-base font-semibold text-[var(--navy-deep)]">Delivery performance</h3>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--cyan-soft)]/15 px-2.5 py-1 text-[11px] font-semibold text-[var(--royal)]">
-            <TrendingUp className="h-3.5 w-3.5" />
-            Live
-          </span>
-        </div>
-        <div className="mt-6 grid grid-cols-3 gap-4">
-          {[
-            { k: "GO-LIVES", v: "320+", d: null },
-            { k: "AVG GO-LIVE", v: "100d", d: "↘ 22" },
-            { k: "UPTIME", v: "99.5%", d: "↗ 4" },
-          ].map((s) => (
-            <div key={s.k}>
-              <div className="text-[10px] font-semibold uppercase tracking-wider text-[var(--blue-gray)]">
-                {s.k}
-              </div>
-              <div className="mt-1 flex items-baseline gap-1">
-                <span className="text-2xl font-bold tracking-tight text-[var(--navy-deep)]">{s.v}</span>
-                {s.d && <span className="text-xs font-semibold text-[var(--success)]">{s.d}</span>}
-              </div>
-            </div>
-          ))}
-        </div>
-        {/* Line graph */}
-        <div className="mt-6">
-          <svg viewBox="0 0 400 130" className="h-32 w-full" preserveAspectRatio="none" role="img" aria-label="Rising delivery trend across four quarters">
-            <defs>
-              <linearGradient id="svcArea" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="var(--royal)" stopOpacity="0.18" />
-                <stop offset="100%" stopColor="var(--royal)" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path
-              d="M0,110 C70,104 110,88 160,74 C215,58 250,40 400,18 L400,130 L0,130 Z"
-              fill="url(#svcArea)"
-            />
-            <path
-              d="M0,110 C70,104 110,88 160,74 C215,58 250,40 400,18"
-              fill="none"
-              stroke="var(--royal)"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-              className="svc-line"
-            />
-            <circle cx="222" cy="55" r="6.5" fill="white" stroke="var(--royal)" strokeWidth="3" />
-          </svg>
-          <div className="mt-2 flex justify-between text-[11px] font-medium text-[var(--blue-gray)]">
-            <span>Q1</span>
-            <span>Q2</span>
-            <span>Q3</span>
-            <span>Q4</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Floating insight tooltip */}
-      <div className="absolute -bottom-6 right-4 flex items-center gap-3 sm:-right-4">
-        <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[var(--azure)] to-[var(--cyan-soft)] text-white shadow-lg">
-          <Sparkles className="h-5 w-5" />
-        </span>
-        <div className="max-w-[15rem] rounded-xl bg-[var(--navy-deep)] px-4 py-3 text-xs leading-relaxed text-white/70 shadow-fluent-md">
-          <span className="font-semibold text-[var(--cyan-soft)]">99.5% uptime</span> across managed
-          programs. <span className="text-white/50">De-risked, governed go-lives.</span>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -804,6 +722,7 @@ function ClosingCTA() {
       microcopy="NDA available on request. Response within 1 business day."
       primary={{ label: "Discuss my Dynamics priorities", href: "#contact", icon: true }}
       secondary={{ label: "Find my starting point", href: "#services-list" }}
+      blueStatic
     />
   );
 }

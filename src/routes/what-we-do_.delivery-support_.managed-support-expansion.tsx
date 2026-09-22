@@ -108,18 +108,8 @@ function ManagedSupportPage() {
 /* ─────────────────────────────  1. HERO (dark)  ───────────────────────────── */
 function MsHero() {
   return (
-    <section className="relative overflow-hidden bg-[#003594]">
+    <section className="hero-blue-static overflow-hidden">
       <div aria-hidden className="hero-grid" />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute right-[8%] -top-[22rem] h-[42rem] w-[42rem] rounded-full blur-[40px]"
-        style={{ background: "radial-gradient(circle, color-mix(in oklch, var(--azure) 55%, #003594) 0%, color-mix(in oklch, var(--azure) 40%, #003594) 60%, transparent 72%)" }}
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-[16rem] -top-[8rem] h-[46rem] w-[46rem] rounded-full blur-[40px]"
-        style={{ background: "radial-gradient(circle, color-mix(in oklch, var(--azure) 48%, #003594) 0%, color-mix(in oklch, var(--azure) 34%, #003594) 58%, transparent 70%)" }}
-      />
       <div className="container-enterprise relative z-10 py-24 lg:py-28">
         <div className="max-w-3xl">
           <span className="hero-content-in text-[11px] font-semibold uppercase tracking-[0.2em] text-[var(--cyan-soft)]">
@@ -851,6 +841,7 @@ function MsFinalCTA() {
       subtitle="Start by identifying the issues, releases, and ownership gaps that need clearer attention. Use the self-check to see whether Lumovy managed services could help your current support model."
       primary={{ label: "Check My Support Readiness", href: "#assessment", icon: true }}
       secondary={{ label: "Discuss My Support Needs", href: "#contact" }}
+      blueStatic
     />
   );
 }
